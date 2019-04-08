@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="文档,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="俗话说：凡事预则立，不预则废！软件测试同样，在测试项目之初就要制定相应的测试计划。接下来谈下如何编写测试计划问题。 一．首先了解以下几个问题：1． 为什么要编写测试计划？ 1）领导能够根据测试计划做宏观调空，进行相应资源配置等；2）测试人员能够了解整个项目测试情况以及项目测试不同阶段的所要进行的工作等；3）便于其他人员了解测试人员的工作内容，进行有关配合工作 2． 什么时间开始编写测试计划？（测试">
+<meta name="keywords" content="文档">
+<meta property="og:type" content="article">
+<meta property="og:title" content="测试文档系统之测试计划">
+<meta property="og:url" content="http://yoursite.com/2013/02/01/测试文档系列之测试计划/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="俗话说：凡事预则立，不预则废！软件测试同样，在测试项目之初就要制定相应的测试计划。接下来谈下如何编写测试计划问题。 一．首先了解以下几个问题：1． 为什么要编写测试计划？ 1）领导能够根据测试计划做宏观调空，进行相应资源配置等；2）测试人员能够了解整个项目测试情况以及项目测试不同阶段的所要进行的工作等；3）便于其他人员了解测试人员的工作内容，进行有关配合工作 2． 什么时间开始编写测试计划？（测试">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-29T05:06:20.398Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="测试文档系统之测试计划">
+<meta name="twitter:description" content="俗话说：凡事预则立，不预则废！软件测试同样，在测试项目之初就要制定相应的测试计划。接下来谈下如何编写测试计划问题。 一．首先了解以下几个问题：1． 为什么要编写测试计划？ 1）领导能够根据测试计划做宏观调空，进行相应资源配置等；2）测试人员能够了解整个项目测试情况以及项目测试不同阶段的所要进行的工作等；3）便于其他人员了解测试人员的工作内容，进行有关配合工作 2． 什么时间开始编写测试计划？（测试">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2013/02/01/测试文档系列之测试计划/">
+
+
+
+
+
+  <title>测试文档系统之测试计划 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2013/02/01/测试文档系列之测试计划/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">测试文档系统之测试计划</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-02-01T21:36:25+08:00">
+                2013-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/测试/" itemprop="url" rel="index">
+                    <span itemprop="name">测试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>俗话说：凡事预则立，不预则废！软件测试同样，在测试项目之初就要制定相应的测试计划。接下来谈下如何编写测试计划问题。</p>
+<h3 id="一．首先了解以下几个问题："><a href="#一．首先了解以下几个问题：" class="headerlink" title="一．首先了解以下几个问题："></a>一．首先了解以下几个问题：</h3><p>1． 为什么要编写测试计划？</p>
+<p>1）领导能够根据测试计划做宏观调空，进行相应资源配置等；<br>2）测试人员能够了解整个项目测试情况以及项目测试不同阶段的所要进行的工作等；<br>3）便于其他人员了解测试人员的工作内容，进行有关配合工作</p>
+<p>2． 什么时间开始编写测试计划？<br>（测试需求分析前总体测试计划书／测试需求分析后详细测试计划书）</p>
+<p>3． 由谁来编写测试计划？<br>具有丰富经验的项目测试负责人</p>
+<p>4． 测试计划编写6要素？（5W1H）</p>
+<p>1）why——为什么要进行这些测试；<br>2) what—测试哪些方面，不同阶段的工作内容；<br>3) when—测试不同阶段的起止时间；<br>4) where—相应文档，缺陷的存放位置，测试环境等；<br>5) who—项目有关人员组成，安排哪些测试人员进行测试<br>6) how—如何去做，使用哪些测试工具以及测试方法进行测试。</p>
+<h3 id="二．编写测试计划注意事项："><a href="#二．编写测试计划注意事项：" class="headerlink" title="二．编写测试计划注意事项："></a>二．编写测试计划注意事项：</h3><p>1．测试计划不一定要尽善尽美，但一定要切合实际，要根据项目特点、公司实际情况来编制，不能脱离实际情况；<br>2．测试计划一旦制定下来，并不就是一层不变的，世界万事万物时时刻刻都在变化，软件需求、软件开发、人员流动等都在时刻发生着变化，测试计划也要根据实际情况的变化而不断进行调整，以满足实际测试要求．<br>3．测试计划要能从宏观上反映项目的测试任务、测试阶段、资源需求等，不一定要太过详细．</p>
+<h3 id="三．测试计划主要内容："><a href="#三．测试计划主要内容：" class="headerlink" title="三．测试计划主要内容："></a>三．测试计划主要内容：</h3><p>1.目标<br>表示该测试计划所应达到的目标。</p>
+<p>2.概述<br>2.1 项目背景<br>简要描述项目背景及所要求达到的目标，如项目的主要功能特征、全系结构及简要历史等。</p>
+<p>2.2 范围<br>指明该计划的适用对象及范围。</p>
+<p>3.组织形式<br>表示测试计划执行过程中的组织结构及结构间的关系，以及所需要的组织独立程度。同时，指出测试过程与其他过程，如开发、项目管理、质量保证、配置管理之间的关系。测试计划还应该定义测试工作中的沟通渠道，解决测试任务发现问题的权利，以及批准测试输出工作产品的权力。</p>
+<p>4.角色及职责<br>定义角色及其职责，即在每一个角色与测试任务之间建立关联。</p>
+<p>5.测试对象<br>列出所有被作为测试目标的测试项（包括功能需求、非功能需求，后者包括性能、可移植性等）。</p>
+<p>6.测试通过/失败标准<br>测试标准是客观的陈述，该陈述指明了判断/确认测试何时结束，以及所测试的应用程序的质量。测试标准可以是一系列陈述或对另一文档（如过程指南或测试标准）的引用。</p>
+<p>测试标准应该指明：<br>什么将被测试？（确切的测试目标）<br>度量尺度是如何建立的？<br>使用了哪些标准对度量进行评价？</p>
+<p>7.测试挂起标准及恢复条件<br>批明挂起全部或部分测试项的标准，并指明恢复测试的标准及其他必须重复的测试活动。</p>
+<p>8.测试任务安排<br>8.1 任务1<br>8.1.1方法和标准<br>     指明执行该任务时，应采用的方法以及所应遵循的标准。</p>
+<p>8.1.2 输入/输出<br>    给出该任务所必须的输入及输出。</p>
+<p>8.1.3 时间安排<br>    给出任务的起始及持续时间，建议采用相对时间的方法，即相对 某一里程碑或阶段、任务的起始时间。</p>
+<p>8.1.4 资源<br>    给出任务所需要的人力和物力资源，其中人力资源的安排应参考“组织形式”和“角色及职责”并应明确到人，该主题将会影响“资源”一节。</p>
+<p>8.1.5 风险和假设<br>    指明启动该项目任务应该满足的假设，以及任务执行可能存在的风险。</p>
+<p>8.1.6 角色和职责<br>     指明由谁负责该任务的组织和执行，以及谁将担负怎样的职责。</p>
+<p>9.应交付的测试工作产品<br>指明应交付的文档、测试代码及测试工具。</p>
+<p>一般包括这些文档：测试计划、测试方案、测试用例、测试规程、测试日志、测试事故报告、测试总结报告、测试输入及输出数据、测试工具。</p>
+<p>10.工作量估计<br>给出前面所定义任务的人力需求及总计。</p>
+<p>11.附录<br>其他文档或信息。</p>
+<h3 id="四．评审总结"><a href="#四．评审总结" class="headerlink" title="四．评审总结"></a>四．评审总结</h3><p>1.计划评审<br>测试计划编写完成后，一般要对测试计划的正确性、全面性以及可行性等进行评审，评审人员的组成包括软件开发人、营销人员、测试负责人以及其他有关项目负责人。</p>
+<p>2.计划总结</p>
+<p>项目完成后，应该对计划的执行情况进行评审，看有哪些不合理的地方，以便为编写下一个项目测试计划做经验积累。</p>
+<h3 id="五．文档下载"><a href="#五．文档下载" class="headerlink" title="五．文档下载"></a>五．文档下载</h3><p>《测试计划.doc》</p>
+<p>参考资料：<a href="http://www.uml.org.cn" target="_blank" rel="noopener">http://www.uml.org.cn</a>    《实用软件测试方法与应用》电子工业出版社</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/文档/" rel="tag"># 文档</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2012/08/29/测试是否需要定位缺陷原因/" rel="next" title="测试是否需要定位缺陷原因">
+                <i class="fa fa-chevron-left"></i> 测试是否需要定位缺陷原因
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/02/22/测试文档系列之测试方案/" rel="prev" title="测试文档系统之测试方案">
+                测试文档系统之测试方案 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一．首先了解以下几个问题："><span class="nav-number">1.</span> <span class="nav-text">一．首先了解以下几个问题：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二．编写测试计划注意事项："><span class="nav-number">2.</span> <span class="nav-text">二．编写测试计划注意事项：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三．测试计划主要内容："><span class="nav-number">3.</span> <span class="nav-text">三．测试计划主要内容：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四．评审总结"><span class="nav-number">4.</span> <span class="nav-text">四．评审总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五．文档下载"><span class="nav-number">5.</span> <span class="nav-text">五．文档下载</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

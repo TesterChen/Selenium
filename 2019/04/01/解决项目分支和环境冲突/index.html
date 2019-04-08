@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="冲突,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="最近，有几次聊到测试过程中如何处理项目或环境冲突。在日常工作中偶尔会遇到同一项目并行开发、提测的情况，那么我们如何处理这种情况？ 基本信息项目：ins-test-platform现有分支：ins-test-platform/branch/ins-test-platform_andy_201903221612ins-test-platform/branch_lilei_201903211145开发人">
+<meta name="keywords" content="冲突">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决项目分支或环境冲突">
+<meta property="og:url" content="http://yoursite.com/2019/04/01/解决项目分支和环境冲突/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="最近，有几次聊到测试过程中如何处理项目或环境冲突。在日常工作中偶尔会遇到同一项目并行开发、提测的情况，那么我们如何处理这种情况？ 基本信息项目：ins-test-platform现有分支：ins-test-platform/branch/ins-test-platform_andy_201903221612ins-test-platform/branch_lilei_201903211145开发人">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-01T09:15:30.925Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="解决项目分支或环境冲突">
+<meta name="twitter:description" content="最近，有几次聊到测试过程中如何处理项目或环境冲突。在日常工作中偶尔会遇到同一项目并行开发、提测的情况，那么我们如何处理这种情况？ 基本信息项目：ins-test-platform现有分支：ins-test-platform/branch/ins-test-platform_andy_201903221612ins-test-platform/branch_lilei_201903211145开发人">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/01/解决项目分支和环境冲突/">
+
+
+
+
+
+  <title>解决项目分支或环境冲突 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/01/解决项目分支和环境冲突/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">解决项目分支或环境冲突</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-01T16:29:00+08:00">
+                2019-04-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/测试/" itemprop="url" rel="index">
+                    <span itemprop="name">测试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近，有几次聊到测试过程中如何处理项目或环境冲突。<br>在日常工作中偶尔会遇到同一项目并行开发、提测的情况，那么我们如何处理这种情况？</p>
+<h3 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h3><p>项目：ins-test-platform<br>现有分支：<br>ins-test-platform/branch/ins-test-platform_andy_201903221612<br>ins-test-platform/branch_lilei_201903211145<br>开发人员：Andy，Lilei</p>
+<h3 id="问题是？"><a href="#问题是？" class="headerlink" title="问题是？"></a>问题是？</h3><p>开发人员Andy和Lilei同时针对ins-test-platform项目进行了开发，同一时间提交测试同事进行测试，但两个分支（需求）上线时间非同一天。碰巧的是现在只有一套测试环境是空闲、可以用于测试，这个时候我们怎么办？</p>
+<h3 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h3><p>1、有风险的代码：绝不合并到trunk/master；<br>2、有风险的项目：单独分支开发；<br>3、时间较久的分支：先合并线上的代码，使用新分支测试。</p>
+<h3 id="处理方法"><a href="#处理方法" class="headerlink" title="处理方法"></a>处理方法</h3><p>根据上面的原则，我们通常的处理方式如下：<br>1、Andy和Lilei两位开发人员，各自合并线上代码后形成新的分支：<br>ins-test-platform/branch/ins-test-platform_andy_201904011644（分支A）<br>ins-test-platform/branch/ins-test-platform_lilei_201904011645 (分支B)</p>
+<p>此时合并主干代码的作用有两个：<br>1、确保所有的代码均是被测试过的，而不是上线之前再次合并代码，引入新的风险；<br>2、减少后续因代码合并带来的时间风险。</p>
+<p>实践证明，坚持这一条会给我们最后上线带来意想不到的顺利。</p>
+<p>2、根据上一步形成的两个分支，合并成新的分支，此分支为测试环境部署的分支：<br>ins-test-platform/branch/ins-test-platform_andyandlilei_201904011801 (分支C)</p>
+<p>3、修改bug时，Andy和Lilei需要在自己对应的分支A/B上修改，同时将修改同步到分支C，重新部署分支C验证修改。</p>
+<p>4、若Andy的项目先测试通过，需要先上线就很简单了：<br>分支A代码已经与线上合并过，所以可以很快捷地通过工具合并完成；<br>但仍然要注意此时Andy的分支A是没有部署在测试环境测试过的，需要合并到主干后进行冒烟或者回归测试后再上线。</p>
+<p>5、Andy的项目已经上线，此时Lilei项目也可以上线了：<br>因为Andy分支A的代码一直在分支C是同步修改的，所以代码合并工作也会十分顺利，按流程回归测试即可上线。</p>
+<p>6、所有项目上线完成<br>到这里，我们两个需求的代码就先后上线了，代价是开发同事在修改bug时会有部分重复的操作。</p>
+<h3 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h3><p>建议提供多个测试环境。彼此不影响，我们只需要做好步骤1即可。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/冲突/" rel="tag"># 冲突</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/29/是要写博客了/" rel="next" title="是要写博客了">
+                <i class="fa fa-chevron-left"></i> 是要写博客了
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/01/Selenium Web自动化00--环境配置/" rel="prev" title="Selenium Web自动化00--环境配置">
+                Selenium Web自动化00--环境配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本信息"><span class="nav-number">1.</span> <span class="nav-text">基本信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题是？"><span class="nav-number">2.</span> <span class="nav-text">问题是？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原则"><span class="nav-number">3.</span> <span class="nav-text">原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理方法"><span class="nav-number">4.</span> <span class="nav-text">处理方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建议"><span class="nav-number">5.</span> <span class="nav-text">建议</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

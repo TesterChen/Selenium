@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="TAIL1234567891011# 查看动态日志，不断有内容被打印出来. 这时候中断第一个进程Ctrl-Ctail -f test.log# 实时监控最近100行日志，并显示行号tail -100fn test.log# 显示最后1000行tail -n 1000 test.log# 从1000行开始显示，显示1000行以后内容tail -n +1000 test.log VI/VIMvi可用于">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试准备--Linux">
+<meta property="og:url" content="http://yoursite.com/2018/08/08/面试准备--Linux/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="TAIL1234567891011# 查看动态日志，不断有内容被打印出来. 这时候中断第一个进程Ctrl-Ctail -f test.log# 实时监控最近100行日志，并显示行号tail -100fn test.log# 显示最后1000行tail -n 1000 test.log# 从1000行开始显示，显示1000行以后内容tail -n +1000 test.log VI/VIMvi可用于">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-08T07:56:41.952Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试准备--Linux">
+<meta name="twitter:description" content="TAIL1234567891011# 查看动态日志，不断有内容被打印出来. 这时候中断第一个进程Ctrl-Ctail -f test.log# 实时监控最近100行日志，并显示行号tail -100fn test.log# 显示最后1000行tail -n 1000 test.log# 从1000行开始显示，显示1000行以后内容tail -n +1000 test.log VI/VIMvi可用于">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/08/面试准备--Linux/">
+
+
+
+
+
+  <title>面试准备--Linux | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/08/面试准备--Linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">面试准备--Linux</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-08T06:06:00+08:00">
+                2018-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="TAIL"><a href="#TAIL" class="headerlink" title="TAIL"></a>TAIL</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看动态日志，不断有内容被打印出来. 这时候中断第一个进程Ctrl-C</span></span><br><span class="line">tail -f test.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实时监控最近100行日志，并显示行号</span></span><br><span class="line">tail -100fn test.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示最后1000行</span></span><br><span class="line">tail -n 1000 test.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从1000行开始显示，显示1000行以后内容</span></span><br><span class="line">tail -n +1000 test.log</span><br></pre></td></tr></table></figure>
+<h3 id="VI-VIM"><a href="#VI-VIM" class="headerlink" title="VI/VIM"></a>VI/VIM</h3><p>vi可用于创建和修改文件，vi编辑器中如何查找内容？<br>按下”/“键，这时在状态栏（也就是屏幕左下脚）就出现了 “/” 然后输入你要查找的关键字敲回车就可以了。<br>找到相关文字以后： （1）按下小写n，向下查找 （2）按下大写N，向上查找。</p>
+<h3 id="MORE-LESS"><a href="#MORE-LESS" class="headerlink" title="MORE/LESS"></a>MORE/LESS</h3><p>翻页显示日志，less可以向前翻。</p>
+<h3 id="SED"><a href="#SED" class="headerlink" title="SED"></a>SED</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询某个时间段日志：</span></span><br><span class="line">sed -n ‘/2010-11-17 09:25:55/,/2010-11-17 09:25:55/p’  logfile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询某时间段到现在的日志：</span></span><br><span class="line">sed -n ‘/2010-11-17 09:25:55/,<span class="variable">$p</span>’  logfile</span><br></pre></td></tr></table></figure>
+<h3 id="HEAD"><a href="#HEAD" class="headerlink" title="HEAD"></a>HEAD</h3><p>跟tail是相反的，tail是看后多少行日志，例子如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询日志文件中的头10行日志</span></span><br><span class="line">head -n 10  test.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询日志文件除了最后10行的其他所有日志</span></span><br><span class="line">head -n -10  test.log</span><br></pre></td></tr></table></figure></p>
+<h3 id="CAT-TAC："><a href="#CAT-TAC：" class="headerlink" title="CAT/TAC："></a>CAT/TAC：</h3><p>tac是倒序查看，是cat单词反写，例子如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询关键字的日志</span></span><br><span class="line">cat -n test.log |grep <span class="string">"debug"</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="PS"><a href="#PS" class="headerlink" title="PS"></a>PS</h3><p>该命令用于将某个时间点的进程运行情况选取下来并输出。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-A ：所有的进程均显示出来</span><br><span class="line">-a ：不与terminal有关的所有进程</span><br><span class="line">-u ：有效用户的相关进程</span><br><span class="line">-x ：一般与a参数一起使用，可列出较完整的信息</span><br><span class="line">-l ：较长，较详细地将PID的信息列出</span><br></pre></td></tr></table></figure>
+<p>其实我们只要记住ps一般使用的命令参数搭配即可，它们并不多，如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看系统所有的进程数据</span></span><br><span class="line">ps aux</span><br><span class="line"><span class="comment"># 查看不与terminal有关的所有进程</span></span><br><span class="line">ps ax</span><br><span class="line"><span class="comment"># 查看系统所有的进程数据</span></span><br><span class="line">ps -lA</span><br><span class="line"><span class="comment"># 查看连同一部分进程树状态</span></span><br><span class="line">ps axjf</span><br></pre></td></tr></table></figure></p>
+<p>TOP<br>该命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况，类似于Windows的任务管理器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-b 批处理</span><br><span class="line">-c 显示完整的治命令</span><br><span class="line">-I 忽略失效过程</span><br><span class="line">-s 保密模式</span><br><span class="line">-S 累积模式</span><br><span class="line">-i&lt;时间&gt; 设置间隔时间</span><br><span class="line">-u&lt;用户名&gt; 指定用户名</span><br><span class="line">-p&lt;进程号&gt; 指定进程</span><br><span class="line">-n&lt;次数&gt; 循环显示的次数</span><br></pre></td></tr></table></figure>
+<h3 id="LSOF"><a href="#LSOF" class="headerlink" title="LSOF"></a>LSOF</h3><p>lsof -i: 端口号该命令用于查看某一端口的占用情况。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 比如查看8000端口使用情况</span></span><br><span class="line">lsof -i:8000</span><br><span class="line"></span><br><span class="line">COMMAND   PID USER   FD   TYPE  DEVICE SIZE/OFF NODE NAME</span><br><span class="line">lwfs    22065 root    6u  IPv4 4395053      0t0  TCP *:irdmi (LISTEN)</span><br><span class="line"><span class="comment"># 可以看到8000端口已经被轻量级文件系统转发服务lwfs占用</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示开启文件abc.txt的进程</span></span><br><span class="line">lsof abc.txt</span><br></pre></td></tr></table></figure></p>
+<h3 id="NETSTAT"><a href="#NETSTAT" class="headerlink" title="NETSTAT"></a>NETSTAT</h3><p>该命令用于显示各种网络相关信息，如网络连接、路由表、接口状态 (Interface Statistics)，masquerade连接，多播成员(Multicast Memberships)等。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-a (all)显示所有选项，netstat默认不显示LISTEN相关</span><br><span class="line">-t (tcp)仅显示tcp相关选项</span><br><span class="line">-u (udp)仅显示udp相关选项</span><br><span class="line">-n 拒绝显示别名，能显示数字的全部转化成数字。(重要)</span><br><span class="line">-l 仅列出有在 Listen (监听) 的服務状态</span><br></pre></td></tr></table></figure>
+<p>结合grep查询，找出运行在指定端口的进程。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netstat -an | grep 61780</span><br><span class="line">netstat -an | grep <span class="string">':22'</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="CHOWN"><a href="#CHOWN" class="headerlink" title="CHOWN"></a>CHOWN</h3><p>改变文件的拥有者。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">chown [-cfhvR] [--<span class="built_in">help</span>] [--version] user[:group] file.</span><br><span class="line"></span><br><span class="line">user : 新的文件拥有者的使用者 ID</span><br><span class="line">group : 新的文件拥有者的使用者组(group)</span><br><span class="line">-c : 显示更改的部分的信息</span><br><span class="line">-f : 忽略错误信息</span><br><span class="line">-h :修复符号链接</span><br><span class="line">-v : 显示详细的处理信息</span><br><span class="line">-R : 处理指定目录以及其子目录下的所有文件</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将文件 file1.txt 的拥有者设为 runoob 群体的使用者 runoobgroup:</span></span><br><span class="line">chown runoob:runoobgroup file1.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将目前目录下的所有文件与子目录的拥有者皆设为 runoob，群体的使用者 runoobgroup:</span></span><br><span class="line">chown -R runoob:runoobgroup *</span><br></pre></td></tr></table></figure>
+<h3 id="CHMOD"><a href="#CHMOD" class="headerlink" title="CHMOD"></a>CHMOD</h3><p>该命令用于管理文件或目录的权限。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">chmod [-cfvR] file.</span><br><span class="line"></span><br><span class="line">u 表示该文件的拥有者，g 表示与该文件的拥有者属于同一个群体(group)者，o 表示其他以外的人，a 表示这三者皆是。</span><br><span class="line">+ 表示增加权限、- 表示取消权限、= 表示唯一设定权限。</span><br><span class="line">r 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该文件是个子目录或者该文件已经被设定过为可执行。</span><br><span class="line">r=4，w=2，x=1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此外chmod也可以用数字来表示权限</span></span><br><span class="line">chmod 777 file</span><br><span class="line"></span><br><span class="line"><span class="comment"># 其中a,b,c各为一个数字，分别表示User、Group、及Other的权限</span></span><br><span class="line">chmod abc file</span><br><span class="line">chmod ug=rwx,o=x file 和 chmod 771 file 效果相同</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将ex1.py设定为只有该文件拥有者可以执行</span></span><br><span class="line">chmod u+x ex1.py</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将目前目录下的所有文件与子目录皆设为任何人可读取</span></span><br><span class="line">chmod -R a+r *</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/18/业务安全测试切入点/" rel="next" title="业务安全测试切入点">
+                <i class="fa fa-chevron-left"></i> 业务安全测试切入点
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/08/面试准备--Java基础/" rel="prev" title="面试准备--Java基础">
+                面试准备--Java基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#TAIL"><span class="nav-number">1.</span> <span class="nav-text">TAIL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VI-VIM"><span class="nav-number">2.</span> <span class="nav-text">VI/VIM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MORE-LESS"><span class="nav-number">3.</span> <span class="nav-text">MORE/LESS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SED"><span class="nav-number">4.</span> <span class="nav-text">SED</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HEAD"><span class="nav-number">5.</span> <span class="nav-text">HEAD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CAT-TAC："><span class="nav-number">6.</span> <span class="nav-text">CAT/TAC：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PS"><span class="nav-number">7.</span> <span class="nav-text">PS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LSOF"><span class="nav-number">8.</span> <span class="nav-text">LSOF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NETSTAT"><span class="nav-number">9.</span> <span class="nav-text">NETSTAT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CHOWN"><span class="nav-number">10.</span> <span class="nav-text">CHOWN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CHMOD"><span class="nav-number">11.</span> <span class="nav-text">CHMOD</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

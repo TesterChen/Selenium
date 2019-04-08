@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="讨论,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="写在前面随着软件行业的快速发展，以及客户、市场的高要求，软件本身的复杂度、要求不断提高。这一现象也直接导致以前只有大中型公司才配备的测试人员，现在在越来越来越多的小型公司也开始出现。小公司测试人员的出现，一方面是为了适应产业的发展需求；另一方面也是为了提升产品质量、加强公司的竞争力，保证公司不被市场所淘汰。但这样一来也就直接增加了公司的管理、人力及资金成本（测试人员的薪水虽然相对比开发人员低，但也">
+<meta name="keywords" content="讨论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="这到底是不是Bug">
+<meta property="og:url" content="http://yoursite.com/2012/04/14/这到底是不是Bug/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="写在前面随着软件行业的快速发展，以及客户、市场的高要求，软件本身的复杂度、要求不断提高。这一现象也直接导致以前只有大中型公司才配备的测试人员，现在在越来越来越多的小型公司也开始出现。小公司测试人员的出现，一方面是为了适应产业的发展需求；另一方面也是为了提升产品质量、加强公司的竞争力，保证公司不被市场所淘汰。但这样一来也就直接增加了公司的管理、人力及资金成本（测试人员的薪水虽然相对比开发人员低，但也">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-29T05:23:07.013Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="这到底是不是Bug">
+<meta name="twitter:description" content="写在前面随着软件行业的快速发展，以及客户、市场的高要求，软件本身的复杂度、要求不断提高。这一现象也直接导致以前只有大中型公司才配备的测试人员，现在在越来越来越多的小型公司也开始出现。小公司测试人员的出现，一方面是为了适应产业的发展需求；另一方面也是为了提升产品质量、加强公司的竞争力，保证公司不被市场所淘汰。但这样一来也就直接增加了公司的管理、人力及资金成本（测试人员的薪水虽然相对比开发人员低，但也">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2012/04/14/这到底是不是Bug/">
+
+
+
+
+
+  <title>这到底是不是Bug | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2012/04/14/这到底是不是Bug/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">这到底是不是Bug</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-04-14T20:38:00+08:00">
+                2012-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/测试/" itemprop="url" rel="index">
+                    <span itemprop="name">测试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>随着软件行业的快速发展，以及客户、市场的高要求，软件本身的复杂度、要求不断提高。这一现象也直接导致以前只有大中型公司才配备的测试人员，现在在越来越来越多的小型公司也开始出现。<br>小公司测试人员的出现，一方面是为了适应产业的发展需求；另一方面也是为了提升产品质量、加强公司的竞争力，保证公司不被市场所淘汰。但这样一来也就直接增加了公司的管理、人力及资金成本（测试人员的薪水虽然相对比开发人员低，但也是一个不小的数字）；最后因为小公司制度及管理的欠缺，暴露出很多问题，往往直接或间接的导致开发、和测试的不和谐，这也是我们今天讨论的话题。</p>
+<h3 id="缺陷如何定位"><a href="#缺陷如何定位" class="headerlink" title="缺陷如何定位"></a>缺陷如何定位</h3><p>对于是不是缺陷这个话题往往被很多人很厌恶，大家都厌恶谈论这个话题，因为谈及他往往令人不愉快，但很多的时候他却在我们身边真实发生。<br>测试人员认为某个情况是缺陷，但开发人员认为这个不是缺陷，而争论具体的情形在需求中也没有明确的描述，公说公有理，婆说婆有理，说不清了！如果只是开发、测试对于工作上理解的差异还好，但往往争执由此开始，矛盾也就由此产生，不和谐的气氛由此埋下种子。</p>
+<p>出现上述的情况的原因有几种：<br>①公司在没有对原始需求进行评审、整理、并书面化形成文档（需求也是需要测试的，这点很重要）<br>②公司完全没有需求这一档子事，完全在没有需求的情况下进行开发、测试（走一步看一步的情况）<br>③开发、测试对需求的理解存在差异（开发、测试没有良好的沟通）<br>④需求本身的定义存在二义性（与①相关，没有对需求进行测试）<br>⑤个人的性格与情绪</p>
+<h3 id="如何解决问题"><a href="#如何解决问题" class="headerlink" title="如何解决问题"></a>如何解决问题</h3><p>不管是开发人员还是测试人员：<br>①思想要保持统一的认知，我们所做的都是为了公司，为了我们的产品，任何的争论都不存在任何的个人感情与感情色彩<br>②出现问题时，都要先从自身找原因，很多时候往往是因为我们自己的简单思维而导致，所以，当你在工作中对某个事情存在疑问时，多问自己几个为什么，再向他人请教，或回复他人<br>③我们讨论的只是问题，不直接关系到个人的工作能力与工作作风，人非圣贤，有错就改，并不失面子</p>
+<p>当无法确认是否为缺陷时，测试人员：<br>①发现无法确认的缺陷时，如果有其他的测试人员可以征求其他测试人员的意见（同行评审，同行评审往往能发现80%的问题），如果彼此都认为此应该是缺陷时，可以找到相应的开发人员进行讨论。如果开发人员同意你们的意见，则可以提交缺陷，着手修复（如涉及比较重大的业务逻辑时应该要向上级汇报，申请确认）<br>②如果开发（甚至多位开发人员）对缺陷不认可时，我们可以向测试组长（或测试总监）请教，请求对缺陷进行确认，如果领导和开发人员都认为此不是缺陷，并且无修复的必要时，我们可以保留我们的意见，同时记录下此缺陷（到后期如果有时间再进行评审）<br>③如果测试组长（或测试总监）也认为此是缺陷，但在无论如何解释的情况下开发人员仍不认可时，我们可以由测试组长（测试总监）与开发项目经理（技术经理）进行交涉、确认，最终确认缺陷情况<br>④如果有必要，我们可以邀请开发、测试、需求（如果有）、产品（如果有），甚至技术总监（CTO）进行开会（需求或缺陷）评审<br>⑤最后，也是最重要的一条，不管是开发，还是测试，都不要越级汇报</p>
+<p>另外，有部分许多公司把缺陷作为开发人员和测试的员的业绩指标，在某些大公司这些确实是在施行、也是可行的，但在中小型公司或管理达不到CMMI4或5的情形时，我个人不赞同那样的作法。因为你不是他，你就做不到他……<br>而你那样做产生的直接结果就是让开发和测试从此不和谐，彼此勾心斗角，大可不必</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>始终相信办法总是比问题多，每一个问题都有至少一个解决办法！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/讨论/" rel="tag"># 讨论</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2012/04/12/我们需要专职测试吗/" rel="next" title="我们需要专职测试吗">
+                <i class="fa fa-chevron-left"></i> 我们需要专职测试吗
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2012/08/29/杀虫剂怪事/" rel="prev" title="杀虫剂怪事">
+                杀虫剂怪事 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺陷如何定位"><span class="nav-number">2.</span> <span class="nav-text">缺陷如何定位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何解决问题"><span class="nav-number">3.</span> <span class="nav-text">如何解决问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后"><span class="nav-number">4.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

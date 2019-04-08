@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="面向对象主要面对测试开发工程师，汇集部分常见基础算法题。大部分信息来源于网络汇总，疑惑之处请注意甄别。 数据类型在Java8种基本数据类型：浮点型：float(4 byte), double(8 byte)；整型：byte(1 byte), short(2 byte), int(4 byte) , long(8 byte)；字符型: char(2 byte)；布尔型: boolean(JVM规范没">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试准备--Java基础">
+<meta property="og:url" content="http://yoursite.com/2018/08/08/面试准备--Java基础/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="面向对象主要面对测试开发工程师，汇集部分常见基础算法题。大部分信息来源于网络汇总，疑惑之处请注意甄别。 数据类型在Java8种基本数据类型：浮点型：float(4 byte), double(8 byte)；整型：byte(1 byte), short(2 byte), int(4 byte) , long(8 byte)；字符型: char(2 byte)；布尔型: boolean(JVM规范没">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-08T07:24:56.119Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试准备--Java基础">
+<meta name="twitter:description" content="面向对象主要面对测试开发工程师，汇集部分常见基础算法题。大部分信息来源于网络汇总，疑惑之处请注意甄别。 数据类型在Java8种基本数据类型：浮点型：float(4 byte), double(8 byte)；整型：byte(1 byte), short(2 byte), int(4 byte) , long(8 byte)；字符型: char(2 byte)；布尔型: boolean(JVM规范没">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/08/面试准备--Java基础/">
+
+
+
+
+
+  <title>面试准备--Java基础 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/08/面试准备--Java基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">面试准备--Java基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-08T07:07:00+08:00">
+                2018-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><p>主要面对测试开发工程师，汇集部分常见基础算法题。<br>大部分信息来源于网络汇总，疑惑之处请注意甄别。</p>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>在Java8种基本数据类型：<br>浮点型：float(4 byte), double(8 byte)；<br>整型：byte(1 byte), short(2 byte), int(4 byte) , long(8 byte)；<br>字符型: char(2 byte)；<br>布尔型: boolean(JVM规范没有明确规定其所占的空间大小，仅规定其只能够取字面值”true”和”false”)。<br>对于这8种基本数据类型的变量，变量直接存储的是“值”，因此在用关系操作符==来进行比较时，比较的就是 “值” 本身。</p>
+<h3 id="Integer与int的区别"><a href="#Integer与int的区别" class="headerlink" title="Integer与int的区别"></a>Integer与int的区别</h3><p>Ingeter是int的包装类，int的初值为0，Ingeter的初值为null。</p>
+<p>①无论如何，Integer与new Integer不会相等；<br>②两个都是非new出来的Integer，如果数在-128到127之间，则是true,否则为false (Valueof 方法的缓存机制)；<br>③两个都是new出来的,都为false；<br>④int和integer(无论new否)比，都为true，因为会把Integer自动拆箱为int再去比。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testint</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">128</span>;</span><br><span class="line">    Integer i2 = <span class="number">128</span>;</span><br><span class="line">    Integer i3 = <span class="keyword">new</span> Integer(<span class="number">128</span>);</span><br><span class="line">    <span class="comment">//int和integer(无论new否)比，都为true，因为会把Integer自动拆箱为int再去比</span></span><br><span class="line">    System.out.println(i == i2);		<span class="comment">//true</span></span><br><span class="line">    System.out.println(i == i3);		<span class="comment">//true</span></span><br><span class="line">    System.out.println(<span class="string">"**************"</span>);</span><br><span class="line">        </span><br><span class="line">    <span class="comment">// 两个都是非new出来的Integer，如果数在-128到127之间，则是true,否则为false</span></span><br><span class="line">    Integer i5 = <span class="number">127</span>;	<span class="comment">//java在编译的时候,被翻译成-&gt; Integer i5 = Integer.valueOf(127);</span></span><br><span class="line">    Integer i6 = <span class="number">127</span>;</span><br><span class="line">    System.out.println(i5 == i6);	<span class="comment">//true </span></span><br><span class="line">    System.out.println(<span class="string">"**************"</span>);</span><br><span class="line">        </span><br><span class="line">    <span class="comment">// 无论如何，Integer与new Integer不会相等</span></span><br><span class="line">    Integer i7 = <span class="keyword">new</span> Integer(<span class="number">127</span>);</span><br><span class="line">    System.out.println(i5 == i7);	<span class="comment">//false</span></span><br><span class="line">    System.out.println(<span class="string">"**************"</span>);</span><br><span class="line">        </span><br><span class="line">    <span class="comment">// 两个都是new出来的,都为false</span></span><br><span class="line">    Integer i8 = <span class="keyword">new</span> Integer(<span class="number">128</span>);</span><br><span class="line">    Integer i9 = <span class="keyword">new</span> Integer(<span class="number">123</span>);</span><br><span class="line">    System.out.println(i9 == i8);  <span class="comment">//false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="HashMap原理"><a href="#HashMap原理" class="headerlink" title="HashMap原理"></a>HashMap原理</h3><p> initialCapacity：初始容量。指的是 HashMap 集合初始化的时候自身的容量。可以在构造方法中指定；如果不指定的话，总容量默认值是 16 。需要注意的是初始容量必须是 2 的幂次方；<br>size：当前 HashMap 中已经存储着的键值对数量，即 HashMap.size()；<br>loadFactor：加载因子。所谓的加载因子就是 HashMap (当前的容量/总容量) 到达一定值的时候，HashMap 会实施扩容。加载因子也可以通过构造方法中指定，默认的值是 0.75 。举个例子，假设有一个 HashMap 的初始容量为 16 ，那么扩容的阀值就是 0.75 <em> 16 = 12 。也就是说，在你打算存入第 13 个值的时候，HashMap 会先执行扩容；<br>threshold：扩容阀值。即 扩容阀值 = HashMap 总容量 </em> 加载因子。当前 HashMap 的容量大于或等于扩容阀值的时候就会去执行扩容。扩容的容量为当前 HashMap 总容量的两倍。比如，当前 HashMap 的总容量为 16 ，那么扩容之后为 32；<br>table：Entry 数组。我们都知道 HashMap 内部存储 key/value 是通过 Entry 这个介质来实现的。而 table 就是 Entry 数组。</p>
+<p>HashMap是基于hashing的原理，我们使用put(key, value)存储对象到HashMap中，使用get(key)从HashMap中获取对象。<br>当我们给put()方法传递键和值时，我们先对键调用hashCode()方法，返回的hashCode用于找到bucket位置来储存Entry对象。<br>这里关键点在于指出，HashMap是在bucket中储存键对象和值对象，作为Map.Entry。<br>这一点有助于理解获取对象的逻辑。如果你没有意识到这一点，或者错误的认为仅仅只在bucket中存储值的话，你将不会回答如何从HashMap中获取对象的逻辑。这个答案相当的正确，也显示出面试者确实知道hashing以及HashMap的工作原理。</p>
+<p><a href="https://blog.csdn.net/hefenglian/article/details/79763634" target="_blank" rel="noopener">更多可参见</a></p>
+<h3 id="List和Map区别"><a href="#List和Map区别" class="headerlink" title="List和Map区别"></a>List和Map区别</h3><p>List是存储单列数据的集合，Map是存储键和值这样的双列数据的集合；<br>List中存储的数据是有顺序，并且允许重复；<br>Map中存储的数据是没有顺序的，键不能重复，值是可以有重复的；<br>List继承Collection接口，Map不继承Collection接口。</p>
+<p>List排序<br>简单类型直接Collections.sort(list);<br>复杂类型需要实现Comparable接口。</p>
+<h3 id="和equals-的区别"><a href="#和equals-的区别" class="headerlink" title="==和equals()的区别"></a>==和equals()的区别</h3><p>==：比较的是两个字符串内存地址（堆内存）的数值是否相等，属于数值比较；<br>equals()：比较的是两个字符串的内容，属于内容比较；<br>以后进行字符串相等判断的时候都使用equals()。</p>
+<p> == 的作用：<br>基本类型：比较的就是值是否相同；<br>引用类型：比较的就是地址值是否相同。</p>
+<p>java当中的数据类型和“==”的含义：<br>基本数据类型（也称原始数据类型） ：byte,short,char,int,long,float,double,boolean。他们之间的比较，应用双等号（==）,比较的是他们的值；<br>引用数据类型：当他们用（==）进行比较的时候，比较的是他们在内存中的存放地址（确切的说，是堆内存地址）；<br>注：对于第二种类型，除非是同一个new出来的对象，他们的比较后的结果为true，否则比较后结果为false。因为每new一次，都会重新开辟堆内存空间。</p>
+<p>equals 的作用:<br>引用类型：默认情况下，比较的是地址值。</p>
+<h3 id="String、StringBuffer与StringBuilder"><a href="#String、StringBuffer与StringBuilder" class="headerlink" title="String、StringBuffer与StringBuilder"></a>String、StringBuffer与StringBuilder</h3><p>String：不可变字符串；<br>StringBuffer：可变字符串、效率低、线程安全；<br>StringBuilder：可变字符序列、效率高、线程不安全。</p>
+<p>由于 StringBuilder 相较于 StringBuffer 有速度优势，所以多数情况下建议使用 StringBuilder 类；<br>然而在应用程序要求线程安全的情况下，则必须使用 StringBuffer 类。</p>
+<h3 id="final，finally与finalize"><a href="#final，finally与finalize" class="headerlink" title="final，finally与finalize"></a>final，finally与finalize</h3><p>final可以修饰类、变量、方法，修饰类表示该类不能被继承、修饰方法表示该方法不能被重写、修饰变量表示该变量是一个常量不能被重新赋值。<br>finally一般作用在try-catch代码块中，在处理异常的时候，通常我们将一定要执行的代码方法finally代码块中，表示不管是否出现异常，该代码块都会执行，一般用来存放一些关闭资源的代码。<br>finalize是一个方法，属于Object类的一个方法，而Object类是所有类的父类，该方法一般由垃圾回收器来调用，当我们调用System的gc()方法的时候，由垃圾回收器调用finalize(),回收垃圾。 </p>
+<p><a href="https://www.cnblogs.com/ktao/p/8586966.html" target="_blank" rel="noopener">更多参见</a></p>
+<h3 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h3><p>进程：是并发执行的程序在执行过程中分配和管理资源的基本单位，是一个动态概念，竞争计算机系统资源的基本单位。<br>线程：是进程的一个执行单元，是进程内可调度实体。比进程更小的独立运行的基本单位。线程也被称为轻量级进程。<br>一个程序至少一个进程，一个进程至少一个线程。</p>
+<h3 id="重写与重载"><a href="#重写与重载" class="headerlink" title="重写与重载"></a>重写与重载</h3><p>重写：<br>1.发生在父类与子类之间；<br>2.方法名，参数列表，返回类型（除过子类中方法的返回类型是父类中返回类型的子类）必须相同；<br>3.访问修饰符的限制一定要大于被重写方法的访问修饰符（public&gt;protected&gt;default&gt;private)；<br>4.重写方法一定不能抛出新的检查异常或者比被重写方法申明更加宽泛的检查型异常。</p>
+<p>重载：<br>1.重载Overload是一个类中多态性的一种表现；<br>2.重载要求同名方法的参数列表不同(参数类型，参数个数甚至是参数顺序)；<br>3.重载的时候，返回值类型可以相同也可以不相同。无法以返回型别作为重载函数的区分标准。</p>
+<h3 id="cookie与session"><a href="#cookie与session" class="headerlink" title="cookie与session"></a>cookie与session</h3><p>1、cookie数据存放在客户的浏览器上，session数据放在服务器上；<br>2、cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗，考虑到安全应当使用session；<br>3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应适当使用COOKIE；<br>4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie；<br>5、建议：将登陆信息等重要信息存放为SESSION ，其他信息如果需要保留，可以放在COOKIE中。</p>
+<h3 id="什么是泛型"><a href="#什么是泛型" class="headerlink" title="什么是泛型"></a>什么是泛型</h3><p>泛型，即“参数化类型”。一提到参数，最熟悉的就是定义方法时有形参，然后调用此方法时传递实参。那么参数化类型怎么理解呢？<br>顾名思义，就是将类型由原来的具体的类型参数化，类似于方法中的变量参数，此时类型也定义成参数形式（可以称之为类型形参，然后在使用/调用时传入具体的类型（类型实参）；</p>
+<p>泛型的本质是为了参数化类型（在不创建新的类型的情况下，通过泛型指定的不同类型来控制形参具体限制的类型）。也就是说在泛型使用过程中，操作的数据类型被指定为一个参数，这种参数类型可以用在类、接口和方法中，分别被称为泛型类、泛型接口、泛型方法；</p>
+<p>泛型有三种使用方式，分别为：泛型类、泛型接口、泛型方法。</p>
+<h3 id="页面加载过程"><a href="#页面加载过程" class="headerlink" title="页面加载过程"></a>页面加载过程</h3><p>1- 输入网址<br>2- 缓存解析（从 浏览器缓存-系统缓存-路由器缓存 当中查看）<br>3- 域名解析（在发送http之前，需要进行DNS解析即域名解析，即域名到IP地址的转换过程）<br>4- tcp连接，三次握手<br>5- 服务器收到请求（服务器收到浏览器发送的请求信息，返回一个响应头和一个响应体）<br>6- 页面渲染（浏览器收到服务器发送的响应头和响应体，进行客户端渲染，生成Dom树、解析css样式、js交互）</p>
+<p><a href="http://www.cnblogs.com/dengzz/p/5544122.html" target="_blank" rel="noopener">更多参见</a></p>
+<h3 id="Java多线程"><a href="#Java多线程" class="headerlink" title="Java多线程"></a>Java多线程</h3><p>Java多线程实现方式主要有四种：继承Thread类、实现Runnable接口、实现Callable接口通过FutureTask包装器来创建Thread线程、使用ExecutorService、Callable、Future实现有返回结果的多线程</p>
+<p><a href="https://www.cnblogs.com/felixzh/p/6036074.html" target="_blank" rel="noopener">更多参见</a></p>
+<h3 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h3><p>1.语法层面上的区别<br>1）抽象类可以提供成员方法的实现细节，而接口中只能存在public abstract 方法，抽象方法不能有方法主体；<br>2）抽象类中的成员变量可以是各种类型的，而接口中的成员变量只能是public static final类型的；<br>3）抽象类可以有静态代码块和静态方法，而接口中不能含有静态代码块以及静态方法；<br>4）一个类只能继承一个抽象类，而一个类却可以实现多个接口。</p>
+<p>2.设计层面上的区别<br>1）抽象类是对一种事物的抽象，即对类抽象，而接口是对行为的抽象。抽象类是对整个类整体进行抽象，包括属性、行为，但是接口却是对类局部（行为）进行抽象。举个简单的例子，飞机和鸟是不同类的事物，但是它们都有一个共性，就是都会飞。那么在设计的时候，可以将飞机设计为一个类Airplane，将鸟设计为一个类Bird，但是不能将 飞行 这个特性也设计为类，因此它只是一个行为特性，并不是对一类事物的抽象描述。此时可以将 飞行 设计为一个接口Fly，包含方法fly( )，然后Airplane和Bird分别根据自己的需要实现Fly这个接口。然后至于有不同种类的飞机，比如战斗机、民用飞机等直接继承Airplane即可，对于鸟也是类似的，不同种类的鸟直接继承Bird类即可。从这里可以看出，继承是一个 “是不是”的关系，而 接口 实现则是 “有没有”的关系。如果一个类继承了某个抽象类，则子类必定是抽象类的种类，而接口实现则是有没有、具备不具备的关系，比如鸟是否能飞（或者是否具备飞行这个特点），能飞行则可以实现这个接口，不能飞行就不实现这个接口。</p>
+<p>2）设计层面不同，抽象类作为很多子类的父类，它是一种模板式设计。而接口是一种行为规范，它是一种辐射式设计。什么是模板式设计？最简单例子，大家都用过ppt里面的模板，如果用模板A设计了ppt B和ppt C，ppt B和ppt C公共的部分就是模板A了，如果它们的公共部分需要改动，则只需要改动模板A就可以了，不需要重新对ppt B和ppt C进行改动。而辐射式设计，比如某个电梯都装了某种报警器，一旦要更新报警器，就必须全部更新。也就是说对于抽象类，如果需要添加新的方法，可以直接在抽象类中添加具体的实现，子类可以不进行变更；而对于接口则不行，如果接口进行了变更，则所有实现这个接口的类都必须进行相应的改动。</p>
+<p><a href="https://www.cnblogs.com/dolphin0520/p/3811437.html" target="_blank" rel="noopener">更多参见</a></p>
+<h3 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h3><p>Java反射框架提供以下功能：<br>①、在运行时判断任意一个对象所属的类<br>②、在运行时构造任意一个类的对象<br>③、在运行时判断任意一个类所具有的成员变量和方法（通过反射设置可以调用 private）<br>④、在运行时调用某一个对象的方法</p>
+<p>反射最重要的用途就是开发各种通用框架<br>1、获得Class对象<br>     使用Class类的forName静态方法<br>     直接获取某一个对象的class<br>     调用某个对象的getClass()方法</p>
+<p>2、判断是否为某个类的实例<br>     用instanceof关键字来判断是否为某个类的实例</p>
+<p>3、创建实例<br>     使用Class对象的newInstance()方法来创建Class对象对应类的实例。<br>     先通过Class对象获取指定的Constructor对象，再调用Constructor对象的newInstance()方法来创建实例。</p>
+<p>4、获取方法<br>    getDeclaredMethods()</p>
+<p>5、获取构造器信息<br>     getDeclaredMethods()<br>     getMethods()<br>     getMethod()</p>
+<p>6、获取类的成员变量（字段）信息<br>     getFiled: 访问公有的成员变量<br>     getDeclaredField：所有已声明的成员变量。但不能得到其父类的成员变量<br>     getFileds和getDeclaredFields用法</p>
+<p>7、调用方法<br>       invoke()</p>
+<p>8、利用反射创建数组<br>    Array.newInstance()</p>
+<p>由于反射会额外消耗一定的系统资源，因此如果不需要动态地创建一个对象，那么就不需要用反射<br>另外，反射调用方法时可以忽略权限检查，因此可能会破坏封装性而导致安全问题</p>
+<h3 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h3><p>JVM把内存划分成了如下几个区域：<br>1.方法区（Method Area）：主要是存储类信息，常量池（static常量和static变量），编译后的代码（字节码）等数据<br>2.堆区（Heap）：初始化的对象，成员变量 （那种非static的变量），所有的对象实例和数组都要在堆上分配<br>3.虚拟机栈（VM Stack）<br>4.本地方法栈（Native Method Stack）<br>5.程序计数器（Program Counter Register）</p>
+<h3 id="强弱引用"><a href="#强弱引用" class="headerlink" title="强弱引用"></a>强弱引用</h3><p>强引用<br>以前我们使用的大部分引用实际上都是强引用，这是使用最普遍的引用。如果一个对象具有强引用，那就类似于必不可少的生活用品，垃圾回收器绝不会回收它。当内存空间不足，Java虚拟机宁愿抛出OutOfMemoryError错误，使程序异常终止，也不会靠随意回收具有强引用的对象来解决内存不足问题。<br>弱引用（WeakReference）<br>如果一个对象只具有弱引用，那就类似于可有可物的生活用品。弱引用与软引用的区别在于：只具有弱引用的对象拥有更短暂的生命周期。在垃圾回收器线程扫描它所管辖的内存区域的过程中，一旦发现了只具有弱引用的对象，不管当前内存空间足够与否，都会回收它的内存。不过，由于垃圾回收器是一个优先级很低的线程，因此不一定会很快发现那些只具有弱引用的对象。</p>
+<h3 id="异常机制"><a href="#异常机制" class="headerlink" title="异常机制"></a>异常机制</h3><p>Java异常类层次结构图：</p>
+<h3 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h3><p><a href="https://www.cnblogs.com/xdp-gacl/p/3641769.html" target="_blank" rel="noopener">Java基础</a><br><a href="https://mp.weixin.qq.com/s/Zkpz_FgAgU9SlbluoxMI0g" target="_blank" rel="noopener">复习大纲</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/08/面试准备--Linux/" rel="next" title="面试准备--Linux">
+                <i class="fa fa-chevron-left"></i> 面试准备--Linux
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/08/面试准备--算法/" rel="prev" title="面试准备--算法">
+                面试准备--算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#面向对象"><span class="nav-number">1.</span> <span class="nav-text">面向对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">2.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Integer与int的区别"><span class="nav-number">3.</span> <span class="nav-text">Integer与int的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap原理"><span class="nav-number">4.</span> <span class="nav-text">HashMap原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List和Map区别"><span class="nav-number">5.</span> <span class="nav-text">List和Map区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#和equals-的区别"><span class="nav-number">6.</span> <span class="nav-text">==和equals()的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String、StringBuffer与StringBuilder"><span class="nav-number">7.</span> <span class="nav-text">String、StringBuffer与StringBuilder</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#final，finally与finalize"><span class="nav-number">8.</span> <span class="nav-text">final，finally与finalize</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程与线程"><span class="nav-number">9.</span> <span class="nav-text">进程与线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重写与重载"><span class="nav-number">10.</span> <span class="nav-text">重写与重载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie与session"><span class="nav-number">11.</span> <span class="nav-text">cookie与session</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是泛型"><span class="nav-number">12.</span> <span class="nav-text">什么是泛型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#页面加载过程"><span class="nav-number">13.</span> <span class="nav-text">页面加载过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java多线程"><span class="nav-number">14.</span> <span class="nav-text">Java多线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口与抽象类"><span class="nav-number">15.</span> <span class="nav-text">接口与抽象类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反射"><span class="nav-number">16.</span> <span class="nav-text">反射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM"><span class="nav-number">17.</span> <span class="nav-text">JVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强弱引用"><span class="nav-number">18.</span> <span class="nav-text">强弱引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常机制"><span class="nav-number">19.</span> <span class="nav-text">异常机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更多"><span class="nav-number">20.</span> <span class="nav-text">更多</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="web自动化,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="目标熟悉常用页面操作，能完成日常自动化脚本设计。 浏览器 table th:first-of-type {     width: 130px; } table th:nth-of-type(2) {     width: 80px; }      方法名 返回值类型 功能说明     maximize() void 最大化浏览器   fullscreen() void 设置浏览器全屏状态，不常用">
+<meta name="keywords" content="web自动化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Selenium Web自动化05--常用原生方法">
+<meta property="og:url" content="http://yoursite.com/2019/04/02/Selenium Web自动化05--常用原生方法/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="目标熟悉常用页面操作，能完成日常自动化脚本设计。 浏览器 table th:first-of-type {     width: 130px; } table th:nth-of-type(2) {     width: 80px; }      方法名 返回值类型 功能说明     maximize() void 最大化浏览器   fullscreen() void 设置浏览器全屏状态，不常用">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-03T14:04:58.162Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Selenium Web自动化05--常用原生方法">
+<meta name="twitter:description" content="目标熟悉常用页面操作，能完成日常自动化脚本设计。 浏览器 table th:first-of-type {     width: 130px; } table th:nth-of-type(2) {     width: 80px; }      方法名 返回值类型 功能说明     maximize() void 最大化浏览器   fullscreen() void 设置浏览器全屏状态，不常用">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/02/Selenium Web自动化05--常用原生方法/">
+
+
+
+
+
+  <title>Selenium Web自动化05--常用原生方法 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/Selenium Web自动化05--常用原生方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Selenium Web自动化05--常用原生方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-02T23:28:00+08:00">
+                2019-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>熟悉常用页面操作，能完成日常自动化脚本设计。</p>
+<h3 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h3><style>
+table th:first-of-type {
+    width: 130px;
+}
+table th:nth-of-type(2) {
+    width: 80px;
+}
+</style>
+
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>返回值类型</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>maximize()</td>
+<td>void</td>
+<td>最大化浏览器</td>
+</tr>
+<tr>
+<td>fullscreen()</td>
+<td>void</td>
+<td>设置浏览器全屏状态，不常用</td>
+</tr>
+<tr>
+<td>back()</td>
+<td>void</td>
+<td>后退，相当于浏览器的后退按钮功能</td>
+</tr>
+<tr>
+<td>forward()</td>
+<td>void</td>
+<td>前进，相当于浏览器的前进按钮功能</td>
+</tr>
+<tr>
+<td>refresh()</td>
+<td>void</td>
+<td>刷新，相当于浏览器的刷新按钮功能</td>
+</tr>
+<tr>
+<td>quit()</td>
+<td>void</td>
+<td>退出当前浏览器</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">driver.manage().window().maximize();</span><br><span class="line">driver.manage().window().fullscreen();</span><br><span class="line">driver.navigate().back();</span><br><span class="line">driver.navigate().forward();</span><br><span class="line">driver.navigate().refresh();</span><br><span class="line">driver.quit();</span><br></pre></td></tr></table></figure>
+<h3 id="页面"><a href="#页面" class="headerlink" title="页面"></a>页面</h3><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>返回值类型</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>get()</td>
+<td>void</td>
+<td><em><strong>传入的url需要是完整带http或https</strong></em></td>
+</tr>
+<tr>
+<td>getCurrentUrl()</td>
+<td>String</td>
+<td>获取并返回当前页面Url</td>
+</tr>
+<tr>
+<td>getTitle()</td>
+<td>String</td>
+<td>获取并返回当前页面标题</td>
+</tr>
+<tr>
+<td>getPageSource()</td>
+<td>String</td>
+<td>获取并返回当前页面源代码</td>
+</tr>
+<tr>
+<td>getWindowHandle()</td>
+<td>String</td>
+<td>获取并返回当前页面源代码</td>
+</tr>
+<tr>
+<td>getWindowHandles()</td>
+<td>Set</td>
+<td>获取并返回当前浏览器所有窗口句柄，getWindowHandles()后续将用于手动切换页面</td>
+</tr>
+<tr>
+<td>close()</td>
+<td>void</td>
+<td>关闭当前页面，如果当前只有一个页面则退出浏览器</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">driver.get(<span class="string">"http://www.baidu.com/"</span>);</span><br><span class="line"><span class="comment">// driver.get("www.baidu.com");		//这个url写法是错误的</span></span><br><span class="line">String url = driver.getCurrentUrl();</span><br><span class="line">String title = driver.getTitle();</span><br><span class="line">String source = driver.getPageSource();</span><br><span class="line">String handle = driver.getWindowHandle();</span><br><span class="line">Set set = driver.getWindowHandles();</span><br><span class="line">driver.close();</span><br></pre></td></tr></table></figure>
+<h3 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h3><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>返回值类型</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>findElement()</td>
+<td>WebElement</td>
+<td>寻找并返回找到的第1个元素，<em><strong>若匹配到多个元素也返回第1个</strong></em></td>
+</tr>
+<tr>
+<td>findElements()</td>
+<td>List</td>
+<td>寻找并以List&#60;WebElement&#62;返回元素列表，获取元素时从下标0开始</td>
+</tr>
+<tr>
+<td>sendKeys()</td>
+<td>String</td>
+<td>输入文本（单/多行文本框）</td>
+</tr>
+<tr>
+<td>click()</td>
+<td>String</td>
+<td>点击（链接/按钮/图片）</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">driver.findElement(By.xpath(<span class="string">"//input[@id='kw']"</span>)).sendKeys(<span class="string">"selenium"</span>);</span><br><span class="line">driver.findElements(By.xpath(<span class="string">"//input[@id='su']"</span>)).get(<span class="number">0</span>).click();</span><br></pre></td></tr></table></figure>
+<p>我们说这三个方法都是作用在页面元素，所以转化之后可以是这样：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">WebElement element = driver.findElement(By.xpath(<span class="string">"//input[@id='kw']"</span>));</span><br><span class="line">element.sendKeys(<span class="string">"selenium"</span>);</span><br><span class="line">element.click();</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/web自动化/" rel="tag"># web自动化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/02/Selenium Web自动化04--元素获取方式/" rel="next" title="Selenium Web自动化04--元素获取方式">
+                <i class="fa fa-chevron-left"></i> Selenium Web自动化04--元素获取方式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/03/Selenium Web自动化06--进阶实用方法/" rel="prev" title="Selenium Web自动化06--进阶实用方法">
+                Selenium Web自动化06--进阶实用方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器"><span class="nav-number">2.</span> <span class="nav-text">浏览器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#页面"><span class="nav-number">3.</span> <span class="nav-text">页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元素"><span class="nav-number">4.</span> <span class="nav-text">元素</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

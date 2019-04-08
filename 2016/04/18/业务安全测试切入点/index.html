@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="安全,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="题记[放在互联网的数据就不是隐私]，每一个互联网人对此都深有感触互联网企业内部管理不善导致数据出卖、安全漏洞被黑客盗走数据的事情时有发生2016年频繁出现的互联网安全事故，直接导致国内知名漏洞报告平台乌云被查封出现一系列的事故之后，公司了也展开了安全测试，包括服务安全和业务安全这里大致列举日常测试工作中应该要注意的业务安全问题 XSS类：包括存储型和反射型反射型最容易传播的是搜索URL，注意处理处">
+<meta name="keywords" content="安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="业务安全测试切入点">
+<meta property="og:url" content="http://yoursite.com/2016/04/18/业务安全测试切入点/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="题记[放在互联网的数据就不是隐私]，每一个互联网人对此都深有感触互联网企业内部管理不善导致数据出卖、安全漏洞被黑客盗走数据的事情时有发生2016年频繁出现的互联网安全事故，直接导致国内知名漏洞报告平台乌云被查封出现一系列的事故之后，公司了也展开了安全测试，包括服务安全和业务安全这里大致列举日常测试工作中应该要注意的业务安全问题 XSS类：包括存储型和反射型反射型最容易传播的是搜索URL，注意处理处">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/20160418/safe01.png">
+<meta property="og:image" content="http://yoursite.com/images/20160418/safe02.png">
+<meta property="og:image" content="http://yoursite.com/images/20160418/safe03.png">
+<meta property="og:updated_time" content="2019-03-29T05:30:30.434Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="业务安全测试切入点">
+<meta name="twitter:description" content="题记[放在互联网的数据就不是隐私]，每一个互联网人对此都深有感触互联网企业内部管理不善导致数据出卖、安全漏洞被黑客盗走数据的事情时有发生2016年频繁出现的互联网安全事故，直接导致国内知名漏洞报告平台乌云被查封出现一系列的事故之后，公司了也展开了安全测试，包括服务安全和业务安全这里大致列举日常测试工作中应该要注意的业务安全问题 XSS类：包括存储型和反射型反射型最容易传播的是搜索URL，注意处理处">
+<meta name="twitter:image" content="http://yoursite.com/images/20160418/safe01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/04/18/业务安全测试切入点/">
+
+
+
+
+
+  <title>业务安全测试切入点 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/04/18/业务安全测试切入点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">业务安全测试切入点</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-18T13:04:25+08:00">
+                2016-04-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/测试/" itemprop="url" rel="index">
+                    <span itemprop="name">测试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="题记"><a href="#题记" class="headerlink" title="题记"></a>题记</h3><p>[放在互联网的数据就不是隐私]，每一个互联网人对此都深有感触<br>互联网企业内部管理不善导致数据出卖、安全漏洞被黑客盗走数据的事情时有发生<br>2016年频繁出现的互联网安全事故，直接导致国内知名漏洞报告平台乌云被查封<br>出现一系列的事故之后，公司了也展开了安全测试，包括服务安全和业务安全<br>这里大致列举日常测试工作中应该要注意的业务安全问题</p>
+<h3 id="XSS类：包括存储型和反射型"><a href="#XSS类：包括存储型和反射型" class="headerlink" title="XSS类：包括存储型和反射型"></a>XSS类：包括存储型和反射型</h3><p>反射型最容易传播的是搜索URL，注意处理处理这类URL中的XSS风险代码，其中存储型的危害比反射型的危害相对要更大，建议在平台做统一处理<br>测试代码举例：<a href="http://drops.wooyun.org/tips/845" target="_blank" rel="noopener">http://drops.wooyun.org/tips/845</a> [乌云已挂出维护公告]</p>
+<h3 id="前端存在业务校验"><a href="#前端存在业务校验" class="headerlink" title="前端存在业务校验"></a>前端存在业务校验</h3><p>任何前端的检验都是为提高用户体验而做，不具体任何安全性。若涉及业务上重要的校验，需要确保前后端都存在统一的逻辑校验<br>例如：数字大小范围、时间长度范围</p>
+<h3 id="POST表单冗余数据"><a href="#POST表单冗余数据" class="headerlink" title="POST表单冗余数据"></a>POST表单冗余数据</h3><p>POST表单中提交了页面或业务逻辑中不允许直接修改的数据<br>例如：常用的如手机号、邮箱，修改时会单独跳转到其他页面进行校验，展示时以灰色不可编辑的形式展示在表单中</p>
+<p><img src="/images/20160418/safe01.png" alt></p>
+<h3 id="突破搜索参数数量"><a href="#突破搜索参数数量" class="headerlink" title="突破搜索参数数量"></a>突破搜索参数数量</h3><p>很多网站都会有搜索，搜索中有很多的条件可选，业务在设计时对部分搜索条件的数量进行了限制<br>在截获请求之后，对搜索条件进行扩充后并发请求服务器，会对服务器造成比较大的压力，这一条也与前面讲到的&lt;前端存在业务校验&gt;有关联</p>
+<h3 id="密码类传输"><a href="#密码类传输" class="headerlink" title="密码类传输"></a>密码类传输</h3><p>主要涉及注册、登录、修改密码、忘记密码这几类常用操作，传输过程中若使用明文密码是非常不安全的</p>
+<h3 id="数据操作类带有ID"><a href="#数据操作类带有ID" class="headerlink" title="数据操作类带有ID"></a>数据操作类带有ID</h3><p>密切注意编辑、删除操作中带有数据ID的情况，水平越权操作数据，是非常危险的漏洞</p>
+<p><img src="/images/20160418/safe02.png" alt></p>
+<h3 id="数据库存储长度"><a href="#数据库存储长度" class="headerlink" title="数据库存储长度"></a>数据库存储长度</h3><p>在产品设计时会对数据的可输入在前端做一个长度或输入类型限制，是为了保证更好的用户体验和确保有限的系统开销<br>在前面我们已经知道前端的限制是没有任何安全意义的，通过工具修改数据类型和长度同样可被正常提交，若出错很有可能会暴露数据库的关键信息</p>
+<h3 id="重复提交请求-数据数量有限制"><a href="#重复提交请求-数据数量有限制" class="headerlink" title="重复提交请求|数据数量有限制"></a>重复提交请求|数据数量有限制</h3><p>对于不允许重复提交的请求和数量有限制的存储，不光在前端做限制，在服务端也在有对应的校验和限制</p>
+<h3 id="数据回填"><a href="#数据回填" class="headerlink" title="数据回填"></a>数据回填</h3><p>将用户输入的数据直接回填在JSP，然后作为标签中某个属性值显示在页面的HTML中，这种情况下如果不作处理，可能有XSS<br>常见有属性有value和title</p>
+<p><img src="/images/20160418/safe03.png" alt></p>
+<h3 id="自动登录"><a href="#自动登录" class="headerlink" title="自动登录"></a>自动登录</h3><p>修改密码、重置密码类操作时，一定不要在最后附加一个自动登录的动作。不可将这个判断将给前端或者浏览器</p>
+<h3 id="撞库"><a href="#撞库" class="headerlink" title="撞库"></a>撞库</h3><p>网络上有很多泄漏的账号密码资源，被拿到之后会用于撞库，取得一些网站的用户名密码<br>这各情况通常的做法是增加操作成本，比如限制每个IP下请求对应接口的次数、出现验证码、锁定账户2小时等</p>
+<h3 id="暴力破解"><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h3><p>重灾区在找回密码验证码，或者其他的任何重要操作需要数字验证码的部分<br>建议：将验证码复杂度增加（由纯属4位数据变成6位数字和字母组合），同时加上图形验证码，同时最好有其他访问防爆或监控机制</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/安全/" rel="tag"># 安全</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/08/汉语言的重要性/" rel="next" title="汉语言的重要性">
+                <i class="fa fa-chevron-left"></i> 汉语言的重要性
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/08/面试准备--Linux/" rel="prev" title="面试准备--Linux">
+                面试准备--Linux <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题记"><span class="nav-number">1.</span> <span class="nav-text">题记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XSS类：包括存储型和反射型"><span class="nav-number">2.</span> <span class="nav-text">XSS类：包括存储型和反射型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前端存在业务校验"><span class="nav-number">3.</span> <span class="nav-text">前端存在业务校验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POST表单冗余数据"><span class="nav-number">4.</span> <span class="nav-text">POST表单冗余数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#突破搜索参数数量"><span class="nav-number">5.</span> <span class="nav-text">突破搜索参数数量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#密码类传输"><span class="nav-number">6.</span> <span class="nav-text">密码类传输</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据操作类带有ID"><span class="nav-number">7.</span> <span class="nav-text">数据操作类带有ID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库存储长度"><span class="nav-number">8.</span> <span class="nav-text">数据库存储长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重复提交请求-数据数量有限制"><span class="nav-number">9.</span> <span class="nav-text">重复提交请求|数据数量有限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据回填"><span class="nav-number">10.</span> <span class="nav-text">数据回填</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动登录"><span class="nav-number">11.</span> <span class="nav-text">自动登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撞库"><span class="nav-number">12.</span> <span class="nav-text">撞库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#暴力破解"><span class="nav-number">13.</span> <span class="nav-text">暴力破解</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
