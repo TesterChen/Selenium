@@ -1,1 +1,0 @@
-(window["nojMonomainWebpackJsonpproduction"]=window["nojMonomainWebpackJsonpproduction"]||[]).push([[37],{lTsX:function(o,n,a){"use strict";var i=a("jVoT");var p=a.n(i);var c=p.a;n["a"]=c}}]);
