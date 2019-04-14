@@ -259,6 +259,460 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/04/01/Selenium Web自动化01--快速开始/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/01/Selenium Web自动化01--快速开始/" itemprop="url">Selenium Web自动化01--快速开始</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-01T21:53:00+08:00">
+                2019-04-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><p>1、Java<br>2、Selenium<br>3、TestNG<br>4、Xpath<br>5、Maven</p>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>启动本地浏览器，打开百度，输入Selenium搜索</p>
+<h3 id="编码过程"><a href="#编码过程" class="headerlink" title="编码过程"></a>编码过程</h3><p>1、通过Eclipse新建一个Maven项目(这里不细说)，在pom.xml文件中加入如下内容，添加保存后，IDE会自动下载对应jar包，等待下载完成。<br>Maven信息可以在<a href="https://mvnrepository.com/" target="_blank" rel="noopener">https://mvnrepository.com/</a> 搜索找到；<br>也可以在官网 <a href="https://www.seleniumhq.org/download/maven.jsp" target="_blank" rel="noopener">https://www.seleniumhq.org/download/maven.jsp</a> 找到相关信息；<br>注意：此部分内容需要添加在 &#60;dependencies&#62;&#60;/dependencies&#62; 标签中，如果没有需要新增。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;selenium-chrome-driver&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;3.9.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.testng&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;testng&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;6.9.6&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>2、下载目标driver文件<br>不同系统、流览器对应不同的driver文件，可去到官网seleniumhq.org下载，这里提供chrome driver的详细下载地址：<br><a href="https://sites.google.com/a/chromium.org/chromedriver/downloads" target="_blank" rel="noopener">https://sites.google.com/a/chromium.org/chromedriver/downloads</a><br>我们今天下载的是chrome的mac版，我将driver文件存储到了项目的/src/main/resource/driver/路径下，chromedriver是driver的文件名。</p>
+<p>3、在项目中新建一个Java类文件FirstWebAutoTest.java，文件中输入如下代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package 根据自己项目情况修改或不替换此行</span></span><br><span class="line"><span class="keyword">package</span> com.test.qa.mytest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.By;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.WebDriver;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.chrome.ChromeDriver;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.AfterTest;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.BeforeTest;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * simple selenium web test script</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstWebAutoTest</span> </span>&#123;</span><br><span class="line">	WebDriver driver;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// @BeforeTest注解表示before()这个方法在测试开始之前执行</span></span><br><span class="line">	<span class="meta">@BeforeTest</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 获取当前项目路径</span></span><br><span class="line">		String projectPath = System.getProperty(<span class="string">"user.dir"</span>);</span><br><span class="line">		<span class="comment">// 设置chromedriver服务地址，这里用到了前面存放driver的地址</span></span><br><span class="line">		System.setProperty(<span class="string">"webdriver.chrome.driver"</span>, projectPath+<span class="string">"/src/main/resource/driver/chromedriver"</span>);</span><br><span class="line">		<span class="comment">// 实例化一个chrome driver，也就是一个浏览器</span></span><br><span class="line">		driver = <span class="keyword">new</span> ChromeDriver();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// @Test注解表示这里是测试脚本主体</span></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 打开目标网站</span></span><br><span class="line">		driver.get(<span class="string">"http://www.baidu.com/"</span>);</span><br><span class="line">		<span class="comment">// 在目标输入框中输入selenium</span></span><br><span class="line">		driver.findElement(By.xpath(<span class="string">"//input[@id='kw']"</span>)).sendKeys(<span class="string">"selenium"</span>);</span><br><span class="line">		<span class="comment">// 点击搜索按钮</span></span><br><span class="line">		driver.findElement(By.xpath(<span class="string">"//input[@id='su']"</span>)).click();</span><br><span class="line">		<span class="comment">// 等待3s</span></span><br><span class="line">		sleep(<span class="number">3000</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// @AfterTest注解中往往放一些资源释放类动作</span></span><br><span class="line">	<span class="meta">@AfterTest</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">after</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 关闭和退出浏览器，释放资源</span></span><br><span class="line">		driver.close();</span><br><span class="line">		driver.quit();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 等待方法是为了让我们更好的看到自动化执行结果</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(<span class="keyword">int</span> seconds)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Thread.sleep(seconds);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、在FirstWebAutoTest.java文件点击右键，选择“Run As – TestNG Test”<br>Wow Cao ！！！<br>你会发现，竟然很神奇地启动了浏览器，惊不惊喜，意不意外</p>
+<p>此部分代码源码 <a href="https://github.com/TesterChen/AutomationTest/tree/master/firstAutoTest" target="_blank" rel="noopener">GitHub firstAutoTest</a></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过上述步骤，如果你已经实现了打开浏览器、在百度上搜索selenium，那说明你已经开始了你的自动化之旅。<br>今天接触到的技术栈，几乎是我们后面要用到的所有，刚开始接触都会有疑惑，后续会对用到的每一项内容都详细讲解。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/04/01/Selenium Web自动化00--环境配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/01/Selenium Web自动化00--环境配置/" itemprop="url">Selenium Web自动化00--环境配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-01T17:30:00+08:00">
+                2019-04-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>1、安装Java JDK，建议1.8或以上<br>2、下载Eclipse<br>2、安装TestNG</p>
+<h3 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h3><p>官网下载地址<br><a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/index.html</a><br>安装方式比较单一，对于配置方式windows和mac有一定的差异，针对性地配置</p>
+<h3 id="下载Eclispe"><a href="#下载Eclispe" class="headerlink" title="下载Eclispe"></a>下载Eclispe</h3><p>去官网找到合适的版本下载，安装即可<br><a href="https://www.eclipse.org/downloads/" target="_blank" rel="noopener">https://www.eclipse.org/downloads/</a></p>
+<h3 id="安装TestNG"><a href="#安装TestNG" class="headerlink" title="安装TestNG"></a>安装TestNG</h3><p>我们需要在Eclipse安装成功后，我们需要在Eclipse IDE中安装TestNG插件，这样方便我们在Eclipse中调试我们的脚本。</p>
+<p>以Eclisep为例，安装入口在：Help–Install New Software<br>在弹出层中输入TestNG的安装地址并回车：<a href="http://beust.com/eclipse" target="_blank" rel="noopener">http://beust.com/eclipse</a><br>有些版本中可能已经有对应插件，如果插件已经存在则不需要再次安装，可以在安装弹出层的Manage中查看</p>
+<p><img src="/images/selenium/installsoftware.png" alt></p>
+<p>整个获取和下载过程会比较慢，请耐心等待<br>下载完成后，会提示安装，根据提示下一步安装即可</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这里主要在于提出需要准备哪些环境因素<br>对于有疑惑的部分可以单独百度上寻找相关信息<br>或参考 <a href="https://www.yiibai.com/testng/hello-world-example.html" target="_blank" rel="noopener">https://www.yiibai.com/testng/hello-world-example.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/04/01/解决项目分支和环境冲突/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/01/解决项目分支和环境冲突/" itemprop="url">解决项目分支或环境冲突</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-01T16:29:00+08:00">
+                2019-04-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/测试/" itemprop="url" rel="index">
+                    <span itemprop="name">测试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近，有几次聊到测试过程中如何处理项目或环境冲突。<br>在日常工作中偶尔会遇到同一项目并行开发、提测的情况，那么我们如何处理这种情况？</p>
+<h3 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h3><p>项目：ins-test-platform<br>现有分支：<br>ins-test-platform/branch/ins-test-platform_andy_201903221612<br>ins-test-platform/branch_lilei_201903211145<br>开发人员：Andy，Lilei</p>
+<h3 id="问题是？"><a href="#问题是？" class="headerlink" title="问题是？"></a>问题是？</h3><p>开发人员Andy和Lilei同时针对ins-test-platform项目进行了开发，同一时间提交测试同事进行测试，但两个分支（需求）上线时间非同一天。碰巧的是现在只有一套测试环境是空闲、可以用于测试，这个时候我们怎么办？</p>
+<h3 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h3><p>1、有风险的代码：绝不合并到trunk/master；<br>2、有风险的项目：单独分支开发；<br>3、时间较久的分支：先合并线上的代码，使用新分支测试。</p>
+<h3 id="处理方法"><a href="#处理方法" class="headerlink" title="处理方法"></a>处理方法</h3><p>根据上面的原则，我们通常的处理方式如下：<br>1、Andy和Lilei两位开发人员，各自合并线上代码后形成新的分支：<br>ins-test-platform/branch/ins-test-platform_andy_201904011644（分支A）<br>ins-test-platform/branch/ins-test-platform_lilei_201904011645 (分支B)</p>
+<p>此时合并主干代码的作用有两个：<br>1、确保所有的代码均是被测试过的，而不是上线之前再次合并代码，引入新的风险；<br>2、减少后续因代码合并带来的时间风险。</p>
+<p>实践证明，坚持这一条会给我们最后上线带来意想不到的顺利。</p>
+<p>2、根据上一步形成的两个分支，合并成新的分支，此分支为测试环境部署的分支：<br>ins-test-platform/branch/ins-test-platform_andyandlilei_201904011801 (分支C)</p>
+<p>3、修改bug时，Andy和Lilei需要在自己对应的分支A/B上修改，同时将修改同步到分支C，重新部署分支C验证修改。</p>
+<p>4、若Andy的项目先测试通过，需要先上线就很简单了：<br>分支A代码已经与线上合并过，所以可以很快捷地通过工具合并完成；<br>但仍然要注意此时Andy的分支A是没有部署在测试环境测试过的，需要合并到主干后进行冒烟或者回归测试后再上线。</p>
+<p>5、Andy的项目已经上线，此时Lilei项目也可以上线了：<br>因为Andy分支A的代码一直在分支C是同步修改的，所以代码合并工作也会十分顺利，按流程回归测试即可上线。</p>
+<p>6、所有项目上线完成<br>到这里，我们两个需求的代码就先后上线了，代价是开发同事在修改bug时会有部分重复的操作。</p>
+<h3 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h3><p>建议提供多个测试环境。彼此不影响，我们只需要做好步骤1即可。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/03/29/是要写博客了/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1383,450 +1837,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2015/09/08/汉语言的重要性/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/09/08/汉语言的重要性/" itemprop="url">汉语言的重要性</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-09-08T15:54:25+08:00">
-                2015-09-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>文案功底对产品经理来说是一项经常使用、而又难以尽善尽美的工作</p>
-<h3 id="标点使用"><a href="#标点使用" class="headerlink" title="标点使用"></a>标点使用</h3><p>请看下图（报名提示层）</p>
-<p><img src="/images/20150908/input.png" alt></p>
-<p>多处在末尾使用逗号<br>一行只有一句话，后方加一个逗号再换行，不知是否符合汉语言或产品的设计规范，不过这种形式看起来很别扭，有画蛇添足之嫌？</p>
-<h3 id="时态的使用和链接位置的控制"><a href="#时态的使用和链接位置的控制" class="headerlink" title="时态的使用和链接位置的控制"></a>时态的使用和链接位置的控制</h3><p>请看下图（QQ试用版过期的提示）</p>
-<p><img src="/images/20150908/overtime.png" alt></p>
-<p>存在的问题：<br>“将”的意思是未来某个时候，不是现在<br>“将无法继续使用”，意思是在以后某个时间开始无法使用，而这里的实际意思是“已无法继续使用”。看到将无法继续使用，我认为还是可以用的，尝试多次其实已经无法使用这个试用版本登录。<br>（博主每天都使用QQ，能断定这是第一天弹出来的提示信息）</p>
-<p>“请您到官网下载最新版本”，这里有一个链接，链接的位置挂在“官网”两个字，实际把链接由“官网”换成“下载最新版本”更合适。<br>为什么说换成“下载最新版本”更合适？<br>原因有两个：一是“官网”两个字的可点击区域过小而且换行；二是我的版本过期了，不应该是去官网，而应该是下载最新可用版本，所以链接为“下载最新版本”  更佳。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2015/06/15/Selenium自动化调试后C盘越来越大/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/06/15/Selenium自动化调试后C盘越来越大/" itemprop="url">Selenium自动化调试后C盘越来越大</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-06-15T11:54:25+08:00">
-                2015-06-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/自动化/" itemprop="url" rel="index">
-                    <span itemprop="name">自动化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在本机调试了一段时间自动化脚本后发现C盘占用越来越大，增长速度比较明显</p>
-<p>通过360等工具清理系统垃圾表明并不好使</p>
-<p>最后在系统临时文件中看到大量因为调试或不正常结束而Driver而产生的临时文件</p>
-<p>具体方法是：开始–&gt;运行–&gt;输入%temp%</p>
-<p><img src="/images/20150615/cmd.png" alt></p>
-<p>进入文件夹后，通过观察就会看到占用磁盘的大量很有规律的临时文件，将其直接删除即可</p>
-<p><img src="/images/20150615/tempfile.png" alt></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2013/03/14/软件测试基础流程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/03/14/软件测试基础流程/" itemprop="url">软件测试基础流程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-03-14T16:00:25+08:00">
-                2013-03-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>软件测试工作中最重要的三要素：需求+技术+流程<br>下图是Tester Chen整理的软件测试基础流程图：</p>
-<p><img src="/images/20130314/way.jpg" alt></p>
-<h3 id="需求评审会"><a href="#需求评审会" class="headerlink" title="需求评审会"></a>需求评审会</h3><p>由产品人员或需求人员主持，主要讨论需求的完整性、合理性，同时加深项目组各个成员对需求的理解</p>
-<h3 id="测试用例评审会"><a href="#测试用例评审会" class="headerlink" title="测试用例评审会"></a>测试用例评审会</h3><p>在测试开始前由测试工程师组织，主要确认测试用例对于需求的覆盖度、测试用例本身的合理性</p>
-<h3 id="测试评审会"><a href="#测试评审会" class="headerlink" title="测试评审会"></a>测试评审会</h3><p>测试工作完成后，在上线之前由测试工程师组织的一次评审会议，主要内容是再次讨论测试是否完全、根据产品或项目现测试情况是否符合上线条件</p>
-<h3 id="执行测试-amp-报告回归缺陷"><a href="#执行测试-amp-报告回归缺陷" class="headerlink" title="执行测试&amp;报告回归缺陷"></a>执行测试&amp;报告回归缺陷</h3><p>这个阶段比较特殊，在项目中我们一般分为α测试和β测试，在产品中我们一般分为开发环境测试、预上线环境测试<br>α测试大多数情况下执行者为测试工程师，β测试大多数情况下为目标用户<br>开发环境测试，是指测试工程师在开发环境下进行的测试，可随时更新、修改代码<br>预上线环境测试：是指开发环境测试通过后，使用线上真实数据进行测试的过程，主要为验证测试结果，保证生产上线的正确性</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1877,7 +1887,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1888,7 +1898,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">categories</span>
                 
               </div>
@@ -1899,7 +1909,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -1947,14 +1957,6 @@
 
 
   <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 

@@ -1,3 +1,6 @@
+http://chainradar.cn/2019/04/13/Appium App自动化00--环境配置/
+http://chainradar.cn/2019/04/13/Appium App自动化01--通过Appium启动App/
+http://chainradar.cn/2019/04/13/Shell 入门知识/
 http://chainradar.cn/2019/04/05/Selenium Web自动化08--ExtentReports美化TestNG报告/
 http://chainradar.cn/2019/04/04/Selenium Web自动化07--常见问题/
 http://chainradar.cn/2019/04/03/Selenium Web自动化06--进阶实用方法/
