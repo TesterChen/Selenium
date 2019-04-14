@@ -1,23 +1,23 @@
-http://chainradar.cn/2019/04/13/Appium App自动化00--环境配置/
-http://chainradar.cn/2019/04/13/Appium App自动化01--通过Appium启动App/
-http://chainradar.cn/2019/04/13/Shell 入门知识/
-http://chainradar.cn/2019/04/05/Selenium Web自动化08--ExtentReports美化TestNG报告/
-http://chainradar.cn/2019/04/04/Selenium Web自动化07--常见问题/
-http://chainradar.cn/2019/04/03/Selenium Web自动化06--进阶实用方法/
-http://chainradar.cn/2019/04/02/Selenium Web自动化05--常用原生方法/
-http://chainradar.cn/2019/04/02/Selenium Web自动化04--元素获取方式/
-http://chainradar.cn/2019/04/02/Selenium Web自动化03--精通xpath书写/
-http://chainradar.cn/2019/04/02/Selenium Web自动化02--TestNG注解/
-http://chainradar.cn/2019/04/01/Selenium Web自动化01--快速开始/
-http://chainradar.cn/2019/04/01/Selenium Web自动化00--环境配置/
+http://chainradar.cn/2019/04/13/Shell 00--入门知识/
 http://chainradar.cn/2019/04/01/解决项目分支和环境冲突/
 http://chainradar.cn/2019/03/29/是要写博客了/
 http://chainradar.cn/2019/03/28/中关村记忆/
+http://chainradar.cn/2019/03/02/Selenium Web自动化02--TestNG注解/
 http://chainradar.cn/2018/08/08/面试准备--SQL/
 http://chainradar.cn/2018/08/08/面试准备--算法/
 http://chainradar.cn/2018/08/08/面试准备--Java基础/
 http://chainradar.cn/2018/08/08/面试准备--Linux/
+http://chainradar.cn/2017/02/13/Appium App自动化01--通过Appium启动App/
+http://chainradar.cn/2017/01/13/Appium App自动化00--环境配置/
+http://chainradar.cn/2016/09/05/Selenium Web自动化08--ExtentReports美化TestNG报告/
+http://chainradar.cn/2016/08/04/Selenium Web自动化07--常见问题/
+http://chainradar.cn/2016/07/03/Selenium Web自动化06--进阶实用方法/
+http://chainradar.cn/2016/06/02/Selenium Web自动化05--常用原生方法/
+http://chainradar.cn/2016/05/02/Selenium Web自动化04--元素获取方式/
 http://chainradar.cn/2016/04/18/业务安全测试切入点/
+http://chainradar.cn/2016/04/02/Selenium Web自动化03--精通xpath书写/
+http://chainradar.cn/2016/02/01/Selenium Web自动化01--快速开始/
+http://chainradar.cn/2016/01/01/Selenium Web自动化00--环境配置/
 http://chainradar.cn/2015/09/08/汉语言的重要性/
 http://chainradar.cn/2015/06/15/Selenium自动化调试后C盘越来越大/
 http://chainradar.cn/2013/03/14/软件测试基础流程/

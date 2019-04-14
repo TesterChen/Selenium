@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="web自动化,xpath,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="目标2小时熟练xpath书写，可以实现常见自动化元素定位需求。 写在最前xpath中用到的引号都应该是英文状态，复制后请注意修是否英文状态。大部分情况下，单引号或双引号，不会影响元素定位。 Html小了解首先，我们要理解网页是由很多html标签对组成，这三类是我们经常要打交道的：123456789A标签（也就是我们常说的链接）&amp;lt;a href=&quot;http://news.baidu.com&quot; n">
+<meta name="keywords" content="web自动化,xpath">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Selenium Web自动化03--xpath书写">
+<meta property="og:url" content="http://chainradar.cn/2016/04/02/Selenium Web自动化03--精通xpath书写/index.html">
+<meta property="og:site_name" content="Tester Chen">
+<meta property="og:description" content="目标2小时熟练xpath书写，可以实现常见自动化元素定位需求。 写在最前xpath中用到的引号都应该是英文状态，复制后请注意修是否英文状态。大部分情况下，单引号或双引号，不会影响元素定位。 Html小了解首先，我们要理解网页是由很多html标签对组成，这三类是我们经常要打交道的：123456789A标签（也就是我们常说的链接）&amp;lt;a href=&quot;http://news.baidu.com&quot; n">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://chainradar.cn/images/selenium/elementsfind.png">
+<meta property="og:updated_time" content="2019-04-14T15:12:33.309Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Selenium Web自动化03--xpath书写">
+<meta name="twitter:description" content="目标2小时熟练xpath书写，可以实现常见自动化元素定位需求。 写在最前xpath中用到的引号都应该是英文状态，复制后请注意修是否英文状态。大部分情况下，单引号或双引号，不会影响元素定位。 Html小了解首先，我们要理解网页是由很多html标签对组成，这三类是我们经常要打交道的：123456789A标签（也就是我们常说的链接）&amp;lt;a href=&quot;http://news.baidu.com&quot; n">
+<meta name="twitter:image" content="http://chainradar.cn/images/selenium/elementsfind.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chainradar.cn/2016/04/02/Selenium Web自动化03--精通xpath书写/">
+
+
+
+
+
+  <title>Selenium Web自动化03--xpath书写 | Tester Chen</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tester Chen</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/04/02/Selenium Web自动化03--精通xpath书写/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Selenium Web自动化03--xpath书写</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-02T12:36:00+08:00">
+                2016-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>2小时熟练xpath书写，可以实现常见自动化元素定位需求。</p>
+<h3 id="写在最前"><a href="#写在最前" class="headerlink" title="写在最前"></a>写在最前</h3><p>xpath中用到的引号都应该是英文状态，复制后请注意修是否英文状态。<br>大部分情况下，单引号或双引号，不会影响元素定位。</p>
+<h3 id="Html小了解"><a href="#Html小了解" class="headerlink" title="Html小了解"></a>Html小了解</h3><p>首先，我们要理解网页是由很多html标签对组成，这三类是我们经常要打交道的：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">A标签（也就是我们常说的链接）</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://news.baidu.com"</span> <span class="attr">name</span>=<span class="string">"tj_trnews"</span> <span class="attr">class</span>=<span class="string">"mnav"</span>&gt;</span>新闻<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">文本输入框</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"kw"</span> <span class="attr">name</span>=<span class="string">"wd"</span> <span class="attr">class</span>=<span class="string">"s_ipt"</span> <span class="attr">value</span>=<span class="string">""</span> <span class="attr">maxlength</span>=<span class="string">"255"</span> <span class="attr">autocomplete</span>=<span class="string">"off"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">按钮（两种都是按钮）</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">id</span>=<span class="string">"su"</span> <span class="attr">value</span>=<span class="string">"百度一下"</span> <span class="attr">class</span>=<span class="string">"bg s_btn"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"search-button"</span> <span class="attr">data-title</span>=<span class="string">"搜索"</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>根据标签中间是否有内容的特征，我们可以将标签简单分成两类。<br>如下所示，我们把attribute称作标签的属性，something称作标签的文本。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">type</span> <span class="attr">attribute</span>=<span class="string">'att'</span>&gt;</span><span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">type</span> <span class="attr">attribute</span>=<span class="string">'att'</span>&gt;</span>something<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><p>xpath中常见表达式如下：</p>
+<style>
+table th:first-of-type {
+    width: 100px;
+}
+</style>
+
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nodename</td>
+<td>选取此节点的所有子节点</td>
+</tr>
+<tr>
+<td>//</td>
+<td>从根节点选取</td>
+</tr>
+<tr>
+<td>/</td>
+<td>从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置</td>
+</tr>
+<tr>
+<td>.</td>
+<td>选取当前节点</td>
+</tr>
+<tr>
+<td>..</td>
+<td>选取当前节点的父节点</td>
+</tr>
+<tr>
+<td>@</td>
+<td>选取属性</td>
+</tr>
+</tbody>
+</table>
+<h3 id="验证xpath"><a href="#验证xpath" class="headerlink" title="验证xpath"></a>验证xpath</h3><p>这里提到的xpath，可以打开 <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> 后，直接在chrome浏览器中验证xpath书写是否正确。<br>在浏览器页面或对应元素[右键]后点击[检查]，会打开Elements区域，在打开的Elements区域下方按Ctrl+F会有一个搜索框。<br>在这里可以验证xpath的正确性：<br><img src="/images/selenium/elementsfind.png" alt></p>
+<h3 id="Label"><a href="#Label" class="headerlink" title="Label"></a>Label</h3><p>通过A标签文本定位<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// contains是包含的意思，可以用于模糊匹配元素</span><br><span class="line">//a[contains(text(),'新闻')] </span><br><span class="line">// text()=则需要文本完全匹配，用于精准匹配元素</span><br><span class="line">//a[text()='新闻']</span><br></pre></td></tr></table></figure> </p>
+<p>通过A标签属性定位<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 理论上说只要在标签中出现的属性均可以用于定位，这里使用name</span><br><span class="line">//a[contains(@name,'tj_trnews')]</span><br></pre></td></tr></table></figure></p>
+<h3 id="Input-amp-Button"><a href="#Input-amp-Button" class="headerlink" title="Input&amp;Button"></a>Input&amp;Button</h3><p>理论上说任意标签的属性均可以用于定位，建议使用常见的id、name等<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//input[@id='kw']</span><br><span class="line">//input[@name='wd']</span><br><span class="line">//input[@class='s_ipt']</span><br></pre></td></tr></table></figure></p>
+<p>其他标签类型元素的定位与输入框类似，同样使用属性定位</p>
+<h3 id="多元素"><a href="#多元素" class="headerlink" title="多元素"></a>多元素</h3><p>当页面中存在多个一样的元素时，我们常使用下标定位。<br>需要注意的是多个元素时，第一个元素的下标是从1开始，而不是0。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 直接出现6个符合条件的元素，返回的是List</span><br><span class="line">//a[@class='mnav']</span><br><span class="line"></span><br><span class="line">// 拿到第一个</span><br><span class="line">(//a[@class='mnav'])[1]</span><br><span class="line"></span><br><span class="line">// 动态拿到最后一个</span><br><span class="line">(//a[@class='mnav'])[last()]</span><br></pre></td></tr></table></figure>
+<h3 id="多属性定位"><a href="#多属性定位" class="headerlink" title="多属性定位"></a>多属性定位</h3><p>通过多个属性配合定位元素，或者匹配任意元素即可</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 同时满足两个条件，用于辅助进一步定位元素</span><br><span class="line">//input[@id='kw' and @name='wd']</span><br><span class="line">//input[@id='kw'][@name='wd']</span><br><span class="line"></span><br><span class="line">// 匹配任一条件即可</span><br><span class="line">//input[@id='kw' or @name='wd']</span><br></pre></td></tr></table></figure>
+<h3 id="获取父元素"><a href="#获取父元素" class="headerlink" title="获取父元素"></a>获取父元素</h3><p>通过/..即可获取当前元素的父元素，当父元素不好定位时也可以考虑使用此方法</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 定位元素的父元素</span><br><span class="line">//input[@id='kw']/..</span><br></pre></td></tr></table></figure>
+<h3 id="部分内容定位"><a href="#部分内容定位" class="headerlink" title="部分内容定位"></a>部分内容定位</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 以某文本开头</span><br><span class="line">//a[starts-with(text(),'学')]</span><br><span class="line"></span><br><span class="line">// 包含某些文本，用于模糊匹配元素</span><br><span class="line">//a[contains(text(),'学')] </span><br><span class="line"></span><br><span class="line">// 属性包含某些内容也适用</span><br><span class="line">//a[contains(@name,'news')] </span><br></pre></td></tr></table></figure>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 通过逻辑判断定位元素</span><br><span class="line">//input[@value &gt;= 8]</span><br></pre></td></tr></table></figure>
+<h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>xpath的定位时间相比通过id、name直接定位方式理论上要慢(毫秒级别)。<br>不过，因为现在PC的性能足够好，所以WEB UI自动化实际应用中时间差异无感知，但iOS App中元素xpath定位时会很慢。</p>
+<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><p>更多内容可以前往<br>W3C关于XML Path Language的介绍<br><a href="https://www.w3.org/TR/xpath/" target="_blank" rel="noopener">https://www.w3.org/TR/xpath/</a></p>
+<p>w3school的简版介绍<br><a href="http://www.w3school.com.cn/xpath/index.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/xpath/index.asp</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/web自动化/" rel="tag"># web自动化</a>
+          
+            <a href="/tags/xpath/" rel="tag"># xpath</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/01/Selenium Web自动化01--快速开始/" rel="next" title="Selenium Web自动化01--快速开始">
+                <i class="fa fa-chevron-left"></i> Selenium Web自动化01--快速开始
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/18/业务安全测试切入点/" rel="prev" title="业务安全测试切入点">
+                业务安全测试切入点 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">CHEN JIAN PING</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写在最前"><span class="nav-number">2.</span> <span class="nav-text">写在最前</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Html小了解"><span class="nav-number">3.</span> <span class="nav-text">Html小了解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表达式"><span class="nav-number">4.</span> <span class="nav-text">表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证xpath"><span class="nav-number">5.</span> <span class="nav-text">验证xpath</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Label"><span class="nav-number">6.</span> <span class="nav-text">Label</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-amp-Button"><span class="nav-number">7.</span> <span class="nav-text">Input&amp;Button</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多元素"><span class="nav-number">8.</span> <span class="nav-text">多元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多属性定位"><span class="nav-number">9.</span> <span class="nav-text">多属性定位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取父元素"><span class="nav-number">10.</span> <span class="nav-text">获取父元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部分内容定位"><span class="nav-number">11.</span> <span class="nav-text">部分内容定位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符"><span class="nav-number">12.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能"><span class="nav-number">13.</span> <span class="nav-text">性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展"><span class="nav-number">14.</span> <span class="nav-text">扩展</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CHEN JIAN PING</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

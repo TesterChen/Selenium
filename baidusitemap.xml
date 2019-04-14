@@ -1,23 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://chainradar.cn/2019/04/13/Shell%20%E5%85%A5%E9%97%A8%E7%9F%A5%E8%AF%86/</loc>
+    <loc>http://chainradar.cn/2019/04/13/Shell%2000--%E5%85%A5%E9%97%A8%E7%9F%A5%E8%AF%86/</loc>
     <lastmod>2019-04-14</lastmod>
   </url>  <url>
-    <loc>http://chainradar.cn/2019/04/13/Appium%20App%E8%87%AA%E5%8A%A8%E5%8C%9600--%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
+    <loc>http://chainradar.cn/2017/01/13/Appium%20App%E8%87%AA%E5%8A%A8%E5%8C%9600--%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2019-04-14</lastmod>
   </url>  <url>
-    <loc>http://chainradar.cn/2019/04/13/Appium%20App%E8%87%AA%E5%8A%A8%E5%8C%9601--%E9%80%9A%E8%BF%87Appium%E5%90%AF%E5%8A%A8App/</loc>
+    <loc>http://chainradar.cn/2017/02/13/Appium%20App%E8%87%AA%E5%8A%A8%E5%8C%9601--%E9%80%9A%E8%BF%87Appium%E5%90%AF%E5%8A%A8App/</loc>
+    <lastmod>2019-04-14</lastmod>
+  </url>  <url>
+    <loc>http://chainradar.cn/2016/05/02/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9604--%E5%85%83%E7%B4%A0%E8%8E%B7%E5%8F%96%E6%96%B9%E5%BC%8F/</loc>
+    <lastmod>2019-04-14</lastmod>
+  </url>  <url>
+    <loc>http://chainradar.cn/2016/06/02/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9605--%E5%B8%B8%E7%94%A8%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2019-04-14</lastmod>
+  </url>  <url>
+    <loc>http://chainradar.cn/2016/07/03/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9606--%E8%BF%9B%E9%98%B6%E5%AE%9E%E7%94%A8%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2019-04-14</lastmod>
+  </url>  <url>
+    <loc>http://chainradar.cn/2016/08/04/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9607--%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2019-04-14</lastmod>
+  </url>  <url>
+    <loc>http://chainradar.cn/2016/09/05/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9608--ExtentReports%E7%BE%8E%E5%8C%96TestNG%E6%8A%A5%E5%91%8A/</loc>
+    <lastmod>2019-04-14</lastmod>
+  </url>  <url>
+    <loc>http://chainradar.cn/2016/04/02/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9603--%E7%B2%BE%E9%80%9Axpath%E4%B9%A6%E5%86%99/</loc>
+    <lastmod>2019-04-14</lastmod>
+  </url>  <url>
+    <loc>http://chainradar.cn/2019/03/02/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9602--TestNG%E6%B3%A8%E8%A7%A3/</loc>
+    <lastmod>2019-04-14</lastmod>
+  </url>  <url>
+    <loc>http://chainradar.cn/2016/02/01/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9601--%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/</loc>
+    <lastmod>2019-04-14</lastmod>
+  </url>  <url>
+    <loc>http://chainradar.cn/2016/01/01/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9600--%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2019-04-14</lastmod>
   </url>  <url>
     <loc>http://chainradar.cn/about/index.html</loc>
     <lastmod>2019-04-12</lastmod>
-  </url>  <url>
-    <loc>http://chainradar.cn/2019/04/01/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9601--%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/</loc>
-    <lastmod>2019-04-11</lastmod>
-  </url>  <url>
-    <loc>http://chainradar.cn/2019/04/05/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9608--ExtentReports%E7%BE%8E%E5%8C%96TestNG%E6%8A%A5%E5%91%8A/</loc>
-    <lastmod>2019-04-11</lastmod>
   </url>  <url>
     <loc>http://chainradar.cn/2019/03/29/%E6%98%AF%E8%A6%81%E5%86%99%E5%8D%9A%E5%AE%A2%E4%BA%86/</loc>
     <lastmod>2019-04-10</lastmod>
@@ -36,27 +57,6 @@
   </url>  <url>
     <loc>http://chainradar.cn/2019/03/28/%E4%B8%AD%E5%85%B3%E6%9D%91%E8%AE%B0%E5%BF%86/</loc>
     <lastmod>2019-04-07</lastmod>
-  </url>  <url>
-    <loc>http://chainradar.cn/2019/04/04/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9607--%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</loc>
-    <lastmod>2019-04-04</lastmod>
-  </url>  <url>
-    <loc>http://chainradar.cn/2019/04/02/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9603--%E7%B2%BE%E9%80%9Axpath%E4%B9%A6%E5%86%99/</loc>
-    <lastmod>2019-04-04</lastmod>
-  </url>  <url>
-    <loc>http://chainradar.cn/2019/04/03/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9606--%E8%BF%9B%E9%98%B6%E5%AE%9E%E7%94%A8%E6%96%B9%E6%B3%95/</loc>
-    <lastmod>2019-04-04</lastmod>
-  </url>  <url>
-    <loc>http://chainradar.cn/2019/04/02/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9605--%E5%B8%B8%E7%94%A8%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95/</loc>
-    <lastmod>2019-04-03</lastmod>
-  </url>  <url>
-    <loc>http://chainradar.cn/2019/04/02/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9602--TestNG%E6%B3%A8%E8%A7%A3/</loc>
-    <lastmod>2019-04-03</lastmod>
-  </url>  <url>
-    <loc>http://chainradar.cn/2019/04/02/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9604--%E5%85%83%E7%B4%A0%E8%8E%B7%E5%8F%96%E6%96%B9%E5%BC%8F/</loc>
-    <lastmod>2019-04-03</lastmod>
-  </url>  <url>
-    <loc>http://chainradar.cn/2019/04/01/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9600--%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
-    <lastmod>2019-04-02</lastmod>
   </url>  <url>
     <loc>http://chainradar.cn/2015/06/15/Selenium%E8%87%AA%E5%8A%A8%E5%8C%96%E8%B0%83%E8%AF%95%E5%90%8EC%E7%9B%98%E8%B6%8A%E6%9D%A5%E8%B6%8A%E5%A4%A7/</loc>
     <lastmod>2019-04-02</lastmod>
