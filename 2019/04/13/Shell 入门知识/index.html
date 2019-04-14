@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Tester Chen">
 <meta property="og:description" content="目标简单了解Shell脚本，能写简单脚本，运行脚本。 bash与shgnu关于bash的描述是这样的：Bash is the GNU Project’s shell. Bash is the Bourne Again SHell. Bash is an sh-compatible shell that incorporates useful features from the Korn shell">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-13T08:23:19.523Z">
+<meta property="og:updated_time" content="2019-04-14T15:08:28.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shell入门知识">
 <meta name="twitter:description" content="目标简单了解Shell脚本，能写简单脚本，运行脚本。 bash与shgnu关于bash的描述是这样的：Bash is the GNU Project’s shell. Bash is the Bourne Again SHell. Bash is an sh-compatible shell that incorporates useful features from the Korn shell">
@@ -353,11 +353,17 @@
 
       
         <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>简单了解Shell脚本，能写简单脚本，运行脚本。</p>
-<h3 id="bash与sh"><a href="#bash与sh" class="headerlink" title="bash与sh"></a>bash与sh</h3><p>gnu关于bash的描述是这样的：<br>Bash is the GNU Project’s shell. Bash is the Bourne Again SHell. Bash is an sh-compatible shell that incorporates useful features from the Korn shell (ksh) and C shell (csh). It is intended to conform to the IEEE POSIX P1003.2/ISO 9945.2 Shell and Tools standard. It offers functional improvements over sh for both programming and interactive use. In addition, most sh scripts can be run by Bash without modification.</p>
-<p><a href="http://www.gnu.org/software/bash/" target="_blank" rel="noopener">http://www.gnu.org/software/bash/</a><br><a href="https://blog.csdn.net/XuHang666/article/details/83270152" target="_blank" rel="noopener">https://blog.csdn.net/XuHang666/article/details/83270152</a><br>sh 等价于 bash –posix</p>
-<h3 id="运行方式"><a href="#运行方式" class="headerlink" title="运行方式"></a>运行方式</h3><p>直接运行</p>
-<p>文件运行</p>
-<h3 id="帮助"><a href="#帮助" class="headerlink" title="帮助"></a>帮助</h3><p><a href="http://www.dooccn.com/shell/" target="_blank" rel="noopener">在线调试Shell脚本</a><br><a href="https://blog.csdn.net/yugemengjing/article/details/82469785" target="_blank" rel="noopener">Shell编程100例</a></p>
+<h3 id="bash与sh"><a href="#bash与sh" class="headerlink" title="bash与sh"></a>bash与sh</h3><p><a href="http://www.gnu.org/software/bash/" target="_blank" rel="noopener">gnu关于bash的描述是这样的</a>：<br>Bash is the GNU Project’s shell. Bash is the Bourne Again SHell. Bash is an sh-compatible shell that incorporates useful features from the Korn shell (ksh) and C shell (csh). It is intended to conform to the IEEE POSIX P1003.2/ISO 9945.2 Shell and Tools standard. It offers functional improvements over sh for both programming and interactive use. In addition, most sh scripts can be run by Bash without modification.</p>
+<h3 id="运行方式"><a href="#运行方式" class="headerlink" title="运行方式"></a>运行方式</h3><p>直接运行：在控制台直接输入命令执行</p>
+<p>文件运行<br>将shell命令保存在文本，如test.sh，内容如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> hello shell</span><br></pre></td></tr></table></figure></p>
+<p>通过./test.sh 运行脚本</p>
+<h3 id="区别试验"><a href="#区别试验" class="headerlink" title="区别试验"></a>区别试验</h3><p>新建test.sh脚本内容如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="built_in">source</span> pcy.sh    <span class="comment">#pcy.sh并不存在</span></span><br><span class="line"><span class="built_in">echo</span> hello</span><br></pre></td></tr></table></figure></p>
+<p>执行./test.sh，屏幕输出为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./test.sh: line 2: pcy.sh: No such file or directory</span><br></pre></td></tr></table></figure></p>
+<p>因此可以得知，在#!/bin/sh的情况下，source不成功，不会运行source后面的代码。</p>
+<p>修改test.sh脚本的第一行如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">source</span> pcy.sh    <span class="comment">#pcy.sh并不存在</span></span><br><span class="line"><span class="built_in">echo</span> hello</span><br></pre></td></tr></table></figure></p>
+<p>再次执行./test.sh，屏幕输出为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./test.sh: line 2: pcy.sh: No such file or directory</span><br><span class="line">hello</span><br></pre></td></tr></table></figure></p>
+<h3 id="区别总结"><a href="#区别总结" class="headerlink" title="区别总结"></a>区别总结</h3><p>sh跟bash的区别，实际上就是bash有没有开启posix模式的区别。<br>遵循posix的特定规范，代码就不会再向下解释了，程序会停止在这里。<br>sh 等价于 bash –posix</p>
+<h3 id="参考帮助"><a href="#参考帮助" class="headerlink" title="参考帮助"></a>参考帮助</h3><p><a href="http://www.dooccn.com/shell/" target="_blank" rel="noopener">在线调试Shell脚本</a><br><a href="https://blog.csdn.net/yugemengjing/article/details/82469785" target="_blank" rel="noopener">Shell编程100例</a></p>
 
       
     </div>
@@ -532,7 +538,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bash与sh"><span class="nav-number">2.</span> <span class="nav-text">bash与sh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行方式"><span class="nav-number">3.</span> <span class="nav-text">运行方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#帮助"><span class="nav-number">4.</span> <span class="nav-text">帮助</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bash与sh"><span class="nav-number">2.</span> <span class="nav-text">bash与sh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行方式"><span class="nav-number">3.</span> <span class="nav-text">运行方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区别试验"><span class="nav-number">4.</span> <span class="nav-text">区别试验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区别总结"><span class="nav-number">5.</span> <span class="nav-text">区别总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考帮助"><span class="nav-number">6.</span> <span class="nav-text">参考帮助</span></a></li></ol></div>
             
 
           </div>
