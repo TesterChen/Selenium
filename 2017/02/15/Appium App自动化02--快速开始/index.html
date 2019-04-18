@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="目标新建Maven项目，通过Java代码启动App，执行点击动作后退出App。 步骤1、新建Maven项目、添加Maven引用、加入测试代码；2、启动Appium服务；3、通过TestNG运行测试脚本；首次运行若App未启动，请进入手机【设置 -&amp;gt; 通用 -&amp;gt; 描述文件与设备管理】检查描述文件是否被信任。 Maven依赖123456789101112131415161718192021">
+<meta name="description" content="目标新建Maven项目，通过Java代码启动iPhone真机的目标App，执行点击动作后退出App。 环境信息1234Mac --&amp;gt; 10.14.4iPhone Real Device --&amp;gt; 12.2Appium --&amp;gt; 1.12.1Xcode --&amp;gt; 10.2 步骤1、新建Maven项目、添加Maven引用、加入测试代码；2、启动Appium服务；3、通过TestNG运">
 <meta name="keywords" content="Appium,Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Appium UI自动化--快速开始">
+<meta property="og:title" content="Appium UI自动化02--快速开始">
 <meta property="og:url" content="http://chainradar.cn/2017/02/15/Appium App自动化02--快速开始/index.html">
 <meta property="og:site_name" content="Tester Chen">
-<meta property="og:description" content="目标新建Maven项目，通过Java代码启动App，执行点击动作后退出App。 步骤1、新建Maven项目、添加Maven引用、加入测试代码；2、启动Appium服务；3、通过TestNG运行测试脚本；首次运行若App未启动，请进入手机【设置 -&amp;gt; 通用 -&amp;gt; 描述文件与设备管理】检查描述文件是否被信任。 Maven依赖123456789101112131415161718192021">
+<meta property="og:description" content="目标新建Maven项目，通过Java代码启动iPhone真机的目标App，执行点击动作后退出App。 环境信息1234Mac --&amp;gt; 10.14.4iPhone Real Device --&amp;gt; 12.2Appium --&amp;gt; 1.12.1Xcode --&amp;gt; 10.2 步骤1、新建Maven项目、添加Maven引用、加入测试代码；2、启动Appium服务；3、通过TestNG运">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-15T15:21:05.708Z">
+<meta property="og:updated_time" content="2019-04-18T08:48:01.752Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Appium UI自动化--快速开始">
-<meta name="twitter:description" content="目标新建Maven项目，通过Java代码启动App，执行点击动作后退出App。 步骤1、新建Maven项目、添加Maven引用、加入测试代码；2、启动Appium服务；3、通过TestNG运行测试脚本；首次运行若App未启动，请进入手机【设置 -&amp;gt; 通用 -&amp;gt; 描述文件与设备管理】检查描述文件是否被信任。 Maven依赖123456789101112131415161718192021">
+<meta name="twitter:title" content="Appium UI自动化02--快速开始">
+<meta name="twitter:description" content="目标新建Maven项目，通过Java代码启动iPhone真机的目标App，执行点击动作后退出App。 环境信息1234Mac --&amp;gt; 10.14.4iPhone Real Device --&amp;gt; 12.2Appium --&amp;gt; 1.12.1Xcode --&amp;gt; 10.2 步骤1、新建Maven项目、添加Maven引用、加入测试代码；2、启动Appium服务；3、通过TestNG运">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>Appium UI自动化--快速开始 | Tester Chen</title>
+  <title>Appium UI自动化02--快速开始 | Tester Chen</title>
   
 
 
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Appium UI自动化--快速开始</h1>
+          <h1 class="post-title" itemprop="name headline">Appium UI自动化02--快速开始</h1>
         
 
         <div class="post-meta">
@@ -352,7 +352,8 @@
       
 
       
-        <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>新建Maven项目，通过Java代码启动App，执行点击动作后退出App。</p>
+        <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>新建Maven项目，通过Java代码启动iPhone真机的目标App，执行点击动作后退出App。</p>
+<h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Mac --&gt; 10.14.4</span><br><span class="line">iPhone Real Device --&gt; 12.2</span><br><span class="line">Appium --&gt; 1.12.1</span><br><span class="line">Xcode --&gt; 10.2</span><br></pre></td></tr></table></figure>
 <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>1、新建Maven项目、添加Maven引用、加入测试代码；<br>2、启动Appium服务；<br>3、通过TestNG运行测试脚本；<br><em>首次运行若App未启动，请进入手机【设置 -&gt; 通用 -&gt; 描述文件与设备管理】检查描述文件是否被信任</em>。</p>
 <h3 id="Maven依赖"><a href="#Maven依赖" class="headerlink" title="Maven依赖"></a>Maven依赖</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.8.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.appium&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;java-client&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;7.0.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;selenium-remote-driver&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.141.59&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.testng&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;testng&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;6.9.6&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.net.MalformedURLException;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.By;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.remote.DesiredCapabilities;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.AfterTest;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.BeforeTest;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.appium.java_client.AppiumDriver;</span><br><span class="line"><span class="keyword">import</span> io.appium.java_client.MobileElement;</span><br><span class="line"><span class="keyword">import</span> io.appium.java_client.ios.IOSDriver;</span><br><span class="line"><span class="keyword">import</span> io.appium.java_client.remote.MobileCapabilityType;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StartApp</span> </span>&#123;</span><br><span class="line">    AppiumDriver&lt;MobileElement&gt; driver;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeTest</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// startWayOne();</span></span><br><span class="line">        startWayTwo();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getAppDriver</span><span class="params">()</span> <span class="keyword">throws</span> MalformedURLException </span>&#123;</span><br><span class="line">        <span class="comment">// 点击第一个职位</span></span><br><span class="line">        driver.findElement(By.xpath(<span class="string">"(//XCUIElementTypeStaticText[contains(@name,'测试')])[1]"</span>)).click();</span><br><span class="line">        sleep(<span class="number">5000</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterTest</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quite</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        driver.quit();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startWayOne</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        DesiredCapabilities capabilities = <span class="keyword">new</span> DesiredCapabilities();</span><br><span class="line">        capabilities.setCapability(<span class="string">"platformName"</span>, <span class="string">"iOS"</span>);</span><br><span class="line">        capabilities.setCapability(<span class="string">"platformVersion"</span>, <span class="string">"12.2"</span>);</span><br><span class="line">        capabilities.setCapability(<span class="string">"automationName"</span>, <span class="string">"XCUITest"</span>);</span><br><span class="line">        capabilities.setCapability(<span class="string">"deviceName"</span>, <span class="string">"iPhone"</span>);</span><br><span class="line">        <span class="comment">// liepin app，还可以使用"app ":本地.ipa文件路径</span></span><br><span class="line">        capabilities.setCapability(<span class="string">"bundleId"</span>, <span class="string">"com.lietou.insw-c-ios-iphone"</span>);</span><br><span class="line">        <span class="comment">// 只有一台设备时可以填写auto</span></span><br><span class="line">        capabilities.setCapability(<span class="string">"udid"</span>, <span class="string">"auto"</span>);</span><br><span class="line">        <span class="comment">// 解决App启动慢或失败问题，appium 1.12.0新增</span></span><br><span class="line">        capabilities.setCapability(<span class="string">"eventLoopIdleDelaySec"</span>, <span class="number">10</span>);</span><br><span class="line">        <span class="comment">// 自定义超时时间</span></span><br><span class="line">        capabilities.setCapability(<span class="string">"newCommandTimeout"</span>, <span class="number">120</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            driver = <span class="keyword">new</span> IOSDriver&lt;MobileElement&gt;(<span class="keyword">new</span> URL(<span class="string">"http://127.0.0.1:4723/wd/hub"</span>), capabilities);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (MalformedURLException e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"Please start the appium service first"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startWayTwo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        DesiredCapabilities capabilities = <span class="keyword">new</span> DesiredCapabilities();</span><br><span class="line">        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, <span class="string">"iOS"</span>);</span><br><span class="line">        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, <span class="string">"12.2"</span>);</span><br><span class="line">        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, <span class="string">"XCUITest"</span>);</span><br><span class="line">        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, <span class="string">"iPhone"</span>);</span><br><span class="line">        <span class="comment">// 只有一台设备时可以填写auto</span></span><br><span class="line">        capabilities.setCapability(MobileCapabilityType.UDID, <span class="string">"auto"</span>);</span><br><span class="line">        <span class="comment">// 自定义超时时间</span></span><br><span class="line">        capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, <span class="number">120</span>);</span><br><span class="line">        <span class="comment">// ios应用的唯一标识，还可以使用"app ":本地.ipa文件路径</span></span><br><span class="line">        capabilities.setCapability(<span class="string">"bundleId"</span>, <span class="string">"com.lietou.insw-c-ios-iphone"</span>);</span><br><span class="line">        <span class="comment">// 解决App启动慢或失败问题，appium 1.12.0新增</span></span><br><span class="line">        capabilities.setCapability(<span class="string">"eventLoopIdleDelaySec"</span>, <span class="number">10</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            driver = <span class="keyword">new</span> IOSDriver&lt;MobileElement&gt;(<span class="keyword">new</span> URL(<span class="string">"http://127.0.0.1:4723/wd/hub"</span>), capabilities);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (MalformedURLException e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"Please start the appium service first"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 等待方法是为了让我们更好的看到自动化执行结果</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(<span class="keyword">int</span> seconds)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(seconds);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -390,8 +391,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/13/Appium App自动化01--通过Appium启动App/" rel="next" title="Appium UI自动化--通过Appium Desktop启动iOS App">
-                <i class="fa fa-chevron-left"></i> Appium UI自动化--通过Appium Desktop启动iOS App
+              <a href="/2017/02/13/Appium App自动化01--通过Appium启动App/" rel="next" title="Appium UI自动化01--通过Appium Desktop启动iOS App">
+                <i class="fa fa-chevron-left"></i> Appium UI自动化01--通过Appium Desktop启动iOS App
               </a>
             
           </div>
@@ -400,8 +401,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/08/面试准备--Linux/" rel="prev" title="面试准备--Linux">
-                面试准备--Linux <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/18/Appium App自动化03--iOS常用方法/" rel="prev" title="Appium UI自动化03--iOS常用方法">
+                Appium UI自动化03--iOS常用方法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -479,7 +480,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -490,7 +491,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 
               </div>
@@ -501,7 +502,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -534,7 +535,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤"><span class="nav-number">2.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven依赖"><span class="nav-number">3.</span> <span class="nav-text">Maven依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境信息"><span class="nav-number">2.</span> <span class="nav-text">环境信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤"><span class="nav-number">3.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven依赖"><span class="nav-number">4.</span> <span class="nav-text">Maven依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">5.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>

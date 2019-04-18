@@ -259,6 +259,516 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/04/18/业务安全测试切入点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/04/18/业务安全测试切入点/" itemprop="url">业务安全测试切入点</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-18T13:04:25+08:00">
+                2016-04-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/测试/" itemprop="url" rel="index">
+                    <span itemprop="name">测试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题记"><a href="#题记" class="headerlink" title="题记"></a>题记</h3><p>[放在互联网的数据就不是隐私]，每一个互联网人对此都深有感触<br>互联网企业内部管理不善导致数据出卖、安全漏洞被黑客盗走数据的事情时有发生<br>2016年频繁出现的互联网安全事故，直接导致国内知名漏洞报告平台乌云被查封<br>出现一系列的事故之后，公司了也展开了安全测试，包括服务安全和业务安全<br>这里大致列举日常测试工作中应该要注意的业务安全问题</p>
+<h3 id="XSS类：包括存储型和反射型"><a href="#XSS类：包括存储型和反射型" class="headerlink" title="XSS类：包括存储型和反射型"></a>XSS类：包括存储型和反射型</h3><p>反射型最容易传播的是搜索URL，注意处理处理这类URL中的XSS风险代码，其中存储型的危害比反射型的危害相对要更大，建议在平台做统一处理<br>测试代码举例：<a href="http://drops.wooyun.org/tips/845" target="_blank" rel="noopener">http://drops.wooyun.org/tips/845</a> [乌云已挂出维护公告]</p>
+<h3 id="前端存在业务校验"><a href="#前端存在业务校验" class="headerlink" title="前端存在业务校验"></a>前端存在业务校验</h3><p>任何前端的检验都是为提高用户体验而做，不具体任何安全性。若涉及业务上重要的校验，需要确保前后端都存在统一的逻辑校验<br>例如：数字大小范围、时间长度范围</p>
+<h3 id="POST表单冗余数据"><a href="#POST表单冗余数据" class="headerlink" title="POST表单冗余数据"></a>POST表单冗余数据</h3><p>POST表单中提交了页面或业务逻辑中不允许直接修改的数据<br>例如：常用的如手机号、邮箱，修改时会单独跳转到其他页面进行校验，展示时以灰色不可编辑的形式展示在表单中</p>
+<p><img src="/images/20160418/safe01.png" alt></p>
+<h3 id="突破搜索参数数量"><a href="#突破搜索参数数量" class="headerlink" title="突破搜索参数数量"></a>突破搜索参数数量</h3><p>很多网站都会有搜索，搜索中有很多的条件可选，业务在设计时对部分搜索条件的数量进行了限制<br>在截获请求之后，对搜索条件进行扩充后并发请求服务器，会对服务器造成比较大的压力，这一条也与前面讲到的&lt;前端存在业务校验&gt;有关联</p>
+<h3 id="密码类传输"><a href="#密码类传输" class="headerlink" title="密码类传输"></a>密码类传输</h3><p>主要涉及注册、登录、修改密码、忘记密码这几类常用操作，传输过程中若使用明文密码是非常不安全的</p>
+<h3 id="数据操作类带有ID"><a href="#数据操作类带有ID" class="headerlink" title="数据操作类带有ID"></a>数据操作类带有ID</h3><p>密切注意编辑、删除操作中带有数据ID的情况，水平越权操作数据，是非常危险的漏洞</p>
+<p><img src="/images/20160418/safe02.png" alt></p>
+<h3 id="数据库存储长度"><a href="#数据库存储长度" class="headerlink" title="数据库存储长度"></a>数据库存储长度</h3><p>在产品设计时会对数据的可输入在前端做一个长度或输入类型限制，是为了保证更好的用户体验和确保有限的系统开销<br>在前面我们已经知道前端的限制是没有任何安全意义的，通过工具修改数据类型和长度同样可被正常提交，若出错很有可能会暴露数据库的关键信息</p>
+<h3 id="重复提交请求-数据数量有限制"><a href="#重复提交请求-数据数量有限制" class="headerlink" title="重复提交请求|数据数量有限制"></a>重复提交请求|数据数量有限制</h3><p>对于不允许重复提交的请求和数量有限制的存储，不光在前端做限制，在服务端也在有对应的校验和限制</p>
+<h3 id="数据回填"><a href="#数据回填" class="headerlink" title="数据回填"></a>数据回填</h3><p>将用户输入的数据直接回填在JSP，然后作为标签中某个属性值显示在页面的HTML中，这种情况下如果不作处理，可能有XSS<br>常见有属性有value和title</p>
+<p><img src="/images/20160418/safe03.png" alt></p>
+<h3 id="自动登录"><a href="#自动登录" class="headerlink" title="自动登录"></a>自动登录</h3><p>修改密码、重置密码类操作时，一定不要在最后附加一个自动登录的动作。不可将这个判断将给前端或者浏览器</p>
+<h3 id="撞库"><a href="#撞库" class="headerlink" title="撞库"></a>撞库</h3><p>网络上有很多泄漏的账号密码资源，被拿到之后会用于撞库，取得一些网站的用户名密码<br>这各情况通常的做法是增加操作成本，比如限制每个IP下请求对应接口的次数、出现验证码、锁定账户2小时等</p>
+<h3 id="暴力破解"><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h3><p>重灾区在找回密码验证码，或者其他的任何重要操作需要数字验证码的部分<br>建议：将验证码复杂度增加（由纯属4位数据变成6位数字和字母组合），同时加上图形验证码，同时最好有其他访问防爆或监控机制</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/04/02/Selenium Web自动化03--精通xpath书写/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/04/02/Selenium Web自动化03--精通xpath书写/" itemprop="url">Selenium Web自动化03--xpath书写</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-02T12:36:00+08:00">
+                2016-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>2小时熟练xpath书写，可以实现常见自动化元素定位需求。</p>
+<h3 id="写在最前"><a href="#写在最前" class="headerlink" title="写在最前"></a>写在最前</h3><p>xpath中用到的引号都应该是英文状态，复制后请注意修是否英文状态。<br>大部分情况下，单引号或双引号，不会影响元素定位。</p>
+<h3 id="Html小了解"><a href="#Html小了解" class="headerlink" title="Html小了解"></a>Html小了解</h3><p>首先，我们要理解网页是由很多html标签对组成，这三类是我们经常要打交道的：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">A标签（也就是我们常说的链接）</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://news.baidu.com"</span> <span class="attr">name</span>=<span class="string">"tj_trnews"</span> <span class="attr">class</span>=<span class="string">"mnav"</span>&gt;</span>新闻<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">文本输入框</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"kw"</span> <span class="attr">name</span>=<span class="string">"wd"</span> <span class="attr">class</span>=<span class="string">"s_ipt"</span> <span class="attr">value</span>=<span class="string">""</span> <span class="attr">maxlength</span>=<span class="string">"255"</span> <span class="attr">autocomplete</span>=<span class="string">"off"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">按钮（两种都是按钮）</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">id</span>=<span class="string">"su"</span> <span class="attr">value</span>=<span class="string">"百度一下"</span> <span class="attr">class</span>=<span class="string">"bg s_btn"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"search-button"</span> <span class="attr">data-title</span>=<span class="string">"搜索"</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>根据标签中间是否有内容的特征，我们可以将标签简单分成两类。<br>如下所示，我们把attribute称作标签的属性，something称作标签的文本。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">type</span> <span class="attr">attribute</span>=<span class="string">'att'</span>&gt;</span><span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">type</span> <span class="attr">attribute</span>=<span class="string">'att'</span>&gt;</span>something<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><p>xpath中常见表达式如下：</p>
+<style>
+table th:first-of-type {
+    width: 100px;
+}
+</style>
+
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nodename</td>
+<td>选取此节点的所有子节点</td>
+</tr>
+<tr>
+<td>//</td>
+<td>从根节点选取</td>
+</tr>
+<tr>
+<td>/</td>
+<td>从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置</td>
+</tr>
+<tr>
+<td>.</td>
+<td>选取当前节点</td>
+</tr>
+<tr>
+<td>..</td>
+<td>选取当前节点的父节点</td>
+</tr>
+<tr>
+<td>@</td>
+<td>选取属性</td>
+</tr>
+</tbody>
+</table>
+<h3 id="验证xpath"><a href="#验证xpath" class="headerlink" title="验证xpath"></a>验证xpath</h3><p>这里提到的xpath，可以打开 <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> 后，直接在chrome浏览器中验证xpath书写是否正确。<br>在浏览器页面或对应元素[右键]后点击[检查]，会打开Elements区域，在打开的Elements区域下方按Ctrl+F会有一个搜索框。<br>在这里可以验证xpath的正确性：<br><img src="/images/selenium/elementsfind.png" alt></p>
+<h3 id="Label"><a href="#Label" class="headerlink" title="Label"></a>Label</h3><p>通过A标签文本定位<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// contains是包含的意思，可以用于模糊匹配元素</span><br><span class="line">//a[contains(text(),'新闻')] </span><br><span class="line">// text()=则需要文本完全匹配，用于精准匹配元素</span><br><span class="line">//a[text()='新闻']</span><br></pre></td></tr></table></figure> </p>
+<p>通过A标签属性定位<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 理论上说只要在标签中出现的属性均可以用于定位，这里使用name</span><br><span class="line">//a[contains(@name,'tj_trnews')]</span><br></pre></td></tr></table></figure></p>
+<h3 id="Input-amp-Button"><a href="#Input-amp-Button" class="headerlink" title="Input&amp;Button"></a>Input&amp;Button</h3><p>理论上说任意标签的属性均可以用于定位，建议使用常见的id、name等<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//input[@id='kw']</span><br><span class="line">//input[@name='wd']</span><br><span class="line">//input[@class='s_ipt']</span><br></pre></td></tr></table></figure></p>
+<p>其他标签类型元素的定位与输入框类似，同样使用属性定位</p>
+<h3 id="多元素"><a href="#多元素" class="headerlink" title="多元素"></a>多元素</h3><p>当页面中存在多个一样的元素时，我们常使用下标定位。<br>需要注意的是多个元素时，第一个元素的下标是从1开始，而不是0。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 直接出现6个符合条件的元素，返回的是List</span><br><span class="line">//a[@class='mnav']</span><br><span class="line"></span><br><span class="line">// 拿到第一个</span><br><span class="line">(//a[@class='mnav'])[1]</span><br><span class="line"></span><br><span class="line">// 动态拿到最后一个</span><br><span class="line">(//a[@class='mnav'])[last()]</span><br></pre></td></tr></table></figure>
+<h3 id="多属性定位"><a href="#多属性定位" class="headerlink" title="多属性定位"></a>多属性定位</h3><p>通过多个属性配合定位元素，或者匹配任意元素即可</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 同时满足两个条件，用于辅助进一步定位元素</span><br><span class="line">//input[@id='kw' and @name='wd']</span><br><span class="line">//input[@id='kw'][@name='wd']</span><br><span class="line"></span><br><span class="line">// 匹配任一条件即可</span><br><span class="line">//input[@id='kw' or @name='wd']</span><br></pre></td></tr></table></figure>
+<h3 id="获取父元素"><a href="#获取父元素" class="headerlink" title="获取父元素"></a>获取父元素</h3><p>通过/..即可获取当前元素的父元素，当父元素不好定位时也可以考虑使用此方法</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 定位元素的父元素</span><br><span class="line">//input[@id='kw']/..</span><br></pre></td></tr></table></figure>
+<h3 id="部分内容定位"><a href="#部分内容定位" class="headerlink" title="部分内容定位"></a>部分内容定位</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 以某文本开头</span><br><span class="line">//a[starts-with(text(),'学')]</span><br><span class="line"></span><br><span class="line">// 包含某些文本，用于模糊匹配元素</span><br><span class="line">//a[contains(text(),'学')] </span><br><span class="line"></span><br><span class="line">// 属性包含某些内容也适用</span><br><span class="line">//a[contains(@name,'news')] </span><br></pre></td></tr></table></figure>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 通过逻辑判断定位元素</span><br><span class="line">//input[@value &gt;= 8]</span><br></pre></td></tr></table></figure>
+<h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>xpath的定位时间相比通过id、name直接定位方式理论上要慢(毫秒级别)。<br>不过，因为现在PC的性能足够好，所以WEB UI自动化实际应用中时间差异无感知，但iOS App中元素xpath定位时会很慢。</p>
+<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><p>更多内容可以前往<br>W3C关于XML Path Language的介绍<br><a href="https://www.w3.org/TR/xpath/" target="_blank" rel="noopener">https://www.w3.org/TR/xpath/</a></p>
+<p>w3school的简版介绍<br><a href="http://www.w3school.com.cn/xpath/index.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/xpath/index.asp</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/02/01/Selenium Web自动化01--快速开始/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/02/01/Selenium Web自动化01--快速开始/" itemprop="url">Selenium Web自动化01--快速开始</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-02-01T21:53:00+08:00">
+                2016-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><p>1、Java<br>2、Selenium<br>3、TestNG<br>4、Xpath<br>5、Maven</p>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>启动本地浏览器，打开百度，输入Selenium搜索</p>
+<h3 id="编码过程"><a href="#编码过程" class="headerlink" title="编码过程"></a>编码过程</h3><p>1、通过Eclipse新建一个Maven项目(这里不细说)，在pom.xml文件中加入如下内容，添加保存后，IDE会自动下载对应jar包，等待下载完成。<br>Maven信息可以在<a href="https://mvnrepository.com/" target="_blank" rel="noopener">https://mvnrepository.com/</a> 搜索找到；<br>也可以在官网 <a href="https://www.seleniumhq.org/download/maven.jsp" target="_blank" rel="noopener">https://www.seleniumhq.org/download/maven.jsp</a> 找到相关信息；<br>注意：此部分内容需要添加在 &#60;dependencies&#62;&#60;/dependencies&#62; 标签中，如果没有需要新增。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;selenium-chrome-driver&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;3.9.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.testng&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;testng&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;6.9.6&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>2、下载目标driver文件<br>不同系统、流览器对应不同的driver文件，可去到官网seleniumhq.org下载，这里提供chrome driver的详细下载地址：<br><a href="https://sites.google.com/a/chromium.org/chromedriver/downloads" target="_blank" rel="noopener">https://sites.google.com/a/chromium.org/chromedriver/downloads</a><br>我们今天下载的是chrome的mac版，我将driver文件存储到了项目的/src/main/resource/driver/路径下，chromedriver是driver的文件名。</p>
+<p>3、在项目中新建一个Java类文件FirstWebAutoTest.java，文件中输入如下代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package 根据自己项目情况修改或不替换此行</span></span><br><span class="line"><span class="keyword">package</span> com.test.qa.mytest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.By;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.WebDriver;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.chrome.ChromeDriver;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.AfterTest;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.BeforeTest;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * simple selenium web test script</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstWebAutoTest</span> </span>&#123;</span><br><span class="line">	WebDriver driver;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// @BeforeTest注解表示before()这个方法在测试开始之前执行</span></span><br><span class="line">	<span class="meta">@BeforeTest</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 获取当前项目路径</span></span><br><span class="line">		String projectPath = System.getProperty(<span class="string">"user.dir"</span>);</span><br><span class="line">		<span class="comment">// 设置chromedriver服务地址，这里用到了前面存放driver的地址</span></span><br><span class="line">		System.setProperty(<span class="string">"webdriver.chrome.driver"</span>, projectPath+<span class="string">"/src/main/resource/driver/chromedriver"</span>);</span><br><span class="line">		<span class="comment">// 实例化一个chrome driver，也就是一个浏览器</span></span><br><span class="line">		driver = <span class="keyword">new</span> ChromeDriver();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// @Test注解表示这里是测试脚本主体</span></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 打开目标网站</span></span><br><span class="line">		driver.get(<span class="string">"http://www.baidu.com/"</span>);</span><br><span class="line">		<span class="comment">// 在目标输入框中输入selenium</span></span><br><span class="line">		driver.findElement(By.xpath(<span class="string">"//input[@id='kw']"</span>)).sendKeys(<span class="string">"selenium"</span>);</span><br><span class="line">		<span class="comment">// 点击搜索按钮</span></span><br><span class="line">		driver.findElement(By.xpath(<span class="string">"//input[@id='su']"</span>)).click();</span><br><span class="line">		<span class="comment">// 等待3s</span></span><br><span class="line">		sleep(<span class="number">3000</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// @AfterTest注解中往往放一些资源释放类动作</span></span><br><span class="line">	<span class="meta">@AfterTest</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">after</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 关闭和退出浏览器，释放资源</span></span><br><span class="line">		driver.close();</span><br><span class="line">		driver.quit();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 等待方法是为了让我们更好的看到自动化执行结果</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(<span class="keyword">int</span> seconds)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Thread.sleep(seconds);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、在FirstWebAutoTest.java文件点击右键，选择“Run As – TestNG Test”<br>Wow Cao ！！！<br>你会发现，竟然很神奇地启动了浏览器，惊不惊喜，意不意外</p>
+<p>此部分代码源码 <a href="https://github.com/TesterChen/AutomationTest/tree/master/firstAutoTest" target="_blank" rel="noopener">GitHub firstAutoTest</a></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过上述步骤，如果你已经实现了打开浏览器、在百度上搜索selenium，那说明你已经开始了你的自动化之旅。<br>今天接触到的技术栈，几乎是我们后面要用到的所有，刚开始接触都会有疑惑，后续会对用到的每一项内容都详细讲解。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/01/01/Selenium Web自动化00--环境配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1332,453 +1842,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2012/08/29/测试是否需要定位缺陷原因/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2012/08/29/测试是否需要定位缺陷原因/" itemprop="url">测试是否需要定位缺陷原因</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-08-29T14:57:00+08:00">
-                2012-08-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>我觉得问题的答案应该是肯定的。</p>
-<p>首先，从字面意思来说，我觉得测试人员应该对缺陷的定位负责，尽量在报告缺陷时将自己对于缺陷的理解（或缺陷产生的原因）写入到缺陷的备注信息（或缺陷主 体）中。在个人能力、资源许可的情况下，尽我们所能的去提升我们的工作质量，做到100%的自我负责，因为我们的目标不是做完成就可以，而是追求优秀！！！<br>其次，软件测试人员的责任角度来说，在测试人员具备这样的个人能力，且通过他们掌握的资源可完成对定位缺陷，那么最好是提供对缺陷的定位给开发人员或产品 人员。这样即方便开发人员去定位问题、解决问题，也便于后期缺陷的追溯与回归。同样，部分缺陷可作为产品人员对产品进行优化的参考。</p>
-<p>但是，如果对缺陷的定位很困难，通过测试人员所掌握的资源与知识在短时间（如一个小时、半天）内无法完成对缺陷的定位，我们最好是向开发人员反映，并表示期望得到他们的帮助，共同对发现的缺陷进行定位，定位后要记录在缺陷的描述中；<br>如果在交流过程中测试人员和开发人员一致认为此问题很复杂，需要开发人员内部进行排查的问题，那么此时测试人员可以终止缺陷定位，交由开发组人员进行处理，测试人员只需要对后期缺陷产生的原因进行了解、对缺陷进行回归测试即可，测试人员可考虑参加他们的讨论。<br>将问题的定位转至开发人员层面之后，如果涉及到更加深层次的问题，开发经理（项目经理）会向他们的上级或同行请求协助，测试人员可考虑参加他们的讨论。</p>
-<p>另外，我们要考虑的一个问题就是具体问题具体分析、能随机应变。如果测试组的成员有很重的测试任务，在规定的时间内对所有内容完成测试任务的可能性都不 大，那么我想测试人员也没太多时间去找寻缺陷出现的具体原因。但在这里仍然要强调的是缺陷的重现步骤、涉及到的数据等信息一定要记录全面，这样方便开发人 员在调试时更快更准确的重现问题、找到问题、解决问题。</p>
-<p>同时，我觉得适量的对具体问题进行深入探讨，即有利于我们了解被测系统的业务，也有利于提升测试人员的工作技能。同时也加强了开发人员与测试人员之前的相互沟通和协作。</p>
-<p>最后，我认为优秀测试人员不仅要善于找出现在系统已有的缺陷、对发现的缺陷进行问题定位、提出对缺陷的修改意见或建议。更要能预知未来系统可能会出现的缺陷，并提出自己的看法、同时设法对它进行验证。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2012/08/29/杀虫剂怪事/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2012/08/29/杀虫剂怪事/" itemprop="url">杀虫剂怪事</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-08-29T14:49:00+08:00">
-                2012-08-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="释义"><a href="#释义" class="headerlink" title="释义"></a>释义</h3><p>杀虫剂怪事，本义是农业中随着农药的普及使用，害虫的抗药性越来越强，农药越来越难毒死害虫，害虫越来越容易滋生。<br>往往采用的办法是：换农药的品牌，购买新配方农药，购买其他品牌更好质量的农药，加重喷酒浓度</p>
-<p>软件测试行业中的“杀虫剂怪事”一词由Boris Beizer在1990年其编著的《Software Testing Techniques》第二版中提出。用于描述测试人员对同一测试对象进行的测试次数越多，发现的缺陷就会越来越少的现象。就像老用一种农药，害虫就会有免疫力，农药发挥不了效力。这种现象的根本原因就是测试人员对测试软件过于熟悉，形成思维定势。</p>
-<p>我们从三个方面来讨论软件测试行业中的杀虫剂怪事：果树、害虫和农药<br>果树：我们的目标软件<br>害虫：缺陷(Bug)<br>农药：测试工程师、测试技术和方法    </p>
-<h3 id="现状："><a href="#现状：" class="headerlink" title="现状："></a>现状：</h3><p>随着软件项目的规模越来越大，越来越多的缺陷开始出现，我们的测试工程师不断的进行测试、不断的回归，但仍然发现每次测试仍然会暴露出很多的缺陷，无法达到理想的缺陷曲线；或交付使用后用户仍然会在使用中出现各种各样的缺陷，直接影响用户的使用体验和公司声誉</p>
-<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>1.被测软件的功能和结构越来越复杂（害虫的抵抗力越来越强）<br>2.测试人员、技术和方法的思维定势（使用同一种农药配方）</p>
-<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>1.测试人员轮岗，一百个读者有一百个哈姆雷特(虽然俗但确是这样)，一百个工程师也有一百种看法和想法，这样可以更好的避免个人思维定势<br>（使用不同品牌的农药）</p>
-<p>2.尝试使用各种测试技术和方法进行测试，避免因为测试方法本身的覆盖度而导致测试遗漏<br>（变更农药配方）</p>
-<p>3.测试人员的自我意识，要有意识的突破自己的思维定势，跳出原有的条条框框进行思考，这样或者能发现一些更深层次的缺陷<br>（提升农药配方质量）</p>
-<p>4.引进行业高水平技术人才，同时对技术人员进行相关技能培训提高专业技能<br>（加重喷洒浓度）</p>
-<p>目的：<br>尽量多的发现潜在的缺陷，减少缺陷的遗留，降低遗留缺陷的严重度</p>
-<p>51Testing链接：<a href="http://www.51testing.com/html/41/n-822541.html" target="_blank" rel="noopener">http://www.51testing.com/html/41/n-822541.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2012/04/14/这到底是不是Bug/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2012/04/14/这到底是不是Bug/" itemprop="url">这到底是不是Bug</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-04-14T20:38:00+08:00">
-                2012-04-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>随着软件行业的快速发展，以及客户、市场的高要求，软件本身的复杂度、要求不断提高。这一现象也直接导致以前只有大中型公司才配备的测试人员，现在在越来越来越多的小型公司也开始出现。<br>小公司测试人员的出现，一方面是为了适应产业的发展需求；另一方面也是为了提升产品质量、加强公司的竞争力，保证公司不被市场所淘汰。但这样一来也就直接增加了公司的管理、人力及资金成本（测试人员的薪水虽然相对比开发人员低，但也是一个不小的数字）；最后因为小公司制度及管理的欠缺，暴露出很多问题，往往直接或间接的导致开发、和测试的不和谐，这也是我们今天讨论的话题。</p>
-<h3 id="缺陷如何定位"><a href="#缺陷如何定位" class="headerlink" title="缺陷如何定位"></a>缺陷如何定位</h3><p>对于是不是缺陷这个话题往往被很多人很厌恶，大家都厌恶谈论这个话题，因为谈及他往往令人不愉快，但很多的时候他却在我们身边真实发生。<br>测试人员认为某个情况是缺陷，但开发人员认为这个不是缺陷，而争论具体的情形在需求中也没有明确的描述，公说公有理，婆说婆有理，说不清了！如果只是开发、测试对于工作上理解的差异还好，但往往争执由此开始，矛盾也就由此产生，不和谐的气氛由此埋下种子。</p>
-<p>出现上述的情况的原因有几种：<br>①公司在没有对原始需求进行评审、整理、并书面化形成文档（需求也是需要测试的，这点很重要）<br>②公司完全没有需求这一档子事，完全在没有需求的情况下进行开发、测试（走一步看一步的情况）<br>③开发、测试对需求的理解存在差异（开发、测试没有良好的沟通）<br>④需求本身的定义存在二义性（与①相关，没有对需求进行测试）<br>⑤个人的性格与情绪</p>
-<h3 id="如何解决问题"><a href="#如何解决问题" class="headerlink" title="如何解决问题"></a>如何解决问题</h3><p>不管是开发人员还是测试人员：<br>①思想要保持统一的认知，我们所做的都是为了公司，为了我们的产品，任何的争论都不存在任何的个人感情与感情色彩<br>②出现问题时，都要先从自身找原因，很多时候往往是因为我们自己的简单思维而导致，所以，当你在工作中对某个事情存在疑问时，多问自己几个为什么，再向他人请教，或回复他人<br>③我们讨论的只是问题，不直接关系到个人的工作能力与工作作风，人非圣贤，有错就改，并不失面子</p>
-<p>当无法确认是否为缺陷时，测试人员：<br>①发现无法确认的缺陷时，如果有其他的测试人员可以征求其他测试人员的意见（同行评审，同行评审往往能发现80%的问题），如果彼此都认为此应该是缺陷时，可以找到相应的开发人员进行讨论。如果开发人员同意你们的意见，则可以提交缺陷，着手修复（如涉及比较重大的业务逻辑时应该要向上级汇报，申请确认）<br>②如果开发（甚至多位开发人员）对缺陷不认可时，我们可以向测试组长（或测试总监）请教，请求对缺陷进行确认，如果领导和开发人员都认为此不是缺陷，并且无修复的必要时，我们可以保留我们的意见，同时记录下此缺陷（到后期如果有时间再进行评审）<br>③如果测试组长（或测试总监）也认为此是缺陷，但在无论如何解释的情况下开发人员仍不认可时，我们可以由测试组长（测试总监）与开发项目经理（技术经理）进行交涉、确认，最终确认缺陷情况<br>④如果有必要，我们可以邀请开发、测试、需求（如果有）、产品（如果有），甚至技术总监（CTO）进行开会（需求或缺陷）评审<br>⑤最后，也是最重要的一条，不管是开发，还是测试，都不要越级汇报</p>
-<p>另外，有部分许多公司把缺陷作为开发人员和测试的员的业绩指标，在某些大公司这些确实是在施行、也是可行的，但在中小型公司或管理达不到CMMI4或5的情形时，我个人不赞同那样的作法。因为你不是他，你就做不到他……<br>而你那样做产生的直接结果就是让开发和测试从此不和谐，彼此勾心斗角，大可不必</p>
-<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>始终相信办法总是比问题多，每一个问题都有至少一个解决办法！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1829,7 +1892,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1840,7 +1903,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 
               </div>
@@ -1851,7 +1914,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

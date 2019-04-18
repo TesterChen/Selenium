@@ -259,6 +259,460 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2017/03/18/Appium App自动化03--常用方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/18/Appium App自动化03--常用方法/" itemprop="url">Appium UI自动化03--iOS常用方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-18T16:01:00+08:00">
+                2017-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/App自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">App自动化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>了解Appium iOS常用操作方法。</p>
+<h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.8.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.appium&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;java-client&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;7.0.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;selenium-remote-driver&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.141.59&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.testng&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;testng&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;6.9.6&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="屏幕上下滑动"><a href="#屏幕上下滑动" class="headerlink" title="屏幕上下滑动"></a>屏幕上下滑动</h3><p>向上滑动：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">up</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    JavascriptExecutor js = (JavascriptExecutor) driver;</span><br><span class="line">    HashMap&lt;String, String&gt; scrollObject = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">    scrollObject.put(<span class="string">"direction"</span>, <span class="string">"up"</span>);</span><br><span class="line">    js.executeScript(<span class="string">"mobile: swipe"</span>, scrollObject);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>向下滑动：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">down</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    JavascriptExecutor js = (JavascriptExecutor) driver;</span><br><span class="line">    HashMap&lt;String, String&gt; scrollObject = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">    scrollObject.put(<span class="string">"direction"</span>, <span class="string">"down"</span>);</span><br><span class="line">    js.executeScript(<span class="string">"mobile: swipe"</span>, scrollObject);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="屏幕左右滑动"><a href="#屏幕左右滑动" class="headerlink" title="屏幕左右滑动"></a>屏幕左右滑动</h3><p>向右滑动：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swipeScreenToRight</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = driver.manage().window().getSize().getWidth();</span><br><span class="line">    <span class="keyword">int</span> y = driver.manage().window().getSize().getHeight();</span><br><span class="line">    <span class="keyword">new</span> TouchAction(driver).longPress(PointOption.point((<span class="keyword">int</span>)(x * <span class="number">0.1</span>), y / <span class="number">2</span>))</span><br><span class="line">        .moveTo(ElementOption.point((<span class="keyword">int</span>)(x * <span class="number">0.9</span>), y / <span class="number">2</span>))</span><br><span class="line">        .release().perform();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>向左滑动：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swipeScreenToLeft</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = driver.manage().window().getSize().getWidth();</span><br><span class="line">    <span class="keyword">int</span> y = driver.manage().window().getSize().getHeight();</span><br><span class="line">    <span class="keyword">new</span> TouchAction(driver).longPress(PointOption.point((<span class="keyword">int</span>)(x * <span class="number">0.9</span>), y / <span class="number">2</span>))</span><br><span class="line">        .moveTo(ElementOption.point((<span class="keyword">int</span>)(x * <span class="number">0.1</span>), y / <span class="number">2</span>))</span><br><span class="line">        .release().perform();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="元素操作"><a href="#元素操作" class="headerlink" title="元素操作"></a>元素操作</h3><p>在元素上方向左滑动</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swipeElement</span><span class="params">(WebElement webElement)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 不能使用press方法，会产生点击事件</span></span><br><span class="line">    <span class="keyword">new</span> TouchAction(driver).longPress(ElementOption.element(webElement))</span><br><span class="line">        .moveTo(ElementOption.point(webElement.getLocation().getX() / <span class="number">5</span>, webElement.getLocation().getY()))</span><br><span class="line">        .release().perform();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>长按元素</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">longPress</span><span class="params">(WebElement webElement, <span class="keyword">int</span> timeout)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">new</span> TouchAction(driver).longPress(ElementOption.element(webElement))</span><br><span class="line">        .waitAction(WaitOptions.waitOptions(Duration.ofMillis(timeout))).release().perform();</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Appium java-client库更新到6.x后（我们这里用的7.x），滑动swipe()已弃用，取而代之的是各类Option。</p>
+<p><a href="https://github.com/TesterChen/AutomationTest/tree/master/firstAppAutoTest" target="_blank" rel="noopener">跳转至本节代码 GitHub</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2017/03/18/Appium App自动化03--iOS常用方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/18/Appium App自动化03--iOS常用方法/" itemprop="url">Appium UI自动化03--iOS常用方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-18T16:01:00+08:00">
+                2017-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/App自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">App自动化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>了解Appium iOS常用操作方法。</p>
+<h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.8.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.appium&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;java-client&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;7.0.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;selenium-remote-driver&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.141.59&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.testng&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;testng&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;6.9.6&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="屏幕上下滑动"><a href="#屏幕上下滑动" class="headerlink" title="屏幕上下滑动"></a>屏幕上下滑动</h3><p>向上滑动：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">up</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    JavascriptExecutor js = (JavascriptExecutor) driver;</span><br><span class="line">    HashMap&lt;String, String&gt; scrollObject = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">    scrollObject.put(<span class="string">"direction"</span>, <span class="string">"up"</span>);</span><br><span class="line">    js.executeScript(<span class="string">"mobile: swipe"</span>, scrollObject);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>向下滑动：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">down</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    JavascriptExecutor js = (JavascriptExecutor) driver;</span><br><span class="line">    HashMap&lt;String, String&gt; scrollObject = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">    scrollObject.put(<span class="string">"direction"</span>, <span class="string">"down"</span>);</span><br><span class="line">    js.executeScript(<span class="string">"mobile: swipe"</span>, scrollObject);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="屏幕左右滑动"><a href="#屏幕左右滑动" class="headerlink" title="屏幕左右滑动"></a>屏幕左右滑动</h3><p>向右滑动：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swipeScreenToRight</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = driver.manage().window().getSize().getWidth();</span><br><span class="line">    <span class="keyword">int</span> y = driver.manage().window().getSize().getHeight();</span><br><span class="line">    <span class="keyword">new</span> TouchAction(driver).longPress(PointOption.point((<span class="keyword">int</span>)(x * <span class="number">0.1</span>), y / <span class="number">2</span>))</span><br><span class="line">        .moveTo(ElementOption.point((<span class="keyword">int</span>)(x * <span class="number">0.9</span>), y / <span class="number">2</span>))</span><br><span class="line">        .release().perform();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>向左滑动：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swipeScreenToLeft</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = driver.manage().window().getSize().getWidth();</span><br><span class="line">    <span class="keyword">int</span> y = driver.manage().window().getSize().getHeight();</span><br><span class="line">    <span class="keyword">new</span> TouchAction(driver).longPress(PointOption.point((<span class="keyword">int</span>)(x * <span class="number">0.9</span>), y / <span class="number">2</span>))</span><br><span class="line">        .moveTo(ElementOption.point((<span class="keyword">int</span>)(x * <span class="number">0.1</span>), y / <span class="number">2</span>))</span><br><span class="line">        .release().perform();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="元素操作"><a href="#元素操作" class="headerlink" title="元素操作"></a>元素操作</h3><p>在元素上方向左滑动</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swipeElement</span><span class="params">(WebElement webElement)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 不能使用press方法，会产生点击事件</span></span><br><span class="line">    <span class="keyword">new</span> TouchAction(driver).longPress(ElementOption.element(webElement))</span><br><span class="line">        .moveTo(ElementOption.point(webElement.getLocation().getX() / <span class="number">5</span>, webElement.getLocation().getY()))</span><br><span class="line">        .release().perform();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>长按元素</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">longPress</span><span class="params">(WebElement webElement, <span class="keyword">int</span> timeout)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">new</span> TouchAction(driver).longPress(ElementOption.element(webElement))</span><br><span class="line">        .waitAction(WaitOptions.waitOptions(Duration.ofMillis(timeout))).release().perform();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Appium java-client库更新到6.x后（我们这里用的7.x），滑动swipe()已弃用。</p>
+<p><a href="https://github.com/TesterChen/AutomationTest/tree/master/firstAppAutoTest" target="_blank" rel="noopener">跳转至本节代码 GitHub</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2017/02/15/Appium App自动化02--快速开始/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/02/15/Appium App自动化02--快速开始/" itemprop="url">Appium UI自动化02--快速开始</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-15T22:01:00+08:00">
+                2017-02-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/App自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">App自动化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>新建Maven项目，通过Java代码启动iPhone真机的目标App，执行点击动作后退出App。</p>
+<h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Mac --&gt; 10.14.4</span><br><span class="line">iPhone Real Device --&gt; 12.2</span><br><span class="line">Appium --&gt; 1.12.1</span><br><span class="line">Xcode --&gt; 10.2</span><br></pre></td></tr></table></figure>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>1、新建Maven项目、添加Maven引用、加入测试代码；<br>2、启动Appium服务；<br>3、通过TestNG运行测试脚本；<br><em>首次运行若App未启动，请进入手机【设置 -&gt; 通用 -&gt; 描述文件与设备管理】检查描述文件是否被信任</em>。</p>
+<h3 id="Maven依赖"><a href="#Maven依赖" class="headerlink" title="Maven依赖"></a>Maven依赖</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.8.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.appium&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;java-client&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;7.0.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;selenium-remote-driver&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.141.59&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.testng&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;testng&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;6.9.6&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.net.MalformedURLException;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.By;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.remote.DesiredCapabilities;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.AfterTest;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.BeforeTest;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.appium.java_client.AppiumDriver;</span><br><span class="line"><span class="keyword">import</span> io.appium.java_client.MobileElement;</span><br><span class="line"><span class="keyword">import</span> io.appium.java_client.ios.IOSDriver;</span><br><span class="line"><span class="keyword">import</span> io.appium.java_client.remote.MobileCapabilityType;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StartApp</span> </span>&#123;</span><br><span class="line">    AppiumDriver&lt;MobileElement&gt; driver;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeTest</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// startWayOne();</span></span><br><span class="line">        startWayTwo();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getAppDriver</span><span class="params">()</span> <span class="keyword">throws</span> MalformedURLException </span>&#123;</span><br><span class="line">        <span class="comment">// 点击第一个职位</span></span><br><span class="line">        driver.findElement(By.xpath(<span class="string">"(//XCUIElementTypeStaticText[contains(@name,'测试')])[1]"</span>)).click();</span><br><span class="line">        sleep(<span class="number">5000</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterTest</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quite</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        driver.quit();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startWayOne</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        DesiredCapabilities capabilities = <span class="keyword">new</span> DesiredCapabilities();</span><br><span class="line">        capabilities.setCapability(<span class="string">"platformName"</span>, <span class="string">"iOS"</span>);</span><br><span class="line">        capabilities.setCapability(<span class="string">"platformVersion"</span>, <span class="string">"12.2"</span>);</span><br><span class="line">        capabilities.setCapability(<span class="string">"automationName"</span>, <span class="string">"XCUITest"</span>);</span><br><span class="line">        capabilities.setCapability(<span class="string">"deviceName"</span>, <span class="string">"iPhone"</span>);</span><br><span class="line">        <span class="comment">// liepin app，还可以使用"app ":本地.ipa文件路径</span></span><br><span class="line">        capabilities.setCapability(<span class="string">"bundleId"</span>, <span class="string">"com.lietou.insw-c-ios-iphone"</span>);</span><br><span class="line">        <span class="comment">// 只有一台设备时可以填写auto</span></span><br><span class="line">        capabilities.setCapability(<span class="string">"udid"</span>, <span class="string">"auto"</span>);</span><br><span class="line">        <span class="comment">// 解决App启动慢或失败问题，appium 1.12.0新增</span></span><br><span class="line">        capabilities.setCapability(<span class="string">"eventLoopIdleDelaySec"</span>, <span class="number">10</span>);</span><br><span class="line">        <span class="comment">// 自定义超时时间</span></span><br><span class="line">        capabilities.setCapability(<span class="string">"newCommandTimeout"</span>, <span class="number">120</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            driver = <span class="keyword">new</span> IOSDriver&lt;MobileElement&gt;(<span class="keyword">new</span> URL(<span class="string">"http://127.0.0.1:4723/wd/hub"</span>), capabilities);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (MalformedURLException e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"Please start the appium service first"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startWayTwo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        DesiredCapabilities capabilities = <span class="keyword">new</span> DesiredCapabilities();</span><br><span class="line">        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, <span class="string">"iOS"</span>);</span><br><span class="line">        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, <span class="string">"12.2"</span>);</span><br><span class="line">        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, <span class="string">"XCUITest"</span>);</span><br><span class="line">        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, <span class="string">"iPhone"</span>);</span><br><span class="line">        <span class="comment">// 只有一台设备时可以填写auto</span></span><br><span class="line">        capabilities.setCapability(MobileCapabilityType.UDID, <span class="string">"auto"</span>);</span><br><span class="line">        <span class="comment">// 自定义超时时间</span></span><br><span class="line">        capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, <span class="number">120</span>);</span><br><span class="line">        <span class="comment">// ios应用的唯一标识，还可以使用"app ":本地.ipa文件路径</span></span><br><span class="line">        capabilities.setCapability(<span class="string">"bundleId"</span>, <span class="string">"com.lietou.insw-c-ios-iphone"</span>);</span><br><span class="line">        <span class="comment">// 解决App启动慢或失败问题，appium 1.12.0新增</span></span><br><span class="line">        capabilities.setCapability(<span class="string">"eventLoopIdleDelaySec"</span>, <span class="number">10</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            driver = <span class="keyword">new</span> IOSDriver&lt;MobileElement&gt;(<span class="keyword">new</span> URL(<span class="string">"http://127.0.0.1:4723/wd/hub"</span>), capabilities);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (MalformedURLException e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"Please start the appium service first"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 等待方法是为了让我们更好的看到自动化执行结果</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(<span class="keyword">int</span> seconds)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(seconds);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Appium UI自动化对真机的性能要求相对较高。<br>机器性能不高时，元素寻址定位时会占用较长时间，建议使用性能更好的机型以获取更好的执行速度。</p>
+<p><a href="https://github.com/TesterChen/AutomationTest/tree/master/firstAppAutoTest" target="_blank" rel="noopener">跳转至本节代码 GitHub</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2017/02/13/Appium App自动化01--通过Appium启动App/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -278,7 +732,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/02/13/Appium App自动化01--通过Appium启动App/" itemprop="url">Appium UI自动化--通过Appium Desktop启动iOS App</a></h1>
+                <a class="post-title-link" href="/2017/02/13/Appium App自动化01--通过Appium启动App/" itemprop="url">Appium UI自动化01--通过Appium Desktop启动iOS App</a></h1>
         
 
         <div class="post-meta">
@@ -353,7 +807,7 @@
         
           
             <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>在环境配置章节中我们已经使用Appium自带的WDA完成配置，现尝试通过Appium Desktop拉起(启动)目标App。</p>
-<h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Mac 10.14.4</span><br><span class="line">iPhone 12.2</span><br><span class="line">Appium 1.12.1</span><br><span class="line">Xcode 10.2</span><br></pre></td></tr></table></figure>
+<h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Mac --&gt; 10.14.4</span><br><span class="line">iPhone Real Device --&gt; 12.2</span><br><span class="line">Appium --&gt; 1.12.1</span><br><span class="line">Xcode --&gt; 10.2</span><br></pre></td></tr></table></figure>
 <h3 id="获取设备udid"><a href="#获取设备udid" class="headerlink" title="获取设备udid"></a>获取设备udid</h3><p>通过命令获取设备udid：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">idevice_id -l</span><br></pre></td></tr></table></figure></p>
 <p>通过iTunes获取到设备的udid：<br><img src="/images/appium/itunes1.png" alt>默认显示的不是udid，点击如下显示区域切换即可获取到udid：<br><img src="/images/appium/itunes2.png" alt></p>
 <h3 id="启动App"><a href="#启动App" class="headerlink" title="启动App"></a>启动App</h3><p>我们以启动微信为例。<br>打开Appium桌面并启动Appium服务，点击菜单Appium -&gt; New Session Window，配置完成后保存或者直接【Start Session】：<br><img src="/images/appium/capabilities.png" alt></p>
@@ -433,7 +887,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/01/13/Appium App自动化00--环境配置/" itemprop="url">Appium UI自动化--环境配置</a></h1>
+                <a class="post-title-link" href="/2017/01/13/Appium App自动化00--环境配置/" itemprop="url">Appium UI自动化00--环境配置</a></h1>
         
 
         <div class="post-meta">
@@ -508,7 +962,7 @@
         
           
             <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>之前一直使用公司的电脑进行App UI自动化相关开发工作    ，现在自己的Mac上配置环境。<br>完成环境配置后，能通过Mac的Appium启动iPhone手机中目标App。</p>
-<h3 id="因素"><a href="#因素" class="headerlink" title="因素"></a>因素</h3><p>影响环境搭建的因素主要：iPhone系统版本、Appium版本、Xcode版本，最终环境信息：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Mac 10.14.4</span><br><span class="line">iPhone 12.2</span><br><span class="line">Appium 1.12.1</span><br><span class="line">Xcode 10.2</span><br></pre></td></tr></table></figure></p>
+<h3 id="因素"><a href="#因素" class="headerlink" title="因素"></a>因素</h3><p>影响环境搭建的因素主要：iPhone系统版本、Appium版本、Xcode版本，最终环境信息：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Mac --&gt; 10.14.4</span><br><span class="line">iPhone Real Device --&gt; 12.2</span><br><span class="line">Appium --&gt; 1.12.1</span><br><span class="line">Xcode --&gt; 10.2</span><br></pre></td></tr></table></figure></p>
 <h3 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h3><h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h4><p>1、安装Appium桌面<br><a href="http://appium.io/" target="_blank" rel="noopener">去官方下载安装</a></p>
 <p>2、安装homebrew：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 确认是否安装</span></span><br><span class="line">brew -v</span><br><span class="line"><span class="comment"># 安装</span></span><br><span class="line">/usr/bin/ruby -e <span class="string">"<span class="variable">$(curl –fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></span><br></pre></td></tr></table></figure></p>
 <p>3、安装npm及node.js：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 确认是否安装</span></span><br><span class="line">npm -v</span><br><span class="line"><span class="comment"># 安装</span></span><br><span class="line">brew install npm</span><br></pre></td></tr></table></figure></p>
@@ -1528,516 +1982,6 @@ table th:first-of-type {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/04/18/业务安全测试切入点/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/04/18/业务安全测试切入点/" itemprop="url">业务安全测试切入点</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-18T13:04:25+08:00">
-                2016-04-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="题记"><a href="#题记" class="headerlink" title="题记"></a>题记</h3><p>[放在互联网的数据就不是隐私]，每一个互联网人对此都深有感触<br>互联网企业内部管理不善导致数据出卖、安全漏洞被黑客盗走数据的事情时有发生<br>2016年频繁出现的互联网安全事故，直接导致国内知名漏洞报告平台乌云被查封<br>出现一系列的事故之后，公司了也展开了安全测试，包括服务安全和业务安全<br>这里大致列举日常测试工作中应该要注意的业务安全问题</p>
-<h3 id="XSS类：包括存储型和反射型"><a href="#XSS类：包括存储型和反射型" class="headerlink" title="XSS类：包括存储型和反射型"></a>XSS类：包括存储型和反射型</h3><p>反射型最容易传播的是搜索URL，注意处理处理这类URL中的XSS风险代码，其中存储型的危害比反射型的危害相对要更大，建议在平台做统一处理<br>测试代码举例：<a href="http://drops.wooyun.org/tips/845" target="_blank" rel="noopener">http://drops.wooyun.org/tips/845</a> [乌云已挂出维护公告]</p>
-<h3 id="前端存在业务校验"><a href="#前端存在业务校验" class="headerlink" title="前端存在业务校验"></a>前端存在业务校验</h3><p>任何前端的检验都是为提高用户体验而做，不具体任何安全性。若涉及业务上重要的校验，需要确保前后端都存在统一的逻辑校验<br>例如：数字大小范围、时间长度范围</p>
-<h3 id="POST表单冗余数据"><a href="#POST表单冗余数据" class="headerlink" title="POST表单冗余数据"></a>POST表单冗余数据</h3><p>POST表单中提交了页面或业务逻辑中不允许直接修改的数据<br>例如：常用的如手机号、邮箱，修改时会单独跳转到其他页面进行校验，展示时以灰色不可编辑的形式展示在表单中</p>
-<p><img src="/images/20160418/safe01.png" alt></p>
-<h3 id="突破搜索参数数量"><a href="#突破搜索参数数量" class="headerlink" title="突破搜索参数数量"></a>突破搜索参数数量</h3><p>很多网站都会有搜索，搜索中有很多的条件可选，业务在设计时对部分搜索条件的数量进行了限制<br>在截获请求之后，对搜索条件进行扩充后并发请求服务器，会对服务器造成比较大的压力，这一条也与前面讲到的&lt;前端存在业务校验&gt;有关联</p>
-<h3 id="密码类传输"><a href="#密码类传输" class="headerlink" title="密码类传输"></a>密码类传输</h3><p>主要涉及注册、登录、修改密码、忘记密码这几类常用操作，传输过程中若使用明文密码是非常不安全的</p>
-<h3 id="数据操作类带有ID"><a href="#数据操作类带有ID" class="headerlink" title="数据操作类带有ID"></a>数据操作类带有ID</h3><p>密切注意编辑、删除操作中带有数据ID的情况，水平越权操作数据，是非常危险的漏洞</p>
-<p><img src="/images/20160418/safe02.png" alt></p>
-<h3 id="数据库存储长度"><a href="#数据库存储长度" class="headerlink" title="数据库存储长度"></a>数据库存储长度</h3><p>在产品设计时会对数据的可输入在前端做一个长度或输入类型限制，是为了保证更好的用户体验和确保有限的系统开销<br>在前面我们已经知道前端的限制是没有任何安全意义的，通过工具修改数据类型和长度同样可被正常提交，若出错很有可能会暴露数据库的关键信息</p>
-<h3 id="重复提交请求-数据数量有限制"><a href="#重复提交请求-数据数量有限制" class="headerlink" title="重复提交请求|数据数量有限制"></a>重复提交请求|数据数量有限制</h3><p>对于不允许重复提交的请求和数量有限制的存储，不光在前端做限制，在服务端也在有对应的校验和限制</p>
-<h3 id="数据回填"><a href="#数据回填" class="headerlink" title="数据回填"></a>数据回填</h3><p>将用户输入的数据直接回填在JSP，然后作为标签中某个属性值显示在页面的HTML中，这种情况下如果不作处理，可能有XSS<br>常见有属性有value和title</p>
-<p><img src="/images/20160418/safe03.png" alt></p>
-<h3 id="自动登录"><a href="#自动登录" class="headerlink" title="自动登录"></a>自动登录</h3><p>修改密码、重置密码类操作时，一定不要在最后附加一个自动登录的动作。不可将这个判断将给前端或者浏览器</p>
-<h3 id="撞库"><a href="#撞库" class="headerlink" title="撞库"></a>撞库</h3><p>网络上有很多泄漏的账号密码资源，被拿到之后会用于撞库，取得一些网站的用户名密码<br>这各情况通常的做法是增加操作成本，比如限制每个IP下请求对应接口的次数、出现验证码、锁定账户2小时等</p>
-<h3 id="暴力破解"><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h3><p>重灾区在找回密码验证码，或者其他的任何重要操作需要数字验证码的部分<br>建议：将验证码复杂度增加（由纯属4位数据变成6位数字和字母组合），同时加上图形验证码，同时最好有其他访问防爆或监控机制</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/04/02/Selenium Web自动化03--精通xpath书写/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/04/02/Selenium Web自动化03--精通xpath书写/" itemprop="url">Selenium Web自动化03--xpath书写</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-02T12:36:00+08:00">
-                2016-04-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/自动化/" itemprop="url" rel="index">
-                    <span itemprop="name">自动化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>2小时熟练xpath书写，可以实现常见自动化元素定位需求。</p>
-<h3 id="写在最前"><a href="#写在最前" class="headerlink" title="写在最前"></a>写在最前</h3><p>xpath中用到的引号都应该是英文状态，复制后请注意修是否英文状态。<br>大部分情况下，单引号或双引号，不会影响元素定位。</p>
-<h3 id="Html小了解"><a href="#Html小了解" class="headerlink" title="Html小了解"></a>Html小了解</h3><p>首先，我们要理解网页是由很多html标签对组成，这三类是我们经常要打交道的：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">A标签（也就是我们常说的链接）</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://news.baidu.com"</span> <span class="attr">name</span>=<span class="string">"tj_trnews"</span> <span class="attr">class</span>=<span class="string">"mnav"</span>&gt;</span>新闻<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">文本输入框</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"kw"</span> <span class="attr">name</span>=<span class="string">"wd"</span> <span class="attr">class</span>=<span class="string">"s_ipt"</span> <span class="attr">value</span>=<span class="string">""</span> <span class="attr">maxlength</span>=<span class="string">"255"</span> <span class="attr">autocomplete</span>=<span class="string">"off"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">按钮（两种都是按钮）</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">id</span>=<span class="string">"su"</span> <span class="attr">value</span>=<span class="string">"百度一下"</span> <span class="attr">class</span>=<span class="string">"bg s_btn"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"search-button"</span> <span class="attr">data-title</span>=<span class="string">"搜索"</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>根据标签中间是否有内容的特征，我们可以将标签简单分成两类。<br>如下所示，我们把attribute称作标签的属性，something称作标签的文本。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">type</span> <span class="attr">attribute</span>=<span class="string">'att'</span>&gt;</span><span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">type</span> <span class="attr">attribute</span>=<span class="string">'att'</span>&gt;</span>something<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><p>xpath中常见表达式如下：</p>
-<style>
-table th:first-of-type {
-    width: 100px;
-}
-</style>
-
-<table>
-<thead>
-<tr>
-<th>表达式</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>nodename</td>
-<td>选取此节点的所有子节点</td>
-</tr>
-<tr>
-<td>//</td>
-<td>从根节点选取</td>
-</tr>
-<tr>
-<td>/</td>
-<td>从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置</td>
-</tr>
-<tr>
-<td>.</td>
-<td>选取当前节点</td>
-</tr>
-<tr>
-<td>..</td>
-<td>选取当前节点的父节点</td>
-</tr>
-<tr>
-<td>@</td>
-<td>选取属性</td>
-</tr>
-</tbody>
-</table>
-<h3 id="验证xpath"><a href="#验证xpath" class="headerlink" title="验证xpath"></a>验证xpath</h3><p>这里提到的xpath，可以打开 <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> 后，直接在chrome浏览器中验证xpath书写是否正确。<br>在浏览器页面或对应元素[右键]后点击[检查]，会打开Elements区域，在打开的Elements区域下方按Ctrl+F会有一个搜索框。<br>在这里可以验证xpath的正确性：<br><img src="/images/selenium/elementsfind.png" alt></p>
-<h3 id="Label"><a href="#Label" class="headerlink" title="Label"></a>Label</h3><p>通过A标签文本定位<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// contains是包含的意思，可以用于模糊匹配元素</span><br><span class="line">//a[contains(text(),'新闻')] </span><br><span class="line">// text()=则需要文本完全匹配，用于精准匹配元素</span><br><span class="line">//a[text()='新闻']</span><br></pre></td></tr></table></figure> </p>
-<p>通过A标签属性定位<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 理论上说只要在标签中出现的属性均可以用于定位，这里使用name</span><br><span class="line">//a[contains(@name,'tj_trnews')]</span><br></pre></td></tr></table></figure></p>
-<h3 id="Input-amp-Button"><a href="#Input-amp-Button" class="headerlink" title="Input&amp;Button"></a>Input&amp;Button</h3><p>理论上说任意标签的属性均可以用于定位，建议使用常见的id、name等<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//input[@id='kw']</span><br><span class="line">//input[@name='wd']</span><br><span class="line">//input[@class='s_ipt']</span><br></pre></td></tr></table></figure></p>
-<p>其他标签类型元素的定位与输入框类似，同样使用属性定位</p>
-<h3 id="多元素"><a href="#多元素" class="headerlink" title="多元素"></a>多元素</h3><p>当页面中存在多个一样的元素时，我们常使用下标定位。<br>需要注意的是多个元素时，第一个元素的下标是从1开始，而不是0。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 直接出现6个符合条件的元素，返回的是List</span><br><span class="line">//a[@class='mnav']</span><br><span class="line"></span><br><span class="line">// 拿到第一个</span><br><span class="line">(//a[@class='mnav'])[1]</span><br><span class="line"></span><br><span class="line">// 动态拿到最后一个</span><br><span class="line">(//a[@class='mnav'])[last()]</span><br></pre></td></tr></table></figure>
-<h3 id="多属性定位"><a href="#多属性定位" class="headerlink" title="多属性定位"></a>多属性定位</h3><p>通过多个属性配合定位元素，或者匹配任意元素即可</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 同时满足两个条件，用于辅助进一步定位元素</span><br><span class="line">//input[@id='kw' and @name='wd']</span><br><span class="line">//input[@id='kw'][@name='wd']</span><br><span class="line"></span><br><span class="line">// 匹配任一条件即可</span><br><span class="line">//input[@id='kw' or @name='wd']</span><br></pre></td></tr></table></figure>
-<h3 id="获取父元素"><a href="#获取父元素" class="headerlink" title="获取父元素"></a>获取父元素</h3><p>通过/..即可获取当前元素的父元素，当父元素不好定位时也可以考虑使用此方法</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 定位元素的父元素</span><br><span class="line">//input[@id='kw']/..</span><br></pre></td></tr></table></figure>
-<h3 id="部分内容定位"><a href="#部分内容定位" class="headerlink" title="部分内容定位"></a>部分内容定位</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 以某文本开头</span><br><span class="line">//a[starts-with(text(),'学')]</span><br><span class="line"></span><br><span class="line">// 包含某些文本，用于模糊匹配元素</span><br><span class="line">//a[contains(text(),'学')] </span><br><span class="line"></span><br><span class="line">// 属性包含某些内容也适用</span><br><span class="line">//a[contains(@name,'news')] </span><br></pre></td></tr></table></figure>
-<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 通过逻辑判断定位元素</span><br><span class="line">//input[@value &gt;= 8]</span><br></pre></td></tr></table></figure>
-<h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>xpath的定位时间相比通过id、name直接定位方式理论上要慢(毫秒级别)。<br>不过，因为现在PC的性能足够好，所以WEB UI自动化实际应用中时间差异无感知，但iOS App中元素xpath定位时会很慢。</p>
-<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><p>更多内容可以前往<br>W3C关于XML Path Language的介绍<br><a href="https://www.w3.org/TR/xpath/" target="_blank" rel="noopener">https://www.w3.org/TR/xpath/</a></p>
-<p>w3school的简版介绍<br><a href="http://www.w3school.com.cn/xpath/index.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/xpath/index.asp</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/02/01/Selenium Web自动化01--快速开始/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/02/01/Selenium Web自动化01--快速开始/" itemprop="url">Selenium Web自动化01--快速开始</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-02-01T21:53:00+08:00">
-                2016-02-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/自动化/" itemprop="url" rel="index">
-                    <span itemprop="name">自动化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><p>1、Java<br>2、Selenium<br>3、TestNG<br>4、Xpath<br>5、Maven</p>
-<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>启动本地浏览器，打开百度，输入Selenium搜索</p>
-<h3 id="编码过程"><a href="#编码过程" class="headerlink" title="编码过程"></a>编码过程</h3><p>1、通过Eclipse新建一个Maven项目(这里不细说)，在pom.xml文件中加入如下内容，添加保存后，IDE会自动下载对应jar包，等待下载完成。<br>Maven信息可以在<a href="https://mvnrepository.com/" target="_blank" rel="noopener">https://mvnrepository.com/</a> 搜索找到；<br>也可以在官网 <a href="https://www.seleniumhq.org/download/maven.jsp" target="_blank" rel="noopener">https://www.seleniumhq.org/download/maven.jsp</a> 找到相关信息；<br>注意：此部分内容需要添加在 &#60;dependencies&#62;&#60;/dependencies&#62; 标签中，如果没有需要新增。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;selenium-chrome-driver&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;3.9.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.testng&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;testng&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;6.9.6&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-<p>2、下载目标driver文件<br>不同系统、流览器对应不同的driver文件，可去到官网seleniumhq.org下载，这里提供chrome driver的详细下载地址：<br><a href="https://sites.google.com/a/chromium.org/chromedriver/downloads" target="_blank" rel="noopener">https://sites.google.com/a/chromium.org/chromedriver/downloads</a><br>我们今天下载的是chrome的mac版，我将driver文件存储到了项目的/src/main/resource/driver/路径下，chromedriver是driver的文件名。</p>
-<p>3、在项目中新建一个Java类文件FirstWebAutoTest.java，文件中输入如下代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package 根据自己项目情况修改或不替换此行</span></span><br><span class="line"><span class="keyword">package</span> com.test.qa.mytest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.By;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.WebDriver;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.chrome.ChromeDriver;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.AfterTest;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.BeforeTest;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * simple selenium web test script</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstWebAutoTest</span> </span>&#123;</span><br><span class="line">	WebDriver driver;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// @BeforeTest注解表示before()这个方法在测试开始之前执行</span></span><br><span class="line">	<span class="meta">@BeforeTest</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 获取当前项目路径</span></span><br><span class="line">		String projectPath = System.getProperty(<span class="string">"user.dir"</span>);</span><br><span class="line">		<span class="comment">// 设置chromedriver服务地址，这里用到了前面存放driver的地址</span></span><br><span class="line">		System.setProperty(<span class="string">"webdriver.chrome.driver"</span>, projectPath+<span class="string">"/src/main/resource/driver/chromedriver"</span>);</span><br><span class="line">		<span class="comment">// 实例化一个chrome driver，也就是一个浏览器</span></span><br><span class="line">		driver = <span class="keyword">new</span> ChromeDriver();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// @Test注解表示这里是测试脚本主体</span></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 打开目标网站</span></span><br><span class="line">		driver.get(<span class="string">"http://www.baidu.com/"</span>);</span><br><span class="line">		<span class="comment">// 在目标输入框中输入selenium</span></span><br><span class="line">		driver.findElement(By.xpath(<span class="string">"//input[@id='kw']"</span>)).sendKeys(<span class="string">"selenium"</span>);</span><br><span class="line">		<span class="comment">// 点击搜索按钮</span></span><br><span class="line">		driver.findElement(By.xpath(<span class="string">"//input[@id='su']"</span>)).click();</span><br><span class="line">		<span class="comment">// 等待3s</span></span><br><span class="line">		sleep(<span class="number">3000</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// @AfterTest注解中往往放一些资源释放类动作</span></span><br><span class="line">	<span class="meta">@AfterTest</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">after</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 关闭和退出浏览器，释放资源</span></span><br><span class="line">		driver.close();</span><br><span class="line">		driver.quit();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 等待方法是为了让我们更好的看到自动化执行结果</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(<span class="keyword">int</span> seconds)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Thread.sleep(seconds);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>4、在FirstWebAutoTest.java文件点击右键，选择“Run As – TestNG Test”<br>Wow Cao ！！！<br>你会发现，竟然很神奇地启动了浏览器，惊不惊喜，意不意外</p>
-<p>此部分代码源码 <a href="https://github.com/TesterChen/AutomationTest/tree/master/firstAutoTest" target="_blank" rel="noopener">GitHub firstAutoTest</a></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过上述步骤，如果你已经实现了打开浏览器、在百度上搜索selenium，那说明你已经开始了你的自动化之旅。<br>今天接触到的技术栈，几乎是我们后面要用到的所有，刚开始接触都会有疑惑，后续会对用到的每一项内容都详细讲解。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2088,7 +2032,7 @@ table th:first-of-type {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2099,7 +2043,7 @@ table th:first-of-type {
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 
               </div>
@@ -2110,7 +2054,7 @@ table th:first-of-type {
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

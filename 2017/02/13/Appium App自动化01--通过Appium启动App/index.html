@@ -79,22 +79,22 @@
 
 
 
-<meta name="description" content="目标在环境配置章节中我们已经使用Appium自带的WDA完成配置，现尝试通过Appium Desktop拉起(启动)目标App。 环境信息1234Mac 10.14.4iPhone 12.2Appium 1.12.1Xcode 10.2 获取设备udid通过命令获取设备udid：1idevice_id -l 通过iTunes获取到设备的udid：默认显示的不是udid，点击如下显示区域切换即可获取">
+<meta name="description" content="目标在环境配置章节中我们已经使用Appium自带的WDA完成配置，现尝试通过Appium Desktop拉起(启动)目标App。 环境信息1234Mac --&amp;gt; 10.14.4iPhone Real Device --&amp;gt; 12.2Appium --&amp;gt; 1.12.1Xcode --&amp;gt; 10.2 获取设备udid通过命令获取设备udid：1idevice_id -l 通过iTu">
 <meta name="keywords" content="Appium,Xcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Appium UI自动化--通过Appium Desktop启动iOS App">
+<meta property="og:title" content="Appium UI自动化01--通过Appium Desktop启动iOS App">
 <meta property="og:url" content="http://chainradar.cn/2017/02/13/Appium App自动化01--通过Appium启动App/index.html">
 <meta property="og:site_name" content="Tester Chen">
-<meta property="og:description" content="目标在环境配置章节中我们已经使用Appium自带的WDA完成配置，现尝试通过Appium Desktop拉起(启动)目标App。 环境信息1234Mac 10.14.4iPhone 12.2Appium 1.12.1Xcode 10.2 获取设备udid通过命令获取设备udid：1idevice_id -l 通过iTunes获取到设备的udid：默认显示的不是udid，点击如下显示区域切换即可获取">
+<meta property="og:description" content="目标在环境配置章节中我们已经使用Appium自带的WDA完成配置，现尝试通过Appium Desktop拉起(启动)目标App。 环境信息1234Mac --&amp;gt; 10.14.4iPhone Real Device --&amp;gt; 12.2Appium --&amp;gt; 1.12.1Xcode --&amp;gt; 10.2 获取设备udid通过命令获取设备udid：1idevice_id -l 通过iTu">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://chainradar.cn/images/appium/itunes1.png">
 <meta property="og:image" content="http://chainradar.cn/images/appium/itunes2.png">
 <meta property="og:image" content="http://chainradar.cn/images/appium/capabilities.png">
 <meta property="og:image" content="http://chainradar.cn/images/appium/connect.png">
-<meta property="og:updated_time" content="2019-04-15T15:16:28.766Z">
+<meta property="og:updated_time" content="2019-04-18T08:47:49.762Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Appium UI自动化--通过Appium Desktop启动iOS App">
-<meta name="twitter:description" content="目标在环境配置章节中我们已经使用Appium自带的WDA完成配置，现尝试通过Appium Desktop拉起(启动)目标App。 环境信息1234Mac 10.14.4iPhone 12.2Appium 1.12.1Xcode 10.2 获取设备udid通过命令获取设备udid：1idevice_id -l 通过iTunes获取到设备的udid：默认显示的不是udid，点击如下显示区域切换即可获取">
+<meta name="twitter:title" content="Appium UI自动化01--通过Appium Desktop启动iOS App">
+<meta name="twitter:description" content="目标在环境配置章节中我们已经使用Appium自带的WDA完成配置，现尝试通过Appium Desktop拉起(启动)目标App。 环境信息1234Mac --&amp;gt; 10.14.4iPhone Real Device --&amp;gt; 12.2Appium --&amp;gt; 1.12.1Xcode --&amp;gt; 10.2 获取设备udid通过命令获取设备udid：1idevice_id -l 通过iTu">
 <meta name="twitter:image" content="http://chainradar.cn/images/appium/itunes1.png">
 
 
@@ -131,7 +131,7 @@
 
 
 
-  <title>Appium UI自动化--通过Appium Desktop启动iOS App | Tester Chen</title>
+  <title>Appium UI自动化01--通过Appium Desktop启动iOS App | Tester Chen</title>
   
 
 
@@ -285,7 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Appium UI自动化--通过Appium Desktop启动iOS App</h1>
+          <h1 class="post-title" itemprop="name headline">Appium UI自动化01--通过Appium Desktop启动iOS App</h1>
         
 
         <div class="post-meta">
@@ -358,7 +358,7 @@
 
       
         <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>在环境配置章节中我们已经使用Appium自带的WDA完成配置，现尝试通过Appium Desktop拉起(启动)目标App。</p>
-<h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Mac 10.14.4</span><br><span class="line">iPhone 12.2</span><br><span class="line">Appium 1.12.1</span><br><span class="line">Xcode 10.2</span><br></pre></td></tr></table></figure>
+<h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Mac --&gt; 10.14.4</span><br><span class="line">iPhone Real Device --&gt; 12.2</span><br><span class="line">Appium --&gt; 1.12.1</span><br><span class="line">Xcode --&gt; 10.2</span><br></pre></td></tr></table></figure>
 <h3 id="获取设备udid"><a href="#获取设备udid" class="headerlink" title="获取设备udid"></a>获取设备udid</h3><p>通过命令获取设备udid：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">idevice_id -l</span><br></pre></td></tr></table></figure></p>
 <p>通过iTunes获取到设备的udid：<br><img src="/images/appium/itunes1.png" alt>默认显示的不是udid，点击如下显示区域切换即可获取到udid：<br><img src="/images/appium/itunes2.png" alt></p>
 <h3 id="启动App"><a href="#启动App" class="headerlink" title="启动App"></a>启动App</h3><p>我们以启动微信为例。<br>打开Appium桌面并启动Appium服务，点击菜单Appium -&gt; New Session Window，配置完成后保存或者直接【Start Session】：<br><img src="/images/appium/capabilities.png" alt></p>
@@ -403,8 +403,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/13/Appium App自动化00--环境配置/" rel="next" title="Appium UI自动化--环境配置">
-                <i class="fa fa-chevron-left"></i> Appium UI自动化--环境配置
+              <a href="/2017/01/13/Appium App自动化00--环境配置/" rel="next" title="Appium UI自动化00--环境配置">
+                <i class="fa fa-chevron-left"></i> Appium UI自动化00--环境配置
               </a>
             
           </div>
@@ -413,8 +413,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/02/15/Appium App自动化02--快速开始/" rel="prev" title="Appium UI自动化--快速开始">
-                Appium UI自动化--快速开始 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/02/15/Appium App自动化02--快速开始/" rel="prev" title="Appium UI自动化02--快速开始">
+                Appium UI自动化02--快速开始 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -492,7 +492,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -503,7 +503,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 
               </div>
@@ -514,7 +514,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

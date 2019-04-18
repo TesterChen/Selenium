@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Tester Chen">
 <meta property="og:description" content="面向对象主要面向测试开发/高级测试工程师面试，汇集部分常见基础算法题。 两数之和需求：给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。 示例：给定 nums = [2, 7, 11, 15], target = 9因为 nums[0] + num">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-08T07:24:32.956Z">
+<meta property="og:updated_time" content="2019-04-15T15:47:56.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试准备--算法">
 <meta name="twitter:description" content="面向对象主要面向测试开发/高级测试工程师面试，汇集部分常见基础算法题。 两数之和需求：给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。 示例：给定 nums = [2, 7, 11, 15], target = 9因为 nums[0] + num">
@@ -369,6 +369,10 @@
 <p><a href="https://leetcode-cn.com/problems/single-number/" target="_blank" rel="noopener">更多参见LeetCode</a></p>
 <p>扩展：给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现三次，找出那个只出现了一次的元素。这里给出可参考答案：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">0</span>, b = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> x : nums) &#123;</span><br><span class="line">        a = (a ^ x) &amp; ~b;</span><br><span class="line">        b = (b ^ x) &amp; ~a;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><a href="https://leetcode-cn.com/problems/single-number-ii/" target="_blank" rel="noopener">更多参见LeetCode</a><br><a href="https://leetcode-cn.com/problems/single-number-iii/" target="_blank" rel="noopener">两个元素只出现一次</a></p>
+<h3 id="字符串中的第一个唯一字符"><a href="#字符串中的第一个唯一字符" class="headerlink" title="字符串中的第一个唯一字符"></a>字符串中的第一个唯一字符</h3><p>需求：<br>给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回 -1。</p>
+<p>示例:<br>s = “leetcode”，返回 0.<br>s = “loveleetcode”，返回 2.</p>
+<p>方法一：使用字符串IndexOf方法，当第1次出现和最后1次出现的位置相同，我们则认为它只有1个。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">firstUniqChar</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;str.length(); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(i == str.lastIndexOf(str.substring(i, i+<span class="number">1</span>))) &#123;</span><br><span class="line">            <span class="keyword">if</span>(i == str.indexOf(str.substring(i, i+<span class="number">1</span>))) &#123;</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://leetcode-cn.com/problems/first-unique-character-in-a-string/" target="_blank" rel="noopener">更多参见LeetCode</a></p>
 <h3 id="第K大数字"><a href="#第K大数字" class="headerlink" title="第K大数字"></a>第K大数字</h3><p>需求：<br>在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。</p>
 <p>示例:<br>输入: [3,2,1,5,6,4] 和 k = 2<br>输出: 5</p>
 <p>方法一：硬核办法，使用sort方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findKthLargest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(k &lt;= <span class="number">0</span> || k &gt;nums.length) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    <span class="keyword">return</span> nums[nums.length - k];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -502,7 +506,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -513,7 +517,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 
               </div>
@@ -524,7 +528,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -557,7 +561,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#面向对象"><span class="nav-number">1.</span> <span class="nav-text">面向对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两数之和"><span class="nav-number">2.</span> <span class="nav-text">两数之和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#只出现一次的数字"><span class="nav-number">3.</span> <span class="nav-text">只出现一次的数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第K大数字"><span class="nav-number">4.</span> <span class="nav-text">第K大数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找目标元素"><span class="nav-number">5.</span> <span class="nav-text">查找目标元素</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#面向对象"><span class="nav-number">1.</span> <span class="nav-text">面向对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两数之和"><span class="nav-number">2.</span> <span class="nav-text">两数之和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#只出现一次的数字"><span class="nav-number">3.</span> <span class="nav-text">只出现一次的数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串中的第一个唯一字符"><span class="nav-number">4.</span> <span class="nav-text">字符串中的第一个唯一字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第K大数字"><span class="nav-number">5.</span> <span class="nav-text">第K大数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找目标元素"><span class="nav-number">6.</span> <span class="nav-text">查找目标元素</span></a></li></ol></div>
             
 
           </div>

@@ -7,6 +7,9 @@ http://chainradar.cn/2018/08/08/面试准备--SQL/
 http://chainradar.cn/2018/08/08/面试准备--算法/
 http://chainradar.cn/2018/08/08/面试准备--Java基础/
 http://chainradar.cn/2018/08/08/面试准备--Linux/
+http://chainradar.cn/2018/07/05/Charles--描述文件安装/
+http://chainradar.cn/2017/03/18/Appium App自动化03--常用方法/
+http://chainradar.cn/2017/03/18/Appium App自动化03--iOS常用方法/
 http://chainradar.cn/2017/02/15/Appium App自动化02--快速开始/
 http://chainradar.cn/2017/02/13/Appium App自动化01--通过Appium启动App/
 http://chainradar.cn/2017/01/13/Appium App自动化00--环境配置/
