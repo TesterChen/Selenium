@@ -461,6 +461,157 @@ table th:first-of-type {
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/03/02/Selenium Web自动化02--TestNG注解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/03/02/Selenium Web自动化02--TestNG注解/" itemprop="url">Selenium Web自动化02--TestNG常用注解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-02T11:53:00+08:00">
+                2016-03-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>了解TestNG常用注解及其执行顺序</p>
+<h3 id="基本注解"><a href="#基本注解" class="headerlink" title="基本注解"></a>基本注解</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">将类或方法标记为测试的一部分。</span><br><span class="line"></span><br><span class="line"><span class="meta">@BeforeTest</span></span><br><span class="line">注释的方法将在属于&lt;test&gt;标签内的类的所有测试方法运行之前运行。</span><br><span class="line"></span><br><span class="line"><span class="meta">@AfterTest</span></span><br><span class="line">注释的方法将在属于&lt;test&gt;标签内的类的所有测试方法运行之后运行。</span><br><span class="line"></span><br><span class="line"><span class="meta">@BeforeSuite</span></span><br><span class="line">在该套件的所有测试都运行在注释的方法之前，仅运行一次。</span><br><span class="line"></span><br><span class="line"><span class="meta">@AfterSuite</span></span><br><span class="line">在该套件的所有测试都运行在注释方法之后，仅运行一次。</span><br><span class="line"></span><br><span class="line"><span class="meta">@BeforeClass</span></span><br><span class="line">在调用当前类的第一个测试方法之前运行，注释方法仅运行一次。</span><br><span class="line"></span><br><span class="line"><span class="meta">@AfterClass</span></span><br><span class="line">在调用当前类的第一个测试方法之后运行，注释方法仅运行一次</span><br><span class="line"></span><br><span class="line"><span class="meta">@BeforeGroups</span></span><br><span class="line">配置方法将在之前运行组列表。 此方法保证在调用属于这些组中的任何一个的第一个测试方法之前不久运行。</span><br><span class="line"></span><br><span class="line"><span class="meta">@AfterGroups</span></span><br><span class="line">此配置方法将在之后运行组列表。该方法保证在调用属于任何这些组的最后一个测试方法之后不久运行。</span><br><span class="line"></span><br><span class="line"><span class="meta">@BeforeMethod</span></span><br><span class="line">注释方法将在每个测试方法之前运行。</span><br><span class="line"></span><br><span class="line"><span class="meta">@AfterMethod</span></span><br><span class="line">注释方法将在每个测试方法之后运行。</span><br><span class="line"></span><br><span class="line"><span class="meta">@DataProvider</span></span><br><span class="line">标记一种方法来提供测试方法的数据。 注释方法必须返回一个Object [] []，其中每个Object []可以被分配给测试方法的参数列表。 要从该DataProvider接收数据的<span class="meta">@Test</span>方法需要使用与此注释名称相等的dataProvider名称。</span><br><span class="line"></span><br><span class="line"><span class="meta">@Factory</span></span><br><span class="line">将一个方法标记为工厂，返回TestNG将被用作测试类的对象。 该方法必须返回Object []。</span><br><span class="line"></span><br><span class="line"><span class="meta">@Listeners</span></span><br><span class="line">定义测试类上的侦听器。</span><br><span class="line"></span><br><span class="line"><span class="meta">@Parameters</span></span><br><span class="line">描述如何将参数传递给<span class="meta">@Test</span>方法。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="最常用"><a href="#最常用" class="headerlink" title="最常用"></a>最常用</h3><p>最常用的几个注解：<br>@Test、@BeforeTest、@BeforeClass、@AfterTest、@AfterClass</p>
+<p>指定依赖关系：在@Test注释中使用属性dependsOnMethods<br>1.以特定顺序调用测试用例中的方法，或者可能希望在方法之间共享一些数据和状态<br>2.如果依赖方法失败，则将跳过所有后续测试方法</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 包路径可能可能需要修改</span></span><br><span class="line"><span class="keyword">package</span> com.selenium.learn;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.AfterClass;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.AfterMethod;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.AfterTest;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.BeforeClass;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.BeforeMethod;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.BeforeTest;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * TestNG annotations examples</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestNGTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 在调用当前类的第一个测试方法之前运行，注释方法仅运行一次</span></span><br><span class="line">	<span class="meta">@BeforeClass</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeClass</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"我是 @BeforeClass"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// @BeforeTest表示方法将在属于&lt;test&gt;标签内的类的所有测试方法运行之前运行</span></span><br><span class="line">	<span class="meta">@BeforeTest</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"我是 @BeforeTest"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// @BeforeMethod</span></span><br><span class="line">	<span class="comment">// public void beforeMethod() &#123;</span></span><br><span class="line">	<span class="comment">// System.out.println("我是 @BeforeMethod");</span></span><br><span class="line">	<span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span>()</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"我是 @Test1()"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// dependsOnMethods</span></span><br><span class="line">	<span class="meta">@Test</span>(dependsOnMethods = &#123; <span class="string">"test3"</span> &#125;)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"我是 @Test2()"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// @Test表示这里是测试脚本主体</span></span><br><span class="line">	<span class="meta">@Test</span>()</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"我是 @Test3()"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// @Test表示这里是测试脚本主体</span></span><br><span class="line">	<span class="meta">@Test</span>()</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"我是 @Test4()"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// @AfterMethod</span></span><br><span class="line">	<span class="comment">// public void afterMethod() &#123;</span></span><br><span class="line">	<span class="comment">// System.out.println("我是 @AfterMethod");</span></span><br><span class="line">	<span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// @AfterTest表示方法将在属于&lt;test&gt;标签内的类的所有测试方法运行之后运行</span></span><br><span class="line">	<span class="meta">@AfterTest</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">after</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"我是 @AfterTest"</span>);</span><br><span class="line">		System.out.println();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 在调用当前类的第一个测试方法之后运行，注释方法仅运行一次</span></span><br><span class="line">	<span class="meta">@AfterClass</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterClass</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"我是 @AfterClass"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">我是 <span class="meta">@BeforeTest</span></span><br><span class="line">我是 <span class="meta">@BeforeClass</span></span><br><span class="line">我是 <span class="meta">@Test</span>1()</span><br><span class="line">我是 <span class="meta">@Test</span>3()</span><br><span class="line">我是 <span class="meta">@Test</span>4()</span><br><span class="line">我是 <span class="meta">@Test</span>2()</span><br><span class="line">我是 <span class="meta">@AfterClass</span></span><br><span class="line">我是 <span class="meta">@AfterTest</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>注解的执行顺序如下：<br>@BeforeTest<br>@BeforeClass<br>@Test<br>@AfterClass<br>@AfterTest</p>
+<p>这里面试的时候可能会问到@BeforeTest和@BeforeClass谁先执行，不是简单的先后，而要区分Before还是After，执行先后关系有一定的对称关系。<br>也可能会问到BeforeMethod和@AfterMethod是怎么生效的，这对注释会在每一个@Test的开始和结束执行。但会在@BeforeTest和@BeforeClass之后，@AfterClass和@AfterTest之前，执行先后也有对称关系。</p>
+<p>使用dependsOnMethods声明依赖关系的方法，并不会在依赖方法执行后马上执行，其中可能先执行另外的方法，具有一定的随机性。<br><strong>如果有明确的执行依赖顺序，需要对所有方法均设置好依赖关系。</strong></p>
+<h3 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h3><p>可以参阅 <a href="https://www.yiibai.com/testng" target="_blank" rel="noopener">https://www.yiibai.com/testng</a><br>在yibai教程中有很多的实例，大家可以根据实际的需求学习、使用。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/02/01/Selenium Web自动化01--快速开始/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1685,153 +1836,6 @@ table th:first-of-type {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2012/08/29/测试是否需要定位缺陷原因/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2012/08/29/测试是否需要定位缺陷原因/" itemprop="url">测试是否需要定位缺陷原因</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-08-29T14:57:00+08:00">
-                2012-08-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>我觉得问题的答案应该是肯定的。</p>
-<p>首先，从字面意思来说，我觉得测试人员应该对缺陷的定位负责，尽量在报告缺陷时将自己对于缺陷的理解（或缺陷产生的原因）写入到缺陷的备注信息（或缺陷主 体）中。在个人能力、资源许可的情况下，尽我们所能的去提升我们的工作质量，做到100%的自我负责，因为我们的目标不是做完成就可以，而是追求优秀！！！<br>其次，软件测试人员的责任角度来说，在测试人员具备这样的个人能力，且通过他们掌握的资源可完成对定位缺陷，那么最好是提供对缺陷的定位给开发人员或产品 人员。这样即方便开发人员去定位问题、解决问题，也便于后期缺陷的追溯与回归。同样，部分缺陷可作为产品人员对产品进行优化的参考。</p>
-<p>但是，如果对缺陷的定位很困难，通过测试人员所掌握的资源与知识在短时间（如一个小时、半天）内无法完成对缺陷的定位，我们最好是向开发人员反映，并表示期望得到他们的帮助，共同对发现的缺陷进行定位，定位后要记录在缺陷的描述中；<br>如果在交流过程中测试人员和开发人员一致认为此问题很复杂，需要开发人员内部进行排查的问题，那么此时测试人员可以终止缺陷定位，交由开发组人员进行处理，测试人员只需要对后期缺陷产生的原因进行了解、对缺陷进行回归测试即可，测试人员可考虑参加他们的讨论。<br>将问题的定位转至开发人员层面之后，如果涉及到更加深层次的问题，开发经理（项目经理）会向他们的上级或同行请求协助，测试人员可考虑参加他们的讨论。</p>
-<p>另外，我们要考虑的一个问题就是具体问题具体分析、能随机应变。如果测试组的成员有很重的测试任务，在规定的时间内对所有内容完成测试任务的可能性都不 大，那么我想测试人员也没太多时间去找寻缺陷出现的具体原因。但在这里仍然要强调的是缺陷的重现步骤、涉及到的数据等信息一定要记录全面，这样方便开发人 员在调试时更快更准确的重现问题、找到问题、解决问题。</p>
-<p>同时，我觉得适量的对具体问题进行深入探讨，即有利于我们了解被测系统的业务，也有利于提升测试人员的工作技能。同时也加强了开发人员与测试人员之前的相互沟通和协作。</p>
-<p>最后，我认为优秀测试人员不仅要善于找出现在系统已有的缺陷、对发现的缺陷进行问题定位、提出对缺陷的修改意见或建议。更要能预知未来系统可能会出现的缺陷，并提出自己的看法、同时设法对它进行验证。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1882,7 +1886,7 @@ table th:first-of-type {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1904,7 +1908,7 @@ table th:first-of-type {
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

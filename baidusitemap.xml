@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://chainradar.cn/2016/10/05/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9609--TestNG%E5%AE%9E%E7%8E%B0%E5%B9%B6%E5%8F%91%E6%89%A7%E8%A1%8C/</loc>
+    <lastmod>2019-04-23</lastmod>
+  </url>  <url>
+    <loc>http://chainradar.cn/2016/03/02/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9602--TestNG%E6%B3%A8%E8%A7%A3/</loc>
+    <lastmod>2019-04-23</lastmod>
+  </url>  <url>
+    <loc>http://chainradar.cn/2016/09/05/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9608--ExtentReports%E7%BE%8E%E5%8C%96TestNG%E6%8A%A5%E5%91%8A/</loc>
+    <lastmod>2019-04-20</lastmod>
+  </url>  <url>
     <loc>http://chainradar.cn/2017/03/18/Appium%20App%E8%87%AA%E5%8A%A8%E5%8C%9603--iOS%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/</loc>
     <lastmod>2019-04-18</lastmod>
   </url>  <url>
@@ -37,13 +46,7 @@
     <loc>http://chainradar.cn/2016/08/04/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9607--%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2019-04-14</lastmod>
   </url>  <url>
-    <loc>http://chainradar.cn/2016/09/05/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9608--ExtentReports%E7%BE%8E%E5%8C%96TestNG%E6%8A%A5%E5%91%8A/</loc>
-    <lastmod>2019-04-14</lastmod>
-  </url>  <url>
     <loc>http://chainradar.cn/2016/04/02/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9603--%E7%B2%BE%E9%80%9Axpath%E4%B9%A6%E5%86%99/</loc>
-    <lastmod>2019-04-14</lastmod>
-  </url>  <url>
-    <loc>http://chainradar.cn/2019/03/02/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9602--TestNG%E6%B3%A8%E8%A7%A3/</loc>
     <lastmod>2019-04-14</lastmod>
   </url>  <url>
     <loc>http://chainradar.cn/2016/02/01/Selenium%20Web%E8%87%AA%E5%8A%A8%E5%8C%9601--%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/</loc>
