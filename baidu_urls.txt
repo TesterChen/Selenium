@@ -1,3 +1,8 @@
+http://chainradar.cn/2019/06/12/Postman API自动化--常用辅助工具/
+http://chainradar.cn/2019/06/10/Postman API自动化--团队协作/
+http://chainradar.cn/2019/06/09/Postman API自动化--常用Test脚本/
+http://chainradar.cn/2019/06/09/Postman API自动化--局部变量与全局变量/
+http://chainradar.cn/2019/04/24/如何做好基层面试官/
 http://chainradar.cn/2019/04/13/Shell 00--入门知识/
 http://chainradar.cn/2019/04/01/解决项目分支和环境冲突/
 http://chainradar.cn/2019/03/29/是要写博客了/
