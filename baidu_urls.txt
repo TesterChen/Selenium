@@ -1,3 +1,4 @@
+http://chainradar.cn/2019/06/14/Postman API自动化07--通用断言设置/
 http://chainradar.cn/2019/06/13/Postman API自动化06--团队协作/
 http://chainradar.cn/2019/06/11/Postman API自动化05--上传文件/
 http://chainradar.cn/2019/05/19/Postman API自动化04--常用Test脚本/

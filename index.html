@@ -259,6 +259,155 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/06/14/Postman API自动化07--通用断言设置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/14/Postman API自动化07--通用断言设置/" itemprop="url">Postman API自动化07--通用断言设置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-14T16:47:00+08:00">
+                2019-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/API自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">API自动化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">操作系统：MacOS Mojave 10.14.4</span><br><span class="line">Postman：7.1.1</span><br></pre></td></tr></table></figure>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>更好更高效地使用Postman工具；</p>
+<h3 id="通用断言"><a href="#通用断言" class="headerlink" title="通用断言"></a>通用断言</h3><p>我们通常会有这样的需求，我们在做接口测试时需要对所有请求都做某一个相同断言，有什么好办法？<br>有的！Postman在Collection和Folder都支持多方面的通用配置；<br>下图显示的是Collection的断言设置入口；<br><img src="/images/api/edit.png" alt> </p>
+<p>Collection的通用配置包括几大部分，我们常用的有前置处理脚本(Pre-request Script)、后置数据处理(Tests)，如断言脚本，变量设置(Varibles)；<br>下图中我们对这个Collection设置了通用的响应码断言；<br><img src="/images/api/publicTest.png" alt> </p>
+<p>Folder的通用配置相比Collection少了变量设置(Varibles)模块；<br><img src="/images/api/editFolder.png" alt> </p>
+<p>我们来做个试验，我们先注释掉通用的断言(此时登录脚本Test中是有数据提取脚本的），执行脚本，查看执行结果；<br>执行结果显示PASSED数量为0，FAILED为0；<br><img src="/images/api/noResult.png" alt> </p>
+<p>接下来，我们放开Collection中对响应码的通用断言，执行脚本，看执行结果；<br>执行结果显示PASSED数量为2，FAILED为0；<br><img src="/images/api/haveResult.png" alt> </p>
+<p>通过上面两次的执行，我们可以得到以下结论：<br>1、我们可以通过设置通用断言的方式来对特定范围的请求进行结果检查；<br>2、执行结果成功或失败，只有在存在断言的情况下才会计数；</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/06/13/Postman API自动化06--团队协作/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1122,6 +1271,8 @@
 <p><img src="/images/api/post.png" alt></p>
 <h3 id="Get请求"><a href="#Get请求" class="headerlink" title="Get请求"></a>Get请求</h3><p>一个Get请求主要包括几个部分：<br>1、Params(可选)：请求参数，这里填写的参数会体现在Url中<br>2、Headers：请求头，正常业务请求中不可或缺；<br>3、Test(可选)：提取返回中参数、结果断言，提取参数在接口测试场景中大多会用到，用于传递关键参数；<br>4、保存、执行请求；</p>
 <p><img src="/images/api/get.png" alt></p>
+<h3 id="执行方式"><a href="#执行方式" class="headerlink" title="执行方式"></a>执行方式</h3><p>执行方式分为单个执行和批量执行；<br>单个执行，直接在编辑请求页面右侧点击【Send】即可;</p>
+<p>批量执行，在Collection右上角或主界面左上角的【Runner】均可以发起，批量执行时可以执行整个Collection，也可以选择子文件夹执行；</p>
 
           
         
@@ -1611,152 +1762,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/03/29/是要写博客了/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/29/是要写博客了/" itemprop="url">是要写博客了</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-29T09:21:25+08:00">
-                2019-03-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="怎么就不写了呢？"><a href="#怎么就不写了呢？" class="headerlink" title="怎么就不写了呢？"></a>怎么就不写了呢？</h3><p>好记性不如烂笔头，于我而言是没记性只能烂笔头。我将很多我认为有用的信息写到了笔记软件中，笔记软件可以云端同步，有了这个工具之后，便不再写博客<br>换了Mac笔记本以后，我更是可以摆脱原来的笔记类软件，直接记录在[备忘录]中，就可以很方便地在PC和手机端查看。<br>直接将写博客这个事情甩到了十条街以外。</p>
-<h3 id="对我的作用"><a href="#对我的作用" class="headerlink" title="对我的作用"></a>对我的作用</h3><p>巩固知识的方式有两种：一种是给别人讲，一种是自己整理写出来，博客就是用写的方式。<br>前面也提到，我是一个忘性比较大的人，博客可以方便自己拾起原来的技能。<br>便于其他人了解我正在做的事情，面试的时候还可以作为加分项。</p>
-<h3 id="准备写些什么"><a href="#准备写些什么" class="headerlink" title="准备写些什么"></a>准备写些什么</h3><p>大有很多东西在脑子里打转，却一直找不到出口的痛苦。想了很多之后，罢了罢了，多思无益，从自己最了解的开始总是不会错的吧。<br>先将原来的部分博客迁移过来，再从自己熟悉的测试管理、WEB UI自动化、APP UI自动化开始写，写完这些想必、应该、也许、一定会有其他的思路。</p>
-<h3 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h3><p>善始者众，善终者寡。<br>作为善始者的一员，一直都想混到善终的队伍中去，那就先插个队，把原来的博客迁过来。</p>
-<p>作为第一篇非迁移过来的博客，名字改了很多次，也许最终的名字后面还是少了一个字：吗？<br>让我们拭目以待！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1807,7 +1812,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

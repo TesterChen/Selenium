@@ -259,6 +259,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2017/01/13/Appium App自动化00--环境配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/01/13/Appium App自动化00--环境配置/" itemprop="url">Appium UI自动化00--环境配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-13T22:01:00+08:00">
+                2017-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/APP自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">APP自动化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>之前一直使用公司的电脑进行App UI自动化相关开发工作    ，现在自己的Mac上配置环境。<br>完成环境配置后，能通过Mac的Appium启动iPhone手机中目标App。</p>
+<h3 id="因素"><a href="#因素" class="headerlink" title="因素"></a>因素</h3><p>影响环境搭建的因素主要：iPhone系统版本、Appium版本、Xcode版本，最终环境信息：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Mac --&gt; 10.14.4</span><br><span class="line">iPhone Real Device --&gt; 12.2</span><br><span class="line">Appium --&gt; 1.12.1</span><br><span class="line">Xcode --&gt; 10.2</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h3><h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h4><p>1、安装Appium桌面<br><a href="http://appium.io/" target="_blank" rel="noopener">去官方下载安装</a></p>
+<p>2、安装homebrew：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 确认是否安装</span></span><br><span class="line">brew -v</span><br><span class="line"><span class="comment"># 安装</span></span><br><span class="line">/usr/bin/ruby -e <span class="string">"<span class="variable">$(curl –fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></span><br></pre></td></tr></table></figure></p>
+<p>3、安装npm及node.js：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 确认是否安装</span></span><br><span class="line">npm -v</span><br><span class="line"><span class="comment"># 安装</span></span><br><span class="line">brew install npm</span><br></pre></td></tr></table></figure></p>
+<p>此命令执行后，npme和node.js会全部安装完毕。</p>
+<h4 id="依赖安装"><a href="#依赖安装" class="headerlink" title="依赖安装"></a>依赖安装</h4><p>安装libimobiledevice依赖：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install libimobiledevice --HEAD</span><br></pre></td></tr></table></figure></p>
+<p>Xcode版本在8以上或真机iOS版本在9.3以上时，需要安装ios-deploy依赖：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># npm和brew安装方式任选其一即可</span></span><br><span class="line">npm install -g ios-deploy</span><br><span class="line">brew install ios-deploy</span><br></pre></td></tr></table></figure></p>
+<h4 id="配置Xcode"><a href="#配置Xcode" class="headerlink" title="配置Xcode"></a>配置Xcode</h4><p>接下来的配置过程在官方有完善的文档资料，包括自动配置和手动配置。<br>1、切换至Appium 自带WDA（WebDrvierAgent）目录执行配置命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换至Appium 自带WDA（WebDrvierAgent）目录</span></span><br><span class="line"><span class="built_in">cd</span> /Applications/Appium.app/Contents/Resources/app/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent/</span><br><span class="line"><span class="comment"># 命令1</span></span><br><span class="line">mkdir -p Resources/WebDriverAgent.bundle</span><br><span class="line"><span class="comment"># 命令2</span></span><br><span class="line">./Scripts/bootstrap.sh -d</span><br></pre></td></tr></table></figure></p>
+<p>2、配置Xcode，在打开的目录中双击WebDriverAgent.xcodeproj，它会在Xcode中打开。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换至Appium自带WDA（WebDrvierAgent）目录</span></span><br><span class="line"><span class="built_in">cd</span> /Applications/Appium.app/Contents/Resources/app/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent/</span><br><span class="line"><span class="comment"># 在窗口中打开目录</span></span><br><span class="line">open .</span><br></pre></td></tr></table></figure></p>
+<p>具体Xcode配置省略，可参考此处进行配置：<br><strong>重点需要做的是：配置你的Apple和修改包名称（不再使用com.facebook）</strong><br><a href="http://appium.io/docs/en/drivers/ios-xcuitest-real-devices/#full-manual-configuration" target="_blank" rel="noopener">点击跳转至官方配置说明</a><br><a href="https://blog.csdn.net/u012873868/article/details/81132413" target="_blank" rel="noopener">appium ios 真机自动化环境搭建</a></p>
+<h3 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h3><h4 id="版本兼容问题"><a href="#版本兼容问题" class="headerlink" title="版本兼容问题"></a>版本兼容问题</h4><p>我的iPhone升级到12.2，Xcode 10.1未能支持SDK 12.2，再进我在App Store的升级列表中看到10.2可以支持SDK 12.2。<br>升级Xcode时提示需要升级Mac OS，遂将MAC OS升级到了10.14.4，升级完成后Xcode成功升级至10.2。<br>升级后可以从App Store查看是否支持最新的SDK版本，如下：<br><img src="/images/appium/xcodesdk.png" alt></p>
+<h4 id="WDA问题"><a href="#WDA问题" class="headerlink" title="WDA问题"></a>WDA问题</h4><p>自行从GitHub上下载了WDA的最新版本，修改配置后，Appium一直未能正常拉起App，同时报错奇怪的错误，显示有com.facebook的相关冲突。<br>这个冲突让我想到是否配置Appium自带的WDA可以解决问题，通过配置Appium自带的WDA后，Xcode可Test通过，也可以通过Appium启动App。<br>（<em>所以上面的配置直接建议先配置Appium自带的WDA</em>）</p>
+<h3 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h3><p>1、不建议轻易地升级iPhone系统或Xcode的版本，因为想降回去还是很麻烦的。</p>
+<p>2、认真阅读Appium日志的报错信息<br>出现错误后，阅读Appium弹出的错误是一方面，更多的异常信息打印在Appium的日志中，结合两者获取到关键错误信息。</p>
+<p>3、如何寻找解决方案<br>很多问题在GitHub上是已知并且已经解决，GitHub上Appium开发者很耐心地对很多问题都做了回答和修复。<br>使用我们拿到的关键错误信息，直接在问题列表中进行搜索即可。<br><a href="https://github.com/facebook/WebDriverAgent/issues/" target="_blank" rel="noopener">GitHub Appium 问题列表</a></p>
+<p>4、WDA<br>WDA有两种方式：一种是自定义直接从GitHub下载，一种是使用Appium自带的，通过这一次的踩坑，建议优先使用自带的WDA。<br><a href="https://github.com/appium/WebDriverAgent" target="_blank" rel="noopener">WDA GitHub地址</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/10/05/Selenium Web自动化09--TestNG实现并发执行/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1883,157 +2041,6 @@ table th:first-of-type {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/02/01/Selenium Web自动化01--快速开始/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/02/01/Selenium Web自动化01--快速开始/" itemprop="url">Selenium Web自动化01--快速开始</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-02-01T21:53:00+08:00">
-                2016-02-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/WEB自动化/" itemprop="url" rel="index">
-                    <span itemprop="name">WEB自动化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><p>1、Java<br>2、Selenium<br>3、TestNG<br>4、Xpath<br>5、Maven</p>
-<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>启动本地浏览器，打开百度，输入Selenium搜索</p>
-<h3 id="编码过程"><a href="#编码过程" class="headerlink" title="编码过程"></a>编码过程</h3><p>1、通过Eclipse新建一个Maven项目(这里不细说)，在pom.xml文件中加入如下内容，添加保存后，IDE会自动下载对应jar包，等待下载完成。<br>Maven信息可以在<a href="https://mvnrepository.com/" target="_blank" rel="noopener">https://mvnrepository.com/</a> 搜索找到；<br>也可以在官网 <a href="https://www.seleniumhq.org/download/maven.jsp" target="_blank" rel="noopener">https://www.seleniumhq.org/download/maven.jsp</a> 找到相关信息；<br>注意：此部分内容需要添加在 &#60;dependencies&#62;&#60;/dependencies&#62; 标签中，如果没有需要新增。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;selenium-chrome-driver&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;3.9.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.testng&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;testng&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;6.9.6&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-<p>2、下载目标driver文件<br>不同系统、流览器对应不同的driver文件，可去到官网seleniumhq.org下载，这里提供chrome driver的详细下载地址：<br><a href="https://sites.google.com/a/chromium.org/chromedriver/downloads" target="_blank" rel="noopener">https://sites.google.com/a/chromium.org/chromedriver/downloads</a><br>我们今天下载的是chrome的mac版，我将driver文件存储到了项目的/src/main/resource/driver/路径下，chromedriver是driver的文件名。</p>
-<p>3、在项目中新建一个Java类文件FirstWebAutoTest.java，文件中输入如下代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package 根据自己项目情况修改或不替换此行</span></span><br><span class="line"><span class="keyword">package</span> com.test.qa.mytest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.By;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.WebDriver;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.chrome.ChromeDriver;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.AfterTest;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.BeforeTest;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * simple selenium web test script</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstWebAutoTest</span> </span>&#123;</span><br><span class="line">	WebDriver driver;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// @BeforeTest注解表示before()这个方法在测试开始之前执行</span></span><br><span class="line">	<span class="meta">@BeforeTest</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 获取当前项目路径</span></span><br><span class="line">		String projectPath = System.getProperty(<span class="string">"user.dir"</span>);</span><br><span class="line">		<span class="comment">// 设置chromedriver服务地址，这里用到了前面存放driver的地址</span></span><br><span class="line">		System.setProperty(<span class="string">"webdriver.chrome.driver"</span>, projectPath+<span class="string">"/src/main/resource/driver/chromedriver"</span>);</span><br><span class="line">		<span class="comment">// 实例化一个chrome driver，也就是一个浏览器</span></span><br><span class="line">		driver = <span class="keyword">new</span> ChromeDriver();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// @Test注解表示这里是测试脚本主体</span></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 打开目标网站</span></span><br><span class="line">		driver.get(<span class="string">"http://www.baidu.com/"</span>);</span><br><span class="line">		<span class="comment">// 在目标输入框中输入selenium</span></span><br><span class="line">		driver.findElement(By.xpath(<span class="string">"//input[@id='kw']"</span>)).sendKeys(<span class="string">"selenium"</span>);</span><br><span class="line">		<span class="comment">// 点击搜索按钮</span></span><br><span class="line">		driver.findElement(By.xpath(<span class="string">"//input[@id='su']"</span>)).click();</span><br><span class="line">		<span class="comment">// 等待3s</span></span><br><span class="line">		sleep(<span class="number">3000</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// @AfterTest注解中往往放一些资源释放类动作</span></span><br><span class="line">	<span class="meta">@AfterTest</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">after</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 关闭和退出浏览器，释放资源</span></span><br><span class="line">		driver.close();</span><br><span class="line">		driver.quit();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 等待方法是为了让我们更好的看到自动化执行结果</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(<span class="keyword">int</span> seconds)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Thread.sleep(seconds);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>4、在FirstWebAutoTest.java文件点击右键，选择“Run As – TestNG Test”<br>Wow Cao ！！！<br>你会发现，竟然很神奇地启动了浏览器，惊不惊喜，意不意外</p>
-<p>此部分代码源码 <a href="https://github.com/TesterChen/AutomationTest/tree/master/firstAutoTest" target="_blank" rel="noopener">GitHub firstAutoTest</a></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过上述步骤，如果你已经实现了打开浏览器、在百度上搜索selenium，那说明你已经开始了你的自动化之旅。<br>今天接触到的技术栈，几乎是我们后面要用到的所有，刚开始接触都会有疑惑，后续会对用到的每一项内容都详细讲解。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2084,7 +2091,7 @@ table th:first-of-type {
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
