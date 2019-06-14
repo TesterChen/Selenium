@@ -1,9 +1,9 @@
-http://chainradar.cn/2019/06/13/Postman API自动化--06团队协作/
-http://chainradar.cn/2019/06/11/Postman API自动化--05上传文件/
-http://chainradar.cn/2019/05/19/Postman API自动化--04常用Test脚本/
-http://chainradar.cn/2019/05/19/Postman API自动化--03局部变量与全局变量/
-http://chainradar.cn/2019/05/01/Postman API自动化--02常用辅助工具/
-http://chainradar.cn/2019/05/01/Postman API自动化--01快速开始/
+http://chainradar.cn/2019/06/13/Postman API自动化06--团队协作/
+http://chainradar.cn/2019/06/11/Postman API自动化05--上传文件/
+http://chainradar.cn/2019/05/19/Postman API自动化04--常用Test脚本/
+http://chainradar.cn/2019/05/19/Postman API自动化03--局部变量与全局变量/
+http://chainradar.cn/2019/05/01/Postman API自动化02--常用辅助工具/
+http://chainradar.cn/2019/05/01/Postman API自动化01--快速开始/
 http://chainradar.cn/2019/04/24/如何做好基层面试官/
 http://chainradar.cn/2019/04/13/Shell 00--入门知识/
 http://chainradar.cn/2019/04/01/解决项目分支和环境冲突/

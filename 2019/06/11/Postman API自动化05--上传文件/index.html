@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="目标通过常见工具提升测试脚本设计效率； 获取请求体获取请求体常见有两种方式：页面操作、后台日志； 页面操作：1、页面操作是最直接的方式，而且有效地避免了参数张冠李戴的情况；2、没有其他帮助的情况下可以通过这种方式进行接口测试；3、在Chrome浏览器下按下F12或通过页面右键选择检查后切换到Network，再操作相关业务；4、操作完成后，根据API相关文档找到对应关键字，即可通过搜索查看到相应请求">
+<meta name="description" content="目标能通过Postman工具实现接口上传文件； 获取关键参数我们先直接在页面操作文件上传功能，在网络中查看请求详情；【Form Data】部分有我们需要的关键参数：name=”file” 配置脚本1、拿到上面的关键参数之后，我们在请求的Body中选择form-data模式；（有没有发现与上面【Form Data中看到的Content-Disposition: form-data;有点关系）2、切换">
 <meta name="keywords" content="API自动化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Postman API自动化--02常用辅助工具">
-<meta property="og:url" content="http://chainradar.cn/2019/05/01/Postman API自动化--02常用辅助工具/index.html">
+<meta property="og:title" content="Postman API自动化05--上传文件">
+<meta property="og:url" content="http://chainradar.cn/2019/06/11/Postman API自动化05--上传文件/index.html">
 <meta property="og:site_name" content="Tester Chen">
-<meta property="og:description" content="目标通过常见工具提升测试脚本设计效率； 获取请求体获取请求体常见有两种方式：页面操作、后台日志； 页面操作：1、页面操作是最直接的方式，而且有效地避免了参数张冠李戴的情况；2、没有其他帮助的情况下可以通过这种方式进行接口测试；3、在Chrome浏览器下按下F12或通过页面右键选择检查后切换到Network，再操作相关业务；4、操作完成后，根据API相关文档找到对应关键字，即可通过搜索查看到相应请求">
+<meta property="og:description" content="目标能通过Postman工具实现接口上传文件； 获取关键参数我们先直接在页面操作文件上传功能，在网络中查看请求详情；【Form Data】部分有我们需要的关键参数：name=”file” 配置脚本1、拿到上面的关键参数之后，我们在请求的Body中选择form-data模式；（有没有发现与上面【Form Data中看到的Content-Disposition: form-data;有点关系）2、切换">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://chainradar.cn/images/api/apiUrl.png">
-<meta property="og:image" content="http://chainradar.cn/images/api/apiResponse.png">
-<meta property="og:updated_time" content="2019-06-14T02:01:58.401Z">
+<meta property="og:image" content="http://chainradar.cn/images/api/getFileKey.png">
+<meta property="og:image" content="http://chainradar.cn/images/api/selectFile.png">
+<meta property="og:updated_time" content="2019-06-14T05:40:32.590Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Postman API自动化--02常用辅助工具">
-<meta name="twitter:description" content="目标通过常见工具提升测试脚本设计效率； 获取请求体获取请求体常见有两种方式：页面操作、后台日志； 页面操作：1、页面操作是最直接的方式，而且有效地避免了参数张冠李戴的情况；2、没有其他帮助的情况下可以通过这种方式进行接口测试；3、在Chrome浏览器下按下F12或通过页面右键选择检查后切换到Network，再操作相关业务；4、操作完成后，根据API相关文档找到对应关键字，即可通过搜索查看到相应请求">
-<meta name="twitter:image" content="http://chainradar.cn/images/api/apiUrl.png">
+<meta name="twitter:title" content="Postman API自动化05--上传文件">
+<meta name="twitter:description" content="目标能通过Postman工具实现接口上传文件； 获取关键参数我们先直接在页面操作文件上传功能，在网络中查看请求详情；【Form Data】部分有我们需要的关键参数：name=”file” 配置脚本1、拿到上面的关键参数之后，我们在请求的Body中选择form-data模式；（有没有发现与上面【Form Data中看到的Content-Disposition: form-data;有点关系）2、切换">
+<meta name="twitter:image" content="http://chainradar.cn/images/api/getFileKey.png">
 
 
 
@@ -123,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://chainradar.cn/2019/05/01/Postman API自动化--02常用辅助工具/">
+  <link rel="canonical" href="http://chainradar.cn/2019/06/11/Postman API自动化05--上传文件/">
 
 
 
 
 
-  <title>Postman API自动化--02常用辅助工具 | Tester Chen</title>
+  <title>Postman API自动化05--上传文件 | Tester Chen</title>
   
 
 
@@ -215,9 +215,9 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
+          <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
             
             Categories
           </a>
@@ -225,9 +225,9 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
             
             Archives
           </a>
@@ -266,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/05/01/Postman API自动化--02常用辅助工具/">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/06/11/Postman API自动化05--上传文件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CHEN JIAN PING">
@@ -283,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Postman API自动化--02常用辅助工具</h1>
+          <h1 class="post-title" itemprop="name headline">Postman API自动化05--上传文件</h1>
         
 
         <div class="post-meta">
@@ -295,8 +295,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-01T09:16:00+08:00">
-                2019-05-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-11T15:38:00+08:00">
+                2019-06-11
               </time>
             
 
@@ -355,12 +355,9 @@
       
 
       
-        <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>通过常见工具提升测试脚本设计效率；</p>
-<h3 id="获取请求体"><a href="#获取请求体" class="headerlink" title="获取请求体"></a>获取请求体</h3><p>获取请求体常见有两种方式：页面操作、后台日志；</p>
-<p>页面操作：<br>1、页面操作是最直接的方式，而且有效地避免了参数张冠李戴的情况；<br>2、没有其他帮助的情况下可以通过这种方式进行接口测试；<br>3、在Chrome浏览器下按下F12或通过页面右键选择检查后切换到Network，再操作相关业务；<br>4、操作完成后，根据API相关文档找到对应关键字，即可通过搜索查看到相应请求，包括请求url和请求参数体；<br><img src="/images/api/apiUrl.png" alt>        点击view source可以直接复制json字符串；<br><img src="/images/api/apiResponse.png" alt></p>
-<p>后台日志：<br>通过查询后台日志拿到请求体数据，再丰富参数即可；</p>
-<h3 id="格式化json字符串"><a href="#格式化json字符串" class="headerlink" title="格式化json字符串"></a>格式化json字符串</h3><p>通过页面或日志拿到的json字符串往往是没有格式化的，需要我们再手动格式化，这时候我们需要借助工具；<br>快速格式化json字符串：<a href="http://www.bejson.com/" target="_blank" rel="noopener">http://www.bejson.com/</a></p>
-<h3 id="jsonPath校验工具"><a href="#jsonPath校验工具" class="headerlink" title="jsonPath校验工具"></a>jsonPath校验工具</h3><p>在提取返回数据的参数值时，需要用到jsonPath，简单的jsonPath可以直接写，但复杂的我们要一次性写对就比较困难了；<br>在线书写和校验jsonPath：<a href="http://jsonpath.com/" target="_blank" rel="noopener">http://jsonpath.com/</a></p>
+        <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>能通过Postman工具实现接口上传文件；</p>
+<h3 id="获取关键参数"><a href="#获取关键参数" class="headerlink" title="获取关键参数"></a>获取关键参数</h3><p>我们先直接在页面操作文件上传功能，在网络中查看请求详情；<br>【Form Data】部分有我们需要的关键参数：name=”file”<br><img src="/images/api/getFileKey.png" alt></p>
+<h3 id="配置脚本"><a href="#配置脚本" class="headerlink" title="配置脚本"></a>配置脚本</h3><p>1、拿到上面的关键参数之后，我们在请求的Body中选择form-data模式；<br>（有没有发现与上面【Form Data中看到的Content-Disposition: form-data;有点关系）<br>2、切换Key的类型为File，在Value中选择要上传的文件即可；<br><img src="/images/api/selectFile.png" alt></p>
 
       
     </div>
@@ -391,8 +388,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/01/Postman API自动化--01快速开始/" rel="next" title="Postman API自动化--01快速开始">
-                <i class="fa fa-chevron-left"></i> Postman API自动化--01快速开始
+              <a href="/2019/05/19/Postman API自动化04--常用Test脚本/" rel="next" title="Postman API自动化04--常用Test脚本">
+                <i class="fa fa-chevron-left"></i> Postman API自动化04--常用Test脚本
               </a>
             
           </div>
@@ -401,8 +398,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/19/Postman API自动化--03局部变量与全局变量/" rel="prev" title="Postman API自动化--03环境变量与全局变量">
-                Postman API自动化--03环境变量与全局变量 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/13/Postman API自动化06--团队协作/" rel="prev" title="Postman API自动化06--团队协作">
+                Postman API自动化06--团队协作 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -478,7 +475,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives">
               
                   <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">posts</span>
@@ -490,10 +487,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">categories</span>
-                
+                </a>
               </div>
             
 
@@ -501,10 +498,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">tags</span>
-                
+                </a>
               </div>
             
 
@@ -535,7 +532,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取请求体"><span class="nav-number">2.</span> <span class="nav-text">获取请求体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#格式化json字符串"><span class="nav-number">3.</span> <span class="nav-text">格式化json字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsonPath校验工具"><span class="nav-number">4.</span> <span class="nav-text">jsonPath校验工具</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取关键参数"><span class="nav-number">2.</span> <span class="nav-text">获取关键参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置脚本"><span class="nav-number">3.</span> <span class="nav-text">配置脚本</span></a></li></ol></div>
             
 
           </div>

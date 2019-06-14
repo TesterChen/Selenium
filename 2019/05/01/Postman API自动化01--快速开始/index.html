@@ -79,21 +79,26 @@
 
 
 
-<meta name="description" content="目标能通过Postman工具实现接口上传文件； 获取关键参数我们先直接在页面操作文件上传功能，在网络中查看请求详情；【Form Data】部分有我们需要的关键参数：name=”file” 配置脚本1、拿到上面的关键参数之后，我们在请求的Body中选择form-data模式；（有没有发现与上面【Form Data中看到的Content-Disposition: form-data;有点关系）2、切换">
+<meta name="description" content="环境信息12操作系统：MacOS Mojave 10.14.4Postman：7.1.1 目标能自己动手完成最常见的Get和Post请求脚本； 预览Postman工具主界面，了解各块的主要功能； 准备工作1、Workspace的选择有几种方式：在默认Personal的My Workspace直接开始，在默认Personal下新建Workspace，在Team下新建Workspace；     2、">
 <meta name="keywords" content="API自动化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Postman API自动化--05上传文件">
-<meta property="og:url" content="http://chainradar.cn/2019/06/11/Postman API自动化--05上传文件/index.html">
+<meta property="og:title" content="Postman API自动化01--快速开始">
+<meta property="og:url" content="http://chainradar.cn/2019/05/01/Postman API自动化01--快速开始/index.html">
 <meta property="og:site_name" content="Tester Chen">
-<meta property="og:description" content="目标能通过Postman工具实现接口上传文件； 获取关键参数我们先直接在页面操作文件上传功能，在网络中查看请求详情；【Form Data】部分有我们需要的关键参数：name=”file” 配置脚本1、拿到上面的关键参数之后，我们在请求的Body中选择form-data模式；（有没有发现与上面【Form Data中看到的Content-Disposition: form-data;有点关系）2、切换">
+<meta property="og:description" content="环境信息12操作系统：MacOS Mojave 10.14.4Postman：7.1.1 目标能自己动手完成最常见的Get和Post请求脚本； 预览Postman工具主界面，了解各块的主要功能； 准备工作1、Workspace的选择有几种方式：在默认Personal的My Workspace直接开始，在默认Personal下新建Workspace，在Team下新建Workspace；     2、">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://chainradar.cn/images/api/getFileKey.png">
-<meta property="og:image" content="http://chainradar.cn/images/api/selectFile.png">
-<meta property="og:updated_time" content="2019-06-14T02:18:25.497Z">
+<meta property="og:image" content="http://chainradar.cn/images/api/mainPanel.png">
+<meta property="og:image" content="http://chainradar.cn/images/api/intoCreateWorkspace.png">
+<meta property="og:image" content="http://chainradar.cn/images/api/newCollection.png">
+<meta property="og:image" content="http://chainradar.cn/images/api/addFolder.png">
+<meta property="og:image" content="http://chainradar.cn/images/api/header.png">
+<meta property="og:image" content="http://chainradar.cn/images/api/post.png">
+<meta property="og:image" content="http://chainradar.cn/images/api/get.png">
+<meta property="og:updated_time" content="2019-06-14T05:40:53.042Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Postman API自动化--05上传文件">
-<meta name="twitter:description" content="目标能通过Postman工具实现接口上传文件； 获取关键参数我们先直接在页面操作文件上传功能，在网络中查看请求详情；【Form Data】部分有我们需要的关键参数：name=”file” 配置脚本1、拿到上面的关键参数之后，我们在请求的Body中选择form-data模式；（有没有发现与上面【Form Data中看到的Content-Disposition: form-data;有点关系）2、切换">
-<meta name="twitter:image" content="http://chainradar.cn/images/api/getFileKey.png">
+<meta name="twitter:title" content="Postman API自动化01--快速开始">
+<meta name="twitter:description" content="环境信息12操作系统：MacOS Mojave 10.14.4Postman：7.1.1 目标能自己动手完成最常见的Get和Post请求脚本； 预览Postman工具主界面，了解各块的主要功能； 准备工作1、Workspace的选择有几种方式：在默认Personal的My Workspace直接开始，在默认Personal下新建Workspace，在Team下新建Workspace；     2、">
+<meta name="twitter:image" content="http://chainradar.cn/images/api/mainPanel.png">
 
 
 
@@ -123,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://chainradar.cn/2019/06/11/Postman API自动化--05上传文件/">
+  <link rel="canonical" href="http://chainradar.cn/2019/05/01/Postman API自动化01--快速开始/">
 
 
 
 
 
-  <title>Postman API自动化--05上传文件 | Tester Chen</title>
+  <title>Postman API自动化01--快速开始 | Tester Chen</title>
   
 
 
@@ -215,9 +220,9 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
+          <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
             
             Categories
           </a>
@@ -225,9 +230,9 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
             
             Archives
           </a>
@@ -266,7 +271,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/06/11/Postman API自动化--05上传文件/">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/05/01/Postman API自动化01--快速开始/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CHEN JIAN PING">
@@ -283,7 +288,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Postman API自动化--05上传文件</h1>
+          <h1 class="post-title" itemprop="name headline">Postman API自动化01--快速开始</h1>
         
 
         <div class="post-meta">
@@ -295,8 +300,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-11T15:38:00+08:00">
-                2019-06-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-01T08:20:00+08:00">
+                2019-05-01
               </time>
             
 
@@ -355,9 +360,24 @@
       
 
       
-        <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>能通过Postman工具实现接口上传文件；</p>
-<h3 id="获取关键参数"><a href="#获取关键参数" class="headerlink" title="获取关键参数"></a>获取关键参数</h3><p>我们先直接在页面操作文件上传功能，在网络中查看请求详情；<br>【Form Data】部分有我们需要的关键参数：name=”file”<br><img src="/images/api/getFileKey.png" alt></p>
-<h3 id="配置脚本"><a href="#配置脚本" class="headerlink" title="配置脚本"></a>配置脚本</h3><p>1、拿到上面的关键参数之后，我们在请求的Body中选择form-data模式；<br>（有没有发现与上面【Form Data中看到的Content-Disposition: form-data;有点关系）<br>2、切换Key的类型为File，在Value中选择要上传的文件即可；<br><img src="/images/api/selectFile.png" alt></p>
+        <h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">操作系统：MacOS Mojave 10.14.4</span><br><span class="line">Postman：7.1.1</span><br></pre></td></tr></table></figure>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>能自己动手完成最常见的Get和Post请求脚本；</p>
+<h3 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h3><p>Postman工具主界面，了解各块的主要功能；<br><img src="/images/api/mainPanel.png" alt></p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>1、Workspace的选择有几种方式：在默认Personal的My Workspace直接开始，在默认Personal下新建Workspace，在Team下新建Workspace；<br><img src="/images/api/intoCreateWorkspace.png" alt>    </p>
+<p>2、新建Collection（Collection相当于一个项目）；<br><img src="/images/api/newCollection.png" alt>            </p>
+<p>3、在Collection下配置文件夹（文件夹相当于模块），文件夹下可以添加子文件夹，还可以快速复制某一个文件夹；<br><img src="/images/api/addFolder.png" alt></p>
+<h3 id="Post请求"><a href="#Post请求" class="headerlink" title="Post请求"></a>Post请求</h3><p>一个Post请求主要包括几个部分：<br>1、请求类型和请求Url：我们新建Post请求所以类型选择Post，同时填入请求的Url，这里固定的部分我们取了一个环境变量Url的值；<br>2、Headers：请求头，请求头可以携带很多数据，Postman中请求头可以设置模板，方便快速选择；</p>
+<blockquote>
+<p><em>如果确认请求体、Url都没错，但请求返回一直不对，记得检查Headers中的参数设置是否正确；</em></p>
+</blockquote>
+<p><img src="/images/api/header.png" alt><br>3、Body：请求体，我们请求的参数和值都在这里设置，环境变量和全局变量在这里被大量使用；</p>
+<blockquote>
+<p><em>如何获得请求体，在另一篇《常用辅助工具》中有介绍；</em><br><em>示例请求体中引用了两个环境变量username和password；</em></p>
+</blockquote>
+<p>4、Test(可选)：提取返回中参数、结果断言，提取参数在接口测试场景中大多会用到，通过变量传递关键参数；<br>5、保存、执行请求；</p>
+<p><img src="/images/api/post.png" alt></p>
+<h3 id="Get请求"><a href="#Get请求" class="headerlink" title="Get请求"></a>Get请求</h3><p>一个Get请求主要包括几个部分：<br>1、Params(可选)：请求参数，这里填写的参数会体现在Url中<br>2、Headers：请求头，正常业务请求中不可或缺；<br>3、Test(可选)：提取返回中参数、结果断言，提取参数在接口测试场景中大多会用到，用于传递关键参数；<br>4、保存、执行请求；</p>
+<p><img src="/images/api/get.png" alt></p>
 
       
     </div>
@@ -388,8 +408,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/19/Postman API自动化--04常用Test脚本/" rel="next" title="Postman API自动化--04常用Test脚本">
-                <i class="fa fa-chevron-left"></i> Postman API自动化--04常用Test脚本
+              <a href="/2019/04/24/如何做好基层面试官/" rel="next" title="如何做好基层面试官">
+                <i class="fa fa-chevron-left"></i> 如何做好基层面试官
               </a>
             
           </div>
@@ -398,8 +418,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/13/Postman API自动化--06团队协作/" rel="prev" title="Postman API自动化--06团队协作">
-                Postman API自动化--06团队协作 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/01/Postman API自动化02--常用辅助工具/" rel="prev" title="Postman API自动化02--常用辅助工具">
+                Postman API自动化02--常用辅助工具 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -475,7 +495,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives">
               
                   <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">posts</span>
@@ -487,10 +507,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">categories</span>
-                
+                </a>
               </div>
             
 
@@ -498,10 +518,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">tags</span>
-                
+                </a>
               </div>
             
 
@@ -532,7 +552,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取关键参数"><span class="nav-number">2.</span> <span class="nav-text">获取关键参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置脚本"><span class="nav-number">3.</span> <span class="nav-text">配置脚本</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#环境信息"><span class="nav-number">1.</span> <span class="nav-text">环境信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">2.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预览"><span class="nav-number">3.</span> <span class="nav-text">预览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作"><span class="nav-number">4.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Post请求"><span class="nav-number">5.</span> <span class="nav-text">Post请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get请求"><span class="nav-number">6.</span> <span class="nav-text">Get请求</span></a></li></ol></div>
             
 
           </div>

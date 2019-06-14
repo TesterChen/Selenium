@@ -82,8 +82,8 @@
 <meta name="description" content="环境信息12操作系统：MacOS Mojave 10.14.4Postman：7.1.1 目标了解环境变量与全局变量的差异及使用场景； 直观感受我们先通过两张图片直观地感受环境变量与全局变量； 通过上面的两张图，我们看到切换环境变量时，全局变量并不会随着变化，而是一直都显示，说明全局变量一直可以被调用； 环境变量：顾名思义与环境有关，如：不同环境执行测试脚本时配置的用户名、密码应该被放在环境变量中">
 <meta name="keywords" content="API自动化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Postman API自动化--03环境变量与全局变量">
-<meta property="og:url" content="http://chainradar.cn/2019/05/19/Postman API自动化--03局部变量与全局变量/index.html">
+<meta property="og:title" content="Postman API自动化03--环境变量与全局变量">
+<meta property="og:url" content="http://chainradar.cn/2019/05/19/Postman API自动化03--局部变量与全局变量/index.html">
 <meta property="og:site_name" content="Tester Chen">
 <meta property="og:description" content="环境信息12操作系统：MacOS Mojave 10.14.4Postman：7.1.1 目标了解环境变量与全局变量的差异及使用场景； 直观感受我们先通过两张图片直观地感受环境变量与全局变量； 通过上面的两张图，我们看到切换环境变量时，全局变量并不会随着变化，而是一直都显示，说明全局变量一直可以被调用； 环境变量：顾名思义与环境有关，如：不同环境执行测试脚本时配置的用户名、密码应该被放在环境变量中">
 <meta property="og:locale" content="default">
@@ -91,9 +91,9 @@
 <meta property="og:image" content="http://chainradar.cn/images/api/env2.png">
 <meta property="og:image" content="http://chainradar.cn/images/api/reKey.png">
 <meta property="og:image" content="http://chainradar.cn/images/api/keyValue.png">
-<meta property="og:updated_time" content="2019-06-14T02:02:43.800Z">
+<meta property="og:updated_time" content="2019-06-14T05:40:27.767Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Postman API自动化--03环境变量与全局变量">
+<meta name="twitter:title" content="Postman API自动化03--环境变量与全局变量">
 <meta name="twitter:description" content="环境信息12操作系统：MacOS Mojave 10.14.4Postman：7.1.1 目标了解环境变量与全局变量的差异及使用场景； 直观感受我们先通过两张图片直观地感受环境变量与全局变量； 通过上面的两张图，我们看到切换环境变量时，全局变量并不会随着变化，而是一直都显示，说明全局变量一直可以被调用； 环境变量：顾名思义与环境有关，如：不同环境执行测试脚本时配置的用户名、密码应该被放在环境变量中">
 <meta name="twitter:image" content="http://chainradar.cn/images/api/env1.png">
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://chainradar.cn/2019/05/19/Postman API自动化--03局部变量与全局变量/">
+  <link rel="canonical" href="http://chainradar.cn/2019/05/19/Postman API自动化03--局部变量与全局变量/">
 
 
 
 
 
-  <title>Postman API自动化--03环境变量与全局变量 | Tester Chen</title>
+  <title>Postman API自动化03--环境变量与全局变量 | Tester Chen</title>
   
 
 
@@ -217,9 +217,9 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
+          <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
             
             Categories
           </a>
@@ -227,9 +227,9 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
             
             Archives
           </a>
@@ -268,7 +268,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/05/19/Postman API自动化--03局部变量与全局变量/">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/05/19/Postman API自动化03--局部变量与全局变量/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CHEN JIAN PING">
@@ -285,7 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Postman API自动化--03环境变量与全局变量</h1>
+          <h1 class="post-title" itemprop="name headline">Postman API自动化03--环境变量与全局变量</h1>
         
 
         <div class="post-meta">
@@ -357,14 +357,16 @@
       
 
       
-        <h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">操作系统：MacOS Mojave 10.14.4</span><br><span class="line">Postman：7.1.1</span><br></pre></td></tr></table></figure>
+        <h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">操作系统：MacOS Mojave 10.14.4</span><br><span class="line">Postman：7.1.1</span><br></pre></td></tr></table></figure>
 <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>了解环境变量与全局变量的差异及使用场景；</p>
 <h3 id="直观感受"><a href="#直观感受" class="headerlink" title="直观感受"></a>直观感受</h3><p>我们先通过两张图片直观地感受环境变量与全局变量；<br><img src="/images/api/env1.png" alt><br><img src="/images/api/env2.png" alt></p>
 <p>通过上面的两张图，我们看到切换环境变量时，全局变量并不会随着变化，而是一直都显示，说明全局变量一直可以被调用；</p>
 <p>环境变量：顾名思义与环境有关，如：不同环境执行测试脚本时配置的用户名、密码应该被放在环境变量中存储；<br>全局变量：不管我们在哪个环境下执行脚本，他的值是不需要调整的，或者调整之后，其他环境执行时也是可以的，如：登录成功的文字标识；</p>
 <h3 id="作用范围"><a href="#作用范围" class="headerlink" title="作用范围"></a>作用范围</h3><p>1、环境变量与全局变量的作用范围为Wrokspace，不同Wrokspace之间的变量相互隔离，互不影响；<br>2、当环境变Key与全局变量Key重复时，优先使用环境变量中的值，即使环境变量中对应Key的值为空；<br><img src="/images/api/reKey.png" alt><br><img src="/images/api/keyValue.png" alt></p>
-<h3 id="更新与使用"><a href="#更新与使用" class="headerlink" title="更新与使用"></a>更新与使用</h3><p>环境变量与全局变量可以被修改；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 修改全局变量</span><br><span class="line">pm.globals.set(<span class="string">"glovar"</span>, <span class="string">"abcdef"</span>);</span><br><span class="line"></span><br><span class="line">// 修改环境变量</span><br><span class="line">pm.environment.set(<span class="string">"evn1-var1"</span>, <span class="string">"123456789"</span>);</span><br></pre></td></tr></table></figure></p>
+<h3 id="赋值与使用"><a href="#赋值与使用" class="headerlink" title="赋值与使用"></a>赋值与使用</h3><p>环境变量与全局变量可以被修改；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 修改全局变量</span><br><span class="line">pm.globals.set(&quot;glovar&quot;, &quot;abcdef&quot;);</span><br><span class="line"></span><br><span class="line">// 修改环境变量</span><br><span class="line">pm.environment.set(&quot;evn1-var1&quot;, &quot;123456789&quot;);</span><br></pre></td></tr></table></figure></p>
 <p>使用方式均是直接通过&#123;&#123;var&#125;&#125;形式；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;glovar&#125;&#125;</span><br><span class="line">&#123;&#123;evn1-var1&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="获取变量"><a href="#获取变量" class="headerlink" title="获取变量"></a>获取变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 获取全局变量</span><br><span class="line">pm.globals.get(&quot;glovar&quot;);</span><br><span class="line"></span><br><span class="line">// 获取环境变量</span><br><span class="line">pm.environment.get(&quot;evn1-var1&quot;);</span><br><span class="line"></span><br><span class="line">// 可获取环境变量和全局变量</span><br><span class="line">pm.variables.get(&quot;glovar&quot;);</span><br><span class="line">pm.variables.get(&quot;evn1-var1&quot;);</span><br><span class="line"></span><br><span class="line">// Test脚本中这种形式定义的变量，其值是无法获取的</span><br><span class="line">var varKey = &quot;testValue&quot;;</span><br><span class="line">pm.variables.get(&quot;varKey&quot;);</span><br><span class="line"></span><br><span class="line">// 注：变量取不到值时返回的不是空，是null；</span><br></pre></td></tr></table></figure>
+<h3 id="清除变量"><a href="#清除变量" class="headerlink" title="清除变量"></a>清除变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 清除全局变量</span><br><span class="line">pm.globals.unset(&quot;glovar&quot;);</span><br><span class="line"></span><br><span class="line">// 清除环境变量</span><br><span class="line">pm.environment.unset(&quot;evn1-var1&quot;);</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -395,8 +397,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/01/Postman API自动化--02常用辅助工具/" rel="next" title="Postman API自动化--02常用辅助工具">
-                <i class="fa fa-chevron-left"></i> Postman API自动化--02常用辅助工具
+              <a href="/2019/05/01/Postman API自动化02--常用辅助工具/" rel="next" title="Postman API自动化02--常用辅助工具">
+                <i class="fa fa-chevron-left"></i> Postman API自动化02--常用辅助工具
               </a>
             
           </div>
@@ -405,8 +407,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/19/Postman API自动化--04常用Test脚本/" rel="prev" title="Postman API自动化--04常用Test脚本">
-                Postman API自动化--04常用Test脚本 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/19/Postman API自动化04--常用Test脚本/" rel="prev" title="Postman API自动化04--常用Test脚本">
+                Postman API自动化04--常用Test脚本 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -482,7 +484,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives">
               
                   <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">posts</span>
@@ -494,10 +496,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">categories</span>
-                
+                </a>
               </div>
             
 
@@ -505,10 +507,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">tags</span>
-                
+                </a>
               </div>
             
 
@@ -539,7 +541,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#环境信息"><span class="nav-number">1.</span> <span class="nav-text">环境信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">2.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直观感受"><span class="nav-number">3.</span> <span class="nav-text">直观感受</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用范围"><span class="nav-number">4.</span> <span class="nav-text">作用范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新与使用"><span class="nav-number">5.</span> <span class="nav-text">更新与使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#环境信息"><span class="nav-number">1.</span> <span class="nav-text">环境信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">2.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直观感受"><span class="nav-number">3.</span> <span class="nav-text">直观感受</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用范围"><span class="nav-number">4.</span> <span class="nav-text">作用范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋值与使用"><span class="nav-number">5.</span> <span class="nav-text">赋值与使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取变量"><span class="nav-number">6.</span> <span class="nav-text">获取变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#清除变量"><span class="nav-number">7.</span> <span class="nav-text">清除变量</span></a></li></ol></div>
             
 
           </div>
