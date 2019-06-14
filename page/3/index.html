@@ -259,6 +259,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/10/05/Selenium Web自动化09--TestNG实现并发执行/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/10/05/Selenium Web自动化09--TestNG实现并发执行/" itemprop="url">Selenium Web自动化09--TestNG实现并发执行</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-05T17:21:00+08:00">
+                2016-10-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>了解TestNG并发执行基本实现</p>
+<h3 id="TestNG与本地Driver并发"><a href="#TestNG与本地Driver并发" class="headerlink" title="TestNG与本地Driver并发"></a>TestNG与本地Driver并发</h3><p>我们写一个测试测试类，在这个测试类中我们使用本地Driver，同时设计两个测试方法。<br>可以实现在同一类型浏览器下并发执行多个测试脚本。</p>
+<p>其中用到了ThreadLocal，简单介绍如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ThreadLocal的实例代表了一个线程局部的变量，每条线程都只能看到自己的值，并不会意识到其它的线程中也存在该变量。</span><br><span class="line">它采用采用空间来换取时间的方式，解决多线程中相同变量的访问冲突问题。</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.testerchen.qa.multiple;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.By;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.WebDriver;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.chrome.ChromeDriver;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.AfterMethod;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.BeforeMethod;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 借助TestNG.xml的配置实现本地浏览器并发执行(TestNG.xml)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">multipleTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> ThreadLocal&lt;WebDriver&gt; ThreadDriver = <span class="keyword">new</span> ThreadLocal&lt;WebDriver&gt;();</span><br><span class="line">	String projectPath = System.getProperty(<span class="string">"user.dir"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="meta">@BeforeMethod</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.setProperty(<span class="string">"webdriver.chrome.driver"</span>, projectPath + <span class="string">"/src/main/resource/driver/chromedriver"</span>);</span><br><span class="line">		WebDriver driver = <span class="keyword">new</span> ChromeDriver();</span><br><span class="line">		ThreadDriver.set(driver);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span>()</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">first</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		ThreadDriver.get().get(<span class="string">"https://www.baidu.com"</span>);</span><br><span class="line">		ThreadDriver.get().findElement(By.id(<span class="string">"kw"</span>)).sendKeys(<span class="string">"test"</span>);</span><br><span class="line">		ThreadDriver.get().findElement(By.id(<span class="string">"su"</span>)).click();</span><br><span class="line">		sleep(<span class="number">3000</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span>()</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">second</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		ThreadDriver.get().get(<span class="string">"https://www.baidu.com"</span>);</span><br><span class="line">		ThreadDriver.get().findElement(By.id(<span class="string">"kw"</span>)).sendKeys(<span class="string">"selenium"</span>);</span><br><span class="line">		ThreadDriver.get().findElement(By.id(<span class="string">"su"</span>)).click();</span><br><span class="line">		sleep(<span class="number">3000</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@AfterMethod</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		ThreadDriver.get().quit();</span><br><span class="line">		ThreadDriver.remove();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 等待方法是为了让我们更好的看到自动化执行结果</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(<span class="keyword">int</span> seconds)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Thread.sleep(seconds);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>TestNG.xml配置如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- parallel可以为：</span><br><span class="line">  methods : 每个method使用一个线程</span><br><span class="line">  tests ：每个&lt;test&gt;标签中的所有方法使用一个线程</span><br><span class="line">  classes : 每个<span class="class"><span class="keyword">class</span>使用一个线程 </span></span><br><span class="line"><span class="class">  </span></span><br><span class="line">  thread-count:每次执行测试的线程并发数</span><br><span class="line">  --&gt;</span><br><span class="line">&lt;suite name=<span class="string">"test"</span> parallel=<span class="string">"methods"</span> thread-count=<span class="string">"2"</span>&gt;</span><br><span class="line">	&lt;test name=<span class="string">"test"</span>&gt;</span><br><span class="line">		&lt;classes&gt;</span><br><span class="line">			&lt;<span class="class"><span class="keyword">class</span> <span class="title">name</span></span>=<span class="string">"com.testerchen.qa.multiple.multipleTest"</span> /&gt;</span><br><span class="line">		&lt;/classes&gt;</span><br><span class="line">	&lt;/test&gt;</span><br><span class="line">&lt;/suite&gt;</span><br></pre></td></tr></table></figure></p>
+<p>接下来，运行TestNG.xml，看到的效果是：同时启动两个Chrome浏览器，同步执行我们两个Test中脚本。<br>注意：<br>执行TestNG.xml时，不是在文件中右键运行，而是在IDE的资源管理器中右键 –&gt; Run As –&gt; TestNG Suite。</p>
+<p><img src="/images/selenium/thread01.png" alt></p>
+<h3 id="TestNG与Grid远程分布式并发"><a href="#TestNG与Grid远程分布式并发" class="headerlink" title="TestNG与Grid远程分布式并发"></a>TestNG与Grid远程分布式并发</h3><p>这里用到了@Parameters注解，通过xml传递的参数，实现初始化不同Driver。<br>可以实现在不同类型浏览器并发执行脚本。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Parameters(&#123; <span class="string">"seleniumHubHost"</span>, <span class="string">"seleniumHubPort"</span>, <span class="string">"browserType"</span> &#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.testerchen.qa.multiple;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.net.MalformedURLException;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.By;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.remote.DesiredCapabilities;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.remote.RemoteWebDriver;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.AfterMethod;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.BeforeMethod;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.Parameters;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 通过Grid远程浏览器并发执行</span></span><br><span class="line"><span class="comment"> * 需要借助TestNG.xml的配置实现(RemoteTestNG.xml)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">remoteMultipleTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> ThreadLocal&lt;RemoteWebDriver&gt; ThreadRemoteDriver = <span class="keyword">new</span> ThreadLocal&lt;RemoteWebDriver&gt;();</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Parameters</span>(&#123; <span class="string">"seleniumHubHost"</span>, <span class="string">"seleniumHubPort"</span>, <span class="string">"browserType"</span> &#125;)</span><br><span class="line">	<span class="meta">@BeforeMethod</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeMetho</span><span class="params">(String seleniumHubHost, String seleniumHubPort, String browserType)</span> <span class="keyword">throws</span> MalformedURLException </span>&#123;</span><br><span class="line">		RemoteWebDriver driver;</span><br><span class="line">		DesiredCapabilities capabilities;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">switch</span> (browserType) &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"firefox"</span>:</span><br><span class="line">			capabilities = DesiredCapabilities.firefox();</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"chrome"</span>:</span><br><span class="line">			capabilities = DesiredCapabilities.chrome();</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			capabilities = DesiredCapabilities.chrome();</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		driver = <span class="keyword">new</span> RemoteWebDriver(<span class="keyword">new</span> URL(<span class="string">"http://"</span> + seleniumHubHost + <span class="string">":"</span> + seleniumHubPort + <span class="string">"/wd/hub"</span>),</span><br><span class="line">				capabilities);</span><br><span class="line">		ThreadRemoteDriver.set(driver);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		ThreadRemoteDriver.get().get(<span class="string">"https://www.baidu.com"</span>);</span><br><span class="line">		ThreadRemoteDriver.get().findElement(By.id(<span class="string">"kw"</span>)).sendKeys(<span class="string">"test"</span>);</span><br><span class="line">		ThreadRemoteDriver.get().findElement(By.id(<span class="string">"su"</span>)).click();</span><br><span class="line">		sleep(<span class="number">3000</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		ThreadRemoteDriver.get().get(<span class="string">"https://www.baidu.com"</span>);</span><br><span class="line">		ThreadRemoteDriver.get().findElement(By.id(<span class="string">"kw"</span>)).sendKeys(<span class="string">"selenium"</span>);</span><br><span class="line">		ThreadRemoteDriver.get().findElement(By.id(<span class="string">"su"</span>)).click();</span><br><span class="line">		sleep(<span class="number">3000</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@AfterMethod</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		ThreadRemoteDriver.get().quit();</span><br><span class="line">		ThreadRemoteDriver.remove();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 等待方法是为了让我们更好的看到自动化执行结果</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(<span class="keyword">int</span> seconds)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Thread.sleep(seconds);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>RemoteTestNG.xml配置如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- parallel可以为： </span><br><span class="line">	methods : 每个method使用一个线程 </span><br><span class="line">	tests ：每个&lt;test&gt;标签中的所有方法使用一个线程 </span><br><span class="line">	classes : 每个<span class="class"><span class="keyword">class</span>使用一个线程 </span></span><br><span class="line"><span class="class">	</span></span><br><span class="line">	thread-count:每次执行测试的线程并发数</span><br><span class="line">	--&gt;</span><br><span class="line">&lt;suite name=<span class="string">"test"</span> parallel=<span class="string">"tests"</span> thread-count=<span class="string">"2"</span>&gt;</span><br><span class="line">	&lt;test name=<span class="string">"test firefox"</span>&gt;</span><br><span class="line">		&lt;parameter name=<span class="string">"seleniumHubHost"</span> value=<span class="string">"127.0.0.1"</span> /&gt;</span><br><span class="line">		&lt;parameter name=<span class="string">"seleniumHubPort"</span> value=<span class="string">"4444"</span> /&gt;</span><br><span class="line">		&lt;parameter name=<span class="string">"browserType"</span> value=<span class="string">"firefox"</span> /&gt;</span><br><span class="line">		&lt;classes&gt;</span><br><span class="line">			&lt;<span class="class"><span class="keyword">class</span> <span class="title">name</span></span>=<span class="string">"com.testerchen.qa.multiple.remoteMultipleTest"</span> /&gt;</span><br><span class="line">		&lt;/classes&gt;</span><br><span class="line">	&lt;/test&gt;</span><br><span class="line"></span><br><span class="line">	&lt;test name=<span class="string">"test chrome"</span>&gt;</span><br><span class="line">		&lt;parameter name=<span class="string">"seleniumHubHost"</span> value=<span class="string">"127.0.0.1"</span> /&gt;</span><br><span class="line">		&lt;parameter name=<span class="string">"seleniumHubPort"</span> value=<span class="string">"4444"</span> /&gt;</span><br><span class="line">		&lt;parameter name=<span class="string">"browserType"</span> value=<span class="string">"chrome"</span> /&gt;</span><br><span class="line">		&lt;classes&gt;</span><br><span class="line">			&lt;<span class="class"><span class="keyword">class</span> <span class="title">name</span></span>=<span class="string">"com.testerchen.qa.multiple.remoteMultipleTest"</span> /&gt;</span><br><span class="line">		&lt;/classes&gt;</span><br><span class="line">	&lt;/test&gt;</span><br><span class="line">&lt;/suite&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>接下来，运行RemoteTestNG.xml，看到的效果是：同时启动Chrome和Firefox浏览器，同步执行我们两个Test中脚本。</p>
+<p><img src="/images/selenium/thread02.png" alt></p>
+<h3 id="TestNG-注解实现并发"><a href="#TestNG-注解实现并发" class="headerlink" title="TestNG 注解实现并发"></a>TestNG 注解实现并发</h3><p>实现单个Test的并发执行。<br>执行后看到的效果是：首先同时启动两个浏览器并发执行first()的脚本；执行结束后，再启动一个浏览器执行second()的脚本。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.testerchen.qa.multiple;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.By;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.WebDriver;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.chrome.ChromeDriver;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.AfterMethod;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.BeforeMethod;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 通过<span class="doctag">@Test</span>注解实现单测试方法迸发</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Test</span>(threadPoolSize = 2, invocationCount = 2)</span></span><br><span class="line"><span class="comment"> * threadPoolSize 线程池大小，invocationCount 方法需要运行的次数</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">threadMultipleTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> ThreadLocal&lt;WebDriver&gt; ThreadDriver = <span class="keyword">new</span> ThreadLocal&lt;WebDriver&gt;();</span><br><span class="line">	String projectPath = System.getProperty(<span class="string">"user.dir"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="meta">@BeforeMethod</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.setProperty(<span class="string">"webdriver.chrome.driver"</span>, projectPath + <span class="string">"/src/main/resource/driver/chromedriver"</span>);</span><br><span class="line">		WebDriver driver = <span class="keyword">new</span> ChromeDriver();</span><br><span class="line">		ThreadDriver.set(driver);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span>(threadPoolSize = <span class="number">2</span>, invocationCount = <span class="number">2</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">first</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		ThreadDriver.get().get(<span class="string">"https://www.baidu.com"</span>);</span><br><span class="line">		ThreadDriver.get().findElement(By.id(<span class="string">"kw"</span>)).sendKeys(<span class="string">"test"</span>);</span><br><span class="line">		ThreadDriver.get().findElement(By.id(<span class="string">"su"</span>)).click();</span><br><span class="line">		sleep(<span class="number">3000</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span>(threadPoolSize = <span class="number">2</span>, invocationCount = <span class="number">1</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">second</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		ThreadDriver.get().get(<span class="string">"https://www.baidu.com"</span>);</span><br><span class="line">		ThreadDriver.get().findElement(By.id(<span class="string">"kw"</span>)).sendKeys(<span class="string">"selenium"</span>);</span><br><span class="line">		ThreadDriver.get().findElement(By.id(<span class="string">"su"</span>)).click();</span><br><span class="line">		sleep(<span class="number">3000</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@AfterMethod</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		ThreadDriver.get().quit();</span><br><span class="line">		ThreadDriver.remove();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 等待方法是为了让我们更好的看到自动化执行结果</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(<span class="keyword">int</span> seconds)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Thread.sleep(seconds);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><p><a href="https://github.com/TesterChen/AutomationTest/tree/master/multipleTest" target="_blank" rel="noopener">本节源代码 GitHub</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/09/05/Selenium Web自动化08--ExtentReports美化TestNG报告/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1877,160 +2034,11 @@ table th:first-of-type {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/01/01/Selenium Web自动化00--环境配置/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/01/01/Selenium Web自动化00--环境配置/" itemprop="url">Selenium Web自动化00--环境配置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-01T17:30:00+08:00">
-                2016-01-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/自动化/" itemprop="url" rel="index">
-                    <span itemprop="name">自动化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>1、安装Java JDK，建议1.8或以上<br>2、下载Eclipse<br>2、安装TestNG</p>
-<h3 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h3><p>官网下载地址<br><a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/index.html</a><br>安装方式比较单一，对于配置方式windows和mac有一定的差异，针对性地配置</p>
-<h3 id="下载Eclispe"><a href="#下载Eclispe" class="headerlink" title="下载Eclispe"></a>下载Eclispe</h3><p>去官网找到合适的版本下载，安装即可<br><a href="https://www.eclipse.org/downloads/" target="_blank" rel="noopener">https://www.eclipse.org/downloads/</a></p>
-<h3 id="安装TestNG"><a href="#安装TestNG" class="headerlink" title="安装TestNG"></a>安装TestNG</h3><p>我们需要在Eclipse安装成功后，我们需要在Eclipse IDE中安装TestNG插件，这样方便我们在Eclipse中调试我们的脚本。</p>
-<p>以Eclisep为例，安装入口在：Help–Install New Software<br>在弹出层中输入TestNG的安装地址并回车：<a href="http://beust.com/eclipse" target="_blank" rel="noopener">http://beust.com/eclipse</a><br>有些版本中可能已经有对应插件，如果插件已经存在则不需要再次安装，可以在安装弹出层的Manage中查看</p>
-<p><img src="/images/selenium/installsoftware.png" alt></p>
-<p>整个获取和下载过程会比较慢，请耐心等待<br>下载完成后，会提示安装，根据提示下一步安装即可</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这里主要在于提出需要准备哪些环境因素<br>对于有疑惑的部分可以单独百度上寻找相关信息<br>或参考 <a href="https://www.yiibai.com/testng/hello-world-example.html" target="_blank" rel="noopener">https://www.yiibai.com/testng/hello-world-example.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2076,7 +2084,7 @@ table th:first-of-type {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
