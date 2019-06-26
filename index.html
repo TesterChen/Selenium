@@ -259,6 +259,308 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/06/26/Postman API自动化09--执行器Runner/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/26/Postman API自动化09--执行器Runner/" itemprop="url">Postman API自动化09--执行利器Runner</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-26T18:04:00+08:00">
+                2019-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/API自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">API自动化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">操作系统：MacOS Mojave 10.14.4</span><br><span class="line">Postman：7.1.1</span><br></pre></td></tr></table></figure>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>更方便地调试接口测试脚本；</p>
+<h3 id="快速了解"><a href="#快速了解" class="headerlink" title="快速了解"></a>快速了解</h3><p>批量执行入口<br><img src="/images/api/startRunner.png" alt> </p>
+<p>Runner界面预览<br><img src="/images/api/runner.png" alt> </p>
+<h3 id="功能详解"><a href="#功能详解" class="headerlink" title="功能详解"></a>功能详解</h3><p>Enviroment：我们可以通过选择不同环境变量，让脚本在不同环境上执行，满足在各类环境上执行测试脚本的需求；</p>
+<p>Iterations：执行次数，我们需要脚本运行多少次，非并发执行，是一次一次执行；</p>
+<p>Delay：每一次请求执行之前暂停的时间，对于异步处理的请求可能需要添加这个等待时间；</p>
+<p>Log Responses：记录哪些请求的日志；</p>
+<p>Data：从外部文件引入数据（数据参数化的一种实现）；</p>
+<p>Keep variable values：保持（或者叫更新）本次执行时产生的变量至环境变量和全局变量。我们可以在执行之前清理环境变量和全局变量的目前值，执行完成之后观察值的变化；</p>
+<p>Save cookies after collection run：默认选择（还没搞清楚具体作用）；</p>
+<p>RUN ORDER<br>RUNNER 页面右侧的 RUN ORDER 对于部分调度非常有帮助；<br>我们可以把他理解为PlayList，在这里我们可以调整接口执行顺序、选择要执行的接口；</p>
+<h3 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h3><p>执行完成后，我们可以点击接口用例的名称，显示此次接口请求的相关内容：请求地址、请求头、请求体、返回头、返回体；<br>查看请求内容和前面讲到的Console输出，是我们调试接口测试的常用手法；<br><img src="/images/api/resultDeail.png" alt> </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/06/14/Postman API自动化08--运行时变量/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/14/Postman API自动化08--运行时变量/" itemprop="url">Postman API自动化08--运行时变量</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-14T18:04:00+08:00">
+                2019-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/API自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">API自动化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">操作系统：MacOS Mojave 10.14.4</span><br><span class="line">Postman：7.1.1</span><br></pre></td></tr></table></figure>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>更方便地调试接口测试脚本；</p>
+<h3 id="单个调试"><a href="#单个调试" class="headerlink" title="单个调试"></a>单个调试</h3><p>我有多个接口要调试，有些接口之间有依赖关系，这种情况我应该怎么办？<br>没问题！Postman在多方面均解决了这个问题；</p>
+<p>直接通过请求编辑页的【Send】按钮执行请求，此时默认会更新并记录你的变量值（环境变量和全局变量），调试下一个接口时可以直接取用；</p>
+<h3 id="批量执行"><a href="#批量执行" class="headerlink" title="批量执行"></a>批量执行</h3><p>通过【Runner】执行时，我们勾选【Keep variable values】，此时也会更新并记录你的变量值（环境变量和全局变量）；<br><img src="/images/api/keepVariable.png" alt> </p>
+<h3 id="如何确定变量"><a href="#如何确定变量" class="headerlink" title="如何确定变量"></a>如何确定变量</h3><p>在哪儿可以看到我的值有没有被记录或更新？预览变量中可以直接看到，我们需要关注的是CURRENT VALUE；<br><img src="/images/api/viewVars.png" alt> </p>
+<p>那我怎么确定这个值是不是更新的呢？<br>我们可以编辑对应变量的CURRENT VALUE列，把它清除后再执行脚本，执行完成后，查看对应变量的CURRENT VALUE值；</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/06/14/Postman API自动化07--通用断言设置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -357,7 +659,7 @@
 <h3 id="通用断言"><a href="#通用断言" class="headerlink" title="通用断言"></a>通用断言</h3><p>我们通常会有这样的需求，我们在做接口测试时需要对所有请求都做某一个相同断言，有什么好办法？<br>有的！Postman在Collection和Folder都支持多方面的通用配置；<br>下图显示的是Collection的断言设置入口；<br><img src="/images/api/edit.png" alt> </p>
 <p>Collection的通用配置包括几大部分，我们常用的有前置处理脚本(Pre-request Script)、后置数据处理(Tests)，如断言脚本，变量设置(Varibles)；<br>下图中我们对这个Collection设置了通用的响应码断言；<br><img src="/images/api/publicTest.png" alt> </p>
 <p>Folder的通用配置相比Collection少了变量设置(Varibles)模块；<br><img src="/images/api/editFolder.png" alt> </p>
-<p>我们来做个试验，我们先注释掉通用的断言(此时登录脚本Test中是有数据提取脚本的），执行脚本，查看执行结果；<br>执行结果显示PASSED数量为0，FAILED为0；<br><img src="/images/api/noResult.png" alt> </p>
+<h3 id="断言影响统计"><a href="#断言影响统计" class="headerlink" title="断言影响统计"></a>断言影响统计</h3><p>我们来做个试验，我们先注释掉通用的断言(此时登录脚本Test中是有数据提取脚本的），执行脚本，查看执行结果；<br>执行结果显示PASSED数量为0，FAILED为0；<br><img src="/images/api/noResult.png" alt> </p>
 <p>接下来，我们放开Collection中对响应码的通用断言，执行脚本，看执行结果；<br>执行结果显示PASSED数量为2，FAILED为0；<br><img src="/images/api/haveResult.png" alt> </p>
 <p>通过上面两次的执行，我们可以得到以下结论：<br>1、我们可以通过设置通用断言的方式来对特定范围的请求进行结果检查；<br>2、执行结果成功或失败，只有在存在断言的情况下才会计数；</p>
 
@@ -516,6 +818,7 @@
 <p>Pull完之后，可以点击同步按钮，观察自己Workspace中Collection的变化，如果正常，则再次操作Merge，直接合并到Team Workspace即可<br><img src="/images/api/pullChange.png" alt></p>
 <h3 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h3><p>Postman有两种模式：在Postman右下方可以看到【Browse】和【Build】；<br><img src="/images/api/model.png" alt><br>当我们在切换到Team Workspace时默认为【Browse】模式，Browse模式下点击Collection时会跳转到Web浏览器，不是很方便；<br>Team Workspace下我们可以手动切换到【Build】模式，在这个模式下：<br>如果【Manage Roles】中你是Editor权限，那么你可以直接编辑、保存、同步脚本至Team Workspace，而不用通过Frok和Merge的形式提交变更（但然不建议多人修改同一个脚本）；<br>如果你只是Viewer，虽然没有保存脚本权限，但可以更方便地执行脚本，同时实时更新最新脚本也会变更更容易；</p>
 <h3 id="科学上网"><a href="#科学上网" class="headerlink" title="科学上网"></a>科学上网</h3><p>Postman是谷歌系的产品，部分服务可能无法直接访问（如：Merge功能）；<br>当你发现部分功能使用或链接无法访问时，你可能需要一个科学上网的工具；</p>
+<p>被邀请加入团队之后，Postman会给你的邮箱发送一封确认加入邮件，如果收件箱没有找到，记得去垃圾邮件中找找；</p>
 
           
         
@@ -810,7 +1113,8 @@
 <h3 id="设置动态变量"><a href="#设置动态变量" class="headerlink" title="设置动态变量"></a>设置动态变量</h3><p>动态变量我们可以设置两种：环境变量和全局变量；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 设置环境变量并输出</span><br><span class="line">pm.environment.set(<span class="string">"token"</span>, jsonObject.data.token);</span><br><span class="line">console.log(pm.environment.get(<span class="string">"token"</span>));</span><br><span class="line"></span><br><span class="line">// 设置全局变量并输出</span><br><span class="line">pm.globals.set(<span class="string">"id"</span>, jsonData.data.id);</span><br><span class="line">console.log(<span class="string">"id:"</span>, pm.globals.get(<span class="string">"id"</span>));</span><br><span class="line"></span><br><span class="line">// 注意，这样输出是错误的</span><br><span class="line">console.log(<span class="string">"&#123;&#123;id&#125;&#125;"</span>);</span><br></pre></td></tr></table></figure></p>
 <p>环境变量和全局变量的存在是非常重要的，通过动态变量拼接接口场景；<br>两者的差异，主要是作用范围不一样，可以先将环境变理理解为局部变量，具体的差异在其他篇介绍；</p>
 <h3 id="变量的使用"><a href="#变量的使用" class="headerlink" title="变量的使用"></a>变量的使用</h3><p>环境变量和全局变量在使用上没有差异，都是通过两个花括号调用变量；<br>如：这里是使用变量province的值<br><img src="/images/api/varUsage.png" alt></p>
-<h3 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h3><p>断言是接口自动化中非常重要的部分，接口执行成功并不代表预期数据是正确的，这就需要我们对返回数据进行断言；<br>断言包括两大部分：请求状态相关信息，请求数据相关信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 请求状态相关断言，tests中引号内容由用户自定义输入</span><br><span class="line">//验证Status code的值</span><br><span class="line">tests[<span class="string">"http code 200"</span>] = responseCode.code === 200 || responseCode.code === 201;</span><br><span class="line"></span><br><span class="line">//验证Response time是否小于某个值</span><br><span class="line">tests[<span class="string">"Response time is less than 200ms"</span>] = responseTime &lt; 200;</span><br><span class="line"></span><br><span class="line">// 判断Response Headers中是否包含Content-Type</span><br><span class="line">pm.test(<span class="string">"Content-Type is present"</span>, <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    pm.response.to.have.header(<span class="string">"Content-Type"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 请求数据相关断言</span><br><span class="line">//检测json中的某个值是否等于预期的值</span><br><span class="line">tests[<span class="string">"verify resCode"</span>] = jsonObject.resCode === <span class="string">"0"</span>;</span><br><span class="line"></span><br><span class="line">// 更多参见</span><br><span class="line">https://learning.getpostman.com/docs/postman/scripts/test_examples</span><br></pre></td></tr></table></figure></p>
+<h3 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h3><p>断言是接口自动化中非常重要的部分，接口执行成功并不代表预期数据是正确的，这就需要我们对返回数据进行断言；<br>断言包括两大部分：请求状态相关信息，请求数据相关信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">// 请求状态相关断言，tests中引号内容由用户自定义输入</span><br><span class="line">//验证Status code的值</span><br><span class="line">tests[<span class="string">"http code 200"</span>] = responseCode.code === 200 || responseCode.code === 201;</span><br><span class="line"></span><br><span class="line">//验证Response time是否小于某个值</span><br><span class="line">tests[<span class="string">"Response time is less than 200ms"</span>] = responseTime &lt; 200;</span><br><span class="line"></span><br><span class="line">// 判断Response Headers中是否包含Content-Type</span><br><span class="line">pm.test(<span class="string">"Content-Type is present"</span>, <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    pm.response.to.have.header(<span class="string">"Content-Type"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 请求数据相关断言</span><br><span class="line">//检测json中的某个值是否等于预期的值</span><br><span class="line">tests[<span class="string">"verify resCode"</span>] = jsonObject.resCode === <span class="string">"0"</span>;</span><br><span class="line"></span><br><span class="line">// 判断目标值是否包含某个关键字</span><br><span class="line">pm.test(<span class="string">"verify itemFullName"</span>, <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    pm.expect(jsonData.data.resultData[0].fundFullName).to.contains(<span class="string">"API"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 也可以使用上面的方式判断等于的情况</span><br><span class="line">pm.test(<span class="string">"verify itemFullName"</span>, <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    pm.expect(jsonData.data.resultData[0].fundFullName).to.equal(<span class="string">"API1159220097"</span>);</span><br><span class="line">&#125;);</span><br><span class="line">// equal、equals、eql都可以</span><br><span class="line">pm.expect(jsonData.data.resultData[0].fundFullName).to.eql(<span class="string">"API1159220097"</span>);</span><br><span class="line"></span><br><span class="line">// 更多参见</span><br><span class="line">https://learning.getpostman.com/docs/postman/scripts/test_examples</span><br></pre></td></tr></table></figure></p>
+<h3 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h3><p>我们在添加数据时，往往某个字段有重复校验，所以需要通过随机生成前后缀来保持字段值唯一；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 时间戳，时间戳的问题在于不能很方便地存储当时使用的值</span><br><span class="line">&#123;&#123;$timestamp&#125;&#125;</span><br><span class="line">pm.environment.set(&quot;id&quot;, &quot;API&#123;&#123;$timestamp&#125;&#125;&quot;);</span><br><span class="line"></span><br><span class="line">// random函数</span><br><span class="line">// 生成10位随机数并存储到环境变量</span><br><span class="line">var random = Math.floor(Math.random() * 10000000000);</span><br><span class="line">pm.environment.set(&quot;id&quot;, &quot;API&quot; + random);</span><br></pre></td></tr></table></figure></p>
 <h3 id="日志输出"><a href="#日志输出" class="headerlink" title="日志输出"></a>日志输出</h3><p>在脚本出现问题需要调试时，日志输出显得尤为重要，要输出日志我们需要做两步：在Test区域输出日志，打开日志输出控制台；<br>Step 1、在Test区域输出日志代码<br>// 打印上面获取的jsonObject<br>console.log(“jsonObject”, jsonObject);</p>
 <p>Step 2、打开控制台日志显示<br>在Postman主页面左下角找到控制台日志输出图标<br><img src="/images/api/openConsole.png" alt></p>
 <p>执行脚本后，就能在控制台中看到我们打印的jsonObject内容；</p>
@@ -1110,7 +1414,8 @@
 <h3 id="获取请求体"><a href="#获取请求体" class="headerlink" title="获取请求体"></a>获取请求体</h3><p>获取请求体常见有两种方式：页面操作、后台日志；</p>
 <p>页面操作：<br>1、页面操作是最直接的方式，而且有效地避免了参数张冠李戴的情况；<br>2、没有其他帮助的情况下可以通过这种方式进行接口测试；<br>3、在Chrome浏览器下按下F12或通过页面右键选择检查后切换到Network，再操作相关业务；<br>4、操作完成后，根据API相关文档找到对应关键字，即可通过搜索查看到相应请求，包括请求url和请求参数体；<br><img src="/images/api/apiUrl.png" alt>        点击view source可以直接复制json字符串；<br><img src="/images/api/apiResponse.png" alt></p>
 <p>后台日志：<br>通过查询后台日志拿到请求体数据，再丰富参数即可；</p>
-<h3 id="格式化json字符串"><a href="#格式化json字符串" class="headerlink" title="格式化json字符串"></a>格式化json字符串</h3><p>通过页面或日志拿到的json字符串往往是没有格式化的，需要我们再手动格式化，这时候我们需要借助工具；<br>快速格式化json字符串：<a href="http://www.bejson.com/" target="_blank" rel="noopener">http://www.bejson.com/</a></p>
+<h3 id="格式化json字符串"><a href="#格式化json字符串" class="headerlink" title="格式化json字符串"></a>格式化json字符串</h3><p>方式一：<br>通过Postman自带功能实现json串的格式化，在Body区域的右上角有一个【Beautify】按钮；<br><img src="/images/api/beautify.png" alt></p>
+<p>方式二：<br>通过页面或日志拿到的json字符串往往是没有格式化的，需要我们再手动格式化，这时候我们需要借助工具；<br>快速格式化json字符串：<a href="http://www.bejson.com/" target="_blank" rel="noopener">http://www.bejson.com/</a></p>
 <h3 id="jsonPath校验工具"><a href="#jsonPath校验工具" class="headerlink" title="jsonPath校验工具"></a>jsonPath校验工具</h3><p>在提取返回数据的参数值时，需要用到jsonPath，简单的jsonPath可以直接写，但复杂的我们要一次性写对就比较困难了；<br>在线书写和校验jsonPath：<a href="http://jsonpath.com/" target="_blank" rel="noopener">http://jsonpath.com/</a></p>
 
           
@@ -1455,313 +1760,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/04/13/Shell 00--入门知识/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/13/Shell 00--入门知识/" itemprop="url">Shell 00--入门知识</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-13T11:37:00+08:00">
-                2019-04-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Shell/" itemprop="url" rel="index">
-                    <span itemprop="name">Shell</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>简单了解Shell脚本，能写简单脚本，运行脚本。</p>
-<h3 id="bash与sh"><a href="#bash与sh" class="headerlink" title="bash与sh"></a>bash与sh</h3><p><a href="http://www.gnu.org/software/bash/" target="_blank" rel="noopener">gnu关于bash的描述是这样的</a>：<br>Bash is the GNU Project’s shell. Bash is the Bourne Again SHell. Bash is an sh-compatible shell that incorporates useful features from the Korn shell (ksh) and C shell (csh). It is intended to conform to the IEEE POSIX P1003.2/ISO 9945.2 Shell and Tools standard. It offers functional improvements over sh for both programming and interactive use. In addition, most sh scripts can be run by Bash without modification.</p>
-<h3 id="运行方式"><a href="#运行方式" class="headerlink" title="运行方式"></a>运行方式</h3><p>直接运行：在控制台直接输入命令执行。</p>
-<p>文件运行<br>将shell命令保存在文本，如test.sh，内容如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> hello shell</span><br></pre></td></tr></table></figure></p>
-<p>通过./test.sh 运行脚本。</p>
-<h3 id="区别试验"><a href="#区别试验" class="headerlink" title="区别试验"></a>区别试验</h3><p>新建test.sh脚本内容如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="built_in">source</span> pcy.sh    <span class="comment">#pcy.sh并不存在</span></span><br><span class="line"><span class="built_in">echo</span> hello</span><br></pre></td></tr></table></figure></p>
-<p>执行./test.sh，屏幕输出为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./test.sh: line 2: pcy.sh: No such file or directory</span><br></pre></td></tr></table></figure></p>
-<p>因此可以得知，在#!/bin/sh的情况下，source不成功，不会运行source后面的代码。</p>
-<p>修改test.sh脚本的第一行如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">source</span> pcy.sh    <span class="comment">#pcy.sh并不存在</span></span><br><span class="line"><span class="built_in">echo</span> hello</span><br></pre></td></tr></table></figure></p>
-<p>再次执行./test.sh，屏幕输出为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./test.sh: line 2: pcy.sh: No such file or directory</span><br><span class="line">hello</span><br></pre></td></tr></table></figure></p>
-<h3 id="区别总结"><a href="#区别总结" class="headerlink" title="区别总结"></a>区别总结</h3><p>sh跟bash的区别，实际上就是bash有没有开启posix模式的区别。<br>遵循posix的特定规范，代码就不会再向下解释了，程序会停止在这里。<br>sh 等价于 bash –posix</p>
-<h3 id="参考帮助"><a href="#参考帮助" class="headerlink" title="参考帮助"></a>参考帮助</h3><p><a href="http://www.dooccn.com/shell/" target="_blank" rel="noopener">在线调试Shell脚本</a><br><a href="https://blog.csdn.net/yugemengjing/article/details/82469785" target="_blank" rel="noopener">Shell编程100例</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/04/01/解决项目分支和环境冲突/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/01/解决项目分支和环境冲突/" itemprop="url">解决项目分支或环境冲突</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-01T16:29:00+08:00">
-                2019-04-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>最近，有几次聊到测试过程中如何处理项目或环境冲突。<br>在日常工作中偶尔会遇到同一项目并行开发、提测的情况，那么我们如何处理这种情况？</p>
-<h3 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h3><p>项目：ins-test-platform<br>现有分支：<br>ins-test-platform/branch/ins-test-platform_andy_201903221612<br>ins-test-platform/branch_lilei_201903211145<br>开发人员：Andy，Lilei</p>
-<h3 id="问题是？"><a href="#问题是？" class="headerlink" title="问题是？"></a>问题是？</h3><p>开发人员Andy和Lilei同时针对ins-test-platform项目进行了开发，同一时间提交测试同事进行测试，但两个分支（需求）上线时间非同一天。碰巧的是现在只有一套测试环境是空闲、可以用于测试，这个时候我们怎么办？</p>
-<h3 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h3><p>1、有风险的代码：绝不合并到trunk/master；<br>2、有风险的项目：单独分支开发；<br>3、时间较久的分支：先合并线上的代码，使用新分支测试。</p>
-<h3 id="处理方法"><a href="#处理方法" class="headerlink" title="处理方法"></a>处理方法</h3><p>根据上面的原则，我们通常的处理方式如下：<br>1、Andy和Lilei两位开发人员，各自合并线上代码后形成新的分支：<br>ins-test-platform/branch/ins-test-platform_andy_201904011644（分支A）<br>ins-test-platform/branch/ins-test-platform_lilei_201904011645 (分支B)</p>
-<p>此时合并主干代码的作用有两个：<br>1、确保所有的代码均是被测试过的，而不是上线之前再次合并代码，引入新的风险；<br>2、减少后续因代码合并带来的时间风险。</p>
-<p>实践证明，坚持这一条会给我们最后上线带来意想不到的顺利。</p>
-<p>2、根据上一步形成的两个分支，合并成新的分支，此分支为测试环境部署的分支：<br>ins-test-platform/branch/ins-test-platform_andyandlilei_201904011801 (分支C)</p>
-<p>3、修改bug时，Andy和Lilei需要在自己对应的分支A/B上修改，同时将修改同步到分支C，重新部署分支C验证修改。</p>
-<p>4、若Andy的项目先测试通过，需要先上线就很简单了：<br>分支A代码已经与线上合并过，所以可以很快捷地通过工具合并完成；<br>但仍然要注意此时Andy的分支A是没有部署在测试环境测试过的，需要合并到主干后进行冒烟或者回归测试后再上线。</p>
-<p>5、Andy的项目已经上线，此时Lilei项目也可以上线了：<br>因为Andy分支A的代码一直在分支C是同步修改的，所以代码合并工作也会十分顺利，按流程回归测试即可上线。</p>
-<p>6、所有项目上线完成<br>到这里，我们两个需求的代码就先后上线了，代价是开发同事在修改bug时会有部分重复的操作。</p>
-<h3 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h3><p>建议提供多个测试环境。彼此不影响，我们只需要做好步骤1即可。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1812,7 +1810,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

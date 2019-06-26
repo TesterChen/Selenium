@@ -89,7 +89,8 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://chainradar.cn/images/api/apiUrl.png">
 <meta property="og:image" content="http://chainradar.cn/images/api/apiResponse.png">
-<meta property="og:updated_time" content="2019-06-14T05:40:47.806Z">
+<meta property="og:image" content="http://chainradar.cn/images/api/beautify.png">
+<meta property="og:updated_time" content="2019-06-26T07:39:26.422Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Postman API自动化02--常用辅助工具">
 <meta name="twitter:description" content="目标通过常见工具提升测试脚本设计效率； 获取请求体获取请求体常见有两种方式：页面操作、后台日志； 页面操作：1、页面操作是最直接的方式，而且有效地避免了参数张冠李戴的情况；2、没有其他帮助的情况下可以通过这种方式进行接口测试；3、在Chrome浏览器下按下F12或通过页面右键选择检查后切换到Network，再操作相关业务；4、操作完成后，根据API相关文档找到对应关键字，即可通过搜索查看到相应请求">
@@ -359,7 +360,8 @@
 <h3 id="获取请求体"><a href="#获取请求体" class="headerlink" title="获取请求体"></a>获取请求体</h3><p>获取请求体常见有两种方式：页面操作、后台日志；</p>
 <p>页面操作：<br>1、页面操作是最直接的方式，而且有效地避免了参数张冠李戴的情况；<br>2、没有其他帮助的情况下可以通过这种方式进行接口测试；<br>3、在Chrome浏览器下按下F12或通过页面右键选择检查后切换到Network，再操作相关业务；<br>4、操作完成后，根据API相关文档找到对应关键字，即可通过搜索查看到相应请求，包括请求url和请求参数体；<br><img src="/images/api/apiUrl.png" alt>        点击view source可以直接复制json字符串；<br><img src="/images/api/apiResponse.png" alt></p>
 <p>后台日志：<br>通过查询后台日志拿到请求体数据，再丰富参数即可；</p>
-<h3 id="格式化json字符串"><a href="#格式化json字符串" class="headerlink" title="格式化json字符串"></a>格式化json字符串</h3><p>通过页面或日志拿到的json字符串往往是没有格式化的，需要我们再手动格式化，这时候我们需要借助工具；<br>快速格式化json字符串：<a href="http://www.bejson.com/" target="_blank" rel="noopener">http://www.bejson.com/</a></p>
+<h3 id="格式化json字符串"><a href="#格式化json字符串" class="headerlink" title="格式化json字符串"></a>格式化json字符串</h3><p>方式一：<br>通过Postman自带功能实现json串的格式化，在Body区域的右上角有一个【Beautify】按钮；<br><img src="/images/api/beautify.png" alt></p>
+<p>方式二：<br>通过页面或日志拿到的json字符串往往是没有格式化的，需要我们再手动格式化，这时候我们需要借助工具；<br>快速格式化json字符串：<a href="http://www.bejson.com/" target="_blank" rel="noopener">http://www.bejson.com/</a></p>
 <h3 id="jsonPath校验工具"><a href="#jsonPath校验工具" class="headerlink" title="jsonPath校验工具"></a>jsonPath校验工具</h3><p>在提取返回数据的参数值时，需要用到jsonPath，简单的jsonPath可以直接写，但复杂的我们要一次性写对就比较困难了；<br>在线书写和校验jsonPath：<a href="http://jsonpath.com/" target="_blank" rel="noopener">http://jsonpath.com/</a></p>
 
       
@@ -480,7 +482,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

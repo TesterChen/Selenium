@@ -259,6 +259,313 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/04/13/Shell 00--入门知识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/13/Shell 00--入门知识/" itemprop="url">Shell 00--入门知识</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-13T11:37:00+08:00">
+                2019-04-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Shell/" itemprop="url" rel="index">
+                    <span itemprop="name">Shell</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>简单了解Shell脚本，能写简单脚本，运行脚本。</p>
+<h3 id="bash与sh"><a href="#bash与sh" class="headerlink" title="bash与sh"></a>bash与sh</h3><p><a href="http://www.gnu.org/software/bash/" target="_blank" rel="noopener">gnu关于bash的描述是这样的</a>：<br>Bash is the GNU Project’s shell. Bash is the Bourne Again SHell. Bash is an sh-compatible shell that incorporates useful features from the Korn shell (ksh) and C shell (csh). It is intended to conform to the IEEE POSIX P1003.2/ISO 9945.2 Shell and Tools standard. It offers functional improvements over sh for both programming and interactive use. In addition, most sh scripts can be run by Bash without modification.</p>
+<h3 id="运行方式"><a href="#运行方式" class="headerlink" title="运行方式"></a>运行方式</h3><p>直接运行：在控制台直接输入命令执行。</p>
+<p>文件运行<br>将shell命令保存在文本，如test.sh，内容如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> hello shell</span><br></pre></td></tr></table></figure></p>
+<p>通过./test.sh 运行脚本。</p>
+<h3 id="区别试验"><a href="#区别试验" class="headerlink" title="区别试验"></a>区别试验</h3><p>新建test.sh脚本内容如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="built_in">source</span> pcy.sh    <span class="comment">#pcy.sh并不存在</span></span><br><span class="line"><span class="built_in">echo</span> hello</span><br></pre></td></tr></table></figure></p>
+<p>执行./test.sh，屏幕输出为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./test.sh: line 2: pcy.sh: No such file or directory</span><br></pre></td></tr></table></figure></p>
+<p>因此可以得知，在#!/bin/sh的情况下，source不成功，不会运行source后面的代码。</p>
+<p>修改test.sh脚本的第一行如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">source</span> pcy.sh    <span class="comment">#pcy.sh并不存在</span></span><br><span class="line"><span class="built_in">echo</span> hello</span><br></pre></td></tr></table></figure></p>
+<p>再次执行./test.sh，屏幕输出为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./test.sh: line 2: pcy.sh: No such file or directory</span><br><span class="line">hello</span><br></pre></td></tr></table></figure></p>
+<h3 id="区别总结"><a href="#区别总结" class="headerlink" title="区别总结"></a>区别总结</h3><p>sh跟bash的区别，实际上就是bash有没有开启posix模式的区别。<br>遵循posix的特定规范，代码就不会再向下解释了，程序会停止在这里。<br>sh 等价于 bash –posix</p>
+<h3 id="参考帮助"><a href="#参考帮助" class="headerlink" title="参考帮助"></a>参考帮助</h3><p><a href="http://www.dooccn.com/shell/" target="_blank" rel="noopener">在线调试Shell脚本</a><br><a href="https://blog.csdn.net/yugemengjing/article/details/82469785" target="_blank" rel="noopener">Shell编程100例</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/04/01/解决项目分支和环境冲突/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/01/解决项目分支和环境冲突/" itemprop="url">解决项目分支或环境冲突</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-01T16:29:00+08:00">
+                2019-04-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/测试/" itemprop="url" rel="index">
+                    <span itemprop="name">测试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近，有几次聊到测试过程中如何处理项目或环境冲突。<br>在日常工作中偶尔会遇到同一项目并行开发、提测的情况，那么我们如何处理这种情况？</p>
+<h3 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h3><p>项目：ins-test-platform<br>现有分支：<br>ins-test-platform/branch/ins-test-platform_andy_201903221612<br>ins-test-platform/branch_lilei_201903211145<br>开发人员：Andy，Lilei</p>
+<h3 id="问题是？"><a href="#问题是？" class="headerlink" title="问题是？"></a>问题是？</h3><p>开发人员Andy和Lilei同时针对ins-test-platform项目进行了开发，同一时间提交测试同事进行测试，但两个分支（需求）上线时间非同一天。碰巧的是现在只有一套测试环境是空闲、可以用于测试，这个时候我们怎么办？</p>
+<h3 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h3><p>1、有风险的代码：绝不合并到trunk/master；<br>2、有风险的项目：单独分支开发；<br>3、时间较久的分支：先合并线上的代码，使用新分支测试。</p>
+<h3 id="处理方法"><a href="#处理方法" class="headerlink" title="处理方法"></a>处理方法</h3><p>根据上面的原则，我们通常的处理方式如下：<br>1、Andy和Lilei两位开发人员，各自合并线上代码后形成新的分支：<br>ins-test-platform/branch/ins-test-platform_andy_201904011644（分支A）<br>ins-test-platform/branch/ins-test-platform_lilei_201904011645 (分支B)</p>
+<p>此时合并主干代码的作用有两个：<br>1、确保所有的代码均是被测试过的，而不是上线之前再次合并代码，引入新的风险；<br>2、减少后续因代码合并带来的时间风险。</p>
+<p>实践证明，坚持这一条会给我们最后上线带来意想不到的顺利。</p>
+<p>2、根据上一步形成的两个分支，合并成新的分支，此分支为测试环境部署的分支：<br>ins-test-platform/branch/ins-test-platform_andyandlilei_201904011801 (分支C)</p>
+<p>3、修改bug时，Andy和Lilei需要在自己对应的分支A/B上修改，同时将修改同步到分支C，重新部署分支C验证修改。</p>
+<p>4、若Andy的项目先测试通过，需要先上线就很简单了：<br>分支A代码已经与线上合并过，所以可以很快捷地通过工具合并完成；<br>但仍然要注意此时Andy的分支A是没有部署在测试环境测试过的，需要合并到主干后进行冒烟或者回归测试后再上线。</p>
+<p>5、Andy的项目已经上线，此时Lilei项目也可以上线了：<br>因为Andy分支A的代码一直在分支C是同步修改的，所以代码合并工作也会十分顺利，按流程回归测试即可上线。</p>
+<p>6、所有项目上线完成<br>到这里，我们两个需求的代码就先后上线了，代价是开发同事在修改bug时会有部分重复的操作。</p>
+<h3 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h3><p>建议提供多个测试环境。彼此不影响，我们只需要做好步骤1即可。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/03/29/是要写博客了/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1532,309 +1839,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2017/02/15/Appium App自动化02--快速开始/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/02/15/Appium App自动化02--快速开始/" itemprop="url">Appium UI自动化02--快速开始</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-15T22:01:00+08:00">
-                2017-02-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/APP自动化/" itemprop="url" rel="index">
-                    <span itemprop="name">APP自动化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>新建Maven项目，通过Java代码启动iPhone真机的目标App，执行点击动作后退出App。</p>
-<h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Mac --&gt; 10.14.4</span><br><span class="line">iPhone Real Device --&gt; 12.2</span><br><span class="line">Appium --&gt; 1.12.1</span><br><span class="line">Xcode --&gt; 10.2</span><br></pre></td></tr></table></figure>
-<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>1、新建Maven项目、添加Maven引用、加入测试代码；<br>2、启动Appium服务；<br>3、通过TestNG运行测试脚本；<br><em>首次运行若App未启动，请进入手机【设置 -&gt; 通用 -&gt; 描述文件与设备管理】检查描述文件是否被信任</em>。</p>
-<h3 id="Maven依赖"><a href="#Maven依赖" class="headerlink" title="Maven依赖"></a>Maven依赖</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.8.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.appium&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;java-client&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;7.0.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;selenium-remote-driver&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.141.59&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.testng&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;testng&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;6.9.6&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.net.MalformedURLException;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.By;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.remote.DesiredCapabilities;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.AfterTest;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.BeforeTest;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.appium.java_client.AppiumDriver;</span><br><span class="line"><span class="keyword">import</span> io.appium.java_client.MobileElement;</span><br><span class="line"><span class="keyword">import</span> io.appium.java_client.ios.IOSDriver;</span><br><span class="line"><span class="keyword">import</span> io.appium.java_client.remote.MobileCapabilityType;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StartApp</span> </span>&#123;</span><br><span class="line">    AppiumDriver&lt;MobileElement&gt; driver;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeTest</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// startWayOne();</span></span><br><span class="line">        startWayTwo();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getAppDriver</span><span class="params">()</span> <span class="keyword">throws</span> MalformedURLException </span>&#123;</span><br><span class="line">        <span class="comment">// 点击第一个职位</span></span><br><span class="line">        driver.findElement(By.xpath(<span class="string">"(//XCUIElementTypeStaticText[contains(@name,'测试')])[1]"</span>)).click();</span><br><span class="line">        sleep(<span class="number">5000</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterTest</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quite</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        driver.quit();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startWayOne</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        DesiredCapabilities capabilities = <span class="keyword">new</span> DesiredCapabilities();</span><br><span class="line">        capabilities.setCapability(<span class="string">"platformName"</span>, <span class="string">"iOS"</span>);</span><br><span class="line">        capabilities.setCapability(<span class="string">"platformVersion"</span>, <span class="string">"12.2"</span>);</span><br><span class="line">        capabilities.setCapability(<span class="string">"automationName"</span>, <span class="string">"XCUITest"</span>);</span><br><span class="line">        capabilities.setCapability(<span class="string">"deviceName"</span>, <span class="string">"iPhone"</span>);</span><br><span class="line">        <span class="comment">// liepin app，还可以使用"app ":本地.ipa文件路径</span></span><br><span class="line">        capabilities.setCapability(<span class="string">"bundleId"</span>, <span class="string">"com.lietou.insw-c-ios-iphone"</span>);</span><br><span class="line">        <span class="comment">// 只有一台设备时可以填写auto</span></span><br><span class="line">        capabilities.setCapability(<span class="string">"udid"</span>, <span class="string">"auto"</span>);</span><br><span class="line">        <span class="comment">// 解决App启动慢或失败问题，appium 1.12.0新增</span></span><br><span class="line">        capabilities.setCapability(<span class="string">"eventLoopIdleDelaySec"</span>, <span class="number">10</span>);</span><br><span class="line">        <span class="comment">// 自定义超时时间</span></span><br><span class="line">        capabilities.setCapability(<span class="string">"newCommandTimeout"</span>, <span class="number">120</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            driver = <span class="keyword">new</span> IOSDriver&lt;MobileElement&gt;(<span class="keyword">new</span> URL(<span class="string">"http://127.0.0.1:4723/wd/hub"</span>), capabilities);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (MalformedURLException e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"Please start the appium service first"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startWayTwo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        DesiredCapabilities capabilities = <span class="keyword">new</span> DesiredCapabilities();</span><br><span class="line">        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, <span class="string">"iOS"</span>);</span><br><span class="line">        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, <span class="string">"12.2"</span>);</span><br><span class="line">        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, <span class="string">"XCUITest"</span>);</span><br><span class="line">        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, <span class="string">"iPhone"</span>);</span><br><span class="line">        <span class="comment">// 只有一台设备时可以填写auto</span></span><br><span class="line">        capabilities.setCapability(MobileCapabilityType.UDID, <span class="string">"auto"</span>);</span><br><span class="line">        <span class="comment">// 自定义超时时间</span></span><br><span class="line">        capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, <span class="number">120</span>);</span><br><span class="line">        <span class="comment">// ios应用的唯一标识，还可以使用"app ":本地.ipa文件路径</span></span><br><span class="line">        capabilities.setCapability(<span class="string">"bundleId"</span>, <span class="string">"com.lietou.insw-c-ios-iphone"</span>);</span><br><span class="line">        <span class="comment">// 解决App启动慢或失败问题，appium 1.12.0新增</span></span><br><span class="line">        capabilities.setCapability(<span class="string">"eventLoopIdleDelaySec"</span>, <span class="number">10</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            driver = <span class="keyword">new</span> IOSDriver&lt;MobileElement&gt;(<span class="keyword">new</span> URL(<span class="string">"http://127.0.0.1:4723/wd/hub"</span>), capabilities);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (MalformedURLException e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"Please start the appium service first"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 等待方法是为了让我们更好的看到自动化执行结果</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(<span class="keyword">int</span> seconds)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(seconds);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Appium UI自动化对真机的性能要求相对较高。<br>机器性能不高时，元素寻址定位时会占用较长时间，建议使用性能更好的机型以获取更好的执行速度。</p>
-<p><a href="https://github.com/TesterChen/AutomationTest/tree/master/firstAppAutoTest" target="_blank" rel="noopener">跳转至本节代码 GitHub</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2017/02/13/Appium App自动化01--通过Appium启动App/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/02/13/Appium App自动化01--通过Appium启动App/" itemprop="url">Appium UI自动化01--通过Appium Desktop启动iOS App</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-13T22:01:00+08:00">
-                2017-02-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/APP自动化/" itemprop="url" rel="index">
-                    <span itemprop="name">APP自动化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>在环境配置章节中我们已经使用Appium自带的WDA完成配置，现尝试通过Appium Desktop拉起(启动)目标App。</p>
-<h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Mac --&gt; 10.14.4</span><br><span class="line">iPhone Real Device --&gt; 12.2</span><br><span class="line">Appium --&gt; 1.12.1</span><br><span class="line">Xcode --&gt; 10.2</span><br></pre></td></tr></table></figure>
-<h3 id="获取设备udid"><a href="#获取设备udid" class="headerlink" title="获取设备udid"></a>获取设备udid</h3><p>通过命令获取设备udid：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">idevice_id -l</span><br></pre></td></tr></table></figure></p>
-<p>通过iTunes获取到设备的udid：<br><img src="/images/appium/itunes1.png" alt>默认显示的不是udid，点击如下显示区域切换即可获取到udid：<br><img src="/images/appium/itunes2.png" alt></p>
-<h3 id="启动App"><a href="#启动App" class="headerlink" title="启动App"></a>启动App</h3><p>我们以启动微信为例。<br>打开Appium桌面并启动Appium服务，点击菜单Appium -&gt; New Session Window，配置完成后保存或者直接【Start Session】：<br><img src="/images/appium/capabilities.png" alt></p>
-<p>配置文本信息如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment"># 平台类型</span></span><br><span class="line">    <span class="string">"platformName"</span>: <span class="string">"iOS"</span>,</span><br><span class="line">    <span class="comment"># 不一定是你的手机系统版本，需要是你的Xcode支持的版本</span></span><br><span class="line">    <span class="string">"platformVersion"</span>: <span class="string">"12.2"</span>,</span><br><span class="line">    <span class="comment"># 设备名称，也就是iPhone的名称</span></span><br><span class="line">    <span class="string">"deviceName"</span>: <span class="string">"iPhone"</span>,</span><br><span class="line">    <span class="comment"># 理解为固定参数值</span></span><br><span class="line">    <span class="string">"automationName"</span>: <span class="string">"XCUITest"</span>,</span><br><span class="line">    <span class="comment"># 设备udid，只有一台设备时值可以使用“auto”</span></span><br><span class="line">    <span class="string">"udid"</span>: <span class="string">"auto"</span>,</span><br><span class="line">    <span class="comment"># 要启动的App，可使用”app”属性替换</span></span><br><span class="line">    <span class="string">"bundleId"</span>: <span class="string">"com.tencent.xin"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><a href="https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/caps.md" target="_blank" rel="noopener">More Appium Desired Capabilities</a></p>
-<h3 id="可能的异常"><a href="#可能的异常" class="headerlink" title="可能的异常"></a>可能的异常</h3><p>1、启动时异常：Could not connect to server; are you sure it’s running?<br>点击顶部的【Automatic Server】，再【Start Session】就可以了</p>
-<p><img src="/images/appium/connect.png" alt></p>
-<p>2、App无法启动<br>Appium的服务停止后再次启动时，Appium会重新安装WAD App，我们需要重新操作信任描述文件：<br>设置 -&gt; 通用 -&gt; 描述文件与设备管理，找到目标描述文件，信任描述文件，再次尝试启动App即可。</p>
-<p>3、Appium Inspector加载App元素时日志异常：Failure: Failure getting list of active applications: (null)<br>尝试新增配置eventLoopIdleDelaySec：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意参数类型是number，不是text</span></span><br><span class="line"><span class="string">"eventLoopIdleDelaySec"</span>：10</span><br></pre></td></tr></table></figure></p>
-<p><a href="https://github.com/facebook/WebDriverAgent/issues/1054" target="_blank" rel="noopener">了解更多关于这个问题</a></p>
-<h3 id="疑惑"><a href="#疑惑" class="headerlink" title="疑惑"></a>疑惑</h3><p>到这里，你可能会觉得疑惑，我们一直没有通过Xcode做任何操作。<br>是的，不需要，我们在Xcode配置完成之后，运行【Test】是为了验证配置是否正确。<br>我们使用Appium内置的WDA，每次Appium会自动调起WDA服务：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[XCUITest] Setting up real device</span><br><span class="line">[XCUITest] Using WDA path: <span class="string">'/Applications/Appium.app/Contents/Resources/app/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent'</span></span><br><span class="line">[XCUITest] Using WDA agent: <span class="string">'/Applications/Appium.app/Contents/Resources/app/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent/WebDriverAgent.xcodeproj'</span></span><br><span class="line">......</span><br><span class="line">[XCUITest] Trying to start WebDriverAgent 1 <span class="built_in">times</span> with 10000ms interval</span><br></pre></td></tr></table></figure></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>当我们使用Appium安装目录下的WDA时，可以直接通过Appium启动iOS App。<br>Appium服务重新启动后，再次调用WDA时，会在设备重新安装WebDriverAgent.app，我们需要重新信任App描述文件。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1885,7 +1889,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

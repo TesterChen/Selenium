@@ -2,9 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://chainradar.cn/2019/06/26/Postman%20API%E8%87%AA%E5%8A%A8%E5%8C%9609--%E6%89%A7%E8%A1%8C%E5%99%A8Runner/</loc>
+    
+    <lastmod>2019-06-26T08:48:05.877Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chainradar.cn/2019/06/13/Postman%20API%E8%87%AA%E5%8A%A8%E5%8C%9606--%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/</loc>
+    
+    <lastmod>2019-06-26T07:59:28.366Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chainradar.cn/2019/05/19/Postman%20API%E8%87%AA%E5%8A%A8%E5%8C%9604--%E5%B8%B8%E7%94%A8Test%E8%84%9A%E6%9C%AC/</loc>
+    
+    <lastmod>2019-06-26T07:57:11.247Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chainradar.cn/2019/05/01/Postman%20API%E8%87%AA%E5%8A%A8%E5%8C%9602--%E5%B8%B8%E7%94%A8%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7/</loc>
+    
+    <lastmod>2019-06-26T07:39:26.422Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chainradar.cn/2019/06/14/Postman%20API%E8%87%AA%E5%8A%A8%E5%8C%9608--%E8%BF%90%E8%A1%8C%E6%97%B6%E5%8F%98%E9%87%8F/</loc>
+    
+    <lastmod>2019-06-14T10:06:13.467Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chainradar.cn/about/index.html</loc>
+    
+    <lastmod>2019-06-14T09:37:22.609Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://chainradar.cn/2019/06/14/Postman%20API%E8%87%AA%E5%8A%A8%E5%8C%9607--%E9%80%9A%E7%94%A8%E6%96%AD%E8%A8%80%E8%AE%BE%E7%BD%AE/</loc>
     
-    <lastmod>2019-06-14T09:31:51.312Z</lastmod>
+    <lastmod>2019-06-14T09:34:40.134Z</lastmod>
     
   </url>
   
@@ -93,27 +135,6 @@
   </url>
   
   <url>
-    <loc>http://chainradar.cn/2019/05/01/Postman%20API%E8%87%AA%E5%8A%A8%E5%8C%9602--%E5%B8%B8%E7%94%A8%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7/</loc>
-    
-    <lastmod>2019-06-14T05:40:47.806Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chainradar.cn/2019/05/19/Postman%20API%E8%87%AA%E5%8A%A8%E5%8C%9604--%E5%B8%B8%E7%94%A8Test%E8%84%9A%E6%9C%AC/</loc>
-    
-    <lastmod>2019-06-14T05:40:41.774Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chainradar.cn/2019/06/13/Postman%20API%E8%87%AA%E5%8A%A8%E5%8C%9606--%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/</loc>
-    
-    <lastmod>2019-06-14T05:40:36.951Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://chainradar.cn/2019/06/11/Postman%20API%E8%87%AA%E5%8A%A8%E5%8C%9605--%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/</loc>
     
     <lastmod>2019-06-14T05:40:32.590Z</lastmod>
@@ -166,13 +187,6 @@
     <loc>http://chainradar.cn/tags/index.html</loc>
     
     <lastmod>2019-06-14T05:35:55.399Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chainradar.cn/about/index.html</loc>
-    
-    <lastmod>2019-06-14T03:36:53.070Z</lastmod>
     
   </url>
   
