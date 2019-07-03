@@ -259,6 +259,462 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/05/01/Postman API自动化02--常用辅助工具/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/01/Postman API自动化02--常用辅助工具/" itemprop="url">Postman API自动化02--常用辅助工具</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-01T09:16:00+08:00">
+                2019-05-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/API自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">API自动化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>通过常见工具提升测试脚本设计效率；</p>
+<h3 id="获取请求体"><a href="#获取请求体" class="headerlink" title="获取请求体"></a>获取请求体</h3><p>获取请求体常见有两种方式：页面操作、后台日志；</p>
+<p>页面操作：<br>1、页面操作是最直接的方式，而且有效地避免了参数张冠李戴的情况；<br>2、没有其他帮助的情况下可以通过这种方式进行接口测试；<br>3、在Chrome浏览器下按下F12或通过页面右键选择检查后切换到Network，再操作相关业务；<br>4、操作完成后，根据API相关文档找到对应关键字，即可通过搜索查看到相应请求，包括请求url和请求参数体；<br><img src="/images/api/apiUrl.png" alt>        点击view source可以直接复制json字符串；<br><img src="/images/api/apiResponse.png" alt></p>
+<p>后台日志：<br>通过查询后台日志拿到请求体数据，再丰富参数即可；</p>
+<h3 id="格式化json字符串"><a href="#格式化json字符串" class="headerlink" title="格式化json字符串"></a>格式化json字符串</h3><p>方式一：<br>通过Postman自带功能实现json串的格式化，在Body区域的右上角有一个【Beautify】按钮；<br><img src="/images/api/beautify.png" alt></p>
+<p>方式二：<br>通过页面或日志拿到的json字符串往往是没有格式化的，需要我们再手动格式化，这时候我们需要借助工具；<br>快速格式化json字符串：<a href="http://www.bejson.com/" target="_blank" rel="noopener">http://www.bejson.com/</a></p>
+<h3 id="jsonPath校验工具"><a href="#jsonPath校验工具" class="headerlink" title="jsonPath校验工具"></a>jsonPath校验工具</h3><p>在提取返回数据的参数值时，需要用到jsonPath，简单的jsonPath可以直接写，但复杂的我们要一次性写对就比较困难了；<br>在线书写和校验jsonPath：<a href="http://jsonpath.com/" target="_blank" rel="noopener">http://jsonpath.com/</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/05/01/Postman API自动化01--快速开始/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/01/Postman API自动化01--快速开始/" itemprop="url">Postman API自动化01--快速开始</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-01T08:20:00+08:00">
+                2019-05-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/API自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">API自动化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">操作系统：MacOS Mojave 10.14.4</span><br><span class="line">Postman：7.1.1</span><br></pre></td></tr></table></figure>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>能自己动手完成最常见的Get和Post请求脚本；</p>
+<h3 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h3><p>Postman工具主界面，了解各块的主要功能；<br><img src="/images/api/mainPanel.png" alt></p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>1、Workspace的选择有几种方式：在默认Personal的My Workspace直接开始，在默认Personal下新建Workspace，在Team下新建Workspace；<br><img src="/images/api/intoCreateWorkspace.png" alt>    </p>
+<p>2、新建Collection（Collection相当于一个项目）；<br><img src="/images/api/newCollection.png" alt>            </p>
+<p>3、在Collection下配置文件夹（文件夹相当于模块），文件夹下可以添加子文件夹，还可以快速复制某一个文件夹；<br><img src="/images/api/addFolder.png" alt></p>
+<h3 id="Post请求"><a href="#Post请求" class="headerlink" title="Post请求"></a>Post请求</h3><p>一个Post请求主要包括几个部分：<br>1、请求类型和请求Url：我们新建Post请求所以类型选择Post，同时填入请求的Url，这里固定的部分我们取了一个环境变量Url的值；<br>2、Headers：请求头，请求头可以携带很多数据，Postman中请求头可以设置模板，方便快速选择；</p>
+<blockquote>
+<p><em>如果确认请求体、Url都没错，但请求返回一直不对，记得检查Headers中的参数设置是否正确；</em></p>
+</blockquote>
+<p><img src="/images/api/header.png" alt><br>3、Body：请求体，我们请求的参数和值都在这里设置，环境变量和全局变量在这里被大量使用；</p>
+<blockquote>
+<p><em>如何获得请求体，在另一篇《常用辅助工具》中有介绍；</em><br><em>示例请求体中引用了两个环境变量username和password；</em></p>
+</blockquote>
+<p>4、Test(可选)：提取返回中参数、结果断言，提取参数在接口测试场景中大多会用到，通过变量传递关键参数；<br>5、保存、执行请求；</p>
+<p><img src="/images/api/post.png" alt></p>
+<h3 id="Get请求"><a href="#Get请求" class="headerlink" title="Get请求"></a>Get请求</h3><p>一个Get请求主要包括几个部分：<br>1、Params(可选)：请求参数，这里填写的参数会体现在Url中<br>2、Headers：请求头，正常业务请求中不可或缺；<br>3、Test(可选)：提取返回中参数、结果断言，提取参数在接口测试场景中大多会用到，用于传递关键参数；<br>4、保存、执行请求；</p>
+<p><img src="/images/api/get.png" alt></p>
+<h3 id="执行方式"><a href="#执行方式" class="headerlink" title="执行方式"></a>执行方式</h3><p>执行方式分为单个执行和批量执行；<br>单个执行，直接在编辑请求页面右侧点击【Send】即可;</p>
+<p>批量执行，在Collection右上角或主界面左上角的【Runner】均可以发起，批量执行时可以执行整个Collection，也可以选择子文件夹执行；</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/04/24/如何做好基层面试官/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/24/如何做好基层面试官/" itemprop="url">如何做好基层面试官</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-24T11:39:00+08:00">
+                2019-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>分享面试与被面试过程中的个人经验。</p>
+<h3 id="面试时间"><a href="#面试时间" class="headerlink" title="面试时间"></a>面试时间</h3><p><strong>在约定的时间与候选人开始沟通，是对公司形象的爱护，也是对候选人基本的尊重。</strong></p>
+<p>我们通常会遇到的情形：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">面试官在开会，候选人被晾在会议室半小时/一小时；</span><br><span class="line">候选人等候了半小时之后，HR并未发觉面试官未到场，直到候选人打通HR电话；</span><br></pre></td></tr></table></figure></p>
+<p>发生这些问题时，我们应该怎么做？<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">由HR及时与候选人沟通面试官迟到的原因，大概需要等待多久，表示歉意并获得谅解；</span><br><span class="line">给候选人倒杯水或瓶装水。</span><br></pre></td></tr></table></figure></p>
+<p>为避免这些问题，我们可以做的是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">提前了解最近面试安排，避免时间冲突，尤其是一面面试官；</span><br><span class="line">换位思考，尽可能以面试为重，除非真的走不开；</span><br><span class="line">面试官需要有备份机制。</span><br></pre></td></tr></table></figure></p>
+<h3 id="形象"><a href="#形象" class="headerlink" title="形象"></a>形象</h3><p>被面试人对公司的印象来源于：HR和面试官。</p>
+<h3 id="面试流程"><a href="#面试流程" class="headerlink" title="面试流程"></a>面试流程</h3><h3 id="面试流程-1"><a href="#面试流程-1" class="headerlink" title="面试流程"></a>面试流程</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/04/13/Shell 00--入门知识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1375,470 +1831,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2018/08/08/面试准备--Linux/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/08/面试准备--Linux/" itemprop="url">面试准备--Linux</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-08T06:06:00+08:00">
-                2018-08-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/面试/" itemprop="url" rel="index">
-                    <span itemprop="name">面试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="TAIL"><a href="#TAIL" class="headerlink" title="TAIL"></a>TAIL</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看动态日志，不断有内容被打印出来. 这时候中断第一个进程Ctrl-C</span></span><br><span class="line">tail -f test.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实时监控最近100行日志，并显示行号</span></span><br><span class="line">tail -100fn test.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示最后1000行</span></span><br><span class="line">tail -n 1000 test.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从1000行开始显示，显示1000行以后内容</span></span><br><span class="line">tail -n +1000 test.log</span><br></pre></td></tr></table></figure>
-<h3 id="VI-VIM"><a href="#VI-VIM" class="headerlink" title="VI/VIM"></a>VI/VIM</h3><p>vi可用于创建和修改文件，vi编辑器中如何查找内容？<br>按下”/“键，这时在状态栏（也就是屏幕左下脚）就出现了 “/” 然后输入你要查找的关键字敲回车就可以了。<br>找到相关文字以后： （1）按下小写n，向下查找 （2）按下大写N，向上查找。</p>
-<h3 id="MORE-LESS"><a href="#MORE-LESS" class="headerlink" title="MORE/LESS"></a>MORE/LESS</h3><p>查看静态文件，翻页显示日志，less可以向前翻。</p>
-<h3 id="统计关键词"><a href="#统计关键词" class="headerlink" title="统计关键词"></a>统计关键词</h3><p>linux查找某个文件中单词出现的次数<br>文件名称：list.log，查找单词名称：test<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">more list.log | grep -o <span class="built_in">test</span> | wc -l</span><br><span class="line">cat list.log | grep -o <span class="built_in">test</span> | wc -l</span><br><span class="line">grep -o <span class="built_in">test</span> list.log | wc -l</span><br></pre></td></tr></table></figure></p>
-<h3 id="SED"><a href="#SED" class="headerlink" title="SED"></a>SED</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询某个时间段日志：</span></span><br><span class="line">sed -n ‘/2010-11-17 09:25:55/,/2010-11-17 09:25:55/p’  logfile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询某时间段到现在的日志：</span></span><br><span class="line">sed -n ‘/2010-11-17 09:25:55/,<span class="variable">$p</span>’  logfile</span><br></pre></td></tr></table></figure>
-<h3 id="HEAD"><a href="#HEAD" class="headerlink" title="HEAD"></a>HEAD</h3><p>跟tail是相反的，tail是看后多少行日志，例子如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询日志文件中的头10行日志</span></span><br><span class="line">head -n 10  test.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询日志文件除了最后10行的其他所有日志</span></span><br><span class="line">head -n -10  test.log</span><br></pre></td></tr></table></figure></p>
-<h3 id="CAT-TAC："><a href="#CAT-TAC：" class="headerlink" title="CAT/TAC："></a>CAT/TAC：</h3><p>tac是倒序查看，是cat单词反写，例子如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询关键字的日志</span></span><br><span class="line">cat -n test.log |grep <span class="string">"debug"</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="PS"><a href="#PS" class="headerlink" title="PS"></a>PS</h3><p>该命令用于将某个时间点的进程运行情况选取下来并输出。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-A ：所有的进程均显示出来</span><br><span class="line">-a ：不与terminal有关的所有进程</span><br><span class="line">-u ：有效用户的相关进程</span><br><span class="line">-x ：一般与a参数一起使用，可列出较完整的信息</span><br><span class="line">-l ：较长，较详细地将PID的信息列出</span><br></pre></td></tr></table></figure>
-<p>其实我们只要记住ps一般使用的命令参数搭配即可，它们并不多，如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看系统所有的进程数据</span></span><br><span class="line">ps aux</span><br><span class="line"><span class="comment"># 查看不与terminal有关的所有进程</span></span><br><span class="line">ps ax</span><br><span class="line"><span class="comment"># 查看系统所有的进程数据</span></span><br><span class="line">ps -lA</span><br><span class="line"><span class="comment"># 查看连同一部分进程树状态</span></span><br><span class="line">ps axjf</span><br></pre></td></tr></table></figure></p>
-<h3 id="TOP"><a href="#TOP" class="headerlink" title="TOP"></a>TOP</h3><p>该命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况，类似于Windows的任务管理器。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-b 批处理</span><br><span class="line">-c 显示完整的治命令</span><br><span class="line">-I 忽略失效过程</span><br><span class="line">-s 保密模式</span><br><span class="line">-S 累积模式</span><br><span class="line">-i&lt;时间&gt; 设置间隔时间</span><br><span class="line">-u&lt;用户名&gt; 指定用户名</span><br><span class="line">-p&lt;进程号&gt; 指定进程</span><br><span class="line">-n&lt;次数&gt; 循环显示的次数</span><br></pre></td></tr></table></figure>
-<h3 id="LSOF"><a href="#LSOF" class="headerlink" title="LSOF"></a>LSOF</h3><p>lsof -i: 端口号该命令用于查看某一端口的占用情况。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 比如查看8000端口使用情况</span></span><br><span class="line">lsof -i:8000</span><br><span class="line"></span><br><span class="line">COMMAND   PID USER   FD   TYPE  DEVICE SIZE/OFF NODE NAME</span><br><span class="line">lwfs    22065 root    6u  IPv4 4395053      0t0  TCP *:irdmi (LISTEN)</span><br><span class="line"><span class="comment"># 可以看到8000端口已经被轻量级文件系统转发服务lwfs占用</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示开启文件abc.txt的进程</span></span><br><span class="line">lsof abc.txt</span><br></pre></td></tr></table></figure></p>
-<h3 id="NETSTAT"><a href="#NETSTAT" class="headerlink" title="NETSTAT"></a>NETSTAT</h3><p>该命令用于显示各种网络相关信息，如网络连接、路由表、接口状态 (Interface Statistics)，masquerade连接，多播成员(Multicast Memberships)等。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-a (all)显示所有选项，netstat默认不显示LISTEN相关</span><br><span class="line">-t (tcp)仅显示tcp相关选项</span><br><span class="line">-u (udp)仅显示udp相关选项</span><br><span class="line">-n 拒绝显示别名，能显示数字的全部转化成数字。(重要)</span><br><span class="line">-l 仅列出有在 Listen (监听) 的服務状态</span><br></pre></td></tr></table></figure>
-<p>结合grep查询，找出运行在指定端口的进程。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netstat -an | grep 61780</span><br><span class="line">netstat -an | grep <span class="string">':22'</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="CHOWN"><a href="#CHOWN" class="headerlink" title="CHOWN"></a>CHOWN</h3><p>改变文件的拥有者。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">chown [-cfhvR] [--<span class="built_in">help</span>] [--version] user[:group] file.</span><br><span class="line"></span><br><span class="line">user : 新的文件拥有者的使用者 ID</span><br><span class="line">group : 新的文件拥有者的使用者组(group)</span><br><span class="line">-c : 显示更改的部分的信息</span><br><span class="line">-f : 忽略错误信息</span><br><span class="line">-h :修复符号链接</span><br><span class="line">-v : 显示详细的处理信息</span><br><span class="line">-R : 处理指定目录以及其子目录下的所有文件</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将文件 file1.txt 的拥有者设为 runoob 群体的使用者 runoobgroup:</span></span><br><span class="line">chown runoob:runoobgroup file1.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将目前目录下的所有文件与子目录的拥有者皆设为 runoob，群体的使用者 runoobgroup:</span></span><br><span class="line">chown -R runoob:runoobgroup *</span><br></pre></td></tr></table></figure>
-<h3 id="CHMOD"><a href="#CHMOD" class="headerlink" title="CHMOD"></a>CHMOD</h3><p>该命令用于管理文件或目录的权限。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">chmod [-cfvR] file.</span><br><span class="line"></span><br><span class="line">u 表示该文件的拥有者，g 表示与该文件的拥有者属于同一个群体(group)者，o 表示其他以外的人，a 表示这三者皆是。</span><br><span class="line">+ 表示增加权限、- 表示取消权限、= 表示唯一设定权限。</span><br><span class="line">r 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该文件是个子目录或者该文件已经被设定过为可执行。</span><br><span class="line">r=4，w=2，x=1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此外chmod也可以用数字来表示权限</span></span><br><span class="line">chmod 777 file</span><br><span class="line"></span><br><span class="line"><span class="comment"># 其中a,b,c各为一个数字，分别表示User、Group、及Other的权限</span></span><br><span class="line">chmod abc file</span><br><span class="line">chmod ug=rwx,o=x file 和 chmod 771 file 效果相同</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将ex1.py设定为只有该文件拥有者可以执行</span></span><br><span class="line">chmod u+x ex1.py</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将目前目录下的所有文件与子目录皆设为任何人可读取</span></span><br><span class="line">chmod -R a+r *</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2018/07/05/Charles--描述文件安装/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/05/Charles--描述文件安装/" itemprop="url">Charles--根证书安装</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-05T22:01:00+08:00">
-                2018-07-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Charles/" itemprop="url" rel="index">
-                    <span itemprop="name">Charles</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>顺利安装Charles根证书。</p>
-<h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mac：10.14.4</span><br><span class="line">iPhone：12.2</span><br><span class="line">Charles：4.2.8</span><br></pre></td></tr></table></figure>
-<h3 id="为什么写"><a href="#为什么写" class="headerlink" title="为什么写"></a>为什么写</h3><p>最近iPhone升级到12.2，在尝试安装Charles根证书时谷歌浏览器不自动弹出证书安装提示。</p>
-<h3 id="安装操作"><a href="#安装操作" class="headerlink" title="安装操作"></a>安装操作</h3><p>1、进入【菜单Help–&gt;SSL Proxying–&gt; Install Charles Root Certificate on a Mobile Device or Remote Browser】：<br><img src="/images/charles/howinstallca.jpg" alt></p>
-<p>2、根据Charles上面的提示，设置好代理后通过<strong>Google Chrome</strong>浏览器访问chls.pro/ssl，奇怪的是并没有提示安装，而是直接进入了下载模式：<br><img src="/images/charles/3896.jpg" alt><br><img src="/images/charles/3897.jpg" alt></p>
-<p>3、在手机尝试寻找安装方式未果，在网上搜索后发现有一条相关记录，但并没有结论。<br>想着可能和系统版本升级后兼容有关，于是想到使用自带的<strong>Safari</strong>浏览器试一试。<br>哟，正常提示安装（是亲儿子！）在浏览器中按提示操作即可：<br><img src="/images/charles/3898.jpg" alt></p>
-<p>4、浏览器中操作完成后，并没有直接安装直接，而是放到了【设置–&gt;已下载描述文件】：<br><img src="/images/charles/3900.png" alt></p>
-<p>5、我们进入【已下载描述文件】，按提示操作，即可安装成功：<br><img src="/images/charles/3901.jpg" alt></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Charles根证书安装建议使用Safari浏览器。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2017/03/18/Appium App自动化03--iOS常用方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/03/18/Appium App自动化03--iOS常用方法/" itemprop="url">Appium UI自动化03--iOS常用方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-18T16:01:00+08:00">
-                2017-03-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/APP自动化/" itemprop="url" rel="index">
-                    <span itemprop="name">APP自动化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>了解Appium iOS常用操作方法。</p>
-<h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.8.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.appium&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;java-client&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;7.0.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;selenium-remote-driver&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.141.59&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.testng&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;testng&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;6.9.6&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="屏幕上下滑动"><a href="#屏幕上下滑动" class="headerlink" title="屏幕上下滑动"></a>屏幕上下滑动</h3><p>向上滑动：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">up</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    JavascriptExecutor js = (JavascriptExecutor) driver;</span><br><span class="line">    HashMap&lt;String, String&gt; scrollObject = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">    scrollObject.put(<span class="string">"direction"</span>, <span class="string">"up"</span>);</span><br><span class="line">    js.executeScript(<span class="string">"mobile: swipe"</span>, scrollObject);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>向下滑动：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">down</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    JavascriptExecutor js = (JavascriptExecutor) driver;</span><br><span class="line">    HashMap&lt;String, String&gt; scrollObject = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">    scrollObject.put(<span class="string">"direction"</span>, <span class="string">"down"</span>);</span><br><span class="line">    js.executeScript(<span class="string">"mobile: swipe"</span>, scrollObject);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="屏幕左右滑动"><a href="#屏幕左右滑动" class="headerlink" title="屏幕左右滑动"></a>屏幕左右滑动</h3><p>向右滑动：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swipeScreenToRight</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = driver.manage().window().getSize().getWidth();</span><br><span class="line">    <span class="keyword">int</span> y = driver.manage().window().getSize().getHeight();</span><br><span class="line">    <span class="keyword">new</span> TouchAction(driver).longPress(PointOption.point((<span class="keyword">int</span>)(x * <span class="number">0.1</span>), y / <span class="number">2</span>))</span><br><span class="line">        .moveTo(ElementOption.point((<span class="keyword">int</span>)(x * <span class="number">0.9</span>), y / <span class="number">2</span>))</span><br><span class="line">        .release().perform();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>向左滑动：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swipeScreenToLeft</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = driver.manage().window().getSize().getWidth();</span><br><span class="line">    <span class="keyword">int</span> y = driver.manage().window().getSize().getHeight();</span><br><span class="line">    <span class="keyword">new</span> TouchAction(driver).longPress(PointOption.point((<span class="keyword">int</span>)(x * <span class="number">0.9</span>), y / <span class="number">2</span>))</span><br><span class="line">        .moveTo(ElementOption.point((<span class="keyword">int</span>)(x * <span class="number">0.1</span>), y / <span class="number">2</span>))</span><br><span class="line">        .release().perform();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="元素操作"><a href="#元素操作" class="headerlink" title="元素操作"></a>元素操作</h3><p>在元素上方向左滑动</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swipeElement</span><span class="params">(WebElement webElement)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 不能使用press方法，会产生点击事件</span></span><br><span class="line">    <span class="keyword">new</span> TouchAction(driver).longPress(ElementOption.element(webElement))</span><br><span class="line">        .moveTo(ElementOption.point(webElement.getLocation().getX() / <span class="number">5</span>, webElement.getLocation().getY()))</span><br><span class="line">        .release().perform();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>长按元素</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">longPress</span><span class="params">(WebElement webElement, <span class="keyword">int</span> timeout)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">new</span> TouchAction(driver).longPress(ElementOption.element(webElement))</span><br><span class="line">        .waitAction(WaitOptions.waitOptions(Duration.ofMillis(timeout))).release().perform();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Appium java-client库更新到6.x后（我们这里用的7.x），滑动swipe()已弃用。</p>
-<p><a href="https://github.com/TesterChen/AutomationTest/tree/master/firstAppAutoTest" target="_blank" rel="noopener">跳转至本节代码 GitHub</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1889,7 +1881,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1900,7 +1892,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1911,7 +1903,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

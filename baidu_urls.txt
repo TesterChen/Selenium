@@ -1,3 +1,6 @@
+http://chainradar.cn/2019/07/03/Git03--分支合并/
+http://chainradar.cn/2019/07/02/Git02--修改和提交/
+http://chainradar.cn/2019/07/02/Git01--初始化本地仓库/
 http://chainradar.cn/2019/06/26/Postman API自动化09--执行器Runner/
 http://chainradar.cn/2019/06/14/Postman API自动化08--运行时变量/
 http://chainradar.cn/2019/06/14/Postman API自动化07--通用断言设置/

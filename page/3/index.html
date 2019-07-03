@@ -259,6 +259,470 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2018/08/08/面试准备--Linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/08/面试准备--Linux/" itemprop="url">面试准备--Linux</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-08T06:06:00+08:00">
+                2018-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="TAIL"><a href="#TAIL" class="headerlink" title="TAIL"></a>TAIL</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看动态日志，不断有内容被打印出来. 这时候中断第一个进程Ctrl-C</span></span><br><span class="line">tail -f test.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实时监控最近100行日志，并显示行号</span></span><br><span class="line">tail -100fn test.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示最后1000行</span></span><br><span class="line">tail -n 1000 test.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从1000行开始显示，显示1000行以后内容</span></span><br><span class="line">tail -n +1000 test.log</span><br></pre></td></tr></table></figure>
+<h3 id="VI-VIM"><a href="#VI-VIM" class="headerlink" title="VI/VIM"></a>VI/VIM</h3><p>vi可用于创建和修改文件，vi编辑器中如何查找内容？<br>按下”/“键，这时在状态栏（也就是屏幕左下脚）就出现了 “/” 然后输入你要查找的关键字敲回车就可以了。<br>找到相关文字以后： （1）按下小写n，向下查找 （2）按下大写N，向上查找。</p>
+<h3 id="MORE-LESS"><a href="#MORE-LESS" class="headerlink" title="MORE/LESS"></a>MORE/LESS</h3><p>查看静态文件，翻页显示日志，less可以向前翻。</p>
+<h3 id="统计关键词"><a href="#统计关键词" class="headerlink" title="统计关键词"></a>统计关键词</h3><p>linux查找某个文件中单词出现的次数<br>文件名称：list.log，查找单词名称：test<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">more list.log | grep -o <span class="built_in">test</span> | wc -l</span><br><span class="line">cat list.log | grep -o <span class="built_in">test</span> | wc -l</span><br><span class="line">grep -o <span class="built_in">test</span> list.log | wc -l</span><br></pre></td></tr></table></figure></p>
+<h3 id="SED"><a href="#SED" class="headerlink" title="SED"></a>SED</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询某个时间段日志：</span></span><br><span class="line">sed -n ‘/2010-11-17 09:25:55/,/2010-11-17 09:25:55/p’  logfile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询某时间段到现在的日志：</span></span><br><span class="line">sed -n ‘/2010-11-17 09:25:55/,<span class="variable">$p</span>’  logfile</span><br></pre></td></tr></table></figure>
+<h3 id="HEAD"><a href="#HEAD" class="headerlink" title="HEAD"></a>HEAD</h3><p>跟tail是相反的，tail是看后多少行日志，例子如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询日志文件中的头10行日志</span></span><br><span class="line">head -n 10  test.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询日志文件除了最后10行的其他所有日志</span></span><br><span class="line">head -n -10  test.log</span><br></pre></td></tr></table></figure></p>
+<h3 id="CAT-TAC："><a href="#CAT-TAC：" class="headerlink" title="CAT/TAC："></a>CAT/TAC：</h3><p>tac是倒序查看，是cat单词反写，例子如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询关键字的日志</span></span><br><span class="line">cat -n test.log |grep <span class="string">"debug"</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="PS"><a href="#PS" class="headerlink" title="PS"></a>PS</h3><p>该命令用于将某个时间点的进程运行情况选取下来并输出。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-A ：所有的进程均显示出来</span><br><span class="line">-a ：不与terminal有关的所有进程</span><br><span class="line">-u ：有效用户的相关进程</span><br><span class="line">-x ：一般与a参数一起使用，可列出较完整的信息</span><br><span class="line">-l ：较长，较详细地将PID的信息列出</span><br></pre></td></tr></table></figure>
+<p>其实我们只要记住ps一般使用的命令参数搭配即可，它们并不多，如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看系统所有的进程数据</span></span><br><span class="line">ps aux</span><br><span class="line"><span class="comment"># 查看不与terminal有关的所有进程</span></span><br><span class="line">ps ax</span><br><span class="line"><span class="comment"># 查看系统所有的进程数据</span></span><br><span class="line">ps -lA</span><br><span class="line"><span class="comment"># 查看连同一部分进程树状态</span></span><br><span class="line">ps axjf</span><br></pre></td></tr></table></figure></p>
+<h3 id="TOP"><a href="#TOP" class="headerlink" title="TOP"></a>TOP</h3><p>该命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况，类似于Windows的任务管理器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-b 批处理</span><br><span class="line">-c 显示完整的治命令</span><br><span class="line">-I 忽略失效过程</span><br><span class="line">-s 保密模式</span><br><span class="line">-S 累积模式</span><br><span class="line">-i&lt;时间&gt; 设置间隔时间</span><br><span class="line">-u&lt;用户名&gt; 指定用户名</span><br><span class="line">-p&lt;进程号&gt; 指定进程</span><br><span class="line">-n&lt;次数&gt; 循环显示的次数</span><br></pre></td></tr></table></figure>
+<h3 id="LSOF"><a href="#LSOF" class="headerlink" title="LSOF"></a>LSOF</h3><p>lsof -i: 端口号该命令用于查看某一端口的占用情况。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 比如查看8000端口使用情况</span></span><br><span class="line">lsof -i:8000</span><br><span class="line"></span><br><span class="line">COMMAND   PID USER   FD   TYPE  DEVICE SIZE/OFF NODE NAME</span><br><span class="line">lwfs    22065 root    6u  IPv4 4395053      0t0  TCP *:irdmi (LISTEN)</span><br><span class="line"><span class="comment"># 可以看到8000端口已经被轻量级文件系统转发服务lwfs占用</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示开启文件abc.txt的进程</span></span><br><span class="line">lsof abc.txt</span><br></pre></td></tr></table></figure></p>
+<h3 id="NETSTAT"><a href="#NETSTAT" class="headerlink" title="NETSTAT"></a>NETSTAT</h3><p>该命令用于显示各种网络相关信息，如网络连接、路由表、接口状态 (Interface Statistics)，masquerade连接，多播成员(Multicast Memberships)等。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-a (all)显示所有选项，netstat默认不显示LISTEN相关</span><br><span class="line">-t (tcp)仅显示tcp相关选项</span><br><span class="line">-u (udp)仅显示udp相关选项</span><br><span class="line">-n 拒绝显示别名，能显示数字的全部转化成数字。(重要)</span><br><span class="line">-l 仅列出有在 Listen (监听) 的服務状态</span><br></pre></td></tr></table></figure>
+<p>结合grep查询，找出运行在指定端口的进程。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netstat -an | grep 61780</span><br><span class="line">netstat -an | grep <span class="string">':22'</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="CHOWN"><a href="#CHOWN" class="headerlink" title="CHOWN"></a>CHOWN</h3><p>改变文件的拥有者。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">chown [-cfhvR] [--<span class="built_in">help</span>] [--version] user[:group] file.</span><br><span class="line"></span><br><span class="line">user : 新的文件拥有者的使用者 ID</span><br><span class="line">group : 新的文件拥有者的使用者组(group)</span><br><span class="line">-c : 显示更改的部分的信息</span><br><span class="line">-f : 忽略错误信息</span><br><span class="line">-h :修复符号链接</span><br><span class="line">-v : 显示详细的处理信息</span><br><span class="line">-R : 处理指定目录以及其子目录下的所有文件</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将文件 file1.txt 的拥有者设为 runoob 群体的使用者 runoobgroup:</span></span><br><span class="line">chown runoob:runoobgroup file1.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将目前目录下的所有文件与子目录的拥有者皆设为 runoob，群体的使用者 runoobgroup:</span></span><br><span class="line">chown -R runoob:runoobgroup *</span><br></pre></td></tr></table></figure>
+<h3 id="CHMOD"><a href="#CHMOD" class="headerlink" title="CHMOD"></a>CHMOD</h3><p>该命令用于管理文件或目录的权限。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">chmod [-cfvR] file.</span><br><span class="line"></span><br><span class="line">u 表示该文件的拥有者，g 表示与该文件的拥有者属于同一个群体(group)者，o 表示其他以外的人，a 表示这三者皆是。</span><br><span class="line">+ 表示增加权限、- 表示取消权限、= 表示唯一设定权限。</span><br><span class="line">r 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该文件是个子目录或者该文件已经被设定过为可执行。</span><br><span class="line">r=4，w=2，x=1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此外chmod也可以用数字来表示权限</span></span><br><span class="line">chmod 777 file</span><br><span class="line"></span><br><span class="line"><span class="comment"># 其中a,b,c各为一个数字，分别表示User、Group、及Other的权限</span></span><br><span class="line">chmod abc file</span><br><span class="line">chmod ug=rwx,o=x file 和 chmod 771 file 效果相同</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将ex1.py设定为只有该文件拥有者可以执行</span></span><br><span class="line">chmod u+x ex1.py</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将目前目录下的所有文件与子目录皆设为任何人可读取</span></span><br><span class="line">chmod -R a+r *</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2018/07/05/Charles--描述文件安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/05/Charles--描述文件安装/" itemprop="url">Charles--根证书安装</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-05T22:01:00+08:00">
+                2018-07-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Charles/" itemprop="url" rel="index">
+                    <span itemprop="name">Charles</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>顺利安装Charles根证书。</p>
+<h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mac：10.14.4</span><br><span class="line">iPhone：12.2</span><br><span class="line">Charles：4.2.8</span><br></pre></td></tr></table></figure>
+<h3 id="为什么写"><a href="#为什么写" class="headerlink" title="为什么写"></a>为什么写</h3><p>最近iPhone升级到12.2，在尝试安装Charles根证书时谷歌浏览器不自动弹出证书安装提示。</p>
+<h3 id="安装操作"><a href="#安装操作" class="headerlink" title="安装操作"></a>安装操作</h3><p>1、进入【菜单Help–&gt;SSL Proxying–&gt; Install Charles Root Certificate on a Mobile Device or Remote Browser】：<br><img src="/images/charles/howinstallca.jpg" alt></p>
+<p>2、根据Charles上面的提示，设置好代理后通过<strong>Google Chrome</strong>浏览器访问chls.pro/ssl，奇怪的是并没有提示安装，而是直接进入了下载模式：<br><img src="/images/charles/3896.jpg" alt><br><img src="/images/charles/3897.jpg" alt></p>
+<p>3、在手机尝试寻找安装方式未果，在网上搜索后发现有一条相关记录，但并没有结论。<br>想着可能和系统版本升级后兼容有关，于是想到使用自带的<strong>Safari</strong>浏览器试一试。<br>哟，正常提示安装（是亲儿子！）在浏览器中按提示操作即可：<br><img src="/images/charles/3898.jpg" alt></p>
+<p>4、浏览器中操作完成后，并没有直接安装直接，而是放到了【设置–&gt;已下载描述文件】：<br><img src="/images/charles/3900.png" alt></p>
+<p>5、我们进入【已下载描述文件】，按提示操作，即可安装成功：<br><img src="/images/charles/3901.jpg" alt></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Charles根证书安装建议使用Safari浏览器。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2017/03/18/Appium App自动化03--iOS常用方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/18/Appium App自动化03--iOS常用方法/" itemprop="url">Appium UI自动化03--iOS常用方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-18T16:01:00+08:00">
+                2017-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/APP自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">APP自动化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>了解Appium iOS常用操作方法。</p>
+<h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.8.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.appium&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;java-client&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;7.0.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;selenium-remote-driver&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.141.59&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.testng&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;testng&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;6.9.6&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="屏幕上下滑动"><a href="#屏幕上下滑动" class="headerlink" title="屏幕上下滑动"></a>屏幕上下滑动</h3><p>向上滑动：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">up</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    JavascriptExecutor js = (JavascriptExecutor) driver;</span><br><span class="line">    HashMap&lt;String, String&gt; scrollObject = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">    scrollObject.put(<span class="string">"direction"</span>, <span class="string">"up"</span>);</span><br><span class="line">    js.executeScript(<span class="string">"mobile: swipe"</span>, scrollObject);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>向下滑动：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">down</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    JavascriptExecutor js = (JavascriptExecutor) driver;</span><br><span class="line">    HashMap&lt;String, String&gt; scrollObject = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">    scrollObject.put(<span class="string">"direction"</span>, <span class="string">"down"</span>);</span><br><span class="line">    js.executeScript(<span class="string">"mobile: swipe"</span>, scrollObject);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="屏幕左右滑动"><a href="#屏幕左右滑动" class="headerlink" title="屏幕左右滑动"></a>屏幕左右滑动</h3><p>向右滑动：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swipeScreenToRight</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = driver.manage().window().getSize().getWidth();</span><br><span class="line">    <span class="keyword">int</span> y = driver.manage().window().getSize().getHeight();</span><br><span class="line">    <span class="keyword">new</span> TouchAction(driver).longPress(PointOption.point((<span class="keyword">int</span>)(x * <span class="number">0.1</span>), y / <span class="number">2</span>))</span><br><span class="line">        .moveTo(ElementOption.point((<span class="keyword">int</span>)(x * <span class="number">0.9</span>), y / <span class="number">2</span>))</span><br><span class="line">        .release().perform();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>向左滑动：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swipeScreenToLeft</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = driver.manage().window().getSize().getWidth();</span><br><span class="line">    <span class="keyword">int</span> y = driver.manage().window().getSize().getHeight();</span><br><span class="line">    <span class="keyword">new</span> TouchAction(driver).longPress(PointOption.point((<span class="keyword">int</span>)(x * <span class="number">0.9</span>), y / <span class="number">2</span>))</span><br><span class="line">        .moveTo(ElementOption.point((<span class="keyword">int</span>)(x * <span class="number">0.1</span>), y / <span class="number">2</span>))</span><br><span class="line">        .release().perform();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="元素操作"><a href="#元素操作" class="headerlink" title="元素操作"></a>元素操作</h3><p>在元素上方向左滑动</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swipeElement</span><span class="params">(WebElement webElement)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 不能使用press方法，会产生点击事件</span></span><br><span class="line">    <span class="keyword">new</span> TouchAction(driver).longPress(ElementOption.element(webElement))</span><br><span class="line">        .moveTo(ElementOption.point(webElement.getLocation().getX() / <span class="number">5</span>, webElement.getLocation().getY()))</span><br><span class="line">        .release().perform();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>长按元素</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">longPress</span><span class="params">(WebElement webElement, <span class="keyword">int</span> timeout)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">new</span> TouchAction(driver).longPress(ElementOption.element(webElement))</span><br><span class="line">        .waitAction(WaitOptions.waitOptions(Duration.ofMillis(timeout))).release().perform();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Appium java-client库更新到6.x后（我们这里用的7.x），滑动swipe()已弃用。</p>
+<p><a href="https://github.com/TesterChen/AutomationTest/tree/master/firstAppAutoTest" target="_blank" rel="noopener">跳转至本节代码 GitHub</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2017/02/15/Appium App自动化02--快速开始/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1365,632 +1829,6 @@ table th:nth-of-type(2) {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/06/02/Selenium Web自动化05--常用原生方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/06/02/Selenium Web自动化05--常用原生方法/" itemprop="url">Selenium Web自动化05--常用原生方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-02T23:28:00+08:00">
-                2016-06-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/WEB自动化/" itemprop="url" rel="index">
-                    <span itemprop="name">WEB自动化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>熟悉常用页面操作，能完成日常自动化脚本设计。</p>
-<h3 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h3><style>
-table th:first-of-type {
-    width: 130px;
-}
-table th:nth-of-type(2) {
-    width: 80px;
-}
-</style>
-
-<table>
-<thead>
-<tr>
-<th>方法名</th>
-<th>返回值类型</th>
-<th>功能说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>maximize()</td>
-<td>void</td>
-<td>最大化浏览器</td>
-</tr>
-<tr>
-<td>fullscreen()</td>
-<td>void</td>
-<td>设置浏览器全屏状态，不常用</td>
-</tr>
-<tr>
-<td>back()</td>
-<td>void</td>
-<td>后退，相当于浏览器的后退按钮功能</td>
-</tr>
-<tr>
-<td>forward()</td>
-<td>void</td>
-<td>前进，相当于浏览器的前进按钮功能</td>
-</tr>
-<tr>
-<td>refresh()</td>
-<td>void</td>
-<td>刷新，相当于浏览器的刷新按钮功能</td>
-</tr>
-<tr>
-<td>quit()</td>
-<td>void</td>
-<td>退出当前浏览器</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">driver.manage().window().maximize();</span><br><span class="line">driver.manage().window().fullscreen();</span><br><span class="line">driver.navigate().back();</span><br><span class="line">driver.navigate().forward();</span><br><span class="line">driver.navigate().refresh();</span><br><span class="line">driver.quit();</span><br></pre></td></tr></table></figure>
-<h3 id="页面"><a href="#页面" class="headerlink" title="页面"></a>页面</h3><table>
-<thead>
-<tr>
-<th>方法名</th>
-<th>返回值类型</th>
-<th>功能说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>get()</td>
-<td>void</td>
-<td><em><strong>传入的url需要是完整带http或https</strong></em></td>
-</tr>
-<tr>
-<td>getCurrentUrl()</td>
-<td>String</td>
-<td>获取并返回当前页面Url</td>
-</tr>
-<tr>
-<td>getTitle()</td>
-<td>String</td>
-<td>获取并返回当前页面标题</td>
-</tr>
-<tr>
-<td>getPageSource()</td>
-<td>String</td>
-<td>获取并返回当前页面源代码</td>
-</tr>
-<tr>
-<td>getWindowHandle()</td>
-<td>String</td>
-<td>获取并返回当前页面源代码</td>
-</tr>
-<tr>
-<td>getWindowHandles()</td>
-<td>Set</td>
-<td>获取并返回当前浏览器所有窗口句柄，getWindowHandles()后续将用于手动切换页面</td>
-</tr>
-<tr>
-<td>close()</td>
-<td>void</td>
-<td>关闭当前页面，如果当前只有一个页面则退出浏览器</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">driver.get(<span class="string">"http://www.baidu.com/"</span>);</span><br><span class="line"><span class="comment">// driver.get("www.baidu.com");		//这个url写法是错误的</span></span><br><span class="line">String url = driver.getCurrentUrl();</span><br><span class="line">String title = driver.getTitle();</span><br><span class="line">String source = driver.getPageSource();</span><br><span class="line">String handle = driver.getWindowHandle();</span><br><span class="line">Set set = driver.getWindowHandles();</span><br><span class="line">driver.close();</span><br></pre></td></tr></table></figure>
-<h3 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h3><table>
-<thead>
-<tr>
-<th>方法名</th>
-<th>返回值类型</th>
-<th>功能说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>findElement()</td>
-<td>WebElement</td>
-<td>寻找并返回找到的第1个元素，<em><strong>若匹配到多个元素也返回第1个</strong></em></td>
-</tr>
-<tr>
-<td>findElements()</td>
-<td>List</td>
-<td>寻找并以List&#60;WebElement&#62;返回元素列表，获取元素时从下标0开始</td>
-</tr>
-<tr>
-<td>sendKeys()</td>
-<td>String</td>
-<td>输入文本（单/多行文本框）</td>
-</tr>
-<tr>
-<td>click()</td>
-<td>String</td>
-<td>点击（链接/按钮/图片）</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">driver.findElement(By.xpath(<span class="string">"//input[@id='kw']"</span>)).sendKeys(<span class="string">"selenium"</span>);</span><br><span class="line">driver.findElements(By.xpath(<span class="string">"//input[@id='su']"</span>)).get(<span class="number">0</span>).click();</span><br></pre></td></tr></table></figure>
-<p>我们说这三个方法都是作用在页面元素，所以转化之后可以是这样：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">WebElement element = driver.findElement(By.xpath(<span class="string">"//input[@id='kw']"</span>));</span><br><span class="line">element.sendKeys(<span class="string">"selenium"</span>);</span><br><span class="line">element.click();</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/05/02/Selenium Web自动化04--元素获取方式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/05/02/Selenium Web自动化04--元素获取方式/" itemprop="url">Selenium Web自动化04--元素获取方式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-05-02T14:48:00+08:00">
-                2016-05-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/WEB自动化/" itemprop="url" rel="index">
-                    <span itemprop="name">WEB自动化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>全面了解元素的获取方式</p>
-<h3 id="方式"><a href="#方式" class="headerlink" title="方式"></a>方式</h3><p>WebDriver提供了两个元素寻找方法findElement()和findElements()。<br>findElement()适合寻找唯一元素。<br>findElements()返回的是符合条件的所有元素，是一个 WebElements List。</p>
-<p>findElement()和findElements()支持定位元素的方式：</p>
-<style>
-table th:first-of-type {
-    width: 150px;
-}
-</style>
-
-<table>
-<thead>
-<tr>
-<th>查找方式</th>
-<th>备注说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><em><strong>By.xpath</strong></em>()</td>
-<td>通过xpath定位元素</td>
-</tr>
-<tr>
-<td><em><strong>By.id</strong></em>()</td>
-<td>通过id属性定位元素</td>
-</tr>
-<tr>
-<td><em><strong>By.name</strong></em>()</td>
-<td>通过name属性定位元素</td>
-</tr>
-<tr>
-<td>By.linkText()</td>
-<td>前进，相当于浏览器的前进按钮功能</td>
-</tr>
-<tr>
-<td>By.partialLinkText()</td>
-<td>刷新，相当于浏览器的刷新按钮功能</td>
-</tr>
-<tr>
-<td>By.className()</td>
-<td>退出当前浏览器</td>
-</tr>
-<tr>
-<td>By.tagName()</td>
-<td>退出当前浏览器</td>
-</tr>
-<tr>
-<td>By.cssSelector()</td>
-<td>退出当前浏览器</td>
-</tr>
-</tbody>
-</table>
-<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>我们以如下html标签内容为例，定位元素：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">链接</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://news.baidu.com"</span> <span class="attr">name</span>=<span class="string">"tj_trnews"</span> <span class="attr">class</span>=<span class="string">"mnav"</span>&gt;</span>新闻精选<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">输入框</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"kw"</span> <span class="attr">name</span>=<span class="string">"wd"</span> <span class="attr">class</span>=<span class="string">"s_ipt"</span> <span class="attr">tag</span>=<span class="string">"put"</span> <span class="attr">maxlength</span>=<span class="string">"255"</span> <span class="attr">autocomplete</span>=<span class="string">"off"</span>&gt;</span></span><br></pre></td></tr></table></figure> driver.findElement(<em><strong>By.xpath(“//input[@id=’su’]”)</strong></em>).click();<br>加粗斜线部分，可以使用如下不同定位方式替换：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过xpath定位元素</span></span><br><span class="line">By.xpath(<span class="string">"//input[@id='kw']"</span>)</span><br><span class="line"><span class="comment">// 通过id属性定位元素</span></span><br><span class="line">By.id(<span class="string">"kw"</span>)</span><br><span class="line"><span class="comment">// 通过name属性定位元素		</span></span><br><span class="line">By.name(<span class="string">"wd"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过链接文本定位元素，适用于链接</span></span><br><span class="line">By.linkText(<span class="string">"新闻精选"</span>)</span><br><span class="line"><span class="comment">// 通过部分链接文本定位元素，适用于链接</span></span><br><span class="line">By.partialLinkText(<span class="string">"新闻"</span>)</span><br><span class="line"><span class="comment">// 通过class属性定位元素</span></span><br><span class="line">By.className(<span class="string">"s_ipt"</span>)</span><br><span class="line"><span class="comment">// 通过tag标签定位元素</span></span><br><span class="line">By.tagName(<span class="string">"put"</span>)</span><br><span class="line"><span class="comment">// 通过css属性定位元素</span></span><br><span class="line">By.cssSelector(<span class="string">"input.s_ipt"</span>)</span><br></pre></td></tr></table></figure></p>
-<p>test()整体代码结构如下：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	driver.get(<span class="string">"http://www.baidu.com/"</span>);</span><br><span class="line">	driver.findElements(By.id(<span class="string">"kw"</span>)).get(<span class="number">0</span>).sendKeys(<span class="string">"Java"</span>);</span><br><span class="line">	<span class="comment">// driver.findElement(By.name("wd")).sendKeys("Java");</span></span><br><span class="line">	<span class="comment">// driver.findElement(By.cssSelector("input.s_ipt")).sendKeys("Java");</span></span><br><span class="line">	<span class="comment">// driver.findElement(By.className("s_ipt")).sendKeys("Java");</span></span><br><span class="line">	<span class="comment">// driver.findElement(By.xpath("//input[@id='kw']")).sendKeys("selenium");</span></span><br><span class="line">	driver.findElement(By.xpath(<span class="string">"//input[@id='su']"</span>)).click();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><p>使用findElements()获取元素时，因为返回的是一个List，我们需要通过get()下标的方式获取对应的元素。<br>下标索引从0开始，注意与xpath获取第1个元素时区分(从索引1开始)。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">driver.findElements(By.name(<span class="string">"wd"</span>)).get(<span class="number">0</span>).sendKeys(<span class="string">"Java"</span>);</span><br></pre></td></tr></table></figure></p>
-<p>使用使用findElement()获取元素时，若有多个元素符合条件，执行时会默认获取第1个元素。<br>最近新版本作出的优化，原来老版本会抛出异常。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/04/18/业务安全测试切入点/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/04/18/业务安全测试切入点/" itemprop="url">业务安全测试切入点</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-18T13:04:25+08:00">
-                2016-04-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="题记"><a href="#题记" class="headerlink" title="题记"></a>题记</h3><p>[放在互联网的数据就不是隐私]，每一个互联网人对此都深有感触<br>互联网企业内部管理不善导致数据出卖、安全漏洞被黑客盗走数据的事情时有发生<br>2016年频繁出现的互联网安全事故，直接导致国内知名漏洞报告平台乌云被查封<br>出现一系列的事故之后，公司了也展开了安全测试，包括服务安全和业务安全<br>这里大致列举日常测试工作中应该要注意的业务安全问题</p>
-<h3 id="XSS类：包括存储型和反射型"><a href="#XSS类：包括存储型和反射型" class="headerlink" title="XSS类：包括存储型和反射型"></a>XSS类：包括存储型和反射型</h3><p>反射型最容易传播的是搜索URL，注意处理处理这类URL中的XSS风险代码，其中存储型的危害比反射型的危害相对要更大，建议在平台做统一处理<br>测试代码举例：<a href="http://drops.wooyun.org/tips/845" target="_blank" rel="noopener">http://drops.wooyun.org/tips/845</a> [乌云已挂出维护公告]</p>
-<h3 id="前端存在业务校验"><a href="#前端存在业务校验" class="headerlink" title="前端存在业务校验"></a>前端存在业务校验</h3><p>任何前端的检验都是为提高用户体验而做，不具体任何安全性。若涉及业务上重要的校验，需要确保前后端都存在统一的逻辑校验<br>例如：数字大小范围、时间长度范围</p>
-<h3 id="POST表单冗余数据"><a href="#POST表单冗余数据" class="headerlink" title="POST表单冗余数据"></a>POST表单冗余数据</h3><p>POST表单中提交了页面或业务逻辑中不允许直接修改的数据<br>例如：常用的如手机号、邮箱，修改时会单独跳转到其他页面进行校验，展示时以灰色不可编辑的形式展示在表单中</p>
-<p><img src="/images/20160418/safe01.png" alt></p>
-<h3 id="突破搜索参数数量"><a href="#突破搜索参数数量" class="headerlink" title="突破搜索参数数量"></a>突破搜索参数数量</h3><p>很多网站都会有搜索，搜索中有很多的条件可选，业务在设计时对部分搜索条件的数量进行了限制<br>在截获请求之后，对搜索条件进行扩充后并发请求服务器，会对服务器造成比较大的压力，这一条也与前面讲到的&lt;前端存在业务校验&gt;有关联</p>
-<h3 id="密码类传输"><a href="#密码类传输" class="headerlink" title="密码类传输"></a>密码类传输</h3><p>主要涉及注册、登录、修改密码、忘记密码这几类常用操作，传输过程中若使用明文密码是非常不安全的</p>
-<h3 id="数据操作类带有ID"><a href="#数据操作类带有ID" class="headerlink" title="数据操作类带有ID"></a>数据操作类带有ID</h3><p>密切注意编辑、删除操作中带有数据ID的情况，水平越权操作数据，是非常危险的漏洞</p>
-<p><img src="/images/20160418/safe02.png" alt></p>
-<h3 id="数据库存储长度"><a href="#数据库存储长度" class="headerlink" title="数据库存储长度"></a>数据库存储长度</h3><p>在产品设计时会对数据的可输入在前端做一个长度或输入类型限制，是为了保证更好的用户体验和确保有限的系统开销<br>在前面我们已经知道前端的限制是没有任何安全意义的，通过工具修改数据类型和长度同样可被正常提交，若出错很有可能会暴露数据库的关键信息</p>
-<h3 id="重复提交请求-数据数量有限制"><a href="#重复提交请求-数据数量有限制" class="headerlink" title="重复提交请求|数据数量有限制"></a>重复提交请求|数据数量有限制</h3><p>对于不允许重复提交的请求和数量有限制的存储，不光在前端做限制，在服务端也在有对应的校验和限制</p>
-<h3 id="数据回填"><a href="#数据回填" class="headerlink" title="数据回填"></a>数据回填</h3><p>将用户输入的数据直接回填在JSP，然后作为标签中某个属性值显示在页面的HTML中，这种情况下如果不作处理，可能有XSS<br>常见有属性有value和title</p>
-<p><img src="/images/20160418/safe03.png" alt></p>
-<h3 id="自动登录"><a href="#自动登录" class="headerlink" title="自动登录"></a>自动登录</h3><p>修改密码、重置密码类操作时，一定不要在最后附加一个自动登录的动作。不可将这个判断将给前端或者浏览器</p>
-<h3 id="撞库"><a href="#撞库" class="headerlink" title="撞库"></a>撞库</h3><p>网络上有很多泄漏的账号密码资源，被拿到之后会用于撞库，取得一些网站的用户名密码<br>这各情况通常的做法是增加操作成本，比如限制每个IP下请求对应接口的次数、出现验证码、锁定账户2小时等</p>
-<h3 id="暴力破解"><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h3><p>重灾区在找回密码验证码，或者其他的任何重要操作需要数字验证码的部分<br>建议：将验证码复杂度增加（由纯属4位数据变成6位数字和字母组合），同时加上图形验证码，同时最好有其他访问防爆或监控机制</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2041,7 +1879,7 @@ table th:first-of-type {
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2052,7 +1890,7 @@ table th:first-of-type {
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2063,7 +1901,7 @@ table th:first-of-type {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

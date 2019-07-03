@@ -259,6 +259,632 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/06/02/Selenium Web自动化05--常用原生方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/06/02/Selenium Web自动化05--常用原生方法/" itemprop="url">Selenium Web自动化05--常用原生方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-02T23:28:00+08:00">
+                2016-06-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WEB自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">WEB自动化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>熟悉常用页面操作，能完成日常自动化脚本设计。</p>
+<h3 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h3><style>
+table th:first-of-type {
+    width: 130px;
+}
+table th:nth-of-type(2) {
+    width: 80px;
+}
+</style>
+
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>返回值类型</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>maximize()</td>
+<td>void</td>
+<td>最大化浏览器</td>
+</tr>
+<tr>
+<td>fullscreen()</td>
+<td>void</td>
+<td>设置浏览器全屏状态，不常用</td>
+</tr>
+<tr>
+<td>back()</td>
+<td>void</td>
+<td>后退，相当于浏览器的后退按钮功能</td>
+</tr>
+<tr>
+<td>forward()</td>
+<td>void</td>
+<td>前进，相当于浏览器的前进按钮功能</td>
+</tr>
+<tr>
+<td>refresh()</td>
+<td>void</td>
+<td>刷新，相当于浏览器的刷新按钮功能</td>
+</tr>
+<tr>
+<td>quit()</td>
+<td>void</td>
+<td>退出当前浏览器</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">driver.manage().window().maximize();</span><br><span class="line">driver.manage().window().fullscreen();</span><br><span class="line">driver.navigate().back();</span><br><span class="line">driver.navigate().forward();</span><br><span class="line">driver.navigate().refresh();</span><br><span class="line">driver.quit();</span><br></pre></td></tr></table></figure>
+<h3 id="页面"><a href="#页面" class="headerlink" title="页面"></a>页面</h3><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>返回值类型</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>get()</td>
+<td>void</td>
+<td><em><strong>传入的url需要是完整带http或https</strong></em></td>
+</tr>
+<tr>
+<td>getCurrentUrl()</td>
+<td>String</td>
+<td>获取并返回当前页面Url</td>
+</tr>
+<tr>
+<td>getTitle()</td>
+<td>String</td>
+<td>获取并返回当前页面标题</td>
+</tr>
+<tr>
+<td>getPageSource()</td>
+<td>String</td>
+<td>获取并返回当前页面源代码</td>
+</tr>
+<tr>
+<td>getWindowHandle()</td>
+<td>String</td>
+<td>获取并返回当前页面源代码</td>
+</tr>
+<tr>
+<td>getWindowHandles()</td>
+<td>Set</td>
+<td>获取并返回当前浏览器所有窗口句柄，getWindowHandles()后续将用于手动切换页面</td>
+</tr>
+<tr>
+<td>close()</td>
+<td>void</td>
+<td>关闭当前页面，如果当前只有一个页面则退出浏览器</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">driver.get(<span class="string">"http://www.baidu.com/"</span>);</span><br><span class="line"><span class="comment">// driver.get("www.baidu.com");		//这个url写法是错误的</span></span><br><span class="line">String url = driver.getCurrentUrl();</span><br><span class="line">String title = driver.getTitle();</span><br><span class="line">String source = driver.getPageSource();</span><br><span class="line">String handle = driver.getWindowHandle();</span><br><span class="line">Set set = driver.getWindowHandles();</span><br><span class="line">driver.close();</span><br></pre></td></tr></table></figure>
+<h3 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h3><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>返回值类型</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>findElement()</td>
+<td>WebElement</td>
+<td>寻找并返回找到的第1个元素，<em><strong>若匹配到多个元素也返回第1个</strong></em></td>
+</tr>
+<tr>
+<td>findElements()</td>
+<td>List</td>
+<td>寻找并以List&#60;WebElement&#62;返回元素列表，获取元素时从下标0开始</td>
+</tr>
+<tr>
+<td>sendKeys()</td>
+<td>String</td>
+<td>输入文本（单/多行文本框）</td>
+</tr>
+<tr>
+<td>click()</td>
+<td>String</td>
+<td>点击（链接/按钮/图片）</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">driver.findElement(By.xpath(<span class="string">"//input[@id='kw']"</span>)).sendKeys(<span class="string">"selenium"</span>);</span><br><span class="line">driver.findElements(By.xpath(<span class="string">"//input[@id='su']"</span>)).get(<span class="number">0</span>).click();</span><br></pre></td></tr></table></figure>
+<p>我们说这三个方法都是作用在页面元素，所以转化之后可以是这样：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">WebElement element = driver.findElement(By.xpath(<span class="string">"//input[@id='kw']"</span>));</span><br><span class="line">element.sendKeys(<span class="string">"selenium"</span>);</span><br><span class="line">element.click();</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/05/02/Selenium Web自动化04--元素获取方式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/05/02/Selenium Web自动化04--元素获取方式/" itemprop="url">Selenium Web自动化04--元素获取方式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-05-02T14:48:00+08:00">
+                2016-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WEB自动化/" itemprop="url" rel="index">
+                    <span itemprop="name">WEB自动化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>全面了解元素的获取方式</p>
+<h3 id="方式"><a href="#方式" class="headerlink" title="方式"></a>方式</h3><p>WebDriver提供了两个元素寻找方法findElement()和findElements()。<br>findElement()适合寻找唯一元素。<br>findElements()返回的是符合条件的所有元素，是一个 WebElements List。</p>
+<p>findElement()和findElements()支持定位元素的方式：</p>
+<style>
+table th:first-of-type {
+    width: 150px;
+}
+</style>
+
+<table>
+<thead>
+<tr>
+<th>查找方式</th>
+<th>备注说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em><strong>By.xpath</strong></em>()</td>
+<td>通过xpath定位元素</td>
+</tr>
+<tr>
+<td><em><strong>By.id</strong></em>()</td>
+<td>通过id属性定位元素</td>
+</tr>
+<tr>
+<td><em><strong>By.name</strong></em>()</td>
+<td>通过name属性定位元素</td>
+</tr>
+<tr>
+<td>By.linkText()</td>
+<td>前进，相当于浏览器的前进按钮功能</td>
+</tr>
+<tr>
+<td>By.partialLinkText()</td>
+<td>刷新，相当于浏览器的刷新按钮功能</td>
+</tr>
+<tr>
+<td>By.className()</td>
+<td>退出当前浏览器</td>
+</tr>
+<tr>
+<td>By.tagName()</td>
+<td>退出当前浏览器</td>
+</tr>
+<tr>
+<td>By.cssSelector()</td>
+<td>退出当前浏览器</td>
+</tr>
+</tbody>
+</table>
+<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>我们以如下html标签内容为例，定位元素：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">链接</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://news.baidu.com"</span> <span class="attr">name</span>=<span class="string">"tj_trnews"</span> <span class="attr">class</span>=<span class="string">"mnav"</span>&gt;</span>新闻精选<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">输入框</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"kw"</span> <span class="attr">name</span>=<span class="string">"wd"</span> <span class="attr">class</span>=<span class="string">"s_ipt"</span> <span class="attr">tag</span>=<span class="string">"put"</span> <span class="attr">maxlength</span>=<span class="string">"255"</span> <span class="attr">autocomplete</span>=<span class="string">"off"</span>&gt;</span></span><br></pre></td></tr></table></figure> driver.findElement(<em><strong>By.xpath(“//input[@id=’su’]”)</strong></em>).click();<br>加粗斜线部分，可以使用如下不同定位方式替换：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过xpath定位元素</span></span><br><span class="line">By.xpath(<span class="string">"//input[@id='kw']"</span>)</span><br><span class="line"><span class="comment">// 通过id属性定位元素</span></span><br><span class="line">By.id(<span class="string">"kw"</span>)</span><br><span class="line"><span class="comment">// 通过name属性定位元素		</span></span><br><span class="line">By.name(<span class="string">"wd"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过链接文本定位元素，适用于链接</span></span><br><span class="line">By.linkText(<span class="string">"新闻精选"</span>)</span><br><span class="line"><span class="comment">// 通过部分链接文本定位元素，适用于链接</span></span><br><span class="line">By.partialLinkText(<span class="string">"新闻"</span>)</span><br><span class="line"><span class="comment">// 通过class属性定位元素</span></span><br><span class="line">By.className(<span class="string">"s_ipt"</span>)</span><br><span class="line"><span class="comment">// 通过tag标签定位元素</span></span><br><span class="line">By.tagName(<span class="string">"put"</span>)</span><br><span class="line"><span class="comment">// 通过css属性定位元素</span></span><br><span class="line">By.cssSelector(<span class="string">"input.s_ipt"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>test()整体代码结构如下：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	driver.get(<span class="string">"http://www.baidu.com/"</span>);</span><br><span class="line">	driver.findElements(By.id(<span class="string">"kw"</span>)).get(<span class="number">0</span>).sendKeys(<span class="string">"Java"</span>);</span><br><span class="line">	<span class="comment">// driver.findElement(By.name("wd")).sendKeys("Java");</span></span><br><span class="line">	<span class="comment">// driver.findElement(By.cssSelector("input.s_ipt")).sendKeys("Java");</span></span><br><span class="line">	<span class="comment">// driver.findElement(By.className("s_ipt")).sendKeys("Java");</span></span><br><span class="line">	<span class="comment">// driver.findElement(By.xpath("//input[@id='kw']")).sendKeys("selenium");</span></span><br><span class="line">	driver.findElement(By.xpath(<span class="string">"//input[@id='su']"</span>)).click();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><p>使用findElements()获取元素时，因为返回的是一个List，我们需要通过get()下标的方式获取对应的元素。<br>下标索引从0开始，注意与xpath获取第1个元素时区分(从索引1开始)。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">driver.findElements(By.name(<span class="string">"wd"</span>)).get(<span class="number">0</span>).sendKeys(<span class="string">"Java"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>使用使用findElement()获取元素时，若有多个元素符合条件，执行时会默认获取第1个元素。<br>最近新版本作出的优化，原来老版本会抛出异常。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/04/18/业务安全测试切入点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/04/18/业务安全测试切入点/" itemprop="url">业务安全测试切入点</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-18T13:04:25+08:00">
+                2016-04-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/测试/" itemprop="url" rel="index">
+                    <span itemprop="name">测试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题记"><a href="#题记" class="headerlink" title="题记"></a>题记</h3><p>[放在互联网的数据就不是隐私]，每一个互联网人对此都深有感触<br>互联网企业内部管理不善导致数据出卖、安全漏洞被黑客盗走数据的事情时有发生<br>2016年频繁出现的互联网安全事故，直接导致国内知名漏洞报告平台乌云被查封<br>出现一系列的事故之后，公司了也展开了安全测试，包括服务安全和业务安全<br>这里大致列举日常测试工作中应该要注意的业务安全问题</p>
+<h3 id="XSS类：包括存储型和反射型"><a href="#XSS类：包括存储型和反射型" class="headerlink" title="XSS类：包括存储型和反射型"></a>XSS类：包括存储型和反射型</h3><p>反射型最容易传播的是搜索URL，注意处理处理这类URL中的XSS风险代码，其中存储型的危害比反射型的危害相对要更大，建议在平台做统一处理<br>测试代码举例：<a href="http://drops.wooyun.org/tips/845" target="_blank" rel="noopener">http://drops.wooyun.org/tips/845</a> [乌云已挂出维护公告]</p>
+<h3 id="前端存在业务校验"><a href="#前端存在业务校验" class="headerlink" title="前端存在业务校验"></a>前端存在业务校验</h3><p>任何前端的检验都是为提高用户体验而做，不具体任何安全性。若涉及业务上重要的校验，需要确保前后端都存在统一的逻辑校验<br>例如：数字大小范围、时间长度范围</p>
+<h3 id="POST表单冗余数据"><a href="#POST表单冗余数据" class="headerlink" title="POST表单冗余数据"></a>POST表单冗余数据</h3><p>POST表单中提交了页面或业务逻辑中不允许直接修改的数据<br>例如：常用的如手机号、邮箱，修改时会单独跳转到其他页面进行校验，展示时以灰色不可编辑的形式展示在表单中</p>
+<p><img src="/images/20160418/safe01.png" alt></p>
+<h3 id="突破搜索参数数量"><a href="#突破搜索参数数量" class="headerlink" title="突破搜索参数数量"></a>突破搜索参数数量</h3><p>很多网站都会有搜索，搜索中有很多的条件可选，业务在设计时对部分搜索条件的数量进行了限制<br>在截获请求之后，对搜索条件进行扩充后并发请求服务器，会对服务器造成比较大的压力，这一条也与前面讲到的&lt;前端存在业务校验&gt;有关联</p>
+<h3 id="密码类传输"><a href="#密码类传输" class="headerlink" title="密码类传输"></a>密码类传输</h3><p>主要涉及注册、登录、修改密码、忘记密码这几类常用操作，传输过程中若使用明文密码是非常不安全的</p>
+<h3 id="数据操作类带有ID"><a href="#数据操作类带有ID" class="headerlink" title="数据操作类带有ID"></a>数据操作类带有ID</h3><p>密切注意编辑、删除操作中带有数据ID的情况，水平越权操作数据，是非常危险的漏洞</p>
+<p><img src="/images/20160418/safe02.png" alt></p>
+<h3 id="数据库存储长度"><a href="#数据库存储长度" class="headerlink" title="数据库存储长度"></a>数据库存储长度</h3><p>在产品设计时会对数据的可输入在前端做一个长度或输入类型限制，是为了保证更好的用户体验和确保有限的系统开销<br>在前面我们已经知道前端的限制是没有任何安全意义的，通过工具修改数据类型和长度同样可被正常提交，若出错很有可能会暴露数据库的关键信息</p>
+<h3 id="重复提交请求-数据数量有限制"><a href="#重复提交请求-数据数量有限制" class="headerlink" title="重复提交请求|数据数量有限制"></a>重复提交请求|数据数量有限制</h3><p>对于不允许重复提交的请求和数量有限制的存储，不光在前端做限制，在服务端也在有对应的校验和限制</p>
+<h3 id="数据回填"><a href="#数据回填" class="headerlink" title="数据回填"></a>数据回填</h3><p>将用户输入的数据直接回填在JSP，然后作为标签中某个属性值显示在页面的HTML中，这种情况下如果不作处理，可能有XSS<br>常见有属性有value和title</p>
+<p><img src="/images/20160418/safe03.png" alt></p>
+<h3 id="自动登录"><a href="#自动登录" class="headerlink" title="自动登录"></a>自动登录</h3><p>修改密码、重置密码类操作时，一定不要在最后附加一个自动登录的动作。不可将这个判断将给前端或者浏览器</p>
+<h3 id="撞库"><a href="#撞库" class="headerlink" title="撞库"></a>撞库</h3><p>网络上有很多泄漏的账号密码资源，被拿到之后会用于撞库，取得一些网站的用户名密码<br>这各情况通常的做法是增加操作成本，比如限制每个IP下请求对应接口的次数、出现验证码、锁定账户2小时等</p>
+<h3 id="暴力破解"><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h3><p>重灾区在找回密码验证码，或者其他的任何重要操作需要数字验证码的部分<br>建议：将验证码复杂度增加（由纯属4位数据变成6位数字和字母组合），同时加上图形验证码，同时最好有其他访问防爆或监控机制</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2016/04/02/Selenium Web自动化03--精通xpath书写/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1343,499 +1969,6 @@ table th:first-of-type {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2013/03/05/小公司如何做好测试？/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/03/05/小公司如何做好测试？/" itemprop="url">小公司如何做好测试</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-03-05T08:52:25+08:00">
-                2013-03-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>首先，没有测试经理意味着测试人员没有最直接的管理者，往往这种时候的管理者是开发经理或技术总监，但他们何其忙耶？<br>同时，在无人监管的情况下，测试是一个很容易偷懒的工作<br>最后，测试人员需要做好自己的工作，展现自己的价值，扩展自己的队伍</p>
-<h3 id="严格自我约束"><a href="#严格自我约束" class="headerlink" title="严格自我约束"></a>严格自我约束</h3><p>没有直接管理者，并不意味着没有管理者，公司更高层的领导会关注每一个员工的表现（因为公司小，老总会认识每一位员工），所以，在工作中管好自己（不随意迟到、早退、请假），除非你不希望自己的工作得到认可，或不希望自己的薪水能有一个提升</p>
-<p>####根据正规流程工作<br>没有人管理，那工作就比较轻松、随意了。手工测试无需测试用例、无需评审、无需报告……长此以往，在工作中会养成一种随意、松散的情绪，即使只有一个测试人员，在测试工作中，也需要尽量根据测试理论、软件工程中规定的流程，同时根据公司的实际情况，找到最适合公司的测试工作流程，并不断的完善</p>
-<h3 id="定期向“领导”汇报工作"><a href="#定期向“领导”汇报工作" class="headerlink" title="定期向“领导”汇报工作"></a>定期向“领导”汇报工作</h3><p>领导都希望知道自己的员工在做些什么<br>让你的领导或公司的相关领导，知道测试岗位上的家伙都干了些什么事。有没有一定的成绩，能不能给公司带来对应的效益，如果公司领导或老总觉得测试人员能给公司带来效益，那么你的工作至少是得到认同的，反之有可能被炒鱿鱼或降薪</p>
-<h3 id="全局考量现在的测试工作"><a href="#全局考量现在的测试工作" class="headerlink" title="全局考量现在的测试工作"></a>全局考量现在的测试工作</h3><p>根据公司的项目考量现在的测试工作，当发现公司的项目时间紧张、逻辑复杂时，需要及时向公司的相关领导请求支援，希望添加测试人员，不要到工作没有完成或完成得不好时，说原因是人员不够……因为这个你当时就应该提出</p>
-<h3 id="多和开发人员沟通"><a href="#多和开发人员沟通" class="headerlink" title="多和开发人员沟通"></a>多和开发人员沟通</h3><p>工作之余，与公司的其他人员多沟通、多了解。大家彼此有些了解，彼此是朋友，在工作中多少会有帮助</p>
-<h3 id="保持技术的先进性"><a href="#保持技术的先进性" class="headerlink" title="保持技术的先进性"></a>保持技术的先进性</h3><p>因为公司人员少，没有足够交流、提升空间，所以需要在业余时间多充电，保持并提升自身技术能力</p>
-<h3 id="不要过早的介入自动化测试"><a href="#不要过早的介入自动化测试" class="headerlink" title="不要过早的介入自动化测试"></a>不要过早的介入自动化测试</h3><p>自动化测试是减少手工测试的能手，但刚进入公司，接触项目后，不要盲目的开始自动化测试，否则，容易被它拖累</p>
-<h3 id="良好的心态"><a href="#良好的心态" class="headerlink" title="良好的心态"></a>良好的心态</h3><p>你不是一个人在战斗，和你战斗的是整个团队、整个公司</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>做了上述的内容并不意味着你就可以在小公司做好测试工作，还有很多的事情需要我们去面对、处理，职场是一门很大的学问</p>
-<p>51Testing地址：<a href="http://bbs.51testing.com/thread-886395-1-1.html" target="_blank" rel="noopener">http://bbs.51testing.com/thread-886395-1-1.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2013/02/22/测试文档系列之测试方案/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/02/22/测试文档系列之测试方案/" itemprop="url">测试文档系统之测试方案</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-02-22T15:20:25+08:00">
-                2013-02-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>《测试方案》文档是设计测试阶段的测试文档，指明为完成软件或软件集成的特性测试而进行的设计测试方法细节文档。<br>《测试方案》应该包括如下内容：</p>
-<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>概述被测试对象和特性，简要描述被测试对象的需求要素、测试设计准则，以及测试对象的历史。</p>
-<h3 id="被测对象"><a href="#被测对象" class="headerlink" title="被测对象"></a>被测对象</h3><p>确定被测试对象，包括其版本/修订级别，并说明软件的承载媒介及其对测试的影响。</p>
-<h3 id="应测试的特性"><a href="#应测试的特性" class="headerlink" title="应测试的特性"></a>应测试的特性</h3><p>确定应测试的所有特性和特性组合。</p>
-<h3 id="不被测试的特性"><a href="#不被测试的特性" class="headerlink" title="不被测试的特性"></a>不被测试的特性</h3><p>确定被测试对象具有的哪些特性和特性组合将不被测试，并说明不被测试的原因。</p>
-<h3 id="测试设计综述"><a href="#测试设计综述" class="headerlink" title="测试设计综述"></a>测试设计综述</h3><p>为每一组重要的特性或特性组合指定一个可以保证这些特性被足够地测试的途径，概要地指出用于该组特性测试活动、技术、工具，包括要用到的专门技术、用于分析测试结果的方法等应在此文档中确定。详细的描述在下面介绍的“测试模型”、“测试需求”和“测试设计”小节中。</p>
-<h3 id="测试模型"><a href="#测试模型" class="headerlink" title="测试模型"></a>测试模型</h3><p>测试模型先从测试组网图、结构/对象关系图两个描述层次分析被测试对象的外部需求环境和内部结构关系，进行概要的描述，从而引出本测试方案的测试需求和测试着眼点。然后进一步明确本测试方案的测试原理及操作流程，为襑测试用例的设计和测试操作过程提供指导。</p>
-<p>（1）测试组网图<br>包括测试中所用到的测试组网图，并且描述清楚不同的组网图运用于哪些项目。测试对象在测试组网图中的位置应符合需求规格说明的要求。单元测试过程可能无需测试组网图。</p>
-<p>（2）结构/对象关系图<br>采用不同的设计方法：结构化设计与对象化设计，采取不同的方式描述被测试对象与相关实体之间的结构/对象关系图等。</p>
-<p>（3）测试原理<br>描述本阶段测试实现的工作原理和基本思路，指出用于测试的测试活动、技术、工具，包括要用到的专门技术。</p>
-<h3 id="测试需求"><a href="#测试需求" class="headerlink" title="测试需求"></a>测试需求</h3><p>测试需求是根据本阶段的测试目标从不同角度明确本阶段的各种需求因素，包括：环境需求、被测试对象要求、测试工具需求、测试代码需求、测试数据准备等。测试需求的一个重要的条件是必须确保需求的可跟踪性，测试需求源自于软件需求规格说明及相关的接口需求说明文档，集成测试需求和单元测试需求应该和软件概要设计及详细设计形成对应关系。测试需求的设计必须保证对软件需求的跟踪与覆盖。</p>
-<p>（1）环境需求<br>指出必需的和希望的测试仪器、设备、工具和其他需求。</p>
-<p>（2）被测试对象需求<br>为测试是否需要对被测试对象及相关对象做特殊要求，例如对相关对象的版本要求，接口协议要求，以及被测试对象的可测试性需求等。</p>
-<p>（3）测试工具需求<br>如果采用自动化测试，在此处列出对于测试工具的需求，测试工具包括自主开发、商用、二次开发工具等。</p>
-<p>（4）测试代码需求<br>如果需要被测试对象插装测试代码、进行可测试性设计，在此处列出对于测试程序、测试接口的需求。</p>
-<p>（5）其他需求<br>确定需要的特殊工具，确定其他任何测试需要（如，办公室空间需要等），确定对测试小组来说目前还没有但必需的需求来源。</p>
-<p>例如：数据需求。为执行各测试项目需要在测试前预先设置的数据，避免测试一项改一次数据，特别是在自动化测试中，或者仪器测试中需要定义的测试套和测试数据库。在系统测试过程中，可能明确对测试组网环境的组网数据的需求和数据设定规范，以确保环境数据的规整性，并且达到组网环境能够对实际运行环境的最大程度的仿真和条件覆盖。</p>
-<h3 id="测试设计"><a href="#测试设计" class="headerlink" title="测试设计"></a>测试设计</h3><p>测试设计描述测试各个阶段需要运用的测试要素，包括测试用例、测试工具、测试代码的设计思路和设计准则。对测试工具和测试代码的设计应该有更详细的设计文档做指导，在本文档中应该提供引用说明。不同的测试阶段对测试设计要素要予以取舍。</p>
-<p>为每一组重要的特性或特性组合指定一个可以保证这些特性被足够地测试的途径，应详细地指出用于该组测试的测试活动、技术、工具，包括要用到的专门技术、用于分析测试结果的设计方法（例如：用比较程序或用观察法进行分析）</p>
-<p>测试设计描述的细致程度应能够用于确定主要的测试任务和估计每一个任务的时间需要。</p>
-<p>指出最低限度的测试完备性，确定判断测试行为完备性的技术手段（例如，某软件的完备性判断条件为每条语句至少被执行一次），确定任何额外的完成准则（例如，不同级别的错误数目应该低于某一数值），用于跟踪需求修改的技术手段也应被指定。</p>
-<p>在测试用例设计上，要能总结测试用例的共同属性，如共同的约束条件、共同的环境需求、共同的程序需求、共同的测试用例依赖条件。</p>
-<p>（1）测试工具设计<br>描述将要采用的测试工具的设计要点、设计思路，具体可参见相关文档。</p>
-<p>（2）测试代码设计<br>描述将要插装的测试代码的设计要求、设计思路，具体可参见相关文档。</p>
-<p>（3）测试规程设计<br>描述测试用例操作序列的测试规程设计和状态转移图等的设计。</p>
-<p>（4）测试用例设计</p>
-<p>文档下载：测试方案模板<br>参考资料：<a href="http://www.uml.org.cn" target="_blank" rel="noopener">http://www.uml.org.cn</a> 《实用软件测试方法与应用》电子工业出版社</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2013/02/01/测试文档系列之测试计划/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/02/01/测试文档系列之测试计划/" itemprop="url">测试文档系统之测试计划</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-02-01T21:36:25+08:00">
-                2013-02-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>俗话说：凡事预则立，不预则废！软件测试同样，在测试项目之初就要制定相应的测试计划。接下来谈下如何编写测试计划问题。</p>
-<h3 id="一．首先了解以下几个问题："><a href="#一．首先了解以下几个问题：" class="headerlink" title="一．首先了解以下几个问题："></a>一．首先了解以下几个问题：</h3><p>1． 为什么要编写测试计划？</p>
-<p>1）领导能够根据测试计划做宏观调空，进行相应资源配置等；<br>2）测试人员能够了解整个项目测试情况以及项目测试不同阶段的所要进行的工作等；<br>3）便于其他人员了解测试人员的工作内容，进行有关配合工作</p>
-<p>2． 什么时间开始编写测试计划？<br>（测试需求分析前总体测试计划书／测试需求分析后详细测试计划书）</p>
-<p>3． 由谁来编写测试计划？<br>具有丰富经验的项目测试负责人</p>
-<p>4． 测试计划编写6要素？（5W1H）</p>
-<p>1）why——为什么要进行这些测试；<br>2) what—测试哪些方面，不同阶段的工作内容；<br>3) when—测试不同阶段的起止时间；<br>4) where—相应文档，缺陷的存放位置，测试环境等；<br>5) who—项目有关人员组成，安排哪些测试人员进行测试<br>6) how—如何去做，使用哪些测试工具以及测试方法进行测试。</p>
-<h3 id="二．编写测试计划注意事项："><a href="#二．编写测试计划注意事项：" class="headerlink" title="二．编写测试计划注意事项："></a>二．编写测试计划注意事项：</h3><p>1．测试计划不一定要尽善尽美，但一定要切合实际，要根据项目特点、公司实际情况来编制，不能脱离实际情况；<br>2．测试计划一旦制定下来，并不就是一层不变的，世界万事万物时时刻刻都在变化，软件需求、软件开发、人员流动等都在时刻发生着变化，测试计划也要根据实际情况的变化而不断进行调整，以满足实际测试要求．<br>3．测试计划要能从宏观上反映项目的测试任务、测试阶段、资源需求等，不一定要太过详细．</p>
-<h3 id="三．测试计划主要内容："><a href="#三．测试计划主要内容：" class="headerlink" title="三．测试计划主要内容："></a>三．测试计划主要内容：</h3><p>1.目标<br>表示该测试计划所应达到的目标。</p>
-<p>2.概述<br>2.1 项目背景<br>简要描述项目背景及所要求达到的目标，如项目的主要功能特征、全系结构及简要历史等。</p>
-<p>2.2 范围<br>指明该计划的适用对象及范围。</p>
-<p>3.组织形式<br>表示测试计划执行过程中的组织结构及结构间的关系，以及所需要的组织独立程度。同时，指出测试过程与其他过程，如开发、项目管理、质量保证、配置管理之间的关系。测试计划还应该定义测试工作中的沟通渠道，解决测试任务发现问题的权利，以及批准测试输出工作产品的权力。</p>
-<p>4.角色及职责<br>定义角色及其职责，即在每一个角色与测试任务之间建立关联。</p>
-<p>5.测试对象<br>列出所有被作为测试目标的测试项（包括功能需求、非功能需求，后者包括性能、可移植性等）。</p>
-<p>6.测试通过/失败标准<br>测试标准是客观的陈述，该陈述指明了判断/确认测试何时结束，以及所测试的应用程序的质量。测试标准可以是一系列陈述或对另一文档（如过程指南或测试标准）的引用。</p>
-<p>测试标准应该指明：<br>什么将被测试？（确切的测试目标）<br>度量尺度是如何建立的？<br>使用了哪些标准对度量进行评价？</p>
-<p>7.测试挂起标准及恢复条件<br>批明挂起全部或部分测试项的标准，并指明恢复测试的标准及其他必须重复的测试活动。</p>
-<p>8.测试任务安排<br>8.1 任务1<br>8.1.1方法和标准<br>     指明执行该任务时，应采用的方法以及所应遵循的标准。</p>
-<p>8.1.2 输入/输出<br>    给出该任务所必须的输入及输出。</p>
-<p>8.1.3 时间安排<br>    给出任务的起始及持续时间，建议采用相对时间的方法，即相对 某一里程碑或阶段、任务的起始时间。</p>
-<p>8.1.4 资源<br>    给出任务所需要的人力和物力资源，其中人力资源的安排应参考“组织形式”和“角色及职责”并应明确到人，该主题将会影响“资源”一节。</p>
-<p>8.1.5 风险和假设<br>    指明启动该项目任务应该满足的假设，以及任务执行可能存在的风险。</p>
-<p>8.1.6 角色和职责<br>     指明由谁负责该任务的组织和执行，以及谁将担负怎样的职责。</p>
-<p>9.应交付的测试工作产品<br>指明应交付的文档、测试代码及测试工具。</p>
-<p>一般包括这些文档：测试计划、测试方案、测试用例、测试规程、测试日志、测试事故报告、测试总结报告、测试输入及输出数据、测试工具。</p>
-<p>10.工作量估计<br>给出前面所定义任务的人力需求及总计。</p>
-<p>11.附录<br>其他文档或信息。</p>
-<h3 id="四．评审总结"><a href="#四．评审总结" class="headerlink" title="四．评审总结"></a>四．评审总结</h3><p>1.计划评审<br>测试计划编写完成后，一般要对测试计划的正确性、全面性以及可行性等进行评审，评审人员的组成包括软件开发人、营销人员、测试负责人以及其他有关项目负责人。</p>
-<p>2.计划总结</p>
-<p>项目完成后，应该对计划的执行情况进行评审，看有哪些不合理的地方，以便为编写下一个项目测试计划做经验积累。</p>
-<h3 id="五．文档下载"><a href="#五．文档下载" class="headerlink" title="五．文档下载"></a>五．文档下载</h3><p>《测试计划.doc》</p>
-<p>参考资料：<a href="http://www.uml.org.cn" target="_blank" rel="noopener">http://www.uml.org.cn</a>    《实用软件测试方法与应用》电子工业出版社</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1886,7 +2019,7 @@ table th:first-of-type {
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1897,7 +2030,7 @@ table th:first-of-type {
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1908,7 +2041,7 @@ table th:first-of-type {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
