@@ -259,6 +259,617 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/10/16/Jmeter 03--并发测试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/16/Jmeter 03--并发测试/" itemprop="url">JMeter 03--并发测试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-16T17:28:00+08:00">
+                2019-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JMeter/" itemprop="url" rel="index">
+                    <span itemprop="name">JMeter</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mac --&gt; 10.14.4</span><br><span class="line">JDK --&gt; 1.8</span><br><span class="line">JMeter --&gt; 5.1r</span><br></pre></td></tr></table></figure>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>设置并发数，收集性能数据；</p>
+<h3 id="线程设置"><a href="#线程设置" class="headerlink" title="线程设置"></a>线程设置</h3><p>位置：线程组单击；<br><img src="/images/jmeter/threadSetting.png" alt></p>
+<p>执行时长：右上角有脚本的执行时间，用于统计脚本的执行时长；</p>
+<p><strong>线程属性</strong>中最重要的几个参数：<br><strong>线程数</strong>：也就是我们提到的并发数（类似LoadRunner中的VUser）;</p>
+<p><strong>Ramp-Up时间</strong>：在多长时间内启动所有的线程数。举例，若线程数为10，Ramp-Up时间为5，则表示JMeter会在5秒内启动10个线程（每秒启动2个），来执行这个线程组下所有请求；</p>
+<p><strong>循环次数</strong>：永远表示会一直执行下去，直到手动停止执行。若取消勾选永远，在后面的输入框中输入对应的值，则表示每个线程执行完对应的次数后，自动退出；<br><em>注意：这里不是所有的线程执行次数的总和，而是单个线程需要执行的次数；</em></p>
+<h3 id="聚合报告"><a href="#聚合报告" class="headerlink" title="聚合报告"></a>聚合报告</h3><p>需求统计接口执行时的响应数据，我们需要添加聚合报告模块；<br>位置：线程组右键–添加–监听器–聚合报告；<br><img src="/images/jmeter/addResultTree.png" alt></p>
+<p>设置线程数为10，Ramp-Up时间5秒，循环次数为2，启动执行，结果如下：<br><img src="/images/jmeter/testResult.png" alt></p>
+<p>重点指标：<br><strong>样本</strong>：循环次数为定量时，关注样本数与实际设置的循环次数是否一致；</p>
+<p><strong>95%百分位|99%百分位</strong>：这两个指标反应的是接口的响应时间（单位：毫秒），是我们性能测试中最重要结果；<br><em>所有与时间相关的单位均为毫秒；</em></p>
+<p><strong>异常%</strong>：短时间压力测试，异常%应该为0，长时间压力测试后，异常%应该在我们可接受的范围内或为0；</p>
+<p><strong>网络吞吐</strong>：性能测试不达标或不理想的情况下，我们可以监控压力机和服务器的网络带宽使用情况，避免因此而产生的性能瓶颈；</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/10/16/Jmeter 02--参数化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/16/Jmeter 02--参数化/" itemprop="url">JMeter 02--参数化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-16T16:51:00+08:00">
+                2019-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JMeter/" itemprop="url" rel="index">
+                    <span itemprop="name">JMeter</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mac --&gt; 10.14.4</span><br><span class="line">JDK --&gt; 1.8</span><br><span class="line">JMeter --&gt; 5.1r</span><br></pre></td></tr></table></figure>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>能实现接口间动态参数关联。</p>
+<h3 id="设置全局参数"><a href="#设置全局参数" class="headerlink" title="设置全局参数"></a>设置全局参数</h3><p>到此为止，我们登录接口已经能执行成功，并且能查看接口的请求和返回，但还有一个需要解决：获取登录后Token；<br>登录成功后，我们需要将Token传递给下一个请求使用；</p>
+<h4 id="正则表达式提取器"><a href="#正则表达式提取器" class="headerlink" title="正则表达式提取器"></a>正则表达式提取器</h4><p>我们先添加一个正则表达式提取器，位置：Http请求右键–添加–后置处理器–正则表达式提取器；<br><img src="/images/jmeter/addEvnParameter.png" alt></p>
+<p>正则表达式提取设置页：<br>需要根据请求的实际返回进行修改正则表达式；<br>关于正则表达式提取的，这里不展开，<a href="http://jmeter.apache.org/usermanual/regular_expressions.html" target="_blank" rel="noopener">JMeter官方正则文档点这里</a><br>关键语句（注意标点中英文状态）：<strong>“token”:”(.*?)”</strong><br><img src="/images/jmeter/getEvnParameter.png" alt></p>
+<h4 id="BeanShell后置处理器"><a href="#BeanShell后置处理器" class="headerlink" title="BeanShell后置处理器"></a>BeanShell后置处理器</h4><p>我们再添加一个BeanShell后置处理器，位置：Http请求右键–添加–后置处理器–BeanShell后置处理器；<br><img src="/images/jmeter/addBeanShell.png" alt></p>
+<p>添加这个后置处理器是为了将获取到的变量存储到全局变量中；<br>其中getToken是前面通过正则表达式获取到的变量值，pubToken是全局变量的key，后续可以通过这个key获取到他的值；<br>关键语句：<strong>${__setProperty(pubToken,${getToken},)}</strong><br><img src="/images/jmeter/setGlobaleEnv.png" alt></p>
+<h3 id="使用全局参数"><a href="#使用全局参数" class="headerlink" title="使用全局参数"></a>使用全局参数</h3><p>上面我们获取到Token并存储到全局变量后，我们后续的请求就需要用到了，我们需要将获取到的Token带入后续请求的头信息中，否则系统鉴权不通过，无法正常访问对应接口；<br>pubToken是我们上面存储全局变量值，这样我们就实现了跨线程间动态传递参数；<br>关键语句：<strong>${__property(pubToken)}</strong><br><img src="/images/jmeter/getGlobaleEnv.png" alt></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/10/16/Jmeter 01--接口脚本设计/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/16/Jmeter 01--接口脚本设计/" itemprop="url">JMeter 01--接口脚本设计</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-16T15:36:00+08:00">
+                2019-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JMeter/" itemprop="url" rel="index">
+                    <span itemprop="name">JMeter</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mac --&gt; 10.14.4</span><br><span class="line">JDK --&gt; 1.8</span><br><span class="line">JMeter --&gt; 5.1r</span><br></pre></td></tr></table></figure>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>能够在JMeter设计有关联关系的测试脚本。</p>
+<h3 id="测试步骤"><a href="#测试步骤" class="headerlink" title="测试步骤"></a>测试步骤</h3><p>性能测试简单来说可以分成这几步：<br>1、分析业务，确定业务场景及各个性能指标；<br>2、准备测试资源，包括压力机和测试环境等；<br>3、根据确定的业务场景设计测试脚本；<br>4、配置场景、执行测试脚本、收集结果；<br>5、分析性能瓶颈、尝试修改，部署后再次测试；</p>
+<p>这一篇要讲的是设计测试脚本。</p>
+<h3 id="设计测试脚本"><a href="#设计测试脚本" class="headerlink" title="设计测试脚本"></a>设计测试脚本</h3><p>我们今天需要测试两个查询接口的性能，所以脚本内容主要包括：登录、查询；<br>其中涉及到的知识点主要有参数获取、参数关联、断言、聚合报告；<br>预览我们已经写好的脚本结构，如下：<br><img src="/images/jmeter/preView.png" alt></p>
+<p>创建脚本主要有以下几部分：</p>
+<h4 id="新建测试计划；"><a href="#新建测试计划；" class="headerlink" title="新建测试计划；"></a>新建测试计划；</h4><p>在菜单中点击“文件–新建”，即可完成测试计划新建（我们创建后修改名称为“基础性能测试”）；</p>
+<h4 id="新建线程组"><a href="#新建线程组" class="headerlink" title="新建线程组"></a>新建线程组</h4><p>位置：测试计划右键–添加–线程(用户)–线程组；<br><img src="/images/jmeter/newThreads.png" alt>    </p>
+<h4 id="添加Http头管理器"><a href="#添加Http头管理器" class="headerlink" title="添加Http头管理器"></a>添加Http头管理器</h4><p>位置：线程组右键–添加–配置元件–Http头管理器（在线程组上右键也可以添加）；<br><img src="/images/jmeter/addHttpHeader.png" alt>    </p>
+<h4 id="添加Http请求"><a href="#添加Http请求" class="headerlink" title="添加Http请求"></a>添加Http请求</h4><p>位置：线程组右键–添加–取样器–Http请求；<br><img src="/images/jmeter/addHttpRequest.png" alt>    </p>
+<h4 id="接口请求脚本"><a href="#接口请求脚本" class="headerlink" title="接口请求脚本"></a>接口请求脚本</h4><p>1、我们把登录的URL、登录名、密码进行了全局参数化；<br><img src="/images/jmeter/setEnv.png" alt></p>
+<p>2、具体请求中使用了前面定义的全局参数；<br>登录请求的请求类型为POST，请求体中带入了登录名和密码两个参数；<br><img src="/images/jmeter/addLogin.png" alt></p>
+<p>3、前面我们添加的Http头，现在需要用上了，我们在头信息中加入如下键值对：<br><img src="/images/jmeter/addHttpHeadKey.png" alt>    </p>
+<h4 id="添加查看结果树"><a href="#添加查看结果树" class="headerlink" title="添加查看结果树"></a>添加查看结果树</h4><p>查询结果树中可以看到本次接口请求执行结果，包括请求体和返回体；<br>位置：线程组右键–添加–监听器–查看结果树（红色部分标识，后续要添加的聚会报告也在此处）；<br><img src="/images/jmeter/addResultTree.png" alt></p>
+<h4 id="执行脚本"><a href="#执行脚本" class="headerlink" title="执行脚本"></a>执行脚本</h4><p>执行脚本后，我们就能在查看结果树中看到接口的执行结果、请求体、返回体；<br><img src="/images/jmeter/viewReusltTree.png" alt></p>
+<h4 id="添加断言"><a href="#添加断言" class="headerlink" title="添加断言"></a>添加断言</h4><p>1、添加响应断言<br>接口请求结束后，我们需要判断接口返回是否符合我们的预期，此时就要用到断言；<br>响应断言可以添加多个；<br>位置：线程组右键–添加–断言–响应断言；<br><img src="/images/jmeter/addAssert.png" alt></p>
+<p>2、添加断言结果<br>添加响应断言后，我们需要添加对应的断言结果，可以显示我们断言是否通过；<br>这在调试测试脚本和实际测试中是非常重要的：我们即要确保请求是成功的同时，确保业务的处理也是符合我们预期的；<br>位置：线程组右键–添加–监听器–断言结果；<br><img src="/images/jmeter/addAssertResult.png" alt></p>
+<p>下图是我们添加的两个响应断言：<br><img src="/images/jmeter/assertSetting.png" alt></p>
+<p>fail这个内容在返回体中是没有的，所以断言失败会打印出我们预先自定义好的失败提示；<br><img src="/images/jmeter/assertFail.png" alt></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/10/16/Jmeter 00--初识JMeter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/16/Jmeter 00--初识JMeter/" itemprop="url">JMeter 00--初识JMeter</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-16T14:13:00+08:00">
+                2019-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JMeter/" itemprop="url" rel="index">
+                    <span itemprop="name">JMeter</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mac --&gt; 10.14.4</span><br><span class="line">JDK --&gt; 1.8</span><br><span class="line">JMeter --&gt; 5.1r</span><br></pre></td></tr></table></figure>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>了解JMeter工具。</p>
+<h3 id="关于JMeter"><a href="#关于JMeter" class="headerlink" title="关于JMeter"></a>关于JMeter</h3><p><a href="http://jmeter.apache.org/" target="_blank" rel="noopener">官网关于JMeter是这样描述的</a>：<br>The Apache JMeter™ application is open source software, a 100% pure Java application designed to load test functional behavior and measure performance. It was originally designed for testing Web Applications but has since expanded to other test functions.</p>
+<p>JMeter是一款用Java写的开源软件，原来主要是用于WEB性能测试，后来扩展了很多其他类型的测试。</p>
+<p>官网有详细的介绍和使用教程，有兴趣深入了解的同学们可以详细阅读官网的教程。<br>官网全英文教程链接在这里：<a href="http://jmeter.apache.org/usermanual/index.html" target="_blank" rel="noopener">http://jmeter.apache.org/usermanual/index.html</a></p>
+<p>JMeter是一款无需安装的软件，下载Binaries版之后直接运行下载包中/bin/ApacheJMeter.jar即可启动软件；<br><strong>“JMeter 4.0 is compatible with Java 8 or Java 9”，JMeter 4.0以上版本需要Java 8以上的版本；</strong><br>有更多自定义需求的可以下载Source版进行修改；<br>下载地址：<a href="http://jmeter.apache.org/download_jmeter.cgi" target="_blank" rel="noopener">http://jmeter.apache.org/download_jmeter.cgi</a></p>
+<p><img src="/images/jmeter/download.png" alt></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/07/03/Git03--分支合并/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1153,621 +1764,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/06/13/Postman API自动化06--团队协作/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/13/Postman API自动化06--团队协作/" itemprop="url">Postman API自动化06--团队协作</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-13T18:53:00+08:00">
-                2019-06-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/API自动化/" itemprop="url" rel="index">
-                    <span itemprop="name">API自动化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">操作系统：MacOS Mojave 10.14.4</span><br><span class="line">Postman：7.1.1</span><br></pre></td></tr></table></figure>
-<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>接口测试脚本往往不是由一个同事在开发和使用，而是一个团队；<br>通过Postman自带功能，实现团队协作，包括脚本合并、编辑和执行。</p>
-<h3 id="创建工作区"><a href="#创建工作区" class="headerlink" title="创建工作区"></a>创建工作区</h3><p>点开顶部工作区的下拉，即可创建工作区；<br><img src="/images/api/intoCreateWorkspace.png" alt></p>
-<p>根据页面填写必要信息即可创建工作区，同时还可邀请需要加入的同事（注意：这个同事也需要注册Postman账号）<br><img src="/images/api/createWorkspace.png" alt></p>
-<h3 id="成员邀请"><a href="#成员邀请" class="headerlink" title="成员邀请"></a>成员邀请</h3><p>在创建工作区时可以邀请同事，也可以在切换到对应工作区之后，通过【Invite】功能邀请同事加入；<br><img src="/images/api/invite.png" alt></p>
-<h3 id="设置权限"><a href="#设置权限" class="headerlink" title="设置权限"></a>设置权限</h3><p>团队中不是每一位成员都需要编辑测试脚本，为了避免误操作，我们需要设置权限；<br>Team Workspace下每一个Collection可以针对Team成员单独设置权限，非常灵活；<br>点击Collection右下角的【…】功能菜单，点击【Manage Roles】<br><img src="/images/api/intoManageRoles.png" alt></p>
-<p>通过设置，我们可以控制成员的权限（可读还是可写），从而避免误编辑引起的协作问题；<br><img src="/images/api/rolesRightSetting.png" alt></p>
-<p>注意：如果我们把【Everhyone in Team】设置为Editor，那么下方再单独设置为Viewer是不生效的，页面会有提示；<br><img src="/images/api/rolesWrongSetting.png" alt></p>
-<h3 id="分支和合并"><a href="#分支和合并" class="headerlink" title="分支和合并"></a>分支和合并</h3><p>Postman引入了分支和合并的概念：Frok和Merge；<br>在Team Wrokspace对应Collection的功能菜单中选择【Create a fork】即可创建一个属于自己的分支；<br><img src="/images/api/createFork.png" alt></p>
-<p>创建分支时可以选择分支存储的Workspace（建议存储到自己的Space）；<br><img src="/images/api/inputForkInfo.png" alt></p>
-<p>在分支上进行修改后，我们可以进行合并操作，在Wrokspace对应Collection的功能菜单中选择【Merge changes】;<br><img src="/images/api/intoMerge.png" alt></p>
-<p>合并时有可能需要Pull操作，因为在我们合并之前可能已经有其他人Merge或者原Team Workspace内容被有Editor权限的用户直接修改了；</p>
-<p>Pull完之后，可以点击同步按钮，观察自己Workspace中Collection的变化，如果正常，则再次操作Merge，直接合并到Team Workspace即可；</p>
-<h3 id="直接修改"><a href="#直接修改" class="headerlink" title="直接修改"></a>直接修改</h3><p>上面提到的分支、合并，是开发流程中的节点，有一定的复杂度，但数据安全；<br>我们也可以有另一种选择，直接编辑Team中测试脚本，不开分支、合并，这种数据不安全；<br>使用直接修改模式时，建议定期导出Json文件或者Fork分支到个人工作区保存，避免数据误操作；</p>
-<h3 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h3><p>Postman有两种模式：在Postman右下方可以看到【Browse】和【Build】；<br><img src="/images/api/model.png" alt><br>当我们在切换到Team Workspace时默认为【Browse】模式，Browse模式下点击Collection时会跳转到Web浏览器，不是很方便；<br>Team Workspace下我们可以手动切换到【Build】模式，在这个模式下：<br>如果【Manage Roles】中你是Editor权限，那么你可以直接编辑、保存、同步脚本至Team Workspace，而不用通过Frok和Merge的形式提交变更（但然不建议多人修改同一个脚本）；<br>如果你只是Viewer，虽然没有保存脚本权限，但可以更方便地执行脚本，同时实时更新最新脚本也会变更更容易；</p>
-<h3 id="科学上网"><a href="#科学上网" class="headerlink" title="科学上网"></a>科学上网</h3><p>Postman是谷歌系的产品，部分服务可能无法直接访问（如：Merge功能）；<br>当你发现部分功能使用或链接无法访问时，你可能需要一个科学上网的工具；</p>
-<p>被邀请加入团队之后，Postman会给你的邮箱发送一封确认加入邮件，如果收件箱没有找到，记得去垃圾邮件中找找；</p>
-<h3 id="使用体验"><a href="#使用体验" class="headerlink" title="使用体验"></a>使用体验</h3><p>在团队内部使用了Team协作功能，可以说确实很好用；<br>不过，免费的空间很小（25个请求），对于联调数量不多的接口问题不大，涉及到大批量的测试脚本管理就显得很不够了；<br>突破限制我们需要按团队人数/年付费；</p>
-<p>临时解决办法：<br>Postman可以说是接口测试工具中非常好用的，为了继续使用这个工具，又满足团队协作，我们决定使用GitHub来配合；<br>Postman脚本导出之后为json文本信息，可以被版本管理工具识别变更，这就很好了；<br>编辑完脚本信息之后导出为json文件，提交至GitHub，其他人随时可以从GitHub拿到最新的脚本文件，导致Postman即可；<br>可以提升大家的Git技能，虽然麻烦些，也不算亏；</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/06/11/Postman API自动化05--上传文件/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/11/Postman API自动化05--上传文件/" itemprop="url">Postman API自动化05--上传文件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-11T15:38:00+08:00">
-                2019-06-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/API自动化/" itemprop="url" rel="index">
-                    <span itemprop="name">API自动化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>能通过Postman工具实现接口上传文件；</p>
-<h3 id="获取关键参数"><a href="#获取关键参数" class="headerlink" title="获取关键参数"></a>获取关键参数</h3><p>我们先直接在页面操作文件上传功能，在网络中查看请求详情；<br>【Form Data】部分有我们需要的关键参数：name=”file”<br><img src="/images/api/getFileKey.png" alt></p>
-<h3 id="配置脚本"><a href="#配置脚本" class="headerlink" title="配置脚本"></a>配置脚本</h3><p>1、拿到上面的关键参数之后，我们在请求的Body中选择form-data模式；<br>（有没有发现与上面【Form Data中看到的Content-Disposition: form-data;有点关系）<br>2、切换Key的类型为File，在Value中选择要上传的文件即可；<br><img src="/images/api/selectFile.png" alt></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/05/19/Postman API自动化04--常用Test脚本/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/19/Postman API自动化04--常用Test脚本/" itemprop="url">Postman API自动化04--常用Test脚本</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-19T21:21:00+08:00">
-                2019-05-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/API自动化/" itemprop="url" rel="index">
-                    <span itemprop="name">API自动化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">操作系统：MacOS Mojave 10.14.4</span><br><span class="line">Postman：7.1.1</span><br></pre></td></tr></table></figure>
-<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>熟悉【Test】模块常用脚本，能设置环境变量、全局变量，完成对返回数据的转化，获取返回中特定数据并检查；<br>注意：所有的引号都应该是英文状态；<br><img src="/images/api/testPanel.png" alt></p>
-<h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><p>后续我们要用到的返回样例数据；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"resMsg"</span>: <span class="string">"成功"</span>,</span><br><span class="line">    <span class="string">"resCode"</span>: <span class="string">"0"</span>,</span><br><span class="line">    <span class="string">"data"</span>: &#123;</span><br><span class="line">        <span class="string">"id"</span>: <span class="string">"df0838edb406ebefa64a12cf362233d1"</span>,</span><br><span class="line">        <span class="string">"token"</span>: <span class="string">"0B7637DE56BF46ADA05F05EB4F735724"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="返回数据转化"><a href="#返回数据转化" class="headerlink" title="返回数据转化"></a>返回数据转化</h3><p>请求完成后，服务器返回的数据可以是xml或json字符串，我们拿到返回后需要对内容进行转换，转换成方便处理的json对象；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 将json字符串转换为json对象（responseBody：是返回数据体）</span><br><span class="line">var jsonObject = JSON.parse(responseBody);</span><br><span class="line"></span><br><span class="line">// 将xml格式的返回数据转化为json对象</span><br><span class="line">var jsonObject = xml2Json(responseBody);</span><br></pre></td></tr></table></figure></p>
-<h3 id="获取特定字段"><a href="#获取特定字段" class="headerlink" title="获取特定字段"></a>获取特定字段</h3><p>我们往往需要获取返回数据中的某些重要字段，如：id、msg，我们前面已经拿到了返回数据的json对象，那么常用的脚本是这样的；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 获取返回数据中resCode的内容</span><br><span class="line">var resCode = jsonObject.resCode;</span><br><span class="line"></span><br><span class="line">// 获取返回数据中id的内容</span><br><span class="line">var id = jsonObject.data.id;</span><br><span class="line"></span><br><span class="line">// 某些返回数据不是我们直接能用的，需要进行处理，比如我们要获取下图中第1个省分的编码；</span><br><span class="line">pm.environment.set(<span class="string">"province"</span>, jsonObject.ArrayOfString.string[1].split(<span class="string">','</span>)[1]);</span><br></pre></td></tr></table></figure></p>
-<p><img src="/images/api/responseData.png" alt></p>
-<h3 id="设置动态变量"><a href="#设置动态变量" class="headerlink" title="设置动态变量"></a>设置动态变量</h3><p>动态变量我们可以设置两种：环境变量和全局变量；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 设置环境变量并输出</span><br><span class="line">pm.environment.set(<span class="string">"token"</span>, jsonObject.data.token);</span><br><span class="line">console.log(pm.environment.get(<span class="string">"token"</span>));</span><br><span class="line"></span><br><span class="line">// 设置全局变量并输出</span><br><span class="line">pm.globals.set(<span class="string">"id"</span>, jsonData.data.id);</span><br><span class="line">console.log(<span class="string">"id:"</span>, pm.globals.get(<span class="string">"id"</span>));</span><br><span class="line"></span><br><span class="line">// 注意，这样输出是错误的</span><br><span class="line">console.log(<span class="string">"&#123;&#123;id&#125;&#125;"</span>);</span><br></pre></td></tr></table></figure></p>
-<p>环境变量和全局变量的存在是非常重要的，通过动态变量拼接接口场景；<br>两者的差异，主要是作用范围不一样，可以先将环境变理理解为局部变量，具体的差异在其他篇介绍；</p>
-<h3 id="变量的使用"><a href="#变量的使用" class="headerlink" title="变量的使用"></a>变量的使用</h3><p>环境变量和全局变量在使用上没有差异，都是通过两个花括号调用变量；<br>如：这里是使用变量province的值<br><img src="/images/api/varUsage.png" alt></p>
-<h3 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h3><p>断言是接口自动化中非常重要的部分，接口执行成功并不代表预期数据是正确的，这就需要我们对返回数据进行断言；<br>断言包括两大部分：请求状态相关信息，请求数据相关信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">// 请求状态相关断言，tests中引号内容由用户自定义输入</span><br><span class="line">//验证Status code的值</span><br><span class="line">tests[<span class="string">"http code 200"</span>] = responseCode.code === 200 || responseCode.code === 201;</span><br><span class="line"></span><br><span class="line">//验证Response time是否小于某个值</span><br><span class="line">tests[<span class="string">"Response time is less than 200ms"</span>] = responseTime &lt; 200;</span><br><span class="line"></span><br><span class="line">// 判断Response Headers中是否包含Content-Type</span><br><span class="line">pm.test(<span class="string">"Content-Type is present"</span>, <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    pm.response.to.have.header(<span class="string">"Content-Type"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 请求数据相关断言</span><br><span class="line">//检测json中的某个值是否等于预期的值</span><br><span class="line">tests[<span class="string">"verify resCode"</span>] = jsonObject.resCode === <span class="string">"0"</span>;</span><br><span class="line"></span><br><span class="line">// 判断目标值是否包含某个关键字</span><br><span class="line">pm.test(<span class="string">"verify itemFullName"</span>, <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    pm.expect(jsonData.data.resultData[0].fundFullName).to.contains(<span class="string">"API"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 也可以使用上面的方式判断等于的情况</span><br><span class="line">pm.test(<span class="string">"verify itemFullName"</span>, <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    pm.expect(jsonData.data.resultData[0].fundFullName).to.equal(<span class="string">"API1159220097"</span>);</span><br><span class="line">&#125;);</span><br><span class="line">// equal、equals、eql都可以</span><br><span class="line">pm.expect(jsonData.data.resultData[0].fundFullName).to.eql(<span class="string">"API1159220097"</span>);</span><br><span class="line"></span><br><span class="line">// 更多参见</span><br><span class="line">https://learning.getpostman.com/docs/postman/scripts/test_examples</span><br></pre></td></tr></table></figure></p>
-<h3 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h3><p>我们在添加数据时，往往某个字段有重复校验，所以需要通过随机生成前后缀来保持字段值唯一；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 时间戳，时间戳的问题在于不能很方便地存储当时使用的值</span><br><span class="line">&#123;&#123;$timestamp&#125;&#125;</span><br><span class="line">pm.environment.set(&quot;id&quot;, &quot;API&#123;&#123;$timestamp&#125;&#125;&quot;);</span><br><span class="line"></span><br><span class="line">// random函数</span><br><span class="line">// 生成10位随机数并存储到环境变量</span><br><span class="line">var random = Math.floor(Math.random() * 10000000000);</span><br><span class="line">pm.environment.set(&quot;id&quot;, &quot;API&quot; + random);</span><br></pre></td></tr></table></figure></p>
-<h3 id="日志输出"><a href="#日志输出" class="headerlink" title="日志输出"></a>日志输出</h3><p>在脚本出现问题需要调试时，日志输出显得尤为重要，要输出日志我们需要做两步：在Test区域输出日志，打开日志输出控制台；<br>Step 1、在Test区域输出日志代码<br>// 打印上面获取的jsonObject<br>console.log(“jsonObject”, jsonObject);</p>
-<p>Step 2、打开控制台日志显示<br>在Postman主页面左下角找到控制台日志输出图标<br><img src="/images/api/openConsole.png" alt></p>
-<p>执行脚本后，就能在控制台中看到我们打印的jsonObject内容；</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/05/19/Postman API自动化03--局部变量与全局变量/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CHEN JIAN PING">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tester Chen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/19/Postman API自动化03--局部变量与全局变量/" itemprop="url">Postman API自动化03--环境变量与全局变量</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-19T20:32:00+08:00">
-                2019-05-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/API自动化/" itemprop="url" rel="index">
-                    <span itemprop="name">API自动化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">操作系统：MacOS Mojave 10.14.4</span><br><span class="line">Postman：7.1.1</span><br></pre></td></tr></table></figure>
-<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>了解环境变量与全局变量的差异及使用场景；</p>
-<h3 id="直观感受"><a href="#直观感受" class="headerlink" title="直观感受"></a>直观感受</h3><p>我们先通过两张图片直观地感受环境变量与全局变量；<br><img src="/images/api/env1.png" alt><br><img src="/images/api/env2.png" alt></p>
-<p>通过上面的两张图，我们看到切换环境变量时，全局变量并不会随着变化，而是一直都显示，说明全局变量一直可以被调用；</p>
-<p>环境变量：顾名思义与环境有关，如：不同环境执行测试脚本时配置的用户名、密码应该被放在环境变量中存储；<br>全局变量：不管我们在哪个环境下执行脚本，他的值是不需要调整的，或者调整之后，其他环境执行时也是可以的，如：登录成功的文字标识；</p>
-<h3 id="作用范围"><a href="#作用范围" class="headerlink" title="作用范围"></a>作用范围</h3><p>1、环境变量与全局变量的作用范围为Wrokspace，不同Wrokspace之间的变量相互隔离，互不影响；<br>2、当环境变Key与全局变量Key重复时，优先使用环境变量中的值，即使环境变量中对应Key的值为空；<br><img src="/images/api/reKey.png" alt><br><img src="/images/api/keyValue.png" alt></p>
-<h3 id="赋值与使用"><a href="#赋值与使用" class="headerlink" title="赋值与使用"></a>赋值与使用</h3><p>环境变量与全局变量可以被修改；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 修改全局变量</span><br><span class="line">pm.globals.set(&quot;glovar&quot;, &quot;abcdef&quot;);</span><br><span class="line"></span><br><span class="line">// 修改环境变量</span><br><span class="line">pm.environment.set(&quot;evn1-var1&quot;, &quot;123456789&quot;);</span><br></pre></td></tr></table></figure></p>
-<p>使用方式均是直接通过&#123;&#123;var&#125;&#125;形式；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;glovar&#125;&#125;</span><br><span class="line">&#123;&#123;evn1-var1&#125;&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="获取变量"><a href="#获取变量" class="headerlink" title="获取变量"></a>获取变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 获取全局变量</span><br><span class="line">pm.globals.get(&quot;glovar&quot;);</span><br><span class="line"></span><br><span class="line">// 获取环境变量</span><br><span class="line">pm.environment.get(&quot;evn1-var1&quot;);</span><br><span class="line"></span><br><span class="line">// 可获取环境变量和全局变量</span><br><span class="line">pm.variables.get(&quot;glovar&quot;);</span><br><span class="line">pm.variables.get(&quot;evn1-var1&quot;);</span><br><span class="line"></span><br><span class="line">// Test脚本中这种形式定义的变量，其值是无法获取的</span><br><span class="line">var varKey = &quot;testValue&quot;;</span><br><span class="line">pm.variables.get(&quot;varKey&quot;);</span><br><span class="line"></span><br><span class="line">// 注：变量取不到值时返回的不是空，是null；</span><br></pre></td></tr></table></figure>
-<h3 id="清除变量"><a href="#清除变量" class="headerlink" title="清除变量"></a>清除变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 清除全局变量</span><br><span class="line">pm.globals.unset(&quot;glovar&quot;);</span><br><span class="line"></span><br><span class="line">// 清除环境变量</span><br><span class="line">pm.environment.unset(&quot;evn1-var1&quot;);</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1813,7 +1814,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1824,7 +1825,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1835,7 +1836,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

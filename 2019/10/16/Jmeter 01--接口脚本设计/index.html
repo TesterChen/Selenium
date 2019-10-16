@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JMeter,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="环境信息123Mac --&amp;gt; 10.14.4JDK --&amp;gt; 1.8JMeter --&amp;gt; 5.1r 目标能够在JMeter设计有关联关系的测试脚本。 测试步骤性能测试简单来说可以分成这几步：1、分析业务，确定业务场景及各个性能指标；2、准备测试资源，包括压力机和测试环境等；3、根据确定的业务场景设计测试脚本；4、配置场景、执行测试脚本、收集结果；5、分析性能瓶颈、尝试修改，部署后再">
+<meta name="keywords" content="JMeter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JMeter 01--接口脚本设计">
+<meta property="og:url" content="http://chainradar.cn/2019/10/16/Jmeter 01--接口脚本设计/index.html">
+<meta property="og:site_name" content="Tester Chen">
+<meta property="og:description" content="环境信息123Mac --&amp;gt; 10.14.4JDK --&amp;gt; 1.8JMeter --&amp;gt; 5.1r 目标能够在JMeter设计有关联关系的测试脚本。 测试步骤性能测试简单来说可以分成这几步：1、分析业务，确定业务场景及各个性能指标；2、准备测试资源，包括压力机和测试环境等；3、根据确定的业务场景设计测试脚本；4、配置场景、执行测试脚本、收集结果；5、分析性能瓶颈、尝试修改，部署后再">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/preView.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/newThreads.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/addHttpHeader.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/addHttpRequest.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/setEnv.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/addLogin.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/addHttpHeadKey.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/addResultTree.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/viewReusltTree.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/addAssert.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/addAssertResult.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/assertSetting.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/assertFail.png">
+<meta property="og:updated_time" content="2019-10-16T08:52:56.263Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JMeter 01--接口脚本设计">
+<meta name="twitter:description" content="环境信息123Mac --&amp;gt; 10.14.4JDK --&amp;gt; 1.8JMeter --&amp;gt; 5.1r 目标能够在JMeter设计有关联关系的测试脚本。 测试步骤性能测试简单来说可以分成这几步：1、分析业务，确定业务场景及各个性能指标；2、准备测试资源，包括压力机和测试环境等；3、根据确定的业务场景设计测试脚本；4、配置场景、执行测试脚本、收集结果；5、分析性能瓶颈、尝试修改，部署后再">
+<meta name="twitter:image" content="http://chainradar.cn/images/jmeter/preView.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chainradar.cn/2019/10/16/Jmeter 01--接口脚本设计/">
+
+
+
+
+
+  <title>JMeter 01--接口脚本设计 | Tester Chen</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tester Chen</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/10/16/Jmeter 01--接口脚本设计/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CHEN JIAN PING">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tester Chen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JMeter 01--接口脚本设计</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-16T15:36:00+08:00">
+                2019-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JMeter/" itemprop="url" rel="index">
+                    <span itemprop="name">JMeter</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mac --&gt; 10.14.4</span><br><span class="line">JDK --&gt; 1.8</span><br><span class="line">JMeter --&gt; 5.1r</span><br></pre></td></tr></table></figure>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>能够在JMeter设计有关联关系的测试脚本。</p>
+<h3 id="测试步骤"><a href="#测试步骤" class="headerlink" title="测试步骤"></a>测试步骤</h3><p>性能测试简单来说可以分成这几步：<br>1、分析业务，确定业务场景及各个性能指标；<br>2、准备测试资源，包括压力机和测试环境等；<br>3、根据确定的业务场景设计测试脚本；<br>4、配置场景、执行测试脚本、收集结果；<br>5、分析性能瓶颈、尝试修改，部署后再次测试；</p>
+<p>这一篇要讲的是设计测试脚本。</p>
+<h3 id="设计测试脚本"><a href="#设计测试脚本" class="headerlink" title="设计测试脚本"></a>设计测试脚本</h3><p>我们今天需要测试两个查询接口的性能，所以脚本内容主要包括：登录、查询；<br>其中涉及到的知识点主要有参数获取、参数关联、断言、聚合报告；<br>预览我们已经写好的脚本结构，如下：<br><img src="/images/jmeter/preView.png" alt></p>
+<p>创建脚本主要有以下几部分：</p>
+<h4 id="新建测试计划；"><a href="#新建测试计划；" class="headerlink" title="新建测试计划；"></a>新建测试计划；</h4><p>在菜单中点击“文件–新建”，即可完成测试计划新建（我们创建后修改名称为“基础性能测试”）；</p>
+<h4 id="新建线程组"><a href="#新建线程组" class="headerlink" title="新建线程组"></a>新建线程组</h4><p>位置：测试计划右键–添加–线程(用户)–线程组；<br><img src="/images/jmeter/newThreads.png" alt>    </p>
+<h4 id="添加Http头管理器"><a href="#添加Http头管理器" class="headerlink" title="添加Http头管理器"></a>添加Http头管理器</h4><p>位置：线程组右键–添加–配置元件–Http头管理器（在线程组上右键也可以添加）；<br><img src="/images/jmeter/addHttpHeader.png" alt>    </p>
+<h4 id="添加Http请求"><a href="#添加Http请求" class="headerlink" title="添加Http请求"></a>添加Http请求</h4><p>位置：线程组右键–添加–取样器–Http请求；<br><img src="/images/jmeter/addHttpRequest.png" alt>    </p>
+<h4 id="接口请求脚本"><a href="#接口请求脚本" class="headerlink" title="接口请求脚本"></a>接口请求脚本</h4><p>1、我们把登录的URL、登录名、密码进行了全局参数化；<br><img src="/images/jmeter/setEnv.png" alt></p>
+<p>2、具体请求中使用了前面定义的全局参数；<br>登录请求的请求类型为POST，请求体中带入了登录名和密码两个参数；<br><img src="/images/jmeter/addLogin.png" alt></p>
+<p>3、前面我们添加的Http头，现在需要用上了，我们在头信息中加入如下键值对：<br><img src="/images/jmeter/addHttpHeadKey.png" alt>    </p>
+<h4 id="添加查看结果树"><a href="#添加查看结果树" class="headerlink" title="添加查看结果树"></a>添加查看结果树</h4><p>查询结果树中可以看到本次接口请求执行结果，包括请求体和返回体；<br>位置：线程组右键–添加–监听器–查看结果树（红色部分标识，后续要添加的聚会报告也在此处）；<br><img src="/images/jmeter/addResultTree.png" alt></p>
+<h4 id="执行脚本"><a href="#执行脚本" class="headerlink" title="执行脚本"></a>执行脚本</h4><p>执行脚本后，我们就能在查看结果树中看到接口的执行结果、请求体、返回体；<br><img src="/images/jmeter/viewReusltTree.png" alt></p>
+<h4 id="添加断言"><a href="#添加断言" class="headerlink" title="添加断言"></a>添加断言</h4><p>1、添加响应断言<br>接口请求结束后，我们需要判断接口返回是否符合我们的预期，此时就要用到断言；<br>响应断言可以添加多个；<br>位置：线程组右键–添加–断言–响应断言；<br><img src="/images/jmeter/addAssert.png" alt></p>
+<p>2、添加断言结果<br>添加响应断言后，我们需要添加对应的断言结果，可以显示我们断言是否通过；<br>这在调试测试脚本和实际测试中是非常重要的：我们即要确保请求是成功的同时，确保业务的处理也是符合我们预期的；<br>位置：线程组右键–添加–监听器–断言结果；<br><img src="/images/jmeter/addAssertResult.png" alt></p>
+<p>下图是我们添加的两个响应断言：<br><img src="/images/jmeter/assertSetting.png" alt></p>
+<p>fail这个内容在返回体中是没有的，所以断言失败会打印出我们预先自定义好的失败提示；<br><img src="/images/jmeter/assertFail.png" alt></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JMeter/" rel="tag"># JMeter</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/16/Jmeter 00--初识JMeter/" rel="next" title="JMeter 00--初识JMeter">
+                <i class="fa fa-chevron-left"></i> JMeter 00--初识JMeter
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/16/Jmeter 02--参数化/" rel="prev" title="JMeter 02--参数化">
+                JMeter 02--参数化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">CHEN JIAN PING</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#环境信息"><span class="nav-number">1.</span> <span class="nav-text">环境信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">2.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试步骤"><span class="nav-number">3.</span> <span class="nav-text">测试步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设计测试脚本"><span class="nav-number">4.</span> <span class="nav-text">设计测试脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新建测试计划；"><span class="nav-number">4.1.</span> <span class="nav-text">新建测试计划；</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新建线程组"><span class="nav-number">4.2.</span> <span class="nav-text">新建线程组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加Http头管理器"><span class="nav-number">4.3.</span> <span class="nav-text">添加Http头管理器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加Http请求"><span class="nav-number">4.4.</span> <span class="nav-text">添加Http请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口请求脚本"><span class="nav-number">4.5.</span> <span class="nav-text">接口请求脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加查看结果树"><span class="nav-number">4.6.</span> <span class="nav-text">添加查看结果树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行脚本"><span class="nav-number">4.7.</span> <span class="nav-text">执行脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加断言"><span class="nav-number">4.8.</span> <span class="nav-text">添加断言</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CHEN JIAN PING</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
