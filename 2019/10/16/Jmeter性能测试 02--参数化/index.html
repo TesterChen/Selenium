@@ -79,23 +79,23 @@
 
 
 
-<meta name="description" content="环境信息123Mac --&amp;gt; 10.14.4JDK --&amp;gt; 1.8JMeter --&amp;gt; 5.1r 目标能实现接口间动态参数关联。 设置全局参数到此为止，我们登录接口已经能执行成功，并且能查看接口的请求和返回，但还有一个需要解决：获取登录后Token；登录成功后，我们需要将Token传递给下一个请求使用； 正则表达式提取器我们先添加一个正则表达式提取器，位置：Http请求右键–添加">
+<meta name="description" content="环境信息123Mac --&amp;gt; 10.14.4JDK --&amp;gt; 1.8JMeter --&amp;gt; 5.1r 目标能实现接口间动态参数关联。 设置全局参数到上一篇结束，我们登录接口已经能执行成功，并且能查看接口的请求和返回，但还有一个需要解决：获取登录后Token；登录成功后，我们需要将Token传递给下一个请求使用； 正则表达式提取器我们这里添加一个正则表达式提取器；位置：Http请求右键">
 <meta name="keywords" content="JMeter">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JMeter 02--参数化">
-<meta property="og:url" content="http://chainradar.cn/2019/10/16/Jmeter 02--参数化/index.html">
+<meta property="og:title" content="JMeter性能测试 02--脚本参数化">
+<meta property="og:url" content="http://chainradar.cn/2019/10/16/Jmeter性能测试 02--参数化/index.html">
 <meta property="og:site_name" content="Tester Chen">
-<meta property="og:description" content="环境信息123Mac --&amp;gt; 10.14.4JDK --&amp;gt; 1.8JMeter --&amp;gt; 5.1r 目标能实现接口间动态参数关联。 设置全局参数到此为止，我们登录接口已经能执行成功，并且能查看接口的请求和返回，但还有一个需要解决：获取登录后Token；登录成功后，我们需要将Token传递给下一个请求使用； 正则表达式提取器我们先添加一个正则表达式提取器，位置：Http请求右键–添加">
+<meta property="og:description" content="环境信息123Mac --&amp;gt; 10.14.4JDK --&amp;gt; 1.8JMeter --&amp;gt; 5.1r 目标能实现接口间动态参数关联。 设置全局参数到上一篇结束，我们登录接口已经能执行成功，并且能查看接口的请求和返回，但还有一个需要解决：获取登录后Token；登录成功后，我们需要将Token传递给下一个请求使用； 正则表达式提取器我们这里添加一个正则表达式提取器；位置：Http请求右键">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://chainradar.cn/images/jmeter/addEvnParameter.png">
 <meta property="og:image" content="http://chainradar.cn/images/jmeter/getEvnParameter.png">
 <meta property="og:image" content="http://chainradar.cn/images/jmeter/addBeanShell.png">
 <meta property="og:image" content="http://chainradar.cn/images/jmeter/setGlobaleEnv.png">
 <meta property="og:image" content="http://chainradar.cn/images/jmeter/getGlobaleEnv.png">
-<meta property="og:updated_time" content="2019-10-16T09:25:41.865Z">
+<meta property="og:updated_time" content="2019-10-17T02:31:18.771Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JMeter 02--参数化">
-<meta name="twitter:description" content="环境信息123Mac --&amp;gt; 10.14.4JDK --&amp;gt; 1.8JMeter --&amp;gt; 5.1r 目标能实现接口间动态参数关联。 设置全局参数到此为止，我们登录接口已经能执行成功，并且能查看接口的请求和返回，但还有一个需要解决：获取登录后Token；登录成功后，我们需要将Token传递给下一个请求使用； 正则表达式提取器我们先添加一个正则表达式提取器，位置：Http请求右键–添加">
+<meta name="twitter:title" content="JMeter性能测试 02--脚本参数化">
+<meta name="twitter:description" content="环境信息123Mac --&amp;gt; 10.14.4JDK --&amp;gt; 1.8JMeter --&amp;gt; 5.1r 目标能实现接口间动态参数关联。 设置全局参数到上一篇结束，我们登录接口已经能执行成功，并且能查看接口的请求和返回，但还有一个需要解决：获取登录后Token；登录成功后，我们需要将Token传递给下一个请求使用； 正则表达式提取器我们这里添加一个正则表达式提取器；位置：Http请求右键">
 <meta name="twitter:image" content="http://chainradar.cn/images/jmeter/addEvnParameter.png">
 
 
@@ -126,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://chainradar.cn/2019/10/16/Jmeter 02--参数化/">
+  <link rel="canonical" href="http://chainradar.cn/2019/10/16/Jmeter性能测试 02--参数化/">
 
 
 
 
 
-  <title>JMeter 02--参数化 | Tester Chen</title>
+  <title>JMeter性能测试 02--脚本参数化 | Tester Chen</title>
   
 
 
@@ -269,7 +269,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/10/16/Jmeter 02--参数化/">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/10/16/Jmeter性能测试 02--参数化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CHEN JIAN PING">
@@ -286,7 +286,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JMeter 02--参数化</h1>
+          <h1 class="post-title" itemprop="name headline">JMeter性能测试 02--脚本参数化</h1>
         
 
         <div class="post-meta">
@@ -360,10 +360,10 @@
       
         <h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mac --&gt; 10.14.4</span><br><span class="line">JDK --&gt; 1.8</span><br><span class="line">JMeter --&gt; 5.1r</span><br></pre></td></tr></table></figure>
 <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>能实现接口间动态参数关联。</p>
-<h3 id="设置全局参数"><a href="#设置全局参数" class="headerlink" title="设置全局参数"></a>设置全局参数</h3><p>到此为止，我们登录接口已经能执行成功，并且能查看接口的请求和返回，但还有一个需要解决：获取登录后Token；<br>登录成功后，我们需要将Token传递给下一个请求使用；</p>
-<h4 id="正则表达式提取器"><a href="#正则表达式提取器" class="headerlink" title="正则表达式提取器"></a>正则表达式提取器</h4><p>我们先添加一个正则表达式提取器，位置：Http请求右键–添加–后置处理器–正则表达式提取器；<br><img src="/images/jmeter/addEvnParameter.png" alt></p>
-<p>正则表达式提取设置页：<br>需要根据请求的实际返回进行修改正则表达式；<br>关于正则表达式提取的，这里不展开，<a href="http://jmeter.apache.org/usermanual/regular_expressions.html" target="_blank" rel="noopener">JMeter官方正则文档点这里</a><br>关键语句（注意标点中英文状态）：<strong>“token”:”(.*?)”</strong><br><img src="/images/jmeter/getEvnParameter.png" alt></p>
-<h4 id="BeanShell后置处理器"><a href="#BeanShell后置处理器" class="headerlink" title="BeanShell后置处理器"></a>BeanShell后置处理器</h4><p>我们再添加一个BeanShell后置处理器，位置：Http请求右键–添加–后置处理器–BeanShell后置处理器；<br><img src="/images/jmeter/addBeanShell.png" alt></p>
+<h3 id="设置全局参数"><a href="#设置全局参数" class="headerlink" title="设置全局参数"></a>设置全局参数</h3><p>到上一篇结束，我们登录接口已经能执行成功，并且能查看接口的请求和返回，但还有一个需要解决：获取登录后Token；<br>登录成功后，我们需要将Token传递给下一个请求使用；</p>
+<h4 id="正则表达式提取器"><a href="#正则表达式提取器" class="headerlink" title="正则表达式提取器"></a>正则表达式提取器</h4><p>我们这里添加一个正则表达式提取器；<br>位置：Http请求右键–添加–后置处理器–正则表达式提取器；<br><em>这里使用其他提取器，只要能提取到对应的内容，都是可以的；</em><br><img src="/images/jmeter/addEvnParameter.png" alt></p>
+<p>正则表达式提取设置页：<br>需要根据请求的实际返回进行修改正则表达式；<br>关于正则表达式提取的，这里不展开，<a href="http://jmeter.apache.org/usermanual/regular_expressions.html" target="_blank" rel="noopener">JMeter官方正则文档点这里</a><br>关键语句（注意标点中英文状态）：<strong>“token”:”(.*?)”</strong>        <em>(里面‘token’是由返回体内容决定的)</em><br><img src="/images/jmeter/getEvnParameter.png" alt></p>
+<h4 id="BeanShell后置处理器"><a href="#BeanShell后置处理器" class="headerlink" title="BeanShell后置处理器"></a>BeanShell后置处理器</h4><p>我们再添加一个BeanShell后置处理器；<br>位置：Http请求右键–添加–后置处理器–BeanShell后置处理器；<br><img src="/images/jmeter/addBeanShell.png" alt></p>
 <p>添加这个后置处理器是为了将获取到的变量存储到全局变量中；<br>其中getToken是前面通过正则表达式获取到的变量值，pubToken是全局变量的key，后续可以通过这个key获取到他的值；<br>关键语句：<strong>${__setProperty(pubToken,${getToken},)}</strong><br><img src="/images/jmeter/setGlobaleEnv.png" alt></p>
 <h3 id="使用全局参数"><a href="#使用全局参数" class="headerlink" title="使用全局参数"></a>使用全局参数</h3><p>上面我们获取到Token并存储到全局变量后，我们后续的请求就需要用到了，我们需要将获取到的Token带入后续请求的头信息中，否则系统鉴权不通过，无法正常访问对应接口；<br>pubToken是我们上面存储全局变量值，这样我们就实现了跨线程间动态传递参数；<br>关键语句：<strong>${__property(pubToken)}</strong><br><img src="/images/jmeter/getGlobaleEnv.png" alt></p>
 
@@ -396,8 +396,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/16/Jmeter 01--接口脚本设计/" rel="next" title="JMeter 01--接口脚本设计">
-                <i class="fa fa-chevron-left"></i> JMeter 01--接口脚本设计
+              <a href="/2019/10/16/Jmeter性能测试 01--接口脚本设计/" rel="next" title="JMeter性能测试 01--接口脚本设计">
+                <i class="fa fa-chevron-left"></i> JMeter性能测试 01--接口脚本设计
               </a>
             
           </div>
@@ -406,8 +406,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/16/Jmeter 03--并发测试/" rel="prev" title="JMeter 03--并发测试">
-                JMeter 03--并发测试 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/16/Jmeter性能测试 03--执行并发测试/" rel="prev" title="JMeter性能测试 03--执行并发测试">
+                JMeter性能测试 03--执行并发测试 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="环境信息123Mac --&amp;gt; 10.14.4JDK --&amp;gt; 1.8JMeter --&amp;gt; 5.1r 目标设置并发数，收集性能数据； 线程设置位置：线程组单击； 执行时长：右上角有脚本的执行时间，用于统计脚本的执行时长； 线程属性中最重要的几个参数：线程数：也就是我们提到的并发数（类似LoadRunner中的VUser）; Ramp-Up时间：在多长时间内启动所有的线程数。举例，若线">
+<meta name="description" content="环境信息123Mac --&amp;gt; 10.14.4JDK --&amp;gt; 1.8JMeter --&amp;gt; 5.1r 目标在前面的几节，我们所有准备工作已经完成，接下来要做的就是执行并收集数据； 线程设置位置：单击线程组； 执行时长：右上角有脚本的执行时间，用于统计脚本的执行时长； 线程属性中最重要的几个参数：线程数：也就是我们提到的并发数（类似LoadRunner中的VUser）; Ramp-Up">
 <meta name="keywords" content="JMeter">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JMeter 03--并发测试">
-<meta property="og:url" content="http://chainradar.cn/2019/10/16/Jmeter 03--并发测试/index.html">
+<meta property="og:title" content="JMeter性能测试 03--执行并发测试">
+<meta property="og:url" content="http://chainradar.cn/2019/10/16/Jmeter性能测试 03--执行并发测试/index.html">
 <meta property="og:site_name" content="Tester Chen">
-<meta property="og:description" content="环境信息123Mac --&amp;gt; 10.14.4JDK --&amp;gt; 1.8JMeter --&amp;gt; 5.1r 目标设置并发数，收集性能数据； 线程设置位置：线程组单击； 执行时长：右上角有脚本的执行时间，用于统计脚本的执行时长； 线程属性中最重要的几个参数：线程数：也就是我们提到的并发数（类似LoadRunner中的VUser）; Ramp-Up时间：在多长时间内启动所有的线程数。举例，若线">
+<meta property="og:description" content="环境信息123Mac --&amp;gt; 10.14.4JDK --&amp;gt; 1.8JMeter --&amp;gt; 5.1r 目标在前面的几节，我们所有准备工作已经完成，接下来要做的就是执行并收集数据； 线程设置位置：单击线程组； 执行时长：右上角有脚本的执行时间，用于统计脚本的执行时长； 线程属性中最重要的几个参数：线程数：也就是我们提到的并发数（类似LoadRunner中的VUser）; Ramp-Up">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://chainradar.cn/images/jmeter/threadSetting.png">
 <meta property="og:image" content="http://chainradar.cn/images/jmeter/addResultTree.png">
 <meta property="og:image" content="http://chainradar.cn/images/jmeter/testResult.png">
-<meta property="og:updated_time" content="2019-10-16T10:01:02.043Z">
+<meta property="og:updated_time" content="2019-10-17T02:33:38.274Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JMeter 03--并发测试">
-<meta name="twitter:description" content="环境信息123Mac --&amp;gt; 10.14.4JDK --&amp;gt; 1.8JMeter --&amp;gt; 5.1r 目标设置并发数，收集性能数据； 线程设置位置：线程组单击； 执行时长：右上角有脚本的执行时间，用于统计脚本的执行时长； 线程属性中最重要的几个参数：线程数：也就是我们提到的并发数（类似LoadRunner中的VUser）; Ramp-Up时间：在多长时间内启动所有的线程数。举例，若线">
+<meta name="twitter:title" content="JMeter性能测试 03--执行并发测试">
+<meta name="twitter:description" content="环境信息123Mac --&amp;gt; 10.14.4JDK --&amp;gt; 1.8JMeter --&amp;gt; 5.1r 目标在前面的几节，我们所有准备工作已经完成，接下来要做的就是执行并收集数据； 线程设置位置：单击线程组； 执行时长：右上角有脚本的执行时间，用于统计脚本的执行时长； 线程属性中最重要的几个参数：线程数：也就是我们提到的并发数（类似LoadRunner中的VUser）; Ramp-Up">
 <meta name="twitter:image" content="http://chainradar.cn/images/jmeter/threadSetting.png">
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://chainradar.cn/2019/10/16/Jmeter 03--并发测试/">
+  <link rel="canonical" href="http://chainradar.cn/2019/10/16/Jmeter性能测试 03--执行并发测试/">
 
 
 
 
 
-  <title>JMeter 03--并发测试 | Tester Chen</title>
+  <title>JMeter性能测试 03--执行并发测试 | Tester Chen</title>
   
 
 
@@ -267,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/10/16/Jmeter 03--并发测试/">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/10/16/Jmeter性能测试 03--执行并发测试/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CHEN JIAN PING">
@@ -284,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JMeter 03--并发测试</h1>
+          <h1 class="post-title" itemprop="name headline">JMeter性能测试 03--执行并发测试</h1>
         
 
         <div class="post-meta">
@@ -357,16 +357,16 @@
 
       
         <h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mac --&gt; 10.14.4</span><br><span class="line">JDK --&gt; 1.8</span><br><span class="line">JMeter --&gt; 5.1r</span><br></pre></td></tr></table></figure>
-<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>设置并发数，收集性能数据；</p>
-<h3 id="线程设置"><a href="#线程设置" class="headerlink" title="线程设置"></a>线程设置</h3><p>位置：线程组单击；<br><img src="/images/jmeter/threadSetting.png" alt></p>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>在前面的几节，我们所有准备工作已经完成，接下来要做的就是执行并收集数据；</p>
+<h3 id="线程设置"><a href="#线程设置" class="headerlink" title="线程设置"></a>线程设置</h3><p>位置：单击线程组；<br><img src="/images/jmeter/threadSetting.png" alt></p>
 <p>执行时长：右上角有脚本的执行时间，用于统计脚本的执行时长；</p>
 <p><strong>线程属性</strong>中最重要的几个参数：<br><strong>线程数</strong>：也就是我们提到的并发数（类似LoadRunner中的VUser）;</p>
 <p><strong>Ramp-Up时间</strong>：在多长时间内启动所有的线程数。举例，若线程数为10，Ramp-Up时间为5，则表示JMeter会在5秒内启动10个线程（每秒启动2个），来执行这个线程组下所有请求；</p>
-<p><strong>循环次数</strong>：永远表示会一直执行下去，直到手动停止执行。若取消勾选永远，在后面的输入框中输入对应的值，则表示每个线程执行完对应的次数后，自动退出；<br><em>注意：这里不是所有的线程执行次数的总和，而是单个线程需要执行的次数；</em></p>
-<h3 id="聚合报告"><a href="#聚合报告" class="headerlink" title="聚合报告"></a>聚合报告</h3><p>需求统计接口执行时的响应数据，我们需要添加聚合报告模块；<br>位置：线程组右键–添加–监听器–聚合报告；<br><img src="/images/jmeter/addResultTree.png" alt></p>
+<p><strong>循环次数</strong>：永远表示会一直执行下去，直到手动停止执行。若取消勾选永远，在后面的输入框中输入对应大于0的整数值，则表示每个线程执行完对应的次数后，自动退出；<br><em>注意：这里不是所有的线程执行次数的总和，而是单个线程需要执行的次数；</em></p>
+<h3 id="聚合报告"><a href="#聚合报告" class="headerlink" title="聚合报告"></a>聚合报告</h3><p>要统计接口执行时的响应数据，我们得添加聚合报告模块；<br>位置：线程组右键–添加–监听器–聚合报告（红色方框标识）；<br><img src="/images/jmeter/addResultTree.png" alt></p>
 <p>设置线程数为10，Ramp-Up时间5秒，循环次数为2，启动执行，结果如下：<br><img src="/images/jmeter/testResult.png" alt></p>
-<p>重点指标：<br><strong>样本</strong>：循环次数为定量时，关注样本数与实际设置的循环次数是否一致；</p>
-<p><strong>95%百分位|99%百分位</strong>：这两个指标反应的是接口的响应时间（单位：毫秒），是我们性能测试中最重要结果；<br><em>所有与时间相关的单位均为毫秒；</em></p>
+<p>重点指标：<br><strong>样本</strong>：循环次数为定量时，关注样本数与实际设置的循环次数是否一致；<br><em>我们设置的线和数为10，循环次数为2，所以每一个查询的样本总量为10x2=20。我们有两个请求，所以共计样本为10x2x2=40</em>；</p>
+<p><strong>95%百分位 | 99%百分位</strong>：这两个指标反应的是接口的响应时间（单位：毫秒），是我们性能测试中最重要结果；<br><em>所有与时间相关的单位均为毫秒；</em></p>
 <p><strong>异常%</strong>：短时间压力测试，异常%应该为0，长时间压力测试后，异常%应该在我们可接受的范围内或为0；</p>
 <p><strong>网络吞吐</strong>：性能测试不达标或不理想的情况下，我们可以监控压力机和服务器的网络带宽使用情况，避免因此而产生的性能瓶颈；</p>
 
@@ -399,8 +399,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/16/Jmeter 02--参数化/" rel="next" title="JMeter 02--参数化">
-                <i class="fa fa-chevron-left"></i> JMeter 02--参数化
+              <a href="/2019/10/16/Jmeter性能测试 02--参数化/" rel="next" title="JMeter性能测试 02--脚本参数化">
+                <i class="fa fa-chevron-left"></i> JMeter性能测试 02--脚本参数化
               </a>
             
           </div>

@@ -79,20 +79,32 @@
 
 
 
-<meta name="description" content="环境信息123Mac --&amp;gt; 10.14.4JDK --&amp;gt; 1.8JMeter --&amp;gt; 5.1r 目标了解JMeter工具。 关于JMeter官网关于JMeter是这样描述的：The Apache JMeter™ application is open source software, a 100% pure Java application designed to load t">
+<meta name="description" content="环境信息123Mac --&amp;gt; 10.14.4JDK --&amp;gt; 1.8JMeter --&amp;gt; 5.1r 目标能够在JMeter设计有关联关系的测试脚本。 测试步骤性能测试简单来说有以下几部分：1、分析业务，确定业务场景及各个性能指标；2、准备测试资源，包括压力机和测试环境等；3、根据确定的业务场景设计测试脚本；4、准备测试数据；5、配置场景、执行测试脚本、收集结果；6、分析性能瓶颈、尝">
 <meta name="keywords" content="JMeter">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JMeter 00--初识JMeter">
-<meta property="og:url" content="http://chainradar.cn/2019/10/16/Jmeter 00--初识JMeter/index.html">
+<meta property="og:title" content="JMeter性能测试 01--接口脚本设计">
+<meta property="og:url" content="http://chainradar.cn/2019/10/16/Jmeter性能测试 01--接口脚本设计/index.html">
 <meta property="og:site_name" content="Tester Chen">
-<meta property="og:description" content="环境信息123Mac --&amp;gt; 10.14.4JDK --&amp;gt; 1.8JMeter --&amp;gt; 5.1r 目标了解JMeter工具。 关于JMeter官网关于JMeter是这样描述的：The Apache JMeter™ application is open source software, a 100% pure Java application designed to load t">
+<meta property="og:description" content="环境信息123Mac --&amp;gt; 10.14.4JDK --&amp;gt; 1.8JMeter --&amp;gt; 5.1r 目标能够在JMeter设计有关联关系的测试脚本。 测试步骤性能测试简单来说有以下几部分：1、分析业务，确定业务场景及各个性能指标；2、准备测试资源，包括压力机和测试环境等；3、根据确定的业务场景设计测试脚本；4、准备测试数据；5、配置场景、执行测试脚本、收集结果；6、分析性能瓶颈、尝">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://chainradar.cn/images/jmeter/download.png">
-<meta property="og:updated_time" content="2019-10-16T08:06:29.517Z">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/preView.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/newThreads.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/addHttpHeader.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/addHttpRequest.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/setEnv.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/addLogin.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/addHttpHeadKey.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/addResultTree.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/viewReusltTree.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/addAssert.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/addAssertResult.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/assertSetting.png">
+<meta property="og:image" content="http://chainradar.cn/images/jmeter/assertFail.png">
+<meta property="og:updated_time" content="2019-10-17T02:25:44.991Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JMeter 00--初识JMeter">
-<meta name="twitter:description" content="环境信息123Mac --&amp;gt; 10.14.4JDK --&amp;gt; 1.8JMeter --&amp;gt; 5.1r 目标了解JMeter工具。 关于JMeter官网关于JMeter是这样描述的：The Apache JMeter™ application is open source software, a 100% pure Java application designed to load t">
-<meta name="twitter:image" content="http://chainradar.cn/images/jmeter/download.png">
+<meta name="twitter:title" content="JMeter性能测试 01--接口脚本设计">
+<meta name="twitter:description" content="环境信息123Mac --&amp;gt; 10.14.4JDK --&amp;gt; 1.8JMeter --&amp;gt; 5.1r 目标能够在JMeter设计有关联关系的测试脚本。 测试步骤性能测试简单来说有以下几部分：1、分析业务，确定业务场景及各个性能指标；2、准备测试资源，包括压力机和测试环境等；3、根据确定的业务场景设计测试脚本；4、准备测试数据；5、配置场景、执行测试脚本、收集结果；6、分析性能瓶颈、尝">
+<meta name="twitter:image" content="http://chainradar.cn/images/jmeter/preView.png">
 
 
 
@@ -122,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://chainradar.cn/2019/10/16/Jmeter 00--初识JMeter/">
+  <link rel="canonical" href="http://chainradar.cn/2019/10/16/Jmeter性能测试 01--接口脚本设计/">
 
 
 
 
 
-  <title>JMeter 00--初识JMeter | Tester Chen</title>
+  <title>JMeter性能测试 01--接口脚本设计 | Tester Chen</title>
   
 
 
@@ -265,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/10/16/Jmeter 00--初识JMeter/">
+    <link itemprop="mainEntityOfPage" href="http://chainradar.cn/2019/10/16/Jmeter性能测试 01--接口脚本设计/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CHEN JIAN PING">
@@ -282,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JMeter 00--初识JMeter</h1>
+          <h1 class="post-title" itemprop="name headline">JMeter性能测试 01--接口脚本设计</h1>
         
 
         <div class="post-meta">
@@ -294,7 +306,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-16T14:13:00+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-16T15:36:00+08:00">
                 2019-10-16
               </time>
             
@@ -355,12 +367,24 @@
 
       
         <h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mac --&gt; 10.14.4</span><br><span class="line">JDK --&gt; 1.8</span><br><span class="line">JMeter --&gt; 5.1r</span><br></pre></td></tr></table></figure>
-<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>了解JMeter工具。</p>
-<h3 id="关于JMeter"><a href="#关于JMeter" class="headerlink" title="关于JMeter"></a>关于JMeter</h3><p><a href="http://jmeter.apache.org/" target="_blank" rel="noopener">官网关于JMeter是这样描述的</a>：<br>The Apache JMeter™ application is open source software, a 100% pure Java application designed to load test functional behavior and measure performance. It was originally designed for testing Web Applications but has since expanded to other test functions.</p>
-<p>JMeter是一款用Java写的开源软件，原来主要是用于WEB性能测试，后来扩展了很多其他类型的测试。</p>
-<p>官网有详细的介绍和使用教程，有兴趣深入了解的同学们可以详细阅读官网的教程。<br>官网全英文教程链接在这里：<a href="http://jmeter.apache.org/usermanual/index.html" target="_blank" rel="noopener">http://jmeter.apache.org/usermanual/index.html</a></p>
-<p>JMeter是一款无需安装的软件，下载Binaries版之后直接运行下载包中/bin/ApacheJMeter.jar即可启动软件；<br><strong>“JMeter 4.0 is compatible with Java 8 or Java 9”，JMeter 4.0以上版本需要Java 8以上的版本；</strong><br>有更多自定义需求的可以下载Source版进行修改；<br>下载地址：<a href="http://jmeter.apache.org/download_jmeter.cgi" target="_blank" rel="noopener">http://jmeter.apache.org/download_jmeter.cgi</a></p>
-<p><img src="/images/jmeter/download.png" alt></p>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>能够在JMeter设计有关联关系的测试脚本。</p>
+<h3 id="测试步骤"><a href="#测试步骤" class="headerlink" title="测试步骤"></a>测试步骤</h3><p>性能测试简单来说有以下几部分：<br>1、分析业务，确定业务场景及各个性能指标；<br>2、准备测试资源，包括压力机和测试环境等；<br>3、根据确定的业务场景设计测试脚本；<br>4、准备测试数据；<br>5、配置场景、执行测试脚本、收集结果；<br>6、分析性能瓶颈、尝试修改，部署后再次测试；</p>
+<p>这一篇要讲的是(3)设计测试脚本。</p>
+<h3 id="设计测试脚本"><a href="#设计测试脚本" class="headerlink" title="设计测试脚本"></a>设计测试脚本</h3><p>我们今天需要测试两个查询接口的性能，所以脚本内容主要包括：登录、查询1、查询2；<br>其中涉及到的知识点主要有参数获取、参数关联、断言、聚合报告；<br>预览我们已经写好的脚本结构，如下：<br><img src="/images/jmeter/preView.png" alt></p>
+<p>创建脚本主要有以下几部分：</p>
+<h4 id="新建测试计划"><a href="#新建测试计划" class="headerlink" title="新建测试计划"></a>新建测试计划</h4><p>在菜单中点击“文件–新建”，即可完成测试计划新建（我们创建后修改名称为“基础性能测试”）；</p>
+<h4 id="新建线程组"><a href="#新建线程组" class="headerlink" title="新建线程组"></a>新建线程组</h4><p>位置：测试计划右键–添加–线程(用户)–线程组；<br><img src="/images/jmeter/newThreads.png" alt>    </p>
+<h4 id="添加Http头管理器"><a href="#添加Http头管理器" class="headerlink" title="添加Http头管理器"></a>添加Http头管理器</h4><p>位置：线程组右键–添加–配置元件–Http头管理器（在线程组上右键也可以添加）；<br><img src="/images/jmeter/addHttpHeader.png" alt>    </p>
+<h4 id="添加Http请求"><a href="#添加Http请求" class="headerlink" title="添加Http请求"></a>添加Http请求</h4><p>位置：线程组右键–添加–取样器–Http请求；<br><img src="/images/jmeter/addHttpRequest.png" alt>    </p>
+<h4 id="接口请求脚本"><a href="#接口请求脚本" class="headerlink" title="接口请求脚本"></a>接口请求脚本</h4><p>1、我们把登录的URL、登录名、密码进行了全局参数化；<br><img src="/images/jmeter/setEnv.png" alt></p>
+<p>2、具体请求中使用了前面定义的全局参数；<br>登录请求的请求类型为POST，请求体中带入了登录名和密码两个参数；<br><img src="/images/jmeter/addLogin.png" alt></p>
+<p>3、前面我们添加的Http头，现在需要用上了，我们在头信息中加入如下键值对：<br><img src="/images/jmeter/addHttpHeadKey.png" alt>    </p>
+<h4 id="添加查看结果树"><a href="#添加查看结果树" class="headerlink" title="添加查看结果树"></a>添加查看结果树</h4><p>查询结果树中可以看到本次接口请求执行结果，包括请求体和返回体；<br>位置：线程组右键–添加–监听器–查看结果树（红色部分标识，后续要添加的聚会报告也在此处）；<br><img src="/images/jmeter/addResultTree.png" alt></p>
+<h4 id="执行脚本"><a href="#执行脚本" class="headerlink" title="执行脚本"></a>执行脚本</h4><p>执行脚本后，我们就能在查看结果树中看到接口的执行结果、请求体、返回体；<br>我们需要参考返回结果，为后续添加断言；<br><img src="/images/jmeter/viewReusltTree.png" alt></p>
+<h4 id="添加断言"><a href="#添加断言" class="headerlink" title="添加断言"></a>添加断言</h4><p>1、添加响应断言<br>接口请求结束后，我们需要判断接口返回是否符合我们的预期，此时就要用到断言；<br><strong>响应断言可以添加多个；</strong><br>位置：线程组右键–添加–断言–响应断言；<br><img src="/images/jmeter/addAssert.png" alt></p>
+<p>2、添加断言结果<br>添加响应断言后，我们需要添加对应的断言结果，可以显示我们断言是否通过；<br>这在调试测试脚本和实际测试中是非常重要的：我们即要确保请求是成功的同时，确保业务的处理也是符合我们预期的；<br>位置：线程组右键–添加–监听器–断言结果；<br><img src="/images/jmeter/addAssertResult.png" alt></p>
+<p>下图是我们添加的两个响应断言：<br><img src="/images/jmeter/assertSetting.png" alt></p>
+<p>fail这个内容在返回体中是没有的，所以断言失败会打印出我们预先自定义好的失败提示；<br><img src="/images/jmeter/assertFail.png" alt></p>
 
       
     </div>
@@ -391,8 +415,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/03/Git03--分支合并/" rel="next" title="Git03--分支合并">
-                <i class="fa fa-chevron-left"></i> Git03--分支合并
+              <a href="/2019/10/16/Jmeter性能测试00--初识JMeter/" rel="next" title="JMeter性能测试 00--初识JMeter">
+                <i class="fa fa-chevron-left"></i> JMeter性能测试 00--初识JMeter
               </a>
             
           </div>
@@ -401,8 +425,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/16/Jmeter 01--接口脚本设计/" rel="prev" title="JMeter 01--接口脚本设计">
-                JMeter 01--接口脚本设计 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/16/Jmeter性能测试 02--参数化/" rel="prev" title="JMeter性能测试 02--脚本参数化">
+                JMeter性能测试 02--脚本参数化 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -535,7 +559,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#环境信息"><span class="nav-number">1.</span> <span class="nav-text">环境信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">2.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于JMeter"><span class="nav-number">3.</span> <span class="nav-text">关于JMeter</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#环境信息"><span class="nav-number">1.</span> <span class="nav-text">环境信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">2.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试步骤"><span class="nav-number">3.</span> <span class="nav-text">测试步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设计测试脚本"><span class="nav-number">4.</span> <span class="nav-text">设计测试脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新建测试计划"><span class="nav-number">4.1.</span> <span class="nav-text">新建测试计划</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新建线程组"><span class="nav-number">4.2.</span> <span class="nav-text">新建线程组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加Http头管理器"><span class="nav-number">4.3.</span> <span class="nav-text">添加Http头管理器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加Http请求"><span class="nav-number">4.4.</span> <span class="nav-text">添加Http请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口请求脚本"><span class="nav-number">4.5.</span> <span class="nav-text">接口请求脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加查看结果树"><span class="nav-number">4.6.</span> <span class="nav-text">添加查看结果树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行脚本"><span class="nav-number">4.7.</span> <span class="nav-text">执行脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加断言"><span class="nav-number">4.8.</span> <span class="nav-text">添加断言</span></a></li></ol></li></ol></div>
             
 
           </div>
